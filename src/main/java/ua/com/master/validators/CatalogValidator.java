@@ -36,7 +36,7 @@ public class CatalogValidator extends FieldValidator
             message = FacesHelper.getBundleMessage("validator_required");
             return  false;
         }
-        Pattern pattern = Pattern.compile("[0-9].[a-z].[A-Z]");
+        Pattern pattern = Pattern.compile("\\w+");
         Matcher m = pattern.matcher(value);
         boolean matchFound = m.matches();
         if (!matchFound)

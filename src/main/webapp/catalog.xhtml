@@ -5,6 +5,8 @@
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:t="http://myfaces.apache.org/tomahawk"
       xmlns:a="http://it84.nl/jsf"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
       xmlns:c="http://java.sun.com/jstl/core">
 
 
@@ -46,7 +48,7 @@
                                  size="40"
                                  maxlength="100"/>
                     </table>
-                    <div id="buttons">
+                    <div id="button">
                         <h:commandButton value="#{bundle.button_create}"
                                          actionListener="#{catalogBean.createNewCatalog}"
 
@@ -74,13 +76,16 @@
                     <h:dataTable var="cat" value="#{catalogBean.listCatalogs}"
                                  columnClasses="cell,cell, cell"
                                  headerClass="cell label">
-                        <h:column>
+                        <h:column style="background-color: #f6d654">
                             <f:facet name="header">
                                 <h:outputText value="Select"/>
                             </f:facet>
-                            <h:selectBooleanCheckbox value="false"></h:selectBooleanCheckbox>
+                            <h:selectBooleanCheckbox value="#{cat.catalogId}">
+                                <f:param value="#{cat.catalogId}" name="catalogId"/>
+                                <f:ajax event="click" listener="#{catalogBean.initFieldsCatalog}"/>
+                            </h:selectBooleanCheckbox>
                         </h:column>
-                    <h:column>
+                    <h:column style="background-color: #f6d654">
                         <f:facet name="header">
                             <h:outputText value="Catalog's name"/>
                         </f:facet>
@@ -93,12 +98,12 @@
                                             title="Delete catalog"
                                             rendered="#{cat.catalogId != null}"/>
                         </h:commandLink>
-                    </h:column>
-                        <h:column>
+                    </h:column >
+                        <h:column style="background-color: #f6d654">
                             <f:facet name="header">
                                 <h:outputText value="Catalog's creation date"/>
                             </f:facet>
-                            <h:outputText value="#{cat.creationDate}"></h:outputText>
+                            <h:outputText value="#{cat.creationDate.toString}"></h:outputText>
                         </h:column>
                     </h:dataTable>
                     </h:panelGroup>

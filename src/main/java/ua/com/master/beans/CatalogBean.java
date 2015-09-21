@@ -57,7 +57,11 @@ public class CatalogBean extends   BaseBean implements Serializable {
                 nameCatalogFile);
         listCatalogs=getCatalogDao().list();
     }
+    public void initFieldsCatalog(){
+        Long catalogId = FacesHelper.getParameterAsLong("catalogId");
+        newCatalog=getCatalogDao().getById(catalogId);
 
+    }
     public List<Catalog> getListCatalogs() {
         return listCatalogs;
     }
