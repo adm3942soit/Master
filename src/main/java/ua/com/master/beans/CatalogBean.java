@@ -29,10 +29,21 @@ public class CatalogBean extends   BaseBean implements Serializable {
     private Integer tabbedPane= Constants.CatalogDetails.CATALOG_TAB_NUMBER;
 
     private String newName;
+    private Integer catalogId;
     private String nameCatalogFile="temp"+File.separator+"catalog.txt";
     private List<Catalog> listCatalogs=new ArrayList<>();
     private CatalogValidator validator=new CatalogValidator(true);
     private String catalogMessage;
+    private boolean checked;
+
+    public boolean isChecked() {
+        return checked;
+    }
+
+    public void setChecked(boolean checked) {
+        this.checked = checked;
+    }
+
     public CatalogBean()
     {
         super();
@@ -52,14 +63,20 @@ public class CatalogBean extends   BaseBean implements Serializable {
     }
     public void clearFieldsCatalog(){
         this.newName="";
+        this.catalogId=null;
         this.newCatalog=null;
         Filer.createFile(MyFiler.getCurrentDirectory() + File.separator +
                 nameCatalogFile);
         listCatalogs=getCatalogDao().list();
     }
     public void initFieldsCatalog(){
-        Integer catalogId = FacesHelper.getParameterAsInteger("catalogId");
-        newCatalog=getCatalogDao().getById(catalogId);
+       // Integer catalogId = FacesHelper.getParameterAsInteger("catalogId");
+        //newCatalog=getCatalogDao().getById(catalogId);
+        clearFieldsCatalog();
+        System.out.println(newCatalog);
+        this.newName=newCatalog.getName();
+        this.catalogId=newCatalog.getCatalogId();
+        Filer.rewriteFile(new File(nameCatalogFile), "Catalog Number:" + newCatalog.getCatalogId());
 
     }
     public List<Catalog> getListCatalogs() {
@@ -69,13 +86,19 @@ public class CatalogBean extends   BaseBean implements Serializable {
     public void setListCatalogs(List<Catalog> listCatalogs) {
         this.listCatalogs = listCatalogs;
     }
+    public void deleteChosenCatalog(ActionEvent actionEvent){
+        //initFieldsCatalog();
+        Integer catalogId = FacesHelper.getParameterAsInteger("catalogId");
+        newCatalog=getCatalogDao().getById(catalogId);
 
+        getCatalogDao().delete(newCatalog);
+    }
     public void createNewCatalog(ActionEvent actionEvent){
         this.newCatalog=new Catalog();
       this.newCatalog.setName(this.newName);
        if(!validateNewCatalog(this.newName)){
            catalogMessage = FacesHelper.getBundleMessage("validator_name");
-
+         return;
        }
       catalogDao.save(this.newCatalog);
       Filer.rewriteFile(new File(nameCatalogFile), "Catalog Number:" + newCatalog.getCatalogId());

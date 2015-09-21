@@ -9,6 +9,7 @@ import java.util.List;
  */
 public interface CatalogDao {
     public void save(Catalog catalog);
+    public void delete(Catalog catalog);
     public Catalog getById(Integer id);
     public List<Catalog> list();
     public  boolean isSuchName(String name);

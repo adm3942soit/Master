@@ -98,13 +98,16 @@ textarea
 
 .infoMessage 
 {
-    color: #009999;
+   /* color: #009999;*/
+    color:green;
     text-align: left;
     font-family: "MV Boli";
     font-size: 24px;
     font-weight: bold;
-    margin-top: 2em;
+   /* margin-top: 2em;*/
     display: block;
+    height: 26px;
+    padding-bottom: 1em;
 }
 
 .messages 

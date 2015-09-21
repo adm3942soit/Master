@@ -15,6 +15,10 @@ public class CatalogDaoImpl extends CommonDAO implements CatalogDao {
         getSessionFactory().getCurrentSession().saveOrUpdate(catalog);
     }
     @Override
+    public void delete(Catalog catalog){
+        getSessionFactory().getCurrentSession().delete(catalog);
+    }
+    @Override
     public Catalog getById(Integer id){
       return   (Catalog)getSessionFactory().getCurrentSession().createCriteria(Catalog.class)
 
@@ -25,6 +29,7 @@ public class CatalogDaoImpl extends CommonDAO implements CatalogDao {
         return (List<Catalog>)getSessionFactory().getCurrentSession().createCriteria(Catalog.class)
                 .list();
     }
+    @Override
     public  boolean isSuchName(String name){
         List<Catalog>list=list();
         for(Catalog catalog:list){

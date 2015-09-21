@@ -72,11 +72,11 @@
                <!-- </h:form>
                 <h:form id="list">-->
                     <h:panelGroup rendered="#{catalogBean.createdNewCatalog
-                     or catalogBean.catalogsExists}">
+                     or catalogBean.catalogsExists}" style="width: 150px;">
                                     <h1>
                                         <h:outputText value="#{bundle.catalogs}"/>
                                     </h1>
-                        <h:selectOneRadio value="#{catalogBean.newCatalog}" >
+                        <h:selectOneRadio value="#{catalogBean.newCatalog}" onchange="#{catalogBean.initFieldsCatalog}">
 
                             <f:selectItems var="cat" value="#{catalogBean.listCatalogs}"
 
@@ -85,11 +85,11 @@
                             <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFieldsCatalog}"/>
                         </h:selectOneRadio>
 
-                   <!-- <h:dataTable id="dataTableCat" var="cat" value="#{catalogBean.listCatalogs}"
-                                 columnClasses="cell,cell, cell"
+                   <h:dataTable id="dataTableCat" var="cat" value="#{catalogBean.listCatalogs}"
+                                 columnClasses="cell"
                                  headerClass="cell label">
 
-                        <h:column style="background-color: #f6d654">
+                        <!--<h:column style="background-color: #f6d654">
                             <f:facet name="header">
                                 <h:outputText value="Select"/>
                             </f:facet>
@@ -104,7 +104,7 @@
                                 <f:param value="#{cat.catalogId}" name="catalogId"/>
                                 <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFieldsCatalog}"/>
                           </p:selectBooleanCheckbox>&ndash;&gt;
-                        </h:column>
+                        </h:column>-->
                     <h:column style="background-color: #f6d654">
                         <f:facet name="header">
                             <h:outputText value="Catalog's name"/>
@@ -120,13 +120,13 @@
                         </h:commandLink>
                     </h:column >
 
-                        &lt;!&ndash;   <h:column style="background-color: #f6d654">
+                    <!--<h:column style="background-color: #f6d654">
                                <f:facet name="header">
                                    <h:outputText value="Catalog's creation date"/>
                                </f:facet>
                                <h:outputText value="#{cat.creationDate.toString}"></h:outputText>
-                           </h:column>&ndash;&gt;
-                    </h:dataTable>-->
+                           </h:column>-->
+                    </h:dataTable>
                     </h:panelGroup>
                 </h:form>
                </div>
