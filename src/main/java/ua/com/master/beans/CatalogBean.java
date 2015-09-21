@@ -58,7 +58,7 @@ public class CatalogBean extends   BaseBean implements Serializable {
         listCatalogs=getCatalogDao().list();
     }
     public void initFieldsCatalog(){
-        Long catalogId = FacesHelper.getParameterAsLong("catalogId");
+        Integer catalogId = FacesHelper.getParameterAsInteger("catalogId");
         newCatalog=getCatalogDao().getById(catalogId);
 
     }
@@ -84,13 +84,13 @@ public class CatalogBean extends   BaseBean implements Serializable {
     private Catalog getCatalogFromFile(){
         String text=Filer.readFile(new File(MyFiler.getCurrentDirectory()+File.separator
                 +nameCatalogFile), true, false);
-        Long number=0L;
+        Integer number=0;
         if(text!=null && !text.isEmpty()){
             String[]ss=text.split(":");
             for(String s:ss) {
                 try {
                     System.out.println("!!!!"+s);
-                    number = Long.parseLong(s.trim());
+                    number = Integer.parseInt(s.trim());
                     break;
                 } catch (Exception ex){
                     continue;

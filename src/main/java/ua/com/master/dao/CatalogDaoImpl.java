@@ -15,7 +15,7 @@ public class CatalogDaoImpl extends CommonDAO implements CatalogDao {
         getSessionFactory().getCurrentSession().saveOrUpdate(catalog);
     }
     @Override
-    public Catalog getById(Long id){
+    public Catalog getById(Integer id){
       return   (Catalog)getSessionFactory().getCurrentSession().createCriteria(Catalog.class)
 
                 .add(Restrictions.eq("catalogId", id)).uniqueResult();

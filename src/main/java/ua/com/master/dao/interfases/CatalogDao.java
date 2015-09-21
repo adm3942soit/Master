@@ -9,7 +9,7 @@ import java.util.List;
  */
 public interface CatalogDao {
     public void save(Catalog catalog);
-    public Catalog getById(Long id);
+    public Catalog getById(Integer id);
     public List<Catalog> list();
     public  boolean isSuchName(String name);
 }

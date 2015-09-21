@@ -17,7 +17,7 @@
 
 
         <h1>
-            <h:outputText value="#{bundle.caption_registerperson}"/>
+            <h:outputText value="#{bundle.register_catalog}"/>
         </h1>
 
 
@@ -48,7 +48,7 @@
                                  size="40"
                                  maxlength="100"/>
                     </table>
-                    <div id="button">
+                    <div class="button">
                         <h:commandButton value="#{bundle.button_create}"
                                          actionListener="#{catalogBean.createNewCatalog}"
 
@@ -80,10 +80,10 @@
                             <f:facet name="header">
                                 <h:outputText value="Select"/>
                             </f:facet>
-                            <h:selectBooleanCheckbox value="#{cat.catalogId}">
+                            <h:selectOneRadio value="false">
                                 <f:param value="#{cat.catalogId}" name="catalogId"/>
                                 <f:ajax event="click" listener="#{catalogBean.initFieldsCatalog}"/>
-                            </h:selectBooleanCheckbox>
+                          </h:selectOneRadio>
                         </h:column>
                     <h:column style="background-color: #f6d654">
                         <f:facet name="header">
@@ -94,7 +94,7 @@
                                        actionListener="#{catalogBean.deleteChosenCatalog}">
                             <f:param value="#{cat.catalogId}" name="catalogId"/>
                             <h:outputText value="#{cat.name}"></h:outputText>
-                            <h:graphicImage id="delCatImg" url="/WEB-INF/images/deleteNew.gif"
+                            <h:graphicImage id="delCatImg" url="WEB-INF/images/deleteNew.gif"
                                             title="Delete catalog"
                                             rendered="#{cat.catalogId != null}"/>
                         </h:commandLink>
