@@ -1,0 +1,21 @@
+package ua.com.master.dao.factory;
+
+import ua.com.master.dao.interfases.*;
+
+/**
+ * Created by Oxana on 31.08.2015.
+ */
+public interface  FactoryDao {
+
+    public static FactoryDao factoryDao=
+           new FactoryDaoImpl();
+
+    public PersonDao getPersonDao();
+    public  PersonStatusDao getPersonStatusDao();
+    public  AddressDao getAddressDao();
+    public PersonAddressDao getPersonAddressDao();
+    public  SysParameterDao getSysParameterDao();
+    public CourseUSDDao getCourseUSDDao();
+    public ProductDao getProductDao();
+
+}

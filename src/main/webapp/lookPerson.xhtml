@@ -1,0 +1,645 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk" xmlns:a="http://it84.nl/jsf" xmlns:c="http://java.sun.com/jstl/core">
+
+<ui:composition template="/WEB-INF/layout/layout.xhtml">
+<ui:define name="title">Locations creation</ui:define>
+<ui:define name="midcol">
+<f:loadBundle basename="ResourceBundle" var="bundle"/>
+
+
+<h1>
+    <h:outputText value="#{bundle.psn_det} #{lookPersonBean.choosenPerson.fullName}"/>
+</h1>
+<ul class="process">
+    <ui:repeat var="proc" value="#{lookPersonBean.namesProcesses}" >
+        <li><h:outputText value="#{proc}"/></li>
+    </ui:repeat>
+</ul>
+<a:tabPanel selected="${lookPersonBean.tabbedPane}" bean="${lookPersonBean}" tab0="#{bundle.person}"
+            tab1="#{bundle.address}" tab2="#{bundle.certificates_caption}" tab3="#{bundle.positions}"
+            tab4="#{bundle.actions}" tab5="#{bundle.inter}" tab6="#{bundle.request}" tab7="#{bundle.ass_agr}" tab8="#{bundle.emp_cntr}">
+
+<div id="panel0" class="panel">
+
+    <h:form id="persForm">
+        <table>
+            <a:outputField lwidth="30%" label="#{bundle.person_number}" value="#{lookPersonBean.person.number}"/>
+            <a:outputField label="#{bundle.person_initials}" value="#{lookPersonBean.person.initials}"/>
+            <a:outputField label="#{bundle.person_firstname}" value="#{lookPersonBean.person.firstName}"/>
+            <a:outputField label="#{bundle.person_middlename}" value="#{lookPersonBean.person.middleName}"/>
+            <a:outputField label="#{bundle.person_lastname}" value="#{lookPersonBean.person.lastName}"/>
+            <a:outputField label="#{bundle.person_birthday}" value="#{lookPersonBean.person.birhtday}"/>
+            <a:outputField label="#{bundle.person_gender}" value="#{lookPersonBean.person.gender}"/>
+            <a:outputField label="#{bundle.person_phonenumber}" value="#{lookPersonBean.person.phoneNumber}"/>
+            <a:outputField label="#{bundle.person_mobilenumber}" value="#{lookPersonBean.person.mobileNumber}"/>
+            <a:outputField label="#{bundle.person_email}" value="#{lookPersonBean.person.emailAddress}"/>
+            <a:outputField label="#{bundle.person_socsecur}" value="#{lookPersonBean.person.socialSecurityNumber}"/>
+
+            <a:outputField label="#{bundle.person_passportnumber}" value="#{lookPersonBean.person.passportNumber}"/>
+            <a:outputField label="#{bundle.person_passporvalid}" value="#{lookPersonBean.person.passportValidUntil}"/>
+            <a:outputField label="#{bundle.person_educationlevel}" value="#{lookPersonBean.person.educationLevel}"/>
+            <a:outputField label="#{bundle.person_educationdesc}"
+                           value="#{lookPersonBean.person.educationDescription}"/>
+            <a:outputField label="#{bundle.person_username}" value="#{lookPersonBean.person.userName}"/>
+            <a:outputField label="#{bundle.person_status}" value="#{lookPersonBean.person.personStatusMessage}"/>
+        </table>
+
+    </h:form>
+
+</div>
+
+<div id="panel1" class="panel">
+    <h:form id="addrForm">
+        <table>
+            <a:outputField lwidth="30%" label="#{bundle.address_street}" value="#{lookPersonBean.person.street}"/>
+            <a:outputField label="#{bundle.address_housenumber}" value="#{lookPersonBean.person.houseNumber}"/>
+            <a:outputField label="#{bundle.address_housenumberaddition}"
+                           value="#{lookPersonBean.person.houseNumberAddition}"/>
+            <a:outputField label="#{bundle.address_zipcode}" value="#{lookPersonBean.person.zipCode}"/>
+            <a:outputField label="#{bundle.address_city}" value="#{lookPersonBean.person.city}"/>
+            <a:outputField label="#{bundle.address_country}" value="#{lookPersonBean.person.country}"/>
+            <a:outputField label="#{bundle.address_type}" value="#{lookPersonBean.person.addressType}"/>
+        </table>
+
+        <h:panelGroup rendered="#{!empty lookPersonBean.person.personAdressDecorators}">
+            <h1>
+                <h:outputText value="#{bundle.person_addresses}"/>
+            </h1>
+            <h:dataTable var="dec" value="#{lookPersonBean.person.personAdressDecorators}"
+                         columnClasses="cell,cell,cell" headerClass="cell label">
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.h_address_type}"/>
+                    </f:facet>
+                    <h:outputText value="#{dec.typeMsg}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.address}"/>
+                    </f:facet>
+                    <h:outputText value="#{dec.addressFull}"/>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+
+    </h:form>
+</div>
+
+<div id="panel2" class="panel">
+    <h:panelGroup rendered="#{!empty lookPersonBean.person.certificates}">
+        <h:dataTable var="cert" value="#{lookPersonBean.person.certificates}" columnClasses="cell"
+                     headerClass="cell label">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.description_caption}"/>
+                </f:facet>
+                <h:outputText value="#{cert.description}"/>
+            </h:column>
+        </h:dataTable>
+    </h:panelGroup>
+    <h:panelGroup rendered="#{empty lookPersonBean.person.certificates}">
+        <table>
+            <tr>
+                <td class="cell label"><h:outputText value="#{bundle.description_caption}"/></td>
+            </tr>
+        </table>
+        <br/>
+        <h:outputText value="#{bundle.no_certificates_registered}" styleClass="infoMessage"/>
+    </h:panelGroup>
+</div>
+
+<div id="panel3" class="panel">
+    <h:form id="posForm">
+        <h:panelGroup rendered="#{!empty lookPersonBean.person.positions}">
+            <h:dataTable var="position" value="#{lookPersonBean.person.positions}" columnClasses="cell w25,cell"
+                         headerClass="cell label">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.position_name_caption}"/>
+                    </f:facet>
+                    <h:outputText value="#{position.name}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.position_description_caption}"/>
+                    </f:facet>
+                    <h:outputText value="#{position.description}"/>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{empty lookPersonBean.person.positions}">
+            <table>
+                <tr>
+                    <td class="cell label w25"><h:outputText value="#{bundle.position_name_caption}"/></td>
+                    <td class="cell label"><h:outputText value="#{bundle.position_description_caption}"/></td>
+                </tr>
+            </table>
+            <br/>
+            <h:outputText value="#{bundle.no_positions_registered}" styleClass="infoMessage"/>
+        </h:panelGroup>
+    </h:form>
+</div>
+
+
+<div id="panel4" class="panel">
+<h:panelGroup rendered="#{!lookPersonBean.actionsEdit}">
+
+     <!--<h:panelGroup rendered="#{!empty lookPersonBean.innerPersonActionsList}">-->
+    <!--value="#{lookPersonBean.innerPersonActionsList}"-->
+     <h:panelGroup rendered="#{!empty lookPersonBean.personActionsList}">
+        <h:dataTable var="personActionDec"
+                     value="#{lookPersonBean.personActionsList}"
+                     columnClasses="cell w10, cell"
+                     headerClass="cell label">
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.regreq_person_name}"/>
+                </f:facet>
+                <h:outputText value="#{personActionDec.personAction.standardAction.name}"/>
+            </h:column>
+            <h:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.description_caption}"/>
+                </f:facet>
+                <h:outputText value="#{personActionDec.personAction.standardAction.description}"/>
+            </h:column>
+        </h:dataTable>
+    </h:panelGroup>
+     <!--<h:panelGroup rendered="#{empty lookPersonBean.innerPersonActionsList}">-->
+    <h:panelGroup rendered="#{empty lookPersonBean.personActionsList}">
+        <table>
+            <tr>
+                <td class="cell label"><h:outputText value="#{bundle.description_caption}"/></td>
+            </tr>
+        </table>
+        <br/>
+        <h:outputText value="#{bundle.no_actions_registered}" styleClass="infoMessage"/>
+    </h:panelGroup>
+</h:panelGroup>
+
+<!--======================================== Actions editor =============================================-->
+<h:panelGroup rendered="#{lookPersonBean.actionsEdit}">
+    <h:form id="actForm">
+        <table>
+            <tr>
+                <td class="cell label" width="25%">
+                    <h:outputText value="#{bundle.action_lab}"/>
+                </td>
+                <td class="cell">
+                    <h:inputText value="#{lookPersonBean.actionCode}" readonly="true"
+                                 maxlength="4" size="6" styleClass="mandatory"/>
+                    &#160;
+                    <h:inputText value="#{lookPersonBean.actionName}" readonly="true"
+                                 maxlength="150" size="33" styleClass="mandatory"/>
+                    <h:commandLink id="ActLnk" action="#{findStandardActionBean.passToFindStandardAction}">
+                        <f:param value="#{lookPersonBean.namePage}" name="namePage"/>
+                        <f:param value="lookPersonBean" name="nameBean"/>
+                        <f:param value="" name="namesProcesses"/>
+                        <h:graphicImage id="ActImg" url="images/lookup.jpg" title="#{bundle.sel_action}"/>
+                    </h:commandLink>
+                    &#160;
+                    <h:outputText value="#{lookPersonBean.actionCodeValidator.message}" styleClass="errorMessage"/>
+                </td>
+            </tr>
+            <a:field label="#{bundle.action_deadline}" value="#{lookPersonBean.deadlineString}"
+                     message="#{lookPersonBean.deadlineValidator.message}" styleClass="mandatory"
+                     size="20" maxlength="20"/>
+            <tr>
+                <td class="cell label">
+                    <h:outputText value="#{bundle.action_st}"/>
+                </td>
+                <td class="cell">
+                    <h:selectOneMenu id="actionStatusSel" value="#{lookPersonBean.actionStatus}">
+                        <f:selectItems id="actionStatusSelItems" value="#{lookPersonBean.actionStatusList}"/>
+                    </h:selectOneMenu>
+                </td>
+            </tr>
+            <tr>
+                <td class="cell label">
+                    <h:outputText value="#{bundle.as_to}"/>
+                </td>
+                <td class="cell">
+                   <h:inputText value="#{lookPersonBean.assignUserName}" readonly="true" maxlength="30" size="30" styleClass="mandatory"/>
+                   <h:commandLink id="assLnk" action="#{finderPersonBean.passToStepFindPersonForActions}">
+                       <f:param value="lookPersonBean" name="nameBean"/>
+                       <f:param value="lookPerson" name="namePage"/>
+                       <f:param value="#{bundle.processesForRegActFromLookPsn}" name="namesProcesses"/>
+                       <h:graphicImage id="assImg" url="images/lookup.jpg" title="Select person"/>
+                   </h:commandLink>
+                    &#160;
+                   <h:outputText value="#{lookPersonBean.assignUserNameValidator.message}" styleClass="errorMessage"/>
+                </td>
+            </tr>
+
+            <tr>
+                <td class="cell label">
+                    <h:outputText value="#{bundle.action_rem}"/>
+                </td>
+                <td class="cell">
+                    <h:inputTextarea value="#{lookPersonBean.actionRemarks}" cols="55" rows="5"/>
+                </td>
+            </tr>
+        </table>
+        <div class="buttons">
+            <h:commandButton actionListener="#{lookPersonBean.updateAction}"
+                             value="#{bundle.button_submit}"/>
+            <h:commandButton actionListener="#{lookPersonBean.viewAction}"
+                             value="#{bundle.button_new_act}"/>
+        </div>
+
+        <h:outputText value="#{lookPersonBean.actionMessage}" styleClass="infoMessage"/>
+
+        <h:panelGroup rendered="#{!empty(lookPersonBean.personActionsList)}">
+            <h1>
+                <h:outputText value="#{bundle.act_alr_reg}"/>
+            </h1>
+            <h:dataTable var="p" value="#{lookPersonBean.personActionsList}"
+                         binding="#{lookPersonBean.personActionsTable}"
+                         columnClasses="w10 cell,cell ,cell , cell, cell" headerClass="cell label">
+                <h:column>
+                    <f:facet name="header">
+                        &#160;
+                    </f:facet>
+                    <h:commandLink actionListener="#{lookPersonBean.deleteAction}">
+                        <f:param value="#{p.personAction.id}" name="personActionId"/>
+                        <h:graphicImage id="Link444" url="images/deleteNew.gif" title="delete action"/>
+                    </h:commandLink>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.regreq_person_name}"/>
+                    </f:facet>
+                    <h:commandLink actionListener="#{lookPersonBean.viewAction}">
+                        <f:param value="#{p.personAction.id}" name="personActionId"/>
+                        <h:outputText value="#{p.personAction.standardAction.name}"/>
+                    </h:commandLink>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.as_to_p}"/>
+                    </f:facet>
+                    <h:outputText value="#{p.assignTo}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.regreq_status}"/>
+                    </f:facet>
+                    <h:outputText value="#{p.statusMessage}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.deadline}"/>
+                    </f:facet>
+                    <h:outputText value="#{p.deadlineString}"/>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+    </h:form>
+</h:panelGroup>
+</div>
+
+
+<div id="panel5" class="panel">
+    <h:form id="intForm">
+        <h:panelGroup rendered="#{!empty lookPersonBean.interviewReportProxy.interviewReportDecorators}">
+            <h:dataTable var="decorator" value="#{lookPersonBean.interviewReportProxy.interviewReportDecorators}"
+                         columnClasses="cell,cell,cell,cell,cell" headerClass="cell label">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.head_int}"/>
+                    </f:facet>
+                    <h:outputText value="#{decorator.interviewerName}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.head_date}"/>
+                    </f:facet>
+                    <h:outputText value="#{decorator.interviewDateString}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.head_status}"/>
+                    </f:facet>
+                    <h:outputText value="#{decorator.statusMessage}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.head_ass}"/>
+                    </f:facet>
+                    <h:outputText value="#{decorator.generalAssessment}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.head_report}"/>
+                    </f:facet>
+                    <h:outputText value="#{decorator.report}"/>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{empty lookPersonBean.interviewReportProxy.interviewReportDecorators}">
+            <table>
+                <tr>
+                    <td class="cell label"><h:outputText value="#{bundle.head_int}"/></td>
+                    <td class="cell label"><h:outputText value="#{bundle.head_date}"/></td>
+                    <td class="cell label"><h:outputText value="#{bundle.head_status}"/></td>
+                    <td class="cell label"><h:outputText value="#{bundle.head_ass}"/></td>
+                    <td class="cell label"><h:outputText value="#{bundle.head_report}"/></td>
+                </tr>
+            </table>
+            <br/>
+            <h:outputText value="#{bundle.no_interviews_registered}" styleClass="infoMessage"/>
+        </h:panelGroup>
+    </h:form>
+</div>
+<div id="panel6" class="panel">
+    <h:form id="reqForm">
+        <h:panelGroup rendered="#{!empty(lookPersonBean.listRequests)}">
+            <t:dataTable var="req" value="#{lookPersonBean.listRequests}"
+                         columnClasses="cell,cell,cell,cell,cell"
+                         rowClasses="#{req.style}"
+                         headerClass="cell label">
+
+                <t:column styleClass="#{req.style}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.left_company}" style="#{req.style}"/>
+                    </f:facet>
+                    <h:commandLink action="#{registerRequestBean.lookRequestDetails}">
+                        <f:param value="#{req.request.id}" name="requestId"/>
+                        <f:param value="#{lookPersonBean.namePage}" name="sourcePageForLookRequest"/>
+                        <h:outputText value="#{req.nameCompany}" style="#{req.style}"/>
+                    </h:commandLink>
+                </t:column>
+                <t:column styleClass="#{req.style}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.cat}"/>
+                    </f:facet>
+                    <h:outputText value="#{req.nameCategory}" style="#{req.style}"/>
+                </t:column>
+                <t:column styleClass="#{req.style}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.position}"/>
+                    </f:facet>
+                    <h:outputText value="#{req.position}"/>
+                </t:column>
+                <t:column styleClass="#{req.style}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.st}"/>
+                    </f:facet>
+                    <h:outputText value="#{req.statusMessage}" style="#{req.style}"/>
+                </t:column>
+
+                <t:column styleClass="#{req.style}">
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.st_dt}"/>
+                    </f:facet>
+                    <h:outputText value="#{req.statusDateFormatted}" style="#{req.style}"/>
+                </t:column>
+            </t:dataTable>
+        </h:panelGroup>
+        <h:panelGroup rendered="#{empty(lookPersonBean.listRequests)}">
+            <table>
+                <tr>
+                    <td class="cell label"><h:outputText value="#{bundle.left_company}"/></td>
+                    <td class="cell label"><h:outputText value="#{bundle.cat}"/></td>
+                    <td class="cell label"><h:outputText value="#{bundle.position}"/></td>
+                    <td class="cell label"><h:outputText value="#{bundle.st}"/></td>
+                    <td class="cell label"><h:outputText value="#{bundle.st_dt}"/></td>
+                </tr>
+            </table>
+            <br/>
+            <h:outputText value="#{bundle.no_requests_registered}" styleClass="infoMessage"/>
+
+
+        </h:panelGroup>
+    </h:form>
+</div>
+<div id="panel7">
+<h:form id="aaForm">
+
+    <h:panelGroup rendered="#{!empty(lookPersonBean.listAssignmentAgreements)}">
+
+    <t:dataTable var="aaDec" value="#{lookPersonBean.listAssignmentAgreements}"
+                 columnClasses="cell , cell, cell, cell , cell w15, cell w15 "
+                 headerClass="cell label">
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.tr_cmp_name}"/>
+            </f:facet>
+            <h:outputText value="#{aaDec.tripticomCompanyName}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.cust_cmp_n}"/>
+            </f:facet>
+            <h:outputText value="#{aaDec.nameCustomer}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.end_cust_n}"/>
+            </f:facet>
+            <h:outputText value="#{aaDec.endNameCustomer}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.position}"/>
+            </f:facet>
+            <h:outputText value="#{aaDec.position}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.st_dt}"/>
+            </f:facet>
+            <h:outputText value="#{aaDec.startDateString}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.end_date}"/>
+            </f:facet>
+            <h:outputText value="#{aaDec.endDateString}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.st}"/>
+            </f:facet>
+            <h:outputText value="#{aaDec.status}"/>
+        </t:column>
+    </t:dataTable>
+</h:panelGroup>
+
+    <h:panelGroup rendered="#{empty(lookPersonBean.listAssignmentAgreements)}">
+
+    <t:dataTable var="aaDec" value="#{lookPersonBean.listAssignmentAgreements}"
+                 columnClasses="cell , cell, cell, cell , cell w15, cell w15 "
+                 headerClass="cell label">
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.tr_cmp_name}"/>
+            </f:facet>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.cust_cmp_nm}"/>
+            </f:facet>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.end_cust_nm}"/>
+            </f:facet>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.position}"/>
+            </f:facet>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.st_dt}"/>
+            </f:facet>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.end_date}"/>
+            </f:facet>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.st}"/>
+            </f:facet>
+        </t:column>
+</t:dataTable>
+</h:panelGroup>
+
+</h:form>
+</div>
+<div id="panel8">
+<h:form id="cntrForm">
+<h:panelGroup rendered="#{!empty(lookPersonBean.listContracts)}">
+    <t:dataTable var="ecDec" value="#{lookPersonBean.listContracts}"
+                 columnClasses="cell , cell w15, cell w15, cell , cell , cell "
+                 headerClass="cell label">
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.left_company}"/>
+            </f:facet>
+            <h:outputText value="#{ecDec.tripticomCompanyName}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.st_dt}"/>
+            </f:facet>
+            <h:outputText value="#{ecDec.startDateString}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.end_date}"/>
+            </f:facet>
+            <h:outputText value="#{ecDec.endDateString}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.h_address_type}"/>
+                <h:outputText value="#{bundle.end_date}"/>
+            </f:facet>
+            <h:outputText value="#{ecDec.contractType}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.position}"/>
+            </f:facet>
+            <h:outputText value="#{ecDec.positionName}"/>
+        </t:column>
+        <t:column>
+            <f:facet name="header">
+                <h:outputText value="#{bundle.st}"/>
+            </f:facet>
+            <h:outputText value="#{ecDec.status}"/>
+        </t:column>
+    </t:dataTable>
+</h:panelGroup>
+    <h:panelGroup rendered="#{empty(lookPersonBean.listContracts)}">
+        <t:dataTable var="ecDec" value="#{lookPersonBean.listContracts}"
+                     columnClasses="cell , cell w15, cell w15, cell , cell , cell "
+                     headerClass="cell label">
+            <t:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.left_company}"/>
+                </f:facet>
+
+            </t:column>
+            <t:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.st_dt}"/>
+                </f:facet>
+
+            </t:column>
+            <t:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.end_date}"/>
+                </f:facet>
+
+            </t:column>
+            <t:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.h_address_type}"/>
+                </f:facet>
+
+            </t:column>
+            <t:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.position}"/>
+                </f:facet>
+
+            </t:column>
+            <t:column>
+                <f:facet name="header">
+                    <h:outputText value="#{bundle.st}"/>
+                </f:facet>
+
+            </t:column>
+        </t:dataTable>
+    </h:panelGroup>
+
+</h:form>
+</div>
+
+
+</a:tabPanel>
+
+<h:panelGroup>
+    <h:form id="nextStepFrm1">
+        <div id="nextprocesstep">
+            <ul class="process">
+                <h:panelGroup>
+                    <li>
+                        <h:commandLink action="#{lookPersonBean.back}">
+                            <h:outputText value="#{bundle.back}"/>
+                        </h:commandLink>
+                    </li>
+                </h:panelGroup>
+
+            </ul>
+        </div>
+    </h:form>
+</h:panelGroup>
+
+
+<t:saveState value="#{lookPersonBean}"/>
+<t:saveState value="#{registerPersonProcessOwnerBean}"/>
+<t:saveState value="#{registerRequestBean}"/>
+<t:saveState value="#{interviewBean}"/>
+<t:saveState value="#{appointmentInterviewersBean}"/>
+<t:saveState value="#{findPersonActionBean}"/>
+<t:saveState value="#{finderPersonBean}"/>
+<t:saveState value="#{finderContactPersonsBean}"/>
+<t:saveState value="#{registerEmploymentContractBean}"/>
+<t:saveState value="#{personContactManagementBean}"/>
+<t:saveState value="#{creationInnerPersonBean}"/>
+
+</ui:define>
+</ui:composition>
+</html>

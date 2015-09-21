@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a="http://it84.nl/jsf">
+
+<ui:composition template="templates/layoutPage.xhtml">
+<ui:define name="title">Home Page</ui:define>
+<ui:define name="midcol">
+
+<f:loadBundle basename="ResourceBundle" var="bundle"/>
+
+<table style="border:0">
+    <tr>
+        <td></td>
+    </tr>
+</table>
+
+<h1>
+    <h:outputText value="#{bundle.caption_home}"/>
+</h1>
+
+    <h:form >
+       <div id="video" >
+          <video controls="controls"
+                 loop="loop"
+                 src="video/video1.mp4"
+                 poster="images/derevyanpolykvartire1.jpg"
+                 preload="auto"
+                 autoplay="autoplay"
+                  width="1500"
+           height="300"  >
+          </video>
+     </div>
+   </h:form>
+
+
+
+</ui:define>
+</ui:composition>
+</html>

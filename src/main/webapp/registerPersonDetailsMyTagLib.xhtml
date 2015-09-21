@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a="http://it84.nl/jsf"
+      xmlns:c="http://java.sun.com/jstl/core">
+
+<ui:composition template="layoutPage.xhtml">
+<ui:define name="title">Person creation</ui:define>
+<ui:define name="midcol">
+
+
+
+<h1>
+    <h:outputText value="#{bundle.caption_registerperson}"/>
+</h1>
+
+
+
+
+<a:tabPanel selected="#{registerPersonBean.tabbedPane}"
+            bean="${registerPersonBean}"
+            action="tabPaneChange"
+            tab0="#{bundle.person}"
+            tab1="#{bundle.address}">
+
+
+
+<div id="panel0" class="panel">
+
+    <h:form id="contForm">
+        <table>
+            <tr>
+                <td class="cell label">
+                    <h:outputText value="#{bundle.person_number}"/>
+                </td>
+                <td class="cell">
+                    <h:outputText value="#{registerPersonBean.newPerson.number}"/>
+                </td>
+            </tr>
+            <a:field label="#{bundle.person_initials}" value="#{registerPersonBean.newPersonInitials}" maxlength="60"/>
+          <a:field label="#{bundle.person_firstname}" value="#{registerPersonBean.newPersonFirstName}"
+                     message="#{registerPersonBean.personFirstNameValidator.message}" styleClass="mandatory"
+                     maxlength="60"/>
+            <a:field label="#{bundle.person_middlename}" value="#{registerPersonBean.newPersonMiddleName}"
+                     maxlength="120"/>
+            <a:field label="#{bundle.person_lastname}" value="#{registerPersonBean.newPersonLastName}"
+                     message="#{registerPersonBean.personLastNameValidator.message}" styleClass="mandatory" size="40"
+                     maxlength="120"/>
+            <a:field label="#{bundle.person_birthday}" value="#{registerPersonBean.newPersonBirthday}"
+                     message="#{registerPersonBean.personBirthdayValidator.message}" size="20" maxlength="20"/>
+          <tr>
+                <td class="cell label" width="25%">
+                    <h:outputText value="#{bundle.person_gender}"/>
+                </td>
+                <td class="cell">
+                    <h:selectOneMenu id="genderSel" value="#{registerPersonBean.chosenGender}"
+
+                        binding="#{registerPersonBean.genderSelectOneMenu}">
+                   <f:selectItems id="genderItm" value="#{registerPersonBean.genderItems}"/>
+
+                    </h:selectOneMenu>
+                </td>
+            </tr>
+         <a:field label="#{bundle.person_phonenumber}" value="#{registerPersonBean.newPersonPhonenumber}"
+                     message="#{registerPersonBean.personPhonenumberValidator.message}" styleClass="txt"
+                     maxlength="15"/>
+            <a:field label="#{bundle.person_mobilenumber}" value="#{registerPersonBean.newPersonMobilenumber}"
+                     message="#{registerPersonBean.personMobilenumberValidator.message}" styleClass="txt"
+                     maxlength="15"/>
+            <a:field label="#{bundle.person_email}" value="#{registerPersonBean.newPersonEmail}"
+                     message="#{registerPersonBean.personEmailValidator.message}" size="40" maxlength="120"
+                     styleClass="mandatory"/>
+            <a:field label="#{bundle.person_socsecur}" value="#{registerPersonBean.newPersonSocialSecurityNumber}"
+                     message="#{registerPersonBean.socSecNumberValidator.message}" maxlength="10"
+                     size="11" styleClass="mandatory"/>
+            <a:field label="#{bundle.bank_account}" value="#{registerPersonBean.newPersonBankAccount}" maxlength="14" size="16"
+                     lwidth="30%"/>
+            <a:field label="#{bundle.driver_license}" value="#{registerPersonBean.driverLicense}" maxlength="15"
+                     size="11" lwidth="30%"/>
+
+
+           <tr>
+                <td class="cell label">
+                    <h:outputText value="#{bundle.person_passportnumber}"/>
+                </td>
+
+               <td class="cell">
+
+                    <h:inputText id="ideDocNumber" value="#{registerPersonBean.newPersonPassportNumber}" styleClass="txt" maxlength="20" size="11"/>
+
+                    &#160;
+
+                   <h:selectOneMenu id="ideDocSel" value="#{registerPersonBean.passportType}">
+                       <f:selectItems id="ideDocSelItemsem" value="#{registerPersonBean.passportTypeItems}"/>
+                   </h:selectOneMenu>
+
+                    &#160;
+
+                    <h:panelGroup>
+                        <h:outputText id="ideTypeMsg1" value="#{registerPersonBean.passportTypeValidator.message}"  styleClass="errorMessage"/>
+                    </h:panelGroup>
+                </td>
+            </tr>
+
+            <a:field label="#{bundle.person_passporvalid}" value="#{registerPersonBean.newPersonPassportValidDate}"
+                     message="#{registerPersonBean.personPassportValidDateValidator.message}" size="20" maxlength="20"/>
+      <tr>
+                <td class="cell label">
+                    <h:outputText value="#{bundle.person_educationlevel}"/>
+                </td>
+                <td class="cell">
+                    <h:selectOneMenu id="educSel" value="#{registerPersonBean.chosenEducationLevel}"
+                                     binding="#{registerPersonBean.educationLevelSelectOneMenu}">
+                        <f:selectItems id="educItm" value="#{registerPersonBean.educationLevelItems}"/>
+                    </h:selectOneMenu>
+                </td>
+          </tr>
+        <a:field label="#{bundle.person_educationdesc}" value="#{registerPersonBean.newPersonEducationDescription}"
+                     message="#{registerPersonBean.personEducationDescriptionValidator.message}" size="40"
+                     maxlength="100"/>
+        </table>
+        <div class="button">
+
+
+            <h:commandButton
+                    value="#{bundle.button_create}"
+                    actionListener="#{registerPersonBean.createNewPerson}"
+                    action="#{registerPersonBean.gotoFillAddress}"
+                    rendered="#{!registerPersonBean.newPersonCreated
+                    and
+                    empty(registerPersonBean.listIdenticallyPerson)}">
+
+            </h:commandButton>
+             <!-- save -->
+            <h:commandButton actionListener="#{registerPersonBean.saveNewPerson}"
+               value="#{bundle.button_save}"
+               rendered="#{!empty(registerPersonBean.listIdenticallyPerson)
+                           and
+                           !registerPersonBean.newPersonCreated
+                           and
+                           registerPersonBean.validSocialSecurityNumber}">
+             </h:commandButton>
+            <!-- save -->
+            <h:commandButton actionListener="#{registerPersonBean.saveOrUpdatePerson}"
+               value="#{bundle.button_save}"
+                             rendered="#{!empty(registerPersonBean.listIdenticallyPerson)
+                              and
+                                   registerPersonBean.newPersonCreated}">
+             </h:commandButton>
+
+             <!-- update -->
+            <h:commandButton actionListener="#{registerPersonBean.updatePerson}" value="#{bundle.button_update}"
+                             rendered="#{registerPersonBean.newPersonCreated and
+                              empty(registerPersonBean.listIdenticallyPerson)}"/>
+
+            <h:commandButton actionListener="#{registerPersonBean.backToRegistering}"
+               value="#{bundle.button_esc}"
+                             rendered="#{!empty(registerPersonBean.listIdenticallyPerson) }">
+             </h:commandButton>
+        </div>
+        <h:outputText value="#{registerPersonBean.personMessage}" styleClass="infoMessage"/>
+    </h:form>
+  <ui:include src="lookPersonWithIdenticalFields.xhtml"/>
+</div>
+
+
+<div id="panel1" class="panel" >
+
+    <h:form id="addrForm">
+        <table>
+           <a:field label="#{bundle.address_street}" value="#{registerPersonBean.newPersonStreet}"
+                     message="#{registerPersonBean.personStreetValidator.message}" styleClass="mandatory" size="40"
+                     maxlength="100"/>
+            <a:field label="#{bundle.address_housenumber}" value="#{registerPersonBean.newPersonHouseNumber}"
+                     message="#{registerPersonBean.personHouseNumberValidator.message}" styleClass="mandatory"
+                     maxlength="15" size="7"/>
+            <a:field label="#{bundle.address_housenumberaddition}"
+                     value="#{registerPersonBean.newPersonHouseNumberAddition}"
+                     message="#{registerPersonBean.personHouseNumberAdditionValidator.message}" styleClass="txt"
+                     maxlength="20" size="7"/>
+            <a:field label="#{bundle.address_zipcode}" value="#{registerPersonBean.newPersonZipCode}"
+                     message="#{registerPersonBean.personZipCodeValidator.message}" styleClass="mandatory"
+                     maxlength="10" size="7"/>
+            <a:field label="#{bundle.address_city}" value="#{registerPersonBean.newPersonCity}"
+                     message="#{registerPersonBean.personCityValidator.message}" styleClass="mandatory" size="40"
+                     maxlength="60"/>
+       <tr>
+                <td class="cell label"><h:outputText value="#{bundle.address_country}"/></td>
+                <td class="cell">
+                    <h:selectOneMenu id="countrySel" value="#{registerPersonBean.newPersonCountryCod}"
+                                     binding="#{registerPersonBean.countrySelectOneMenu}"
+                                     valueChangeListener="#{registerPersonBean.countryValueChangeListener}">
+                        <f:selectItems id="CountrySelectItems" value="#{registerPersonBean.countryList}"/>
+                    </h:selectOneMenu>&#160;
+                    <h:outputText value="#{registerPersonBean.personCountryValidator.message}"
+                                  styleClass="errorMessage"/>
+                </td>
+            </tr>
+
+      <tr>
+                <td class="cell label" width="25%">
+                    <h:outputText value="#{bundle.address_type}"/>
+                </td>
+                <td class="cell">
+                    <h:selectOneMenu id="typeSel" value="#{registerPersonBean.newPersonType}"
+                                     binding="#{registerPersonBean.typeSelectOneMenu}">
+                        <f:selectItems id="typeItm" value="#{registerPersonBean.personTypeItems}"/>
+                    </h:selectOneMenu>
+                    &#160;
+                    <h:outputText value="#{registerPersonBean.typeValidator.message}" styleClass="errorMessage"/>
+
+                </td>
+            </tr>
+      </table>
+        <div class="buttons">
+         <h:commandButton
+                 actionListener="#{registerPersonBean.createPersonAddress}" value="#{bundle.button_create}"
+                             rendered="#{!registerPersonBean.personAddressCreated}"/>
+         <h:commandButton actionListener="#{registerPersonBean.updatePersonAddress}" value="#{bundle.button_update}"
+                             rendered="#{registerPersonBean.personAddressCreated}"/>
+            <h:commandButton actionListener="#{registerPersonBean.clearPersonAddressFields}"
+                             value="#{bundle.button_new}" rendered="#{registerPersonBean.personAddressCreated}"/>
+        </div>
+        <h:outputText value="#{registerPersonBean.addressMessage}" styleClass="infoMessage"/>
+    </h:form>
+
+<!--<h:form id="delAddrs">
+        <h:panelGroup rendered="#{registerPersonBean.personAdressesExists}">
+            <h1>
+                <h:outputText value="#{registerPersonBean.addressessCaption}"/>
+            </h1>
+
+            <h:dataTable var="pad" value="#{registerPersonBean.personAllAddresses}" columnClasses="cell,cell,cell,cell"
+                         headerClass="cell label">
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value=""/>
+                    </f:facet>
+                    <h:commandLink id="delAddrLnk" actionListener="#{registerPersonBean.deleteChosenAddress}">
+                        <f:param value="#{pad.id}" name="addressId"/>
+                        <h:graphicImage id="delAddrImg" url="images/deleteNew.gif" title="Delete address"
+                                        rendered="#{pad.id != null}"/>
+                    </h:commandLink>
+                </h:column>
+
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.address_type}"/>
+                    </f:facet>
+                    <h:outputText value="#{pad.typeMsg}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">
+                        <h:outputText value="#{bundle.address}"/>
+                    </f:facet>
+                    <h:commandLink id="viewAddrLnk" title="View address"
+                                   actionListener="#{registerPersonBean.viewChosenAddress}">
+                        <f:param value="#{pad.id}" name="addressId"/>
+                        <h:outputText value="#{pad.addressFull}"/>
+                        <br/>
+                        <h:outputText value="#{pad.country}"/>
+                    </h:commandLink>
+                </h:column>
+            </h:dataTable>
+        </h:panelGroup>
+    </h:form>-->
+
+</div>
+
+
+</a:tabPanel>
+
+
+    <t:saveState value="#{messager}"/>
+<t:saveState value="#{registerPersonBean}"/>
+
+<t:saveState value="#{finderPersonBean}"/>
+</ui:define>
+</ui:composition>
+</html>

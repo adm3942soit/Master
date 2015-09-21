@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a4j="http://richfaces.org/a4j"
+      xmlns:rich="http://richfaces.org/rich"
+      xmlns:a="http://it84.nl/jsf">
+
+<ui:composition template="/WEB-INF/layout/layout.xhtml">
+    <ui:define name="title">Test Error Page</ui:define>
+
+    <ui:define name="leftcol"> </ui:define>
+    <ui:define name="rightcol"> </ui:define>
+    <ui:define name="midcol">
+        <f:loadBundle basename="ResourceBundle" var="bundle"/>
+
+        <h1>
+            <h:outputText value="#{bundle.tst_er}"/>
+        </h1>
+        <h:form id="testform">
+            <div class="buttons">
+                <ul>
+                    <li><h:commandLink action="#{roleBean.doIt}" value="Wrong bean name(action)"/></li>
+                    <li><h:commandLink action="#{roleBean.doIt}" value="Wrong method name"/></li>
+                </ul>
+            </div>
+        </h:form>
+
+
+    </ui:define>
+</ui:composition>
+</html>

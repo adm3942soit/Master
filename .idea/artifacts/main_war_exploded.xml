@@ -1,0 +1,47 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="main:war exploded">
+    <output-path>$PROJECT_DIR$/target/master</output-path>
+    <root id="root">
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="classes">
+          <element id="module-output" name="main" />
+        </element>
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="Maven: mysql:mysql-connector-java:5.1.9" />
+          <element id="library" level="project" name="Maven: javax.persistence:persistence-api:1.0" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-core:3.3.2.GA" />
+          <element id="library" level="project" name="Maven: antlr:antlr:2.7.6" />
+          <element id="library" level="project" name="Maven: commons-collections:commons-collections:3.1" />
+          <element id="library" level="project" name="Maven: dom4j:dom4j:1.6.1" />
+          <element id="library" level="project" name="Maven: xml-apis:xml-apis:1.0.b2" />
+          <element id="library" level="project" name="Maven: javax.transaction:jta:1.1" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-annotations:3.3.1.GA" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate:3.2.6.ga" />
+          <element id="library" level="project" name="Maven: net.sf.ehcache:ehcache:1.2.3" />
+          <element id="library" level="project" name="Maven: asm:asm-attrs:1.5.3" />
+          <element id="library" level="project" name="Maven: org.hibernate:ejb3-persistence:1.0.1.GA" />
+          <element id="library" level="project" name="Maven: commons-logging:commons-logging:1.0.4" />
+          <element id="library" level="project" name="Maven: org.hibernate:hibernate-commons-annotations:3.3.0.ga" />
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-api:2.1.0-b03" />
+          <element id="library" level="project" name="Maven: com.sun.faces:jsf-impl:2.1.0-b03" />
+          <element id="library" level="project" name="Maven: org.primefaces:primefaces:3.3" />
+          <element id="library" level="project" name="Maven: commons-fileupload:commons-fileupload:1.2" />
+          <element id="library" level="project" name="Maven: cglib:cglib:2.2.2" />
+          <element id="library" level="project" name="Maven: asm:asm:3.3.1" />
+          <element id="library" level="project" name="Maven: javax.servlet:jstl:1.2" />
+          <element id="library" level="project" name="Maven: asm:asm-all:3.3.1" />
+          <element id="library" level="project" name="Maven: log4j:log4j:1.2.17" />
+          <element id="library" level="project" name="Maven: javax.inject:javax.inject:1" />
+          <element id="library" level="project" name="Maven: org.slf4j:slf4j-api:1.7.12" />
+          <element id="library" level="project" name="Maven: org.javassist:javassist:3.19.0-GA" />
+          <element id="library" level="project" name="Maven: javax.el:el-api:2.2.1-b04" />
+          <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.0.1" />
+        </element>
+      </element>
+      <element id="directory" name="META-INF">
+        <element id="file-copy" path="$PROJECT_DIR$/target/master/META-INF/MANIFEST.MF" />
+      </element>
+      <element id="javaee-facet-resources" facet="main/web/Web" />
+    </root>
+  </artifact>
+</component>

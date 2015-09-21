@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:z="http://www.qualcomm.com/jsf/core"
+      xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a="http://it84.nl/jsf">
+
+THIS TEXT WILL BE REMOVED
+
+<ui:composition>
+
+    <c:if test="${empty selected}">
+        <c:set var="selected" value="0"/>
+    </c:if>
+    <ul class="tabpages">
+	  <c:if test="${empty action}">
+        <c:if test="${(!empty tab0) and !(tab0rendered eq 'false') and !(tab00rendered eq 'true')}">
+         <li id="tab0" class="first" onclick="tabPanel_showTab(0)"><a href="#">${tab0}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab0) and (tab00rendered eq 'true')}">
+           <li id="tabP0" class="first" onclick="panel_showTab(0)"><a href="#">${tab0}</a></li>
+        </c:if>
+
+        <c:if test="${(!empty tab1) and !(tab1rendered eq 'false')}">
+            <li id="tab1" onclick="tabPanel_showTab(1)"><a href="#">${tab1}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab2) and !(tab2rendered eq 'false')}">
+            <li id="tab2" onclick="tabPanel_showTab(2)"><a href="#">${tab2}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab3) and !(tab3rendered eq 'false')}">
+            <li id="tab3" onclick="tabPanel_showTab(3)"><a href="#">${tab3}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab4) and !(tab4rendered eq 'false')}">
+            <li id="tab4" onclick="tabPanel_showTab(4)"><a href="#">${tab4}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab5) and !(tab5rendered eq 'false')}">
+            <li id="tab5" onclick="tabPanel_showTab(5)"><a href="#">${tab5}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab6) and !(tab6rendered eq 'false')}">
+            <li id="tab6" onclick="tabPanel_showTab(6)"><a href="#">${tab6}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab7) and !(tab7rendered eq 'false')}">
+            <li id="tab7" onclick="tabPanel_showTab(7)"><a href="#">${tab7}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab8) and !(tab8rendered eq 'false')}">
+            <li id="tab8" onclick="tabPanel_showTab(8)"><a href="#">${tab8}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab9) and !(tab9rendered eq 'false')}">
+            <li id="tab9" onclick="tabPanel_showTab(9)"><a href="#">${tab9}</a></li>
+        </c:if>
+        <c:if test="${(!empty tab10) and !(tab10rendered eq 'false')}">
+              <li id="tab10" onclick="tabPanel_showTab(10)"><a href="#">${tab10}</a></li>
+        </c:if>
+
+      </c:if>  
+	  <c:if test="${!empty action}">
+		<h:form>
+       <c:if test="${(!empty tab0) and !(tab0rendered eq 'false')
+                      and !(tab00rendered eq 'true') and (empty tab10)}" >
+        <li id="tab01" class="first"  >
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="0" name="tab"/>
+                <h:outputText value="${tab0}" />
+            </h:commandLink>
+        </li>
+       </c:if>
+       <c:if test="${(!empty tab0) and !(tab0rendered eq 'false')
+                      and !(tab00rendered eq 'true') and (!empty tab10)}" >
+        <li id="tab02" class="first"  >
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="0" name="tab"/>
+                <h:outputText value="${tab0}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;" />
+            </h:commandLink>
+        </li>
+        </c:if>
+
+        <c:if test="${(!empty tab1) and !(tab1rendered eq 'false') and (empty tab10)}">
+          <li id="tab11">
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="1" name="tab"/>
+                <h:outputText value="${tab1}" />
+            </h:commandLink>
+          </li>
+        </c:if>
+       <c:if test="${(!empty tab1) and !(tab1rendered eq 'false') and (!empty tab10)}">
+         <li id="tab12">
+           <h:commandLink actionListener="#{bean[action]}">
+               <f:param value="1" name="tab"/>
+               <h:outputText value="${tab1}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;" />
+           </h:commandLink>
+         </li>
+       </c:if>
+        <c:if test="${(!empty tab2) and !(tab2rendered eq 'false') and (empty tab10)}">
+          <li id="tab21">
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="2" name="tab"/>
+                <h:outputText value="${tab2}" />
+            </h:commandLink>
+          </li>
+        </c:if>
+       <c:if test="${(!empty tab2) and !(tab2rendered eq 'false') and (!empty tab10)}">
+         <li id="tab22">
+           <h:commandLink actionListener="#{bean[action]}">
+               <f:param value="2" name="tab"/>
+               <h:outputText value="${tab2}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;" />
+           </h:commandLink>
+         </li>
+       </c:if>
+
+        <c:if test="${(!empty tab3) and !(tab3rendered eq 'false') and (empty tab10)}">
+          <li id="tab31">
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="3" name="tab"/>
+                <h:outputText value="${tab3}" />
+            </h:commandLink>
+          </li>
+        </c:if>
+       <c:if test="${(!empty tab3) and !(tab3rendered eq 'false') and (!empty tab10)}">
+         <li id="tab32">
+           <h:commandLink actionListener="#{bean[action]}">
+               <f:param value="3" name="tab"/>
+               <h:outputText value="${tab3}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;" />
+           </h:commandLink>
+         </li>
+       </c:if>
+
+       <c:if test="${(!empty tab4) and !(tab4rendered eq 'false') and (empty tab10)}">
+         <li id="tab41">
+           <h:commandLink actionListener="#{bean[action]}">
+               <f:param value="4" name="tab"/>
+               <h:outputText value="${tab4}" />
+           </h:commandLink>
+         </li>
+       </c:if>
+       <c:if test="${(!empty tab4) and !(tab4rendered eq 'false')  and (!empty tab10)}">
+         <li id="tab42">
+           <h:commandLink actionListener="#{bean[action]}">
+               <f:param value="4" name="tab"/>
+               <h:outputText value="${tab4}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;" />
+           </h:commandLink>
+         </li>
+       </c:if>
+        <c:if test="${(!empty tab5) and !(tab5rendered eq 'false') and (empty tab10)}">
+          <li id="tab51">
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="5" name="tab"/>
+                <h:outputText value="${tab5}"/>
+            </h:commandLink>
+          </li>
+        </c:if>
+       <c:if test="${(!empty tab5) and !(tab5rendered eq 'false') and (!empty tab10)}">
+         <li id="tab52">
+           <h:commandLink actionListener="#{bean[action]}">
+               <f:param value="5" name="tab"/>
+               <h:outputText value="${tab5}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;"/>
+           </h:commandLink>
+         </li>
+       </c:if>
+        <c:if test="${(!empty tab6) and !(tab6rendered eq 'false') and (empty tab10)}">
+          <li id="tab61">
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="6" name="tab"/>
+                <h:outputText value="${tab6}" />
+            </h:commandLink>
+          </li>
+        </c:if>
+       <c:if test="${(!empty tab6) and !(tab6rendered eq 'false') and (!empty tab10)}">
+         <li id="tab62">
+           <h:commandLink actionListener="#{bean[action]}">
+               <f:param value="6" name="tab"/>
+               <h:outputText value="${tab6}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;" />
+           </h:commandLink>
+         </li>
+       </c:if>
+
+        <c:if test="${(!empty tab7) and !(tab7rendered eq 'false') and (empty tab10)}">
+          <li id="tab71">
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="7" name="tab"/>
+                <h:outputText value="${tab7}"/>
+            </h:commandLink>
+          </li>
+        </c:if>
+       <c:if test="${(!empty tab7) and !(tab7rendered eq 'false') and (!empty tab10)}">
+         <li id="tab72">
+           <h:commandLink actionListener="#{bean[action]}">
+               <f:param value="7" name="tab"/>
+               <h:outputText value="${tab7}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;" />
+           </h:commandLink>
+         </li>
+       </c:if>
+
+        <c:if test="${(!empty tab8) and !(tab8rendered eq 'false') and (!empty tab10) }">
+          <li id="tab81">
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="8" name="tab"/>
+                <h:outputText value="${tab8}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;"/>
+            </h:commandLink>
+          </li>
+        </c:if>
+            <c:if test="${(!empty tab8) and !(tab8rendered eq 'false') and (empty tab10) }">
+              <li id="tab82">
+                <h:commandLink actionListener="#{bean[action]}">
+                    <f:param value="8" name="tab"/>
+                    <h:outputText value="${tab8}"/>
+                </h:commandLink>
+              </li>
+            </c:if>
+
+        <c:if test="${(!empty tab9) and !(tab9rendered eq 'false') and (!empty tab10) }">
+          <li id="tab91">
+            <h:commandLink actionListener="#{bean[action]}">
+                <f:param value="9" name="tab"/>
+                <h:outputText value="${tab9}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;" />
+            </h:commandLink>
+          </li>
+        </c:if>
+        <c:if test="${(!empty tab9) and !(tab9rendered eq 'false') and (empty tab10) }">
+              <li id="tab92">
+                <h:commandLink actionListener="#{bean[action]}">
+                    <f:param value="9" name="tab"/>
+                    <h:outputText value="${tab9}"/>
+                </h:commandLink>
+              </li>
+        </c:if>
+
+        <c:if test="${(!empty tab10) and !(tab10rendered eq 'false')}">
+              <li id="tab101">
+                <h:commandLink actionListener="#{bean[action]}">
+                    <f:param value="10" name="tab"/>
+                    <h:outputText value="${tab10}" style="padding-left: 0em; padding-right: 0em; margin-left: 0em; margin-right: 0em;text-align:right;" />
+                </h:commandLink>
+              </li>
+        </c:if>
+
+        </h:form>
+      </c:if>  
+    </ul>
+
+    <ui:insert/>
+
+    <script language="javascript">
+        tabPanel_showTab(${selected});
+    </script>
+
+</ui:composition>
+THIS TEXT WILL BE REMOVED AS WELL
+
+</html>

@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="richfaces-api-3.2.1.ga">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/richfaces-api-3.2.1.ga.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

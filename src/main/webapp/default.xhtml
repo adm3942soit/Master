@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	  xmlns:h="http://java.sun.com/jsf/html"
+	  xmlns:f="http://java.sun.com/jsf/core"
+
+
+	  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://primefaces.org/ui ">
+<!--xmlns:p="http://primefaces.org/ui"-->
+<!--xmlns:p="http://primefaces.prime.com.tr/ui"-->
+<h:head>
+	<h:outputStylesheet library="css" name="table-style.css"/>
+</h:head>
+
+<h:body>
+
+	<h1>Master Pol</h1>
+
+	<h:dataTable value="#{product.allProducts}" var="p"
+				 styleClass="order-table"
+				 headerClass="order-table-header"
+				 rowClasses="order-table-odd-row,order-table-even-row"
+			>
+
+		<h:column>
+			<f:facet name="header">
+				Product ID
+			</f:facet>
+			#{p.productId}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">
+				Name
+			</f:facet>
+			#{p.name}
+		</h:column>
+
+		<h:column>
+			<f:facet name="header">
+				Description
+			</f:facet>
+			#{p.description}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Price($)
+			</f:facet>
+			#{p.priseUSD}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Price(uah)
+			</f:facet>
+			#{p.priseUAH}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				For
+			</f:facet>
+			#{p.forCount}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+
+			</f:facet>
+			#{p.shortName}
+		</h:column>
+		<h:column>
+			<f:facet name="header">
+				Created Date
+			</f:facet>
+			#{c.createdDate}
+		</h:column>
+
+	</h:dataTable>
+
+	<h2>Add New Product</h2>
+	<h:form>
+
+		<h:panelGrid columns="8">
+
+			Name :
+			<h:inputText id="name" value="#{product.name}"
+						 size="20" required="true"
+						 label="Name">
+			</h:inputText>
+
+			<h:message for="name" style="color:red"/>
+            <br></br>
+			Description :
+			<h:inputTextarea id="description" value="#{product.description}"
+							 cols="20" rows="5" required="true"
+							 label="Description">
+			</h:inputTextarea>
+			<br></br>
+			PriceUSD :
+			<h:inputText id="priceUSD" value="#{product.priceUSD}"
+						 size="6" required="true" label="PriceUSD">
+				<!-- display in at least 2 decimal points -->
+				<f:convertNumber minFractionDigits="2"/>
+
+			</h:inputText>
+			<h:message for="priceUSD" style="color:red"/>
+			PriceUAH :
+			<h:outputText id="priceUah" value="#{product.priceUAH}"
+					>
+				<f:convertNumber pattern="#0.00"/>
+			</h:outputText>
+			<br></br>
+			For :
+			<h:inputText id="forCount" value="#{product.forCount}" label="for " required="true">
+				<f:convertNumber pattern="#00"/>
+			</h:inputText>
+			<h:message for="forCount" style="color:red"/>
+			<h:inputText id="shortName" value="#{product.shortName}"
+						 label="shortName" required="true">
+
+			</h:inputText>
+			<h:message for="shortName" style="color:red"/>
+			<br></br>
+			Count :
+			<h:inputText id="count" value="#{product.count}" label="count" required="true">
+				<f:convertNumber maxFractionDigits="2"/>
+			</h:inputText>
+			<h:message for="count" style="color:red"/>
+			<br></br>
+			NameImage :
+			<!--="messages"-->
+	\\\\\\\\\\bnllllllz[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[[aL;[----------------32
+			<h:inputText id="nameImage" readonly="true"
+						 binding="#{fileUploader.nameFile}"
+						 value="#{product.nameImage}" label="nameImage">
+
+			</h:inputText>
+			<h:message for="nameImage" style="color:red"/>
+
+		</h:panelGrid>
+
+		<h:commandButton value="Submit" action="#{product.addProduct()}"/>
+
+	</h:form>
+
+</h:body>
+
+</html>

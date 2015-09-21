@@ -1,0 +1,27 @@
+package ua.com.master.beans.components;
+
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.support.AbstractApplicationContext;
+import org.springframework.context.support.ClassPathXmlApplicationContext;
+
+/**
+ * Created by Oxana on 10.09.2015.
+ */
+
+public class ApplicationContextHolder  {
+   static AbstractApplicationContext contextApplication;
+
+
+
+
+    public static void setApplicationContext()  {
+        contextApplication=new ClassPathXmlApplicationContext("applicationContext.xml ");;
+     contextApplication.registerShutdownHook();
+
+    }
+
+    public static ApplicationContext getContext() {
+        setApplicationContext();
+        return contextApplication;
+    }
+}

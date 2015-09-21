@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+
+      xmlns:h="http://java.sun.com/jsf/html">
+<head >
+
+
+    <meta charset="utf-8"/>
+    <title   >
+        Master Floor &#174; - &#160;
+        <ui:insert name="title" styleClass="font">Default Title</ui:insert>
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/masterpol.css"/>
+    <link rel="stylesheet" type="text/css" href="css/cm84.css"/>
+    <link rel="stylesheet" type="text/css" href="css/cm84demo.css"/>
+    <link rel="stylesheet" type="text/css" href="css/cm84jsf.css"/>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/video.js"></script>
+    <script type="text/javascript" src="js/slideshow.js"></script>
+   <style>
+        body {
+
+            background-image: url("images/phon.jpg");
+            background-size: 100%;
+        }
+    </style>
+</head>
+
+<body onkeypress="trapEnter(event);"  >
+<!--  f:view locale="#{facesContext.externalContext.request.locale}" -->
+<!--<f:view locale="#{loginBean.selectedLocale}">-->
+
+<f:loadBundle basename="ResourceBundle" var="bundle"/>
+
+<div id="heading" >
+<h:form>
+            <img src="images/masterpol/logo.png" style="width: 92px;height: 43px" border="0"
+                 align="left"/>
+
+    <h:panelGroup id="language" styleClass="language" >
+            <h:commandButton action="#{loginBean.selectUkrainianLocale}"
+                            image="images/masterpol/UA.png" align="right"/>&#160;
+            <h:commandButton action="#{loginBean.selectRussianLocale}" align="right" image="images/masterpol/RU.png"/> &#160;
+            <h:commandButton action="#{loginBean.selectEnglishLocale}" align="right" image="images/masterpol/EN.png"/>&#160;
+    </h:panelGroup>
+
+    <div id="topString" align="top-center" >
+        <h:commandButton id="register" alt="Register" value="Register"
+                         styleClass="button"
+                         action="#{registerPersonBean.passPersonCreation}"
+                         >
+
+
+
+        </h:commandButton>
+        <h:commandButton id="entry" alt="Login" value="SignIn"
+                         styleClass="button"
+                         action="#{loginBean.passToLogin}"
+                        >
+
+
+
+        </h:commandButton>
+
+        <!--<h:inputText id="finder"  styleClass="finder" alt="Find" label="Find" value="#{finder.value}"
+                    ></h:inputText>-->
+<!--
+        <img src="images/phone.png" align="right"
+             alt="" height="68" width="56" />-->
+    </div>
+    <div id="menu" align="center">
+        <menu type="toolbar">
+            <li>
+                <menu label="MainMenu" type="toolbar">
+                    <!--<button type="button" style="background-image: url('images/beforeMenu.png'); width: 253px; height: 170px; icon: url('images/beforeMenu.png')" onclick="$continue"></button>-->
+                    <button type="button"
+                            style="background-image: url('images/mainPointManu.png'); width: 115px; height: 35px; icon: url('images/mainPointManu.png')"
+                            onclick="#{navigator.home}" ></button>
+                    <button type="button"
+                            style="background-image: url('images/catalogPointManu.png');width: 120px;height: 35px;icon: url('images/catalogPointManu.png')"
+                            onclick="#{catalogViewer.catalog}"></button>
+                    <button type="button"
+                            style="background-image: url('images/publicPointManu.png');width: 115px;height: 35px;icon: url('images/publicPointManu.png')"></button>
+                    <button type="button"
+                            style="background-image: url('images/contactsPointManu.png');width: 75px;height: 35px;icon: url('images/contactsPointManu.png')"></button>
+                    <!--<button  id="cart" type="button"
+                             style="background-image: url('images/cartEmpty.png.png');background-size: 150px, 44px;"
+                            ></button>-->
+                            <!--style="background-image: url('images/cartEmpty.png');background-size: 150px, 44px;icon: url('images/cartEmpty.png')"-->
+
+                </menu>
+            </li>
+        </menu>
+    </div>
+    <!--<div  align="right" >
+        <h:commandButton  styleClass="cart" image="images/cartEmpty.png"></h:commandButton>
+    </div>-->
+    <div id="mainImg" align="center">
+        <img src="images/reclama.png" align="center"
+             alt="" height="45" width="959"/>
+    </div>
+    </h:form>
+    <br></br>
+    <h:outputText id="myfont" value="Master Pol" styleClass="font" align="left" />
+
+</div>
+
+
+
+<div id="middle">
+
+    <ui:insert name="middle">
+        DEFAULT CONTENT
+    </ui:insert>
+
+</div>
+
+
+<div id="footer">
+<!--
+    <h:form>
+        <h:commandButton  value="Next" action="#{navigator.gotoListProducts}"
+                         styleClass="button"
+                         style="alignment: right;background-position: right">
+
+
+        </h:commandButton>
+    </h:form>
+-->
+
+
+        <ui:insert name="errors">
+            <ui:include src="templates/errors.xhtml"/>
+        </ui:insert>
+        <div id="copyright">
+            Copyright &#169; 2015 Master Pol
+        </div>
+
+</div>
+
+</body>
+
+</html>
+

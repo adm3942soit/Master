@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      >
+<ui:composition template="layout.xhtml">
+<ui:define name="title">main page</ui:define>
+<ui:define name="middle">
+
+
+
+<h:form >
+    <div id="slideShowImages" >
+
+        <h:panelGrid  >
+            <img src="images/main.jpg" alt="" height="300" width="950" style="alignment: right;align-content: right; background-position: right"
+                align="center"/>
+            <img src="images/slide2.jpg" alt="" height="300" width="950" align="center" style="alignment: right;align-content: right; background-position: right"
+                />
+            <img src="images/divan.jpg" alt="" height="300" width="950" align="center" style="alignment: right;align-content: right; background-position: right"
+                 />
+            <img src="images/probkovyy_pol.jpg" alt="" height="300" width="950" align="center" style="alignment: right;align-content: right; background-position: right"
+                />
+        </h:panelGrid>
+    </div>
+
+    <br></br>
+    <script src="slideShow.js"></script>
+    </h:form>
+
+</ui:define>
+</ui:composition>
+</html>

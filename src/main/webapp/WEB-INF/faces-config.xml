@@ -1,0 +1,213 @@
+<?xml version='1.0' encoding='UTF-8'?>
+
+<faces-config xmlns="http://java.sun.com/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd"
+              version="2.0">
+    <application>
+        <locale-config>
+            <default-locale>ru_RU</default-locale>
+        </locale-config>
+        <message-bundle>ResourceBundle</message-bundle>
+       <!-- <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>-->
+       <!-- <view-handler>org.ajax4jsf.application.AjaxViewHandler</view-handler>-->
+    </application>
+
+    <managed-bean>
+        <managed-bean-name>productBean</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.ProductBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>productDao</property-name>
+            <value>#{productDao}</value>
+        </managed-property>
+
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>courseUSDBean</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.CourseUSDBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>courseUSDDao</property-name>
+            <value>#{courseUSDDao}</value>
+        </managed-property>
+    </managed-bean>
+    <!--<managed-bean>
+        <managed-bean-name>videoDownloader</managed-bean-name>
+        <managed-bean-class>ua.com.master.controllers.VideoController</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+
+    </managed-bean>-->
+   <!-- <managed-bean>
+        <managed-bean-name>filesUploader</managed-bean-name>
+        <managed-bean-class>ua.com.master.controllers.UploadFilesBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+
+    </managed-bean>-->
+    <managed-bean>
+        <managed-bean-name>navigator</managed-bean-name>
+        <managed-bean-class>ua.com.master.navigation.NavigationBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>loginBean</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.LoginBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>personDao</property-name>
+            <value>#{personDao}</value>
+        </managed-property>
+
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>registerPersonBean</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.RegisterPersonBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>personDao</property-name>
+            <value>#{personDao}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>addressDao</property-name>
+            <value>#{addressDao}</value>
+        </managed-property>
+    </managed-bean>
+
+    <managed-bean>
+        <managed-bean-name>finderPersonBean</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.FinderPersonBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>lookPersonBean</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.LookPersonBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+
+    </managed-bean>
+
+    <managed-bean>
+    <managed-bean-name>finder</managed-bean-name>
+    <managed-bean-class>ua.com.master.beans.Finder</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+
+</managed-bean>
+    <managed-bean>
+        <managed-bean-name>messager</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.Messager</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>catalogBean</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.CatalogBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>personIdenticallyValidator</managed-bean-name>
+        <managed-bean-class>ua.com.master.validators.PersonIdenticallyValidator</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>personDao</property-name>
+            <value>#{personDao}</value>
+        </managed-property>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>testPersonBean</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.TestPersonBean</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+        <managed-property>
+            <property-name>personDao</property-name>
+            <value>#{personDao}</value>
+        </managed-property>
+    </managed-bean>
+   <!-- <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{navigator.gotoListProducts}</from-action>
+            <from-outcome>default</from-outcome>
+            <to-view-id>/default.xhtml</to-view-id>
+
+        </navigation-case>
+
+    </navigation-rule>-->
+
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{registerPersonBean.passPersonCreation}</from-action>
+            <from-outcome>registerPersonDetails</from-outcome>
+            <to-view-id>/registerPersonDetails.xhtml</to-view-id>
+
+        </navigation-case>
+
+
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.signIn}</from-action>
+            <from-outcome>login</from-outcome>
+            <to-view-id>/login.xhtml</to-view-id>
+
+        </navigation-case>
+
+
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/registerPersonDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{registerPersonBean.listIdenticallyPerson}</from-action>
+            <from-outcome>lookPersonWithIdenticalFields</from-outcome>
+            <to-view-id>/lookPersonWithIdenticalFields.xhtml</to-view-id>
+
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+    <from-view-id>/registerPersonDetails.xhtml</from-view-id>
+    <navigation-case>
+        <from-action>#{loginBean.passToLogin}</from-action>
+        <from-outcome>login</from-outcome>
+        <to-view-id>/login.xhtml</to-view-id>
+
+    </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/registerPersonDetails.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.passToIndex}</from-action>
+            <from-outcome>index</from-outcome>
+            <to-view-id>/index.xhtml</to-view-id>
+
+        </navigation-case>
+    </navigation-rule>
+
+    <!--<navigation-rule>
+        <from-view-id>/home.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{navigator.gotoListProducts}</from-action>
+            <from-outcome>default</from-outcome>
+            <to-view-id>/default.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>-->
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.signIn}</from-action>
+            <from-outcome>home</from-outcome>
+            <to-view-id>/home.xhtml</to-view-id>
+
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/login.xhtml</from-view-id>
+        <navigation-case>
+            <from-action>#{loginBean.signIn}</from-action>
+            <from-outcome>catalog</from-outcome>
+            <to-view-id>/catalog.xhtml</to-view-id>
+
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

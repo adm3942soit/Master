@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Diagram>
+  <ID>JAVA</ID>
+  <OriginalElement>ua.com.masterpol.model</OriginalElement>
+  <nodes>
+    <node x="163.0" y="155.0">ua.com.masterpol.model.PersonAddress</node>
+    <node x="313.0" y="224.0">ua.com.masterpol.model.update</node>
+    <node x="100.0" y="0.0">ua.com.masterpol.model.Auditable</node>
+    <node x="10.0" y="159.0">ua.com.masterpol.model.PersonStatus</node>
+    <node x="90.0" y="80.0">ua.com.masterpol.model.SysParameter</node>
+    <node x="215.0" y="80.0">ua.com.masterpol.model.UserLog</node>
+    <node x="0.0" y="80.0">ua.com.masterpol.model.Person</node>
+    <node x="352.0" y="291.0">ua.com.masterpol.model.db</node>
+    <node x="40.0" y="313.0">ua.com.masterpol.model.Address</node>
+    <node x="21.0" y="231.0">ua.com.masterpol.model.CourseUSD</node>
+    <node x="183.0" y="238.0">ua.com.masterpol.model.Product</node>
+  </nodes>
+  <notes />
+  <edges>
+    <edge source="ua.com.masterpol.model.Person" target="ua.com.masterpol.model.Auditable">
+      <point x="0.0" y="-15.0" />
+      <point x="35.0" y="55.0" />
+      <point x="114.16666666666667" y="55.0" />
+      <point x="-28.33333333333333" y="15.0" />
+    </edge>
+    <edge source="ua.com.masterpol.model.Address" target="ua.com.masterpol.model.Auditable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ua.com.masterpol.model.UserLog" target="ua.com.masterpol.model.Auditable">
+      <point x="0.0" y="-15.0" />
+      <point x="253.5" y="55.0" />
+      <point x="170.83333333333331" y="55.0" />
+      <point x="28.333333333333314" y="15.0" />
+    </edge>
+    <edge source="ua.com.masterpol.model.Product" target="ua.com.masterpol.model.Auditable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+    <edge source="ua.com.masterpol.model.SysParameter" target="ua.com.masterpol.model.Auditable">
+      <point x="0.0" y="-15.0" />
+      <point x="0.0" y="15.0" />
+    </edge>
+    <edge source="ua.com.masterpol.model.CourseUSD" target="ua.com.masterpol.model.Auditable">
+      <point x="0.0" y="0.0" />
+      <point x="0.0" y="0.0" />
+    </edge>
+  </edges>
+  <settings layout="Hierarchic Group" zoom="1.0" x="167.5" y="187.5" />
+  <SelectedNodes>
+    <node>ua.com.masterpol.model.Product</node>
+  </SelectedNodes>
+  <Categories />
+  <SCOPE>All</SCOPE>
+  <VISIBILITY>private</VISIBILITY>
+</Diagram>
+

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a="http://it84.nl/jsf"
+      xmlns:c="http://java.sun.com/jstl/core">
+
+
+<ui:composition template="templates/layoutPage.xhtml">
+
+    <ui:define name="title">Person creation</ui:define>
+    <ui:define name="midcol">
+
+
+        <h1>
+            <h:outputText value="#{bundle.caption_registerperson}"/>
+        </h1>
+
+
+
+        <a:tabPanel selected="#{catalogBean.tabbedPane}"
+                    bean="${catalogBean}"
+                    action="tabPaneChange"
+                    tab0="#{bundle.catalogs}"
+                   >
+
+
+            <div id="panel0" class="panel">
+
+                <h:form id="catForm">
+
+                    <table>
+                        <tr>
+                            <td class="cell label">
+                                <h:outputText value="#{bundle.person_number}"/>
+                            </td>
+                            <td class="cell">
+                                <h:outputText value="#{catalogBean.newCatalog.catalogId}"/>
+                            </td>
+                        </tr>
+                        <a:field label="#{bundle.name_catalog}"
+                                 value="#{catalogBean.newName}"
+                                 message="#{catalogBean.validator.message}"
+                                 size="40"
+                                 maxlength="100"/>
+                    </table>
+                    <div id="buttons">
+                        <h:commandButton value="#{bundle.button_create}"
+                                         actionListener="#{catalogBean.createNewCatalog}"
+
+                                         rendered="#{!catalogBean.createdNewCatalog}"
+                                >
+                        </h:commandButton>
+
+                        <h:commandButton value="#{bundle.button_update}"
+                                         actionListener="#{catalogBean.updateCatalog}"
+                                         rendered="#{catalogBean.createdNewCatalog}">
+                        </h:commandButton>
+                        <h:commandButton value="#{bundle.button_new}"
+                                         actionListener="#{catalogBean.clearCatalog}"
+                                         rendered="#{catalogBean.createdNewCatalog}">
+                        </h:commandButton>
+                    </div>
+                    <h:outputText value="#{catalogBean.catalogMessage}" styleClass="infoMessage"/>
+                </h:form>
+                <h:form id="list">
+                    <h:panelGroup rendered="#{catalogBean.createdNewCatalog
+                     or catalogBean.catalogsExists}">
+                                    <h1>
+                                        <h:outputText value="#{bundle.catalogs}"/>
+                                    </h1>
+                    <h:dataTable var="cat" value="#{catalogBean.listCatalogs}"
+                                 columnClasses="cell,cell, cell"
+                                 headerClass="cell label">
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Select"/>
+                            </f:facet>
+                            <h:selectBooleanCheckbox value="false"></h:selectBooleanCheckbox>
+                        </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Catalog's name"/>
+                        </f:facet>
+
+                        <h:commandLink id="delCat"
+                                       actionListener="#{catalogBean.deleteChosenCatalog}">
+                            <f:param value="#{cat.catalogId}" name="catalogId"/>
+                            <h:outputText value="#{cat.name}"></h:outputText>
+                            <h:graphicImage id="delCatImg" url="/WEB-INF/images/deleteNew.gif"
+                                            title="Delete catalog"
+                                            rendered="#{cat.catalogId != null}"/>
+                        </h:commandLink>
+                    </h:column>
+                        <h:column>
+                            <f:facet name="header">
+                                <h:outputText value="Catalog's creation date"/>
+                            </f:facet>
+                            <h:outputText value="#{cat.creationDate}"></h:outputText>
+                        </h:column>
+                    </h:dataTable>
+                    </h:panelGroup>
+                </h:form>
+               </div>
+            </a:tabPanel>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -1,0 +1,36 @@
+<div xmlns:ui="http://java.sun.com/jsf/facelets"
+     xmlns:h="http://java.sun.com/jsf/html"
+     xmlns:f="http://java.sun.com/jsf/core">
+
+    <h:panelGroup rendered="#{messager.existMessages}">
+         <h:panelGroup >
+             <h2>
+             <h:dataTable value="#{messager.messages}" var="mes"
+             columnClasses="cell"
+             >
+               <h:column >
+                   <f:facet name="Message from System"></f:facet>
+                   <h:outputText id="mess" value="#{mes}"></h:outputText>
+               </h:column>
+             </h:dataTable>
+             </h2>
+             <h2><h:outputText value="#{messager.messages}" /></h2>
+         </h:panelGroup>
+
+         <h:panelGroup rendered="#{messager.existErrors}">
+             <h2><h:dataTable value="#{messager.errors}"  var="er" >
+                 <h:column>
+                     <f:facet name="Errrors from System"></f:facet>
+                     <h:outputText id="err" value="#{er}"></h:outputText>
+                 </h:column>
+             </h:dataTable>
+             </h2>
+         </h:panelGroup>
+  </h:panelGroup>
+        <h:panelGrid width="100%" columns="1">
+            <h:messages  globalOnly="true" style="font-weight: bold;padding-left: 0.5em;border-bottom: 1px inset #999999;text-align:left;list-style-type: none"    showDetail="true" />
+            <h:messages globalOnly="true" errorClass="error_message" showDetail="true" class="err"/>
+            &#160;
+        </h:panelGrid>
+
+</div>

@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html" xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:z="http://www.qualcomm.com/jsf/core" xmlns:c="http://java.sun.com/jstl/core"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions" xmlns:t="http://myfaces.apache.org/tomahawk">
+
+THIS TEXT WILL BE REMOVED
+<ui:composition>
+
+
+    <c:if test="${empty styleClass}">
+        <c:set var="styleClass" value=""/>
+    </c:if>
+
+    <c:if test="${empty lwidth}">
+        <c:set var="lwidth" value=""/>
+    </c:if>
+
+    <c:if test="${empty title}">
+        <c:set var="title" value=""/>
+    </c:if>
+
+    <tr>
+        <td class="cell label" width="${lwidth}">
+            <h:outputText value="#{label}"/>
+        </td>
+        <td class="cell">
+            <h:outputText value="#{value}"   styleClass="${styleClass}"   title="${title}" />
+        </td>
+    </tr>
+
+</ui:composition>
+THIS TEXT WILL BE REMOVED AS WELL
+
+</html>

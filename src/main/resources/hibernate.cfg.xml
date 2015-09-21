@@ -1,0 +1,34 @@
+<?xml version='1.0' encoding='utf-8'?>
+<!DOCTYPE hibernate-configuration PUBLIC
+    "-//Hibernate/Hibernate Configuration DTD//EN"
+    "http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+
+<hibernate-configuration>
+	<session-factory>
+		<property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+		<property name="hibernate.connection.url">jdbc:mysql://localhost:3306/master</property>
+		<property name="hibernate.connection.username">root</property>
+		<property name="hibernate.connection.password">root</property>
+		<property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
+		<property name="show_sql">true</property>
+		<property name="format_sql">true</property>
+		<property name="hbm2ddl.auto">create-drop</property>
+        <property name="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</property>
+        <property name="hibernate.transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
+        <property name="hibernate.connection.pool_size">11</property>
+        <property name="hibernate.current_session_context_class">thread</property>
+    
+
+		<mapping class="ua.com.master.model.Product" />
+		<mapping class="ua.com.master.model.CourseUSD" />
+		<mapping class="ua.com.master.model.Person" />
+		<mapping class="ua.com.master.model.PersonStatus" />
+		<!--<mapping class="ua.com.master.model.PersonAddress" />-->
+		<mapping class="ua.com.master.model.Address" />
+		<mapping class="ua.com.master.model.SysParameter" />
+		<mapping class="ua.com.master.model.UserLog" />
+		<mapping class="ua.com.master.model.Auditable" />
+		<mapping class="ua.com.master.model.Catalog" />
+		<mapping class="ua.com.master.model.Department" />
+	</session-factory>
+</hibernate-configuration>

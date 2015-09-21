@@ -1,0 +1,42 @@
+package ua.com.master.dao.interfases;
+
+
+
+import ua.com.master.model.Person;
+import ua.com.master.model.PersonAddress;
+
+import java.util.List;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: ""
+ * Date: 10.05.2007
+ * Time: 10:18:12
+ * To change this template use File | Settings | File Templates.
+ */
+public interface PersonAddressDao
+{
+    public void save(PersonAddress personAddress);
+
+    public PersonAddress getById(Long id);
+
+    public List<PersonAddress> getAllAddressesByPerson(Person person);
+
+    public List<PersonAddress> getAllPersonAddressesByPerson(Person person);
+
+    public PersonAddress getOneAddressByPerson(Person person);
+
+    public PersonAddress getOneAddressByPersonAndType(Person person, String type);
+
+    public PersonAddress getNextAddressByPerson(Person person, int prevIndex);
+
+    public PersonAddress getPrevAddressByPerson(Person person, int nextIndex);
+
+    public int getCountAddressByPerson(Person person);
+
+    public Integer getCountByPerson(Person person);
+
+    public void delete(Long id);
+
+
+}

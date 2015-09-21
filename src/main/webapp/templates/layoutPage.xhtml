@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:h="http://java.sun.com/jsf/html">
+<!--  xmlns:p="http://primefaces.org/ui"-->
+
+
+<h:head >
+
+    <meta charset="utf-8"/>
+    <title   >
+        Master Floor &#174; - &#160;
+        <ui:insert name="title" styleClass="font">Default Title</ui:insert>
+    </title>
+    <link rel="stylesheet" type="text/css" href="css/masterpol.css"/>
+    <link rel="stylesheet" type="text/css" href="css/cm84.css"/>
+    <link rel="stylesheet" type="text/css" href="css/cm84demo.css"/>
+    <link rel="stylesheet" type="text/css" href="css/cm84jsf.css"/>
+    <script type="text/javascript" src="js/common.js"></script>
+    <script type="text/javascript" src="js/video.js"></script>
+    <script type="text/javascript" src="js/slideshow.js"></script>
+   <style>
+        body {
+
+            background-image: url("images/phon.jpg");
+            background-size: 100%;
+        }
+    </style>
+</h:head>
+
+<h:body onkeypress="trapEnter(event);" >
+
+
+<f:loadBundle basename="ResourceBundle" var="bundle"/>
+
+<div id="heading" class="body">
+
+   <img src="images/masterpol/logo.png" style="width: 92px;height: 43px" border="0"
+                 align="left"/>
+
+    <h:panelGroup id="language" styleClass="language" >
+            <h:commandButton action="#{loginBean.selectUkrainianLocale}"
+                            image="images/masterpol/UA.png" align="right"/>&#160;
+            <h:commandButton action="#{loginBean.selectRussianLocale}" align="right" image="images/masterpol/RU.png"/>&#160;
+            <h:commandButton action="#{loginBean.selectEnglishLocale}" align="right" image="images/masterpol/EN.png"/>&#160;
+    </h:panelGroup>
+
+    </div>
+
+
+
+
+    <h:outputText value="Master Pol" styleClass="font" align="left" />
+
+
+
+
+<div id="midcol">
+
+    <ui:insert name="midcol">
+        DEFAULT CONTENT
+    </ui:insert>
+
+</div>
+
+
+
+
+<div id="footer">
+    <ui:insert name="footer">
+
+    </ui:insert>
+    <ui:insert name="errors">
+        <ui:include src="errors.xhtml"/>
+    </ui:insert>
+    <div id="copyright" style="position:fixed; bottom:20px; left:20px;">
+
+            <h:outputText value="Copyright &#169; 2015 Master Pol" styleClass="infoMessage" />
+
+    </div>
+</div>
+
+</h:body>
+
+</html>
+

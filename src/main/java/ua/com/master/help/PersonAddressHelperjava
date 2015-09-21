@@ -1,0 +1,73 @@
+package ua.com.master.help;
+
+
+
+import ua.com.master.model.Address;
+import ua.com.master.model.Person;
+import ua.com.master.model.PersonAddress;
+
+import java.util.Date;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: ""
+ * Date: 10.05.2007
+ * Time: 11:24:33
+ * To change this template use File | Settings | File Templates.
+ */
+public class PersonAddressHelper
+{
+    public static PersonAddress createPersonAddress(
+            String type,
+            Date startDate,
+            Date endDate,
+            Person person,
+            Address address,
+            Date creationDate,
+            Date lastUpdateDate,
+            String creationUserName,
+            String lastUpdateUserName)
+    {
+        PersonAddress personAddress = new PersonAddress();
+        personAddress.setType(type);
+        personAddress.setStartDate(startDate);
+        personAddress.setEndDate(endDate);
+        personAddress.setAddress(address);
+        personAddress.setPerson(person);
+
+        return personAddress;
+    }
+
+    public static PersonAddress updatePersonAddress(
+            PersonAddress personAddress,
+            String type,
+            Date startDate,
+            Date endDate,
+            Date lastUpdateDate,
+            String lastUpdateUserName)
+    {
+        personAddress.setType(type);
+        personAddress.setStartDate(startDate);
+        personAddress.setEndDate(endDate);
+
+        return personAddress;
+    }
+
+    public static PersonAddress updatePersonAddress(
+            PersonAddress personAddress,
+            String type,
+            Date startDate,
+            Date endDate,
+            Person person,
+            Address address,
+            Date lastUpdateDate,
+            String lastUpdateUserName)
+    {
+        personAddress.setType(type);
+        personAddress.setStartDate(startDate);
+        personAddress.setEndDate(endDate);
+        personAddress.setAddress(address);
+        personAddress.setPerson(person);
+          return personAddress;
+    }
+}

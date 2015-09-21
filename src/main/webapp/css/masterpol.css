@@ -1,0 +1,238 @@
+.body {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-family: "MV Boli";
+    font-size: 24px;
+    font-weight: bold;
+    line-height: 1.8;
+    background: #FFF;
+    text-decoration: chartreuse;
+    text-align-all: center;
+    alignment: center;
+    align-content: center;
+   /* background-color: darkorange;*/
+    background-image:url("/images/phon.jpg");
+    background-size: 100%;
+}
+.button {
+    background-color:lawngreen;
+    linear-gradient(#fafdfe, #e8f5fc);
+    linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%);
+    background-insets: 0,1,2;
+    background-radius: 3,2,1;
+  /*  padding: 3 30 3 30;*/
+    text-fill: black;
+    font-size: 24px;
+    font-family: "MV Boli";
+    font-weight: bold;
+    background-position: right;
+}
+
+.button:focus {
+    -fx-background-color:green,
+    linear-gradient(#eaf6fd 0%, #d9f0fc 49%, #bee6fd 50%, #a7d9f5 100%),
+    linear-gradient(#fafdfe, #e8f5fc);
+    background-insets: 0,1,2;
+    background-radius: 3,2,1;
+    fx-text-fill: black;
+
+    font-size: 24px;
+    font-family: "MV Boli";
+    font-weight: bolder;
+    background-position: right;
+}
+.logo-image {
+    padding: 3em 0 0 2em;
+    height: 15px;
+    width: 40px;
+ /* background-image: url("../images/masterpol/logo.png");*/
+   /* background-size: 40px,15px;
+    background-repeat:no-repeat;*/
+}
+.font{
+    text-fill: black;
+    font-size: 24px;
+    font-family: "MV Boli";
+    font-weight: bolder;
+}
+#myfont{
+    text-fill: black;
+    font-size: 24px;
+    font-family: "MV Boli";
+    font-weight: bolder;
+}
+.tr { background: #f6d654 url("/images/tr.png") repeat-y;}
+#slideShowImages { /* The following CSS rules are optional. */
+   /* border: 1px gray solid;*/
+   /* position: absolute;*/
+    padding-top: 130px;
+    padding-left: 25%;
+    padding-right: 15%;
+    background-color: transparent;
+    alignment: center;
+    background-position: right;
+    align-content: right;
+    align-items: right;
+    align:right;
+
+}
+
+#slideShowImages img { /* The following CSS rules are optional. */
+  /*  border: 0.8em black solid;*/
+   /* position: absolute;*/
+    padding-top: 130px;
+    padding-left: 25%;
+    padding-right: 15%;
+    alignment: right;
+    background-position: right;
+    align:right;
+
+}
+#video{
+    position: absolute;
+    top: 600px;
+    right: 45px;
+    weight:1200px;
+    height: 300px;
+}
+#cart{
+    background-image: url('/images/cartEmpty.png');
+    width: 150px;
+    height: 44px;
+    background-size: 150px, 44px;
+    alignment:center;
+    background-position: right;
+    align:right;
+    text-align: right;
+}
+#cart img{
+    align:right;
+    width: 150px;
+    height: 44px;
+
+    /* max-width: 100%;*/
+}
+
+#cart:focus{
+    background-image: url('/images/cartEmptyActive.png');
+    background-size: 150px, 44px;
+    width: 150px;height: 44px;
+
+    alignment:right;
+    background-position: right;
+    width: 150px;
+    height: 44px;
+
+}
+#finder{
+    background-image: url('/images/finder.png');
+    width: 271px;
+    height: 49px;
+    font-family: 'MV Boli';
+    font-weight: bold;
+    font-size: 24px;
+    alignment: center;
+    background-position: center;
+    align:center
+}
+.ru{
+    background-image: url("/images/masterpol/RU.png");
+    background-size: 45px, 45px ;
+    align: right;
+}
+.en{
+    background-image: url("/images/masterpol/EN.png");
+    background-size: 45px, 45px  ;
+    align: right;
+}
+.ua{
+    background-image: url("/images/masterpol/UA.png");
+    background-size: 45px, 45px  ;
+    align: right;
+}
+#rightside{
+    align-content: right; align: right;}
+#middle{
+   background-image: url("/images/masterpol/phon.jpg");
+    background-size: 100%;
+}
+#mess{background-color: yellow;
+    text-align: left;
+    text-decoration-color: #B70000;
+    font-family: 'MV Boli';
+    font-weight: bold;
+    font-size: 24px;
+    width: 1024px;
+    height: 80px;
+}
+#err{background-color: #F74A37;
+    text-align: left;
+    font-family: 'MV Boli';
+    font-weight: bold;
+    font-size: 24px;
+    width: 1024px;
+    height: 80px;
+}
+
+.language
+{
+    position: absolute;
+    right: 20px;
+    top: 90px;
+}
+.footer{
+    padding-left: 220px;
+    padding-right: 215px;
+    height: 120px;
+    width: 100%;
+    padding-bottom: 10px;
+
+    align:bottom;
+    font-family: 'MV Boli';
+    font-weight: bold;
+    font-size: 24px;
+
+ background-color: #ff3366;
+}
+.midcol .tabPanel {
+    display: inline;
+}
+
+.midcol .tabPanel a {
+    text-decoration: none;
+    color: #000000;
+}
+
+#midcol .tabPanel a:hover {
+    text-decoration: underline;
+}
+
+.midcol .tabPanel li {
+    display: inline;
+    padding-top: 2px;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    background-color: #DDDDDD;
+}
+
+.midcol .tabPanel li.first {
+    border-left: 1px solid #000000;
+}
+
+.midcol .tabPanel li.selected {
+    display: inline;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+    background-color: #FFFFFF;
+}
+
+.midcol .tabPanel li.middle {
+    border-left: 0 !important;
+}
+
+

@@ -1,0 +1,90 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:ui="http://java.sun.com/jsf/facelets"
+       xmlns:h="http://java.sun.com/jsf/html"
+        xmlns:f="http://java.sun.com/jsf/core">
+
+<ui:composition template="templates/layoutPage.xhtml">
+
+    <ui:define name="title">Login</ui:define>
+
+
+
+    <ui:define name="midcol">
+        <f:loadBundle basename="ResourceBundle" var="bundle"/>
+
+        <h1>
+            <h:outputText value="#{bundle.loggin_caption}"/>
+        </h1>
+
+        <ul class="process">
+            <li>
+                <h:outputText value="#{bundle.button_signin}"/>
+            </li>
+        </ul>
+
+        <h:form id="logForm">
+            <table>
+                <tr>
+                    <td class="cell label">
+                        <h:outputText value="#{bundle.loggin_logininvite}"/>
+                    </td>
+                    <td class="cell">
+                        <h:inputText id="lofinTxt" value="#{loginBean.login}" styleClass="mandatory"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="cell label">
+                        <h:outputText value="#{bundle.loggin_passwordinvite}"/>
+                    </td>
+                    <td class="cell">
+                        <h:inputSecret value="#{loginBean.password}" styleClass="mandatory"/>
+                    </td>
+                </tr>
+            </table>
+
+            <div class="buttons">
+                <h:commandButton
+                        value="#{bundle.button_signin}"
+                        action="#{loginBean.signIn}">
+
+
+
+                </h:commandButton>
+            </div>
+
+            <h:outputText value="#{loginBean.personValidator.message}" styleClass="infoMessage"/>
+
+        </h:form>
+
+
+  <div style="position:fixed; bottom:20px; right:20px;">
+       <h:outputText value="#{loginBean.versionMessage}" styleClass="infoMessage" />
+  </div>
+<!--
+
+
+
+  <h:panelGroup rendered="#{!initTestDataBean.accTesting}">
+
+	<div style="position:fixed; bottom:20px; right:20px;">
+        <h:outputText value="#{loginBean.versionMessage}" styleClass="infoMessage" />
+    </div>
+
+  </h:panelGroup>
+
+  <h:panelGroup rendered="#{initTestDataBean.accTesting}">
+
+     <div style="position:fixed; bottom:20px; right:20px;">
+         <h:outputText value="#{loginBean.versionMessage}" styleClass="infoMessage" />
+     </div>
+
+  </h:panelGroup>
+
+-->
+
+</ui:define>
+</ui:composition>
+
+</html>

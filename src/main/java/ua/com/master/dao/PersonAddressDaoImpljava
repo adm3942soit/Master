@@ -1,0 +1,206 @@
+package ua.com.master.dao;
+
+
+import org.apache.log4j.Logger;
+import org.hibernate.Criteria;
+import org.hibernate.Query;
+import org.hibernate.SessionFactory;
+
+import ua.com.master.dao.factory.FactoryDao;
+import ua.com.master.dao.interfases.PersonAddressDao;
+import ua.com.master.model.Person;
+import ua.com.master.model.PersonAddress;
+
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * Created by IntelliJ IDEA.
+ * User: ""
+ * Date: 10.05.2007
+ * Time: 10:21:08
+ * To change this template use File | Settings | File Templates.
+ */
+//Repository
+//Transactional(readOnly = false)
+public class PersonAddressDaoImpl extends CommonDAO implements PersonAddressDao
+{
+
+    private static final Logger log = Logger.getLogger(PersonAddressDaoImpl.class);
+
+
+    public void save(PersonAddress personAddress)
+    {
+        sessionFactory.getCurrentSession().saveOrUpdate(personAddress);
+    }
+
+    public PersonAddressDaoImpl() {
+    }
+
+    public PersonAddress getById(Long id)
+    {
+        return (PersonAddress) sessionFactory.getCurrentSession().get(PersonAddress.class, id);
+    }
+
+    public List<PersonAddress> getAllAddressesByPerson(Person person)
+    {
+        if (person == null || person.getNumber()==null)
+        {
+            return null;
+        }
+        person= factoryDao.getPersonDao().getById(person.getNumber());
+        final Query query = sessionFactory.getCurrentSession().
+                createQuery("select pa  from PersonAddress  as pa where pa.person = :Person");
+        query.setParameter("Person", person);
+        final List<PersonAddress> addresses;
+
+        addresses = query.list();
+
+        return addresses;
+    }
+
+
+    public List<PersonAddress> getAllPersonAddressesByPerson(Person person)
+    {
+        if (person == null || person.getNumber() == null)
+        {
+            return null;
+        }
+
+        person = factoryDao.getPersonDao().getById(person.getNumber());
+
+        List<PersonAddress> list = sessionFactory.getCurrentSession()
+                .createCriteria(PersonAddress.class).list();
+
+
+        if(list==null) return null;
+        List<PersonAddress> finalList = new ArrayList();
+        for(PersonAddress pa:list)
+        {
+         if(pa.getPerson()!=null && pa.getPerson().getNumber().equals(person.getNumber()))
+         {
+             finalList.add(pa);
+         }
+        }
+        return finalList;
+    }
+
+    public PersonAddress getOneAddressByPerson(Person person)
+    {
+        List<PersonAddress> personAddresses = getAllAddressesByPerson(person);
+        PersonAddress personAddress = null;
+        if (personAddresses != null && personAddresses.size() > 0)
+        {
+            personAddress = (PersonAddress) personAddresses.get(0);
+        }
+        return personAddress;
+    }
+
+     public List<PersonAddress> getAllAddressesByPersonAndType(Person person,String type)
+    {
+        if (person == null)
+        {
+            return null;
+        }
+        final Query query = sessionFactory.getCurrentSession().
+                createQuery("select pa  from ua.com.master.model.PersonAddress  as pa where pa.person = :Person and pa.type = :Type");
+        query.setParameter("Person", person);
+        query.setParameter("Type", type);
+        final List<PersonAddress> addresses;
+
+        addresses = query.list();
+
+        return addresses;
+    }
+
+    public PersonAddress getOneAddressByPersonAndType(Person person, String type)
+    {
+         List<PersonAddress> personAddresses = getAllAddressesByPersonAndType(person,type);
+        PersonAddress personAddress = null;
+        if (personAddresses != null && personAddresses.size() > 0)
+        {
+            personAddress =  personAddresses.get(0);
+        }
+        return personAddress;
+    }
+
+    public PersonAddress getNextAddressByPerson(Person person, int prevIndex)
+    {
+        int index = prevIndex + 1;
+        List<PersonAddress> personAddresses = getAllAddressesByPerson(person);
+        PersonAddress personAddress = null;
+        if (personAddresses != null && personAddresses.size() > index)
+        {
+            personAddress = (PersonAddress) personAddresses.get(index);
+        }
+        else
+        {
+            return null;
+        }
+        return personAddress;
+    }
+
+    public PersonAddress getPrevAddressByPerson(Person person, int nextIndex)
+    {
+        int index = nextIndex - 1;
+
+        List<PersonAddress> personAddresses = getAllAddressesByPerson(person);
+        PersonAddress personAddress = null;
+        if (personAddresses != null && personAddresses.size() > index)
+        {
+            personAddress = (PersonAddress) personAddresses.get(index);
+        }
+        else
+        {
+            return null;
+        }
+        return personAddress;
+    }
+
+    public int getCountAddressByPerson(Person person)
+    {
+        int count = 0;
+        if (person == null)
+        {
+            return count;
+        }
+        List<PersonAddress> personAddresses = getAllPersonAddressesByPerson(person);
+
+        if (personAddresses != null)
+        {
+            count = personAddresses.size();
+        }
+
+        return count;
+    }
+
+    public Integer getCountByPerson(Person person)
+    {
+       /*
+        final Query query = sessionFactory.getCurrentSession().
+                createQuery("select count(pa)  from ua.com.master.model.PersonAddress  as pa where pa.person = :Person");
+        query.setParameter("Person", person);
+
+
+        Integer count = new Integer(((Long) query.uniqueResult()).intValue());
+       */
+        Integer count = 0;
+        Criteria criteria = sessionFactory.getCurrentSession().createCriteria(PersonAddress.class);
+        List<PersonAddress> list = criteria.list();
+        if(list==null) return 0;
+        for(PersonAddress pa:list)
+        {
+         if(pa.getPerson()!=null && pa.getPerson().equals(person))
+         {
+           count++;
+         }
+        }
+        return count;
+    }
+
+    public void delete(Long id)
+    {
+        PersonAddress personAddress = getById(id);
+        sessionFactory.getCurrentSession().delete(personAddress);
+    }
+}
