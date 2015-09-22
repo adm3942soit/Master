@@ -28,11 +28,16 @@
     </table>
     <table name="catalogs" schema="" catalog="master" type="TABLE">
       <column name="CATALOG_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CREATION_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CREATION_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LAST_UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="CATALOG_ID"/>
       <exported-key name="FK4287C21CA34AFFD" table="catalogs_departments" schema="" catalog="master" columns="catalogs_CATALOG_ID"/>
       <exported-key name="FK1F3A27617CAE0E18" table="departments" schema="" catalog="master" columns="CATALOG_ID"/>
       <index name="CATALOG_ID" unique="true" columns="CATALOG_ID"/>
+      <index name="LAST_UPDATE_PERSON" unique="true" columns="LAST_UPDATE_PERSON"/>
       <index name="NAME" unique="true" columns="NAME"/>
       <index name="NAME_2" unique="true" columns="NAME"/>
     </table>
@@ -174,7 +179,7 @@
     <table name="userlogs" schema="" catalog="master" type="TABLE">
       <column name="USERLOG_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="LOGIN_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
-      <column name="LOGOUT_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LOGOUT_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="NUMBER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="USERLOG_ID"/>
       <foreign-key name="FKF028D3FA1DC5FE0" columns="NUMBER" ref-table="persons" ref-schema="" ref-catalog="master" ref-columns="NUMBER" update-rule="3" delete-rule="3" deferrability="2"/>

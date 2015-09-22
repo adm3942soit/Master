@@ -93,9 +93,9 @@ private String nameLoginFile="temp"+File.separator+"login.txt";
                     continue;
                 }
             }
-            incomerPerson=getPersonDao().getById(number);
+            getFactoryDao().incomerPerson=getPersonDao().getById(number);
         }else return null;
-        return incomerPerson;
+        return getFactoryDao().incomerPerson;
     }
 
     public String signIn()
@@ -107,17 +107,17 @@ private String nameLoginFile="temp"+File.separator+"login.txt";
             return null;
         }
         setSourcePage(Constants.Navigation.HOME);
-        incomerPerson = factoryDao.getPersonDao().getByLogin(login.trim());
+        getFactoryDao().incomerPerson = factoryDao.getPersonDao().getByLogin(login.trim());
          Filer.createFile(MyFiler.getCurrentDirectory()+File.separator+
          nameLoginFile);
         Filer.rewriteFile(new File(MyFiler.getCurrentDirectory()+
                 File.separator+
                 nameLoginFile),
-                "IncomerPerson:"+incomerPerson.getNumber());
+                "IncomerPerson:"+getFactoryDao().incomerPerson.getNumber());
 
-        userMessage = FacesHelper.getBundleMessage("loggin_welcomeuser", new Object[]{incomerPerson.getUserName()});
+        userMessage = FacesHelper.getBundleMessage("loggin_welcomeuser", new Object[]{getFactoryDao().incomerPerson.getUserName()});
         
-        UserLog l = new UserLog(incomerPerson);
+        UserLog l = new UserLog(getFactoryDao().incomerPerson);
      /*   HibernateAuditInterceptor.setUser(incomerPerson.getUserName())*/;
         userLogDao.save(l);
         UserLogValue v = new UserLogValue(l.getUserLogId());

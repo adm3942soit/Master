@@ -27,6 +27,7 @@
                     bean="${catalogBean}"
                     action="tabPaneChange"
                     tab0="#{bundle.catalogs}"
+                    tab1="#{bundle.depart}"
                 >
 
 
@@ -38,10 +39,10 @@
                     <table id="regCat">
                         <tr>
                             <td class="cell label">
-                                <h:outputText value="#{bundle.person_number}" styleClass="infoMessage"/>
+                                <h:outputText value="#{bundle.person_number}" />
                             </td>
                             <td class="cell">
-                                <h:outputText value="#{catalogBean.newCatalog.catalogId}" styleClass="infoMessage"/>
+                                <h:outputText value="#{catalogBean.newCatalog.catalogId}" />
                             </td>
                         </tr>
                         <a:field id="f1" label="#{bundle.name_catalog}"
@@ -51,18 +52,19 @@
                                  maxlength="100"/>
                     </table>
                     <div class="button">
-                        <h:commandButton value="#{bundle.button_create}"
+                        <h:commandButton id="but1" value="#{bundle.button_create}"
                                          actionListener="#{catalogBean.createNewCatalog}"
 
                                          rendered="#{!catalogBean.createdNewCatalog}"
                                 >
                         </h:commandButton>
 
-                        <h:commandButton value="#{bundle.button_update}"
+                        <!--<h:commandButton id="but2" value="#{bundle.button_update}"
                                          actionListener="#{catalogBean.updateCatalog}"
-                                         rendered="#{catalogBean.createdNewCatalog}">
-                        </h:commandButton>
-                        <h:commandButton value="#{bundle.button_new}"
+                                         rendered="#{catalogBean.createdNewCatalog}"
+                                         >
+                        </h:commandButton>-->
+                        <h:commandButton id= "but3" value="#{bundle.button_new}"
                                          actionListener="#{catalogBean.clearCatalog}"
                                          rendered="#{catalogBean.createdNewCatalog}">
                         </h:commandButton>
@@ -74,7 +76,7 @@
                         <h1>
                             <h:outputText value="#{bundle.catalogs}"/>
                         </h1>
-                        <h:selectOneRadio id="s1" value="#{catalogBean.newCatalog}"
+                      <!--  <h:selectOneRadio id="s1" value="#{catalogBean.newCatalog}"
                                           styleClass="choices"
                                           layout="pageDirection"
                                           valueChangeListener="#{catalogBean.initFieldsCatalog}"
@@ -90,12 +92,12 @@
                             <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFields}"/>
 
                         </h:selectOneRadio>
-
-                        <!-- <h:dataTable id="dataTableCat" var="cat" value="#{catalogBean.listCatalogs}"
+-->
+                         <h:dataTable id="dataTableCat" var="cat" value="#{catalogBean.listCatalogs}"
                                       columnClasses="cell,cell, cell"
                                       headerClass="cell label">
 
-                             <h:column style="background-color: #f6d654">
+                            <!-- <h:column style="background-color: #f6d654">
                                  <f:facet name="header">
                                      <h:outputText value="Select"/>
                                  </f:facet>
@@ -110,6 +112,18 @@
                                      <f:param value="#{cat.catalogId}" name="catalogId"/>
                                      <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFieldsCatalog}"/>
                                </p:selectBooleanCheckbox>&ndash;&gt;
+                             </h:column>-->
+                             <h:column>
+                                 <f:facet name="header">
+                                     <h:outputText value="#{bundle.catalog_nmb}"/>
+                                 </f:facet>
+                                 <h:commandLink id="viewCatLnk" title="View catalog"
+                                                actionListener="#{catalogBean.viewChosenCatalog}">
+                                     <f:param value="#{cat.catalogId}" name="catalogId"/>
+                                     <h:outputText value="#{cat.catalogId}"/>
+
+
+                                 </h:commandLink>
                              </h:column>
                          <h:column style="background-color: #f6d654">
                              <f:facet name="header">
@@ -134,7 +148,114 @@
                                     <f:convertDateTime dateStyle="full" timeZone="EST" type="date" />
                                     </h:outputText>
                                 </h:column>
-                         </h:dataTable>-->
+                         </h:dataTable>
+                    </h:panelGroup>
+                </h:form>
+            </div>
+            <div id="panel1" class="panel">
+
+                <h:form id="depForm">
+
+
+                    <table id="regDep">
+                        <tr>
+                            <td class="cell label">
+                                <h:outputText value="#{bundle.person_number}" />
+                            </td>
+                            <td class="cell">
+                                <h:outputText value="#{catalogBean.newDepartment.departmentId }" />
+                            </td>
+                        </tr>
+                        <a:field id="f1" label="#{bundle.name_dep}"
+                                 value="#{catalogBean.newDepartmentName}"
+                                 message="#{catalogBean.validator.message}"
+                                 size="40"
+                                 maxlength="100"/>
+                    </table>
+                    <div class="button">
+                        <h:commandButton id="but4" value="#{bundle.button_create}"
+                                         actionListener="#{catalogBean.createNewDepartment}"
+
+                                         rendered="#{!catalogBean.createdNewDepartment}"
+                                >
+                        </h:commandButton>
+
+                        <!--<h:commandButton id="but2" value="#{bundle.button_update}"
+                                         actionListener="#{catalogBean.updateCatalog}"
+                                         rendered="#{catalogBean.createdNewCatalog}"
+                                         >
+                        </h:commandButton>-->
+                        <h:commandButton id= "but5" value="#{bundle.button_new}"
+                                         actionListener="#{catalogBean.clearDepartment}"
+                                         rendered="#{catalogBean.createdNewDepartment}">
+                        </h:commandButton>
+                    </div>
+                    <h:outputText value="#{catalogBean.departmentMessage}" styleClass="infoMessage"/>
+
+                    <h:panelGroup rendered="#{
+                     catalogBean.departmentsExists}">
+                        <h1>
+                            <h:outputText value="#{bundle.depart}"/>
+                        </h1>
+                        <!--  <h:selectOneRadio id="s1" value="#{catalogBean.newCatalog}"
+                                            styleClass="choices"
+                                            layout="pageDirection"
+                                            valueChangeListener="#{catalogBean.initFieldsCatalog}"
+                                            converter="#{catalogConverterBean}">
+
+                              <f:selectItems id="fs1" var="cat"
+                                             value="#{catalogBean.listCatalogs}"
+                                             itemValue="#{cat.catalogId}"
+                                             itemLabel="#{cat.name}">
+
+                              </f:selectItems>
+                              <f:param value="#{cat.catalogId}" name="catalogId"/>
+                              <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFields}"/>
+
+                          </h:selectOneRadio>
+  -->
+                        <h:dataTable id="dataTableDep" var="dep"
+                                     value="#{catalogBean.listDepartments}"
+                                     columnClasses="cell,cell, cell"
+                                     headerClass="cell label">
+
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.catalog_nmb}"/>
+                                </f:facet>
+                                <h:commandLink id="viewDepLnk" title="View department"
+                                               actionListener="#{catalogBean.viewChosenDepartment}">
+                                    <f:param value="#{dep.departmentId}" name="departmentId"/>
+                                    <h:outputText value="#{dep.departmentId}"/>
+
+
+                                </h:commandLink>
+                            </h:column>
+                            <h:column style="background-color: #f6d654">
+                                <f:facet name="header">
+                                    <h:outputText value="Department's name"/>
+                                </f:facet>
+
+                                <h:commandLink id="delDep"
+                                               actionListener="#{catalogBean.deleteChosenDepartment}">
+                                    <f:param value="#{dep.departmentId}" name="departmentId"/>
+                                    <h:outputText style="background-color: #f6d654" value="#{dep.name}"></h:outputText>
+                                    <h:graphicImage id="delDepImg" url="images/deleteNew.gif"
+                                                    title="Delete department"
+                                                    rendered="#{dep.departmentId != null}"/>
+                                </h:commandLink>
+                            </h:column >
+
+                            <h:column style="background-color: #f6d654">
+                                <f:facet name="header">
+                                    <h:outputText value="Department's creation date"/>
+                                </f:facet>
+                                <h:outputText value="#{dep.creationDate }">
+                                    <f:convertDateTime dateStyle="full" pattern="dd-mm-yyyy" timeZone="EST" type="date" />
+                                </h:outputText>
+                            </h:column>
+                        </h:dataTable>
                     </h:panelGroup>
                 </h:form>
             </div>

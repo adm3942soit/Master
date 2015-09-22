@@ -149,8 +149,8 @@ public class RegisterPersonBean extends BaseBean  implements Serializable
     public RegisterPersonBean()
     {
         super();
-        if(incomerPerson==null)
-                   incomerPerson=personDao.getByUsername("admin");
+        if(getFactoryDao().incomerPerson==null)
+            getFactoryDao().incomerPerson=personDao.getByUsername("admin");
         super.setSourcePage("registerPersonDetails");
     }
  /*   public void tabChange(ItemChangeEvent event) {
@@ -462,7 +462,7 @@ public class RegisterPersonBean extends BaseBean  implements Serializable
     {activeTab="tab1";
         setTabbedPane(Constants.PersonDetails.PERSON_TAB_NUMBER);
       /*  tabPanel.setSelectedTab(FacesHelper.getBundleMessage("person"));*/
-        if (incomerPerson == null)
+        if (getFactoryDao().incomerPerson == null)
         {
 
             log.info("No person in session");
@@ -569,7 +569,7 @@ public class RegisterPersonBean extends BaseBean  implements Serializable
         activeTab="tab2";
         setTabbedPane(Constants.PersonDetails.ADDRESS_TAB_NUMBER);
 
-        if (incomerPerson == null)
+        if (getFactoryDao().incomerPerson == null)
         {
             log.info("person  have not rights");
             addressMessage = FacesHelper.getBundleMessage("loggin_firstlogin");
@@ -600,8 +600,8 @@ public class RegisterPersonBean extends BaseBean  implements Serializable
                 null,
                 new Date(),
                 new Date(),
-                incomerPerson.getUserName(),
-                incomerPerson.getUserName());
+                getFactoryDao().incomerPerson.getUserName(),
+                getFactoryDao().incomerPerson.getUserName());
 
         /*PersonAddress personPersonAddress =
                 PersonAddressHelper.createPersonAddress(
@@ -674,7 +674,7 @@ public class RegisterPersonBean extends BaseBean  implements Serializable
         setTabbedPane(Constants.PersonDetails.ADDRESS_TAB_NUMBER);
       /*  tabPanel.setSelectedTab(FacesHelper.getBundleMessage("address"));*/
         addressessCaption = FacesHelper.getBundleMessage("regdetails_caption_addregistered", new Object[]{newPerson.getFirstName()});
-        if (incomerPerson == null)
+        if (getFactoryDao().incomerPerson == null)
         {
             log.info("No person in session");
             addressMessage = FacesHelper.getBundleMessage("loggin_firstlogin");
@@ -712,7 +712,7 @@ public class RegisterPersonBean extends BaseBean  implements Serializable
                 newPersonCity,
                 null,
                 new Date(),
-                incomerPerson.getUserName());
+                getFactoryDao().incomerPerson.getUserName());
 
        /* newPersonPersonAddress =
                 PersonAddressHelper.updatePersonAddress(
@@ -1189,7 +1189,7 @@ public String getPersonMessage()
 
 public Person getIncomerPerson()
         {
-        return incomerPerson;
+        return getFactoryDao().incomerPerson;
         }
 
 public String getNewPersonInitials()
@@ -1282,7 +1282,7 @@ public Validator getPersonCountryValidator()
         }
 public void setIncomerPerson(Person incomerPerson)
         {
-        this.incomerPerson = incomerPerson;
+        this.getFactoryDao().incomerPerson = incomerPerson;
         }
 
 public void setNewPersonStreet(String newPersonStreet)

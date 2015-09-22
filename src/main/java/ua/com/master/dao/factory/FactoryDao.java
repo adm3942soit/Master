@@ -7,6 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import ua.com.master.dao.*;
 import ua.com.master.dao.interfases.*;
+import ua.com.master.model.Person;
 
 /**
  * Created by Oxana on 31.08.2015.
@@ -14,9 +15,17 @@ import ua.com.master.dao.interfases.*;
 //Repository
 public class FactoryDao {
     public static FactoryDao factoryDao=new FactoryDao();
+
+    public Person getIncomerPerson() {
+        return incomerPerson;
+    }
+    public void setIncomerPerson(Person incomerPerson) {
+        this.incomerPerson = incomerPerson;
+    }
     //Autowired
    public PersonDao personDao=new PersonDaoImpl();//=(PersonDao) ApplicationContextHolder.getContext().
   // getBean("personDao");
+  public Person incomerPerson=personDao.getByUsername("admin");;
     //Autowired
     public  CourseUSDDao courseUSDDao=new CourseUSDDaoImpl();
 
@@ -32,6 +41,24 @@ public class FactoryDao {
 
     //Autowired
     public SysParameterDao sysParameterDao=new SysParameterDaoImpl();
+    public CatalogDao catalogDao=new CatalogDaoImpl();
+    public DepartmentDao departmentDao= new DepartmentDaoImpl();
+
+    public CatalogDao getCatalogDao() {
+        return catalogDao;
+    }
+
+    public void setCatalogDao(CatalogDao catalogDao) {
+        this.catalogDao = catalogDao;
+    }
+
+    public DepartmentDao getDepartmentDao() {
+        return departmentDao;
+    }
+
+    public void setDepartmentDao(DepartmentDao departmentDao) {
+        this.departmentDao = departmentDao;
+    }
 
     public CourseUSDDao getCourseUSDDao() {
         courseUSDDao=new CourseUSDDaoImpl();

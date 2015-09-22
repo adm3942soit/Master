@@ -47,7 +47,17 @@ public class BaseBean {
     //Autowired
     AddressDao addressDao=new AddressDaoImpl();
     CatalogDao catalogDao=new CatalogDaoImpl();
-    public  Person incomerPerson;// = (new LoginBean()).getIncomerPersonFromFile();
+    DepartmentDao departmentDao=new DepartmentDaoImpl();
+
+    public DepartmentDao getDepartmentDao() {
+        return departmentDao;
+    }
+
+    public void setDepartmentDao(DepartmentDao departmentDao) {
+        this.departmentDao = departmentDao;
+    }
+
+    // = (new LoginBean()).getIncomerPersonFromFile();
     public CatalogDao getCatalogDao() {
         catalogDao=new CatalogDaoImpl();
         return catalogDao;
@@ -86,14 +96,6 @@ public class BaseBean {
     protected CourseUSDDao getCourseUSDDAO()
     {
         return factoryDao.getCourseUSDDao();
-    }
-
-    public Person getIncomerPerson() {
-        return incomerPerson;
-    }
-
-    public void setIncomerPerson(Person incomerPerson) {
-        this.incomerPerson = incomerPerson;
     }
 
     public String getNameSourceBean() {

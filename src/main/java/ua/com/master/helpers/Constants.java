@@ -31,6 +31,7 @@ public class Constants
 */
     public static class CatalogDetails{
     public static final Integer CATALOG_TAB_NUMBER=0;
+    public static final Integer DEPARTMENT_TAB_NUMBER=1;
 }
     public static class PersonContactTypesDetails
     {

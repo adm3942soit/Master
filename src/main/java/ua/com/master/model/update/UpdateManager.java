@@ -9,6 +9,7 @@ import ua.com.master.model.SysParameter;
 
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 
@@ -135,6 +136,10 @@ public class UpdateManager {
     private void createDbVersionParameter()
     {
         SysParameter parameter = new SysParameter(DBVERSION, DBVERSION_DESC, "1.0");
+        parameter.setCreationDate(new Date());
+        parameter.setLastUpdateDate(new Date());
+        parameter.setCreationPerson("admin");
+        parameter.setLastUpdatePerson("admin");
         sysParameterDao.save(parameter);
     }
     

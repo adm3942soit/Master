@@ -15,7 +15,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "persons")
-public class Person extends Auditable implements java.io.Serializable
+public class Person implements java.io.Serializable
 {
 
     @Id
@@ -421,4 +421,46 @@ public class Person extends Auditable implements java.io.Serializable
     public void setUserLogs(Set<UserLog> userLogs) {
         this.userLogs = userLogs;
     }
+    @Column(name = "CREATION_DATE", unique = false, nullable = false)
+    private Date creationDate;
+    @Column(name = "CREATION_PERSON", unique = false, nullable = false)
+    private String creationPerson;
+    @Column(name = "LAST_UPDATE_DATE", unique = false, nullable = false)
+    private Date lastUpdateDate;
+    @Column(name = "LAST_UPDATE_PERSON", unique = false, nullable = false)
+    private String lastUpdatePerson;
+
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public String getCreationPerson() {
+        return creationPerson;
+    }
+
+    public Date getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public String getLastUpdatePerson() {
+        return lastUpdatePerson;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setCreationPerson(String creationPerson) {
+        this.creationPerson = creationPerson;
+    }
+
+    public void setLastUpdateDate(Date lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public void setLastUpdatePerson(String lastUpdatePerson) {
+        this.lastUpdatePerson = lastUpdatePerson;
+    }
+
 }

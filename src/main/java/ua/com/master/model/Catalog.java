@@ -2,6 +2,7 @@ package ua.com.master.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -10,7 +11,7 @@ import java.util.Set;
  */
 @Entity
 @Table(name = "catalogs", uniqueConstraints = @UniqueConstraint(columnNames = "NAME"))
-public class Catalog extends Auditable implements Serializable{
+public class Catalog  implements Serializable{
     @Id
     @Column(name = "CATALOG_ID", unique = true, nullable = false)
     @GeneratedValue
@@ -46,4 +47,47 @@ public class Catalog extends Auditable implements Serializable{
     public void setDepartments(Set<Department> departments) {
         this.departments = departments;
     }
+
+    @Column(name = "CREATION_DATE", unique = false, nullable = false)
+    private Date creationDate;
+    @Column(name = "CREATION_PERSON", unique = false, nullable = false)
+    private String creationPerson;
+    @Column(name = "LAST_UPDATE_DATE", unique = false, nullable = false)
+    private Date lastUpdateDate;
+    @Column(name = "LAST_UPDATE_PERSON", unique = false, nullable = false)
+    private String lastUpdatePerson;
+
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public String getCreationPerson() {
+        return creationPerson;
+    }
+
+    public Date getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public String getLastUpdatePerson() {
+        return lastUpdatePerson;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setCreationPerson(String creationPerson) {
+        this.creationPerson = creationPerson;
+    }
+
+    public void setLastUpdateDate(Date lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public void setLastUpdatePerson(String lastUpdatePerson) {
+        this.lastUpdatePerson = lastUpdatePerson;
+    }
+
 }

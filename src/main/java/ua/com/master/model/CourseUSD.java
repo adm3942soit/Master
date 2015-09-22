@@ -2,6 +2,7 @@ package ua.com.master.model;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 import java.util.Set;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -11,7 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "coursesUSD")
-public class CourseUSD extends Auditable implements Serializable {
+public class CourseUSD  implements Serializable {
     @Id
     @Column(name = "COURSEUSD_ID", unique = true, nullable = false)
     @GeneratedValue(strategy = IDENTITY)
@@ -96,6 +97,47 @@ public class CourseUSD extends Auditable implements Serializable {
 
     public void setSellingRate(Double sellingRate) {
         this.sellingRate = sellingRate;
+    }
+    @Column(name = "CREATION_DATE", unique = false, nullable = false)
+    private Date creationDate;
+    @Column(name = "CREATION_PERSON", unique = false, nullable = false)
+    private String creationPerson;
+    @Column(name = "LAST_UPDATE_DATE", unique = false, nullable = false)
+    private Date lastUpdateDate;
+    @Column(name = "LAST_UPDATE_PERSON", unique = false, nullable = false)
+    private String lastUpdatePerson;
+
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public String getCreationPerson() {
+        return creationPerson;
+    }
+
+    public Date getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public String getLastUpdatePerson() {
+        return lastUpdatePerson;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setCreationPerson(String creationPerson) {
+        this.creationPerson = creationPerson;
+    }
+
+    public void setLastUpdateDate(Date lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public void setLastUpdatePerson(String lastUpdatePerson) {
+        this.lastUpdatePerson = lastUpdatePerson;
     }
 
 

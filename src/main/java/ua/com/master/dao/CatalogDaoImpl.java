@@ -4,6 +4,7 @@ import org.hibernate.criterion.Restrictions;
 import ua.com.master.dao.interfases.CatalogDao;
 import ua.com.master.model.Catalog;
 
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -12,6 +13,7 @@ import java.util.List;
 public class CatalogDaoImpl extends CommonDAO implements CatalogDao {
     @Override
     public void save(Catalog catalog) {
+
         getSessionFactory().getCurrentSession().saveOrUpdate(catalog);
     }
     @Override

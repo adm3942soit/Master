@@ -4,6 +4,7 @@ import ua.com.master.dao.CourseUSDDaoImpl;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
 
@@ -12,7 +13,7 @@ import static javax.persistence.GenerationType.IDENTITY;
  */
 @Entity
 @Table(name = "products",uniqueConstraints =@UniqueConstraint(columnNames = "NAME"))
-public class Product extends Auditable implements Serializable {
+public class Product  implements Serializable {
     @Id
     @Column(name = "PRODUCT_ID", unique = true, nullable = false)
     @GeneratedValue(strategy = IDENTITY)
@@ -223,4 +224,46 @@ public class Product extends Auditable implements Serializable {
     public void setNameImage(String nameImage) {
         this.nameImage = nameImage;
     }
+    @Column(name = "CREATION_DATE", unique = false, nullable = false)
+    private Date creationDate;
+    @Column(name = "CREATION_PERSON", unique = false, nullable = false)
+    private String creationPerson;
+    @Column(name = "LAST_UPDATE_DATE", unique = false, nullable = false)
+    private Date lastUpdateDate;
+    @Column(name = "LAST_UPDATE_PERSON", unique = false, nullable = false)
+    private String lastUpdatePerson;
+
+
+    public Date getCreationDate() {
+        return creationDate;
+    }
+
+    public String getCreationPerson() {
+        return creationPerson;
+    }
+
+    public Date getLastUpdateDate() {
+        return lastUpdateDate;
+    }
+
+    public String getLastUpdatePerson() {
+        return lastUpdatePerson;
+    }
+
+    public void setCreationDate(Date creationDate) {
+        this.creationDate = creationDate;
+    }
+
+    public void setCreationPerson(String creationPerson) {
+        this.creationPerson = creationPerson;
+    }
+
+    public void setLastUpdateDate(Date lastUpdateDate) {
+        this.lastUpdateDate = lastUpdateDate;
+    }
+
+    public void setLastUpdatePerson(String lastUpdatePerson) {
+        this.lastUpdatePerson = lastUpdatePerson;
+    }
+
 }
