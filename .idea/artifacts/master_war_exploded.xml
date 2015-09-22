@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="exploded-war" name="main:war exploded">
-    <output-path>$PROJECT_DIR$/target/master</output-path>
+  <artifact type="exploded-war" build-on-make="true" name="master:war exploded">
+    <output-path>$PROJECT_DIR$/out/master</output-path>
     <root id="root">
       <element id="directory" name="WEB-INF">
         <element id="directory" name="classes">
@@ -36,6 +36,13 @@
           <element id="library" level="project" name="Maven: org.javassist:javassist:3.19.0-GA" />
           <element id="library" level="project" name="Maven: javax.el:el-api:2.2.1-b04" />
           <element id="library" level="project" name="Maven: javax.servlet:javax.servlet-api:3.0.1" />
+          <element id="library" level="project" name="helpers" />
+          <element id="library" level="project" name="commons-digester-1.8" />
+          <element id="library" level="project" name="jsf-facelets-1.1.14" />
+          <element id="library" level="project" name="richfaces-ui-3.1.0" />
+          <element id="library" level="project" name="richfaces-impl-3.1.0" />
+          <element id="library" level="project" name="richfaces-api-3.1.0" />
+          <element id="library" level="project" name="richfaces-api-3.2.1.ga" />
         </element>
       </element>
       <element id="directory" name="META-INF">

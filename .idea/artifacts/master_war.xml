@@ -1,0 +1,19 @@
+<component name="ArtifactManager">
+  <artifact type="war" build-on-make="true" name="master:war">
+    <output-path>$PROJECT_DIR$/out</output-path>
+    <root id="archive" name="master.war">
+      <element id="artifact" artifact-name="master:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="helpers" />
+          <element id="library" level="project" name="commons-digester-1.8" />
+          <element id="library" level="project" name="jsf-facelets-1.1.14" />
+          <element id="library" level="project" name="richfaces-ui-3.1.0" />
+          <element id="library" level="project" name="richfaces-impl-3.1.0" />
+          <element id="library" level="project" name="richfaces-api-3.1.0" />
+          <element id="library" level="project" name="richfaces-api-3.2.1.ga" />
+        </element>
+      </element>
+    </root>
+  </artifact>
+</component>
