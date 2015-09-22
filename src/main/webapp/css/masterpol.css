@@ -235,4 +235,5 @@
     border-left: 0 !important;
 }
 
-
+.choices input[value="yes"] + label {color:green}
+.choices input[value="no"] + label {color:red}

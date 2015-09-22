@@ -23,18 +23,17 @@
         </h1>
 
 
-
         <a:tabPanel selected="#{catalogBean.tabbedPane}"
                     bean="${catalogBean}"
                     action="tabPaneChange"
                     tab0="#{bundle.catalogs}"
-                   >
+                >
 
 
             <div id="panel0" class="panel">
 
                 <h:form id="catForm">
-                    <p:growl id="catalogView" />
+
 
                     <table id="regCat">
                         <tr>
@@ -45,7 +44,7 @@
                                 <h:outputText value="#{catalogBean.newCatalog.catalogId}" styleClass="infoMessage"/>
                             </td>
                         </tr>
-                        <a:field label="#{bundle.name_catalog}"
+                        <a:field id="f1" label="#{bundle.name_catalog}"
                                  value="#{catalogBean.newName}"
                                  message="#{catalogBean.validator.message}"
                                  size="40"
@@ -69,69 +68,78 @@
                         </h:commandButton>
                     </div>
                     <h:outputText value="#{catalogBean.catalogMessage}" styleClass="infoMessage"/>
-               <!-- </h:form>
-                <h:form id="list">-->
+
                     <h:panelGroup rendered="#{catalogBean.createdNewCatalog
                      or catalogBean.catalogsExists}">
-                                    <h1>
-                                        <h:outputText value="#{bundle.catalogs}"/>
-                                    </h1>
-                        <h:selectOneRadio value="#{catalogBean.newCatalog}" >
+                        <h1>
+                            <h:outputText value="#{bundle.catalogs}"/>
+                        </h1>
+                        <h:selectOneRadio id="s1" value="#{catalogBean.newCatalog}"
+                                          styleClass="choices"
+                                          layout="pageDirection"
+                                          valueChangeListener="#{catalogBean.initFieldsCatalog}"
+                                          converter="#{catalogConverterBean}">
 
-                            <f:selectItems var="cat" value="#{catalogBean.listCatalogs}"
+                            <f:selectItems id="fs1" var="cat"
+                                           value="#{catalogBean.listCatalogs}"
+                                           itemValue="#{cat.catalogId}"
+                                           itemLabel="#{cat.name}">
 
-                            itemValue="#{cat.catalogId}" itemLabel="#{cat.name}" />
-                            <br></br>
-                            <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFieldsCatalog}"/>
+                            </f:selectItems>
+                           <!-- <f:param value="#{cat.catalogId}" name="catalogId"/>
+                            <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFields}"/>-->
+
                         </h:selectOneRadio>
 
-                   <!-- <h:dataTable id="dataTableCat" var="cat" value="#{catalogBean.listCatalogs}"
-                                 columnClasses="cell,cell, cell"
-                                 headerClass="cell label">
+                        <!-- <h:dataTable id="dataTableCat" var="cat" value="#{catalogBean.listCatalogs}"
+                                      columnClasses="cell,cell, cell"
+                                      headerClass="cell label">
 
-                        <h:column style="background-color: #f6d654">
-                            <f:facet name="header">
-                                <h:outputText value="Select"/>
-                            </f:facet>
-                            &lt;!&ndash;onclick="dataTableSelectOneRadio(this);"&ndash;&gt;
-                            <h:selectOneRadio value="#{cat.catalogId}" onchange="#{catalogBean.initFieldsCatalog}">
-                                             >
-                               &lt;!&ndash; <f:selectItem itemValue="null" />&ndash;&gt;
-                                <f:param value="#{cat.catalogId}" name="catalogId"/>
-                                <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFieldsCatalog}"/>
-                            </h:selectOneRadio>
-                            &lt;!&ndash;<p:selectBooleanCheckbox value="#{catalogBean.checked}">
-                                <f:param value="#{cat.catalogId}" name="catalogId"/>
-                                <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFieldsCatalog}"/>
-                          </p:selectBooleanCheckbox>&ndash;&gt;
-                        </h:column>
-                    <h:column style="background-color: #f6d654">
-                        <f:facet name="header">
-                            <h:outputText value="Catalog's name"/>
-                        </f:facet>
+                             <h:column style="background-color: #f6d654">
+                                 <f:facet name="header">
+                                     <h:outputText value="Select"/>
+                                 </f:facet>
+                                 &lt;!&ndash;onclick="dataTableSelectOneRadio(this);"&ndash;&gt;
+                                 <h:selectOneRadio value="#{cat.catalogId}" onchange="#{catalogBean.initFieldsCatalog}">
+                                                  >
+                                    &lt;!&ndash; <f:selectItem itemValue="null" />&ndash;&gt;
+                                   <f:param value="#{cat.catalogId}" name="catalogId"/>
+                                     <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFieldsCatalog}"/>
+                                 </h:selectOneRadio>
+                                 &lt;!&ndash;<p:selectBooleanCheckbox value="#{catalogBean.checked}">
+                                     <f:param value="#{cat.catalogId}" name="catalogId"/>
+                                     <p:ajax update="@(form)" event="click" listener="#{catalogBean.initFieldsCatalog}"/>
+                               </p:selectBooleanCheckbox>&ndash;&gt;
+                             </h:column>
+                         <h:column style="background-color: #f6d654">
+                             <f:facet name="header">
+                                 <h:outputText value="Catalog's name"/>
+                             </f:facet>
 
-                        <h:commandLink id="delCat"
-                                       actionListener="#{catalogBean.deleteChosenCatalog}">
-                            <f:param value="#{cat.catalogId}" name="catalogId"/>
-                            <h:outputText style="background-color: #f6d654" value="#{cat.name}"></h:outputText>
-                            <h:graphicImage id="delCatImg" url="images/deleteNew.gif"
-                                            title="Delete catalog"
-                                            rendered="#{cat.catalogId != null}"/>
-                        </h:commandLink>
-                    </h:column >
+                             <h:commandLink id="delCat"
+                                            actionListener="#{catalogBean.deleteChosenCatalog}">
+                                 <f:param value="#{cat.catalogId}" name="catalogId"/>
+                                 <h:outputText style="background-color: #f6d654" value="#{cat.name}"></h:outputText>
+                                 <h:graphicImage id="delCatImg" url="images/deleteNew.gif"
+                                                 title="Delete catalog"
+                                                 rendered="#{cat.catalogId != null}"/>
+                             </h:commandLink>
+                         </h:column >
 
-                        &lt;!&ndash;   <h:column style="background-color: #f6d654">
-                               <f:facet name="header">
-                                   <h:outputText value="Catalog's creation date"/>
-                               </f:facet>
-                               <h:outputText value="#{cat.creationDate.toString}"></h:outputText>
-                           </h:column>&ndash;&gt;
-                    </h:dataTable>-->
+                              <h:column style="background-color: #f6d654">
+                                    <f:facet name="header">
+                                        <h:outputText value="Catalog's creation date"/>
+                                    </f:facet>
+                                    <h:outputText value="#{cat.creationDate}">
+                                    <f:convertDateTime dateStyle="full" timeZone="EST" type="date" />
+                                    </h:outputText>
+                                </h:column>
+                         </h:dataTable>-->
                     </h:panelGroup>
                 </h:form>
-               </div>
-            </a:tabPanel>
+            </div>
+        </a:tabPanel>
 
-        </ui:define>
-    </ui:composition>
+    </ui:define>
+</ui:composition>
 </html>

@@ -13,6 +13,8 @@ import ua.com.master.validators.CatalogValidator;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
+import javax.faces.event.ValueChangeListener;
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -29,7 +31,7 @@ public class CatalogBean extends   BaseBean implements Serializable {
     private Integer tabbedPane= Constants.CatalogDetails.CATALOG_TAB_NUMBER;
 
     private String newName;
-    private Integer catalogId;
+    private int catalogId;
     private String nameCatalogFile="temp"+File.separator+"catalog.txt";
     private List<Catalog> listCatalogs=new ArrayList<>();
     private CatalogValidator validator=new CatalogValidator(true);
@@ -62,17 +64,41 @@ public class CatalogBean extends   BaseBean implements Serializable {
 
     }
     public void clearFieldsCatalog(){
+        System.out.println("clearFieldsCatalog");
         this.newName="";
-        this.catalogId=null;
+        this.catalogId=0;
         this.newCatalog=null;
         Filer.createFile(MyFiler.getCurrentDirectory() + File.separator +
                 nameCatalogFile);
         listCatalogs=getCatalogDao().list();
     }
-    public void initFieldsCatalog(){
-       // Integer catalogId = FacesHelper.getParameterAsInteger("catalogId");
-        //newCatalog=getCatalogDao().getById(catalogId);
-        clearFieldsCatalog();
+    public void initFieldsCatalog(ValueChangeEvent event){
+        newCatalog=(Catalog)  event.getNewValue();
+
+        System.out.println(newCatalog);
+        this.newName=newCatalog.getName();
+        this.catalogId=newCatalog.getCatalogId();
+        Filer.rewriteFile(new File(nameCatalogFile), "Catalog Number:" + newCatalog.getCatalogId());
+
+    }
+    public void initFields(){
+
+         Integer catalogId = FacesHelper.getParameterAsInteger("catalogId");
+        System.out.println( "catalogId "+catalogId);
+        newCatalog=getCatalogDao().getById(catalogId);
+
+        System.out.println(newCatalog);
+        this.newName=newCatalog.getName();
+        this.catalogId=newCatalog.getCatalogId();
+        Filer.rewriteFile(new File(nameCatalogFile), "Catalog Number:" + newCatalog.getCatalogId());
+
+    }
+    public void initFields(Integer id){
+        System.out.println("CatalogBean.initFields");
+        Integer catalogId = id;
+        System.out.println( "catalogId "+catalogId);
+        newCatalog=getCatalogDao().getById(catalogId);
+
         System.out.println(newCatalog);
         this.newName=newCatalog.getName();
         this.catalogId=newCatalog.getCatalogId();
