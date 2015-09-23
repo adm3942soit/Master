@@ -37,7 +37,6 @@
       <exported-key name="FK4287C21CA34AFFD" table="catalogs_departments" schema="" catalog="master" columns="catalogs_CATALOG_ID"/>
       <exported-key name="FK1F3A27617CAE0E18" table="departments" schema="" catalog="master" columns="CATALOG_ID"/>
       <index name="CATALOG_ID" unique="true" columns="CATALOG_ID"/>
-      <index name="LAST_UPDATE_PERSON" unique="true" columns="LAST_UPDATE_PERSON"/>
       <index name="NAME" unique="true" columns="NAME"/>
       <index name="NAME_2" unique="true" columns="NAME"/>
     </table>
@@ -61,6 +60,10 @@
     </table>
     <table name="departments" schema="" catalog="master" type="TABLE">
       <column name="DEPARTMENT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
+      <column name="CREATION_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CREATION_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LAST_UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="CATALOG_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="DEPARTMENT_ID"/>
