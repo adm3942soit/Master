@@ -103,7 +103,14 @@
         <managed-bean-name>catalogBean</managed-bean-name>
         <managed-bean-class>ua.com.master.beans.CatalogBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
-
+        <managed-property>
+            <property-name>catalogDao</property-name>
+            <value>#{catalogDao}</value>
+        </managed-property>
+        <managed-property>
+            <property-name>departmentDao</property-name>
+            <value>#{departmentDao}</value>
+        </managed-property>
     </managed-bean>
     <managed-bean>
         <managed-bean-name>personIdenticallyValidator</managed-bean-name>

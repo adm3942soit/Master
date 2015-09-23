@@ -78,10 +78,18 @@ THIS TEXT WILL BE REMOVED
 
         <c:if test="${(!empty tab1) and !(tab1rendered eq 'false') and (empty tab10)}">
           <li id="tab11">
+              <c:if   test="${(action!=null )}">
             <h:commandLink actionListener="#{bean[action]}">
                 <f:param value="1" name="tab"/>
                 <h:outputText value="${tab1}" />
             </h:commandLink>
+              </c:if>
+              <c:if   test="${(action==null)}">
+                  <h:commandLink >
+                      <f:param value="1" name="tab"/>
+                      <h:outputText value="${tab1}" />
+                  </h:commandLink>
+              </c:if>
           </li>
         </c:if>
        <c:if test="${(!empty tab1) and !(tab1rendered eq 'false') and (!empty tab10)}">

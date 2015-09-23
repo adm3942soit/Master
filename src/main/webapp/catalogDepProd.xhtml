@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a="http://it84.nl/jsf"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jstl/core">
+<ui:composition template="templates/layoutPage.xhtml">
+
+    <ui:define name="title">Catalog/Departments/Products creation</ui:define>
+    <ui:define name="midcol">
+        <h1>
+            <h:outputText value="#{registerCatalogBean.title}" styleClass="infoMessage"/>
+        </h1>
+
+
+        <a:tabPanel selected="#{registerCatalogBean.tabbedPane}"
+                    bean="${registerCatalogBean}"
+                    action="tabPaneChange"
+                    tab0="#{bundle.catalogs}"
+                    tab1="#{bundle.depart}"
+                    tab2="#{bundle.products}">
+            <div id="panel0" class="panel">
+                <h:form id="catForm">
+                    <table id="regCat">
+                        <tr>
+                            <td class="cell label">
+                                <h:outputText value="#{bundle.person_number}" />
+                            </td>
+                            <td class="cell">
+                                <h:outputText value="#{registerCatalogBean.newCatalog.catalogId}" />
+                            </td>
+                        </tr>
+                        <a:field id="f1" label="#{bundle.name_catalog}"
+                                 value="#{registerCatalogBean.newName}"
+                                 message="#{registerregisterCatalogBean.validator.message}"
+                                 size="40"
+                                 maxlength="100"/>
+                    </table>
+                    <div class="button">
+                        <h:commandButton id="but1" value="#{bundle.button_create}"
+                                         actionListener="#{registerCatalogBean.createNewCatalog}"
+                                         rendered="#{!registerCatalogBean.createdNewCatalog}"
+                                >
+                        </h:commandButton>
+
+                        <h:commandButton id="but2" value="#{bundle.button_update}"
+                                                     actionListener="#{registerCatalogBean.updateCatalog}"
+                                                     rendered="#{registerCatalogBean.createdNewCatalog}"
+                            >
+                    </h:commandButton>
+                        <h:commandButton id= "but3" value="#{bundle.button_new}"
+                                         actionListener="#{registerCatalogBean.clearCatalog}"
+                                         rendered="#{registerCatalogBean.createdNewCatalog}">
+                        </h:commandButton>
+                    </div>
+                    <h:outputText value="#{registerCatalogBean.catalogMessage}" styleClass="infoMessage"/>
+                    <h:panelGroup rendered="#{registerCatalogBean.createdNewCatalog or registerCatalogBean.catalogsExists}">
+                        <h1>
+                            <h:outputText value="#{bundle.catalogs}"/>
+                        </h1>
+
+                        <h:dataTable id="dataTableCat" var="cat" value="#{registerCatalogBean.listCatalogs}"
+                                     columnClasses="cell,cell, cell"
+                                     headerClass="cell label">
+
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.catalog_nmb}"/>
+                                </f:facet>
+                                <h:commandLink id="viewCatLnk" title="View catalog"
+                                               actionListener="#{registerCatalogBean.viewChosenCatalog}">
+                                    <f:param value="#{cat.catalogId}" name="catalogId"/>
+                                    <h:outputText value="#{cat.catalogId}"/>
+
+
+                                </h:commandLink>
+                            </h:column>
+                            <h:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Catalog's name"/>
+                                </f:facet>
+
+                                <h:commandLink id="delCat"
+                                               actionListener="#{registerCatalogBean.deleteChosenCatalog}">
+                                    <f:param value="#{cat.catalogId}" name="catalogId"/>
+                                    <h:outputText style="background-color: red"
+                                                  value="#{cat.name}"></h:outputText>
+                                    <h:graphicImage id="delCatImg" url="images/deleteNew.gif"
+                                                    title="Delete catalog"
+                                                    rendered="#{cat.catalogId != null}"/>
+                                </h:commandLink>
+                            </h:column >
+
+                            <h:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Catalog's creation date"/>
+                                </f:facet>
+                                <h:outputText value="#{cat.creationDate}">
+                                  <f:convertDateTime dateStyle="full" timeZone="EST" type="date" />
+                                </h:outputText>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </h:form>
+            </div>
+            <div id="panel1" class="panel">
+
+                <h:form id="depForm">
+                    <table id="regDep">
+                        <tr>
+                            <td class="cell label">
+                                <h:outputText value="#{bundle.person_number}" />
+                            </td>
+                            <td class="cell">
+                                <h:outputText value="#{registerCatalogBean.newDepartment.departmentId}" />
+                            </td>
+                        </tr>
+                        <a:field id="f1" label="#{bundle.name_dep}"
+                                 value="#{registerCatalogBean.newDepartmentName}"
+                                 message="#{registerCatalogBean.depValidator.message}"
+                                 size="40"
+                                 maxlength="100"/>
+                    </table>
+                    <div class="button">
+                        <h:commandButton id="but4" value="#{bundle.button_create}"
+                                         actionListener="#{registerCatalogBean.createNewDepartment}"
+                                         rendered="#{!registerCatalogBean.createdNewDepartment}"
+                                >
+                        </h:commandButton>
+                        <h:commandButton id= "but5" value="#{bundle.button_new}"
+                                         actionListener="#{registerCatalogBean.clearDepartment}"
+                                         rendered="#{registerCatalogBean.createdNewDepartment}">
+                        </h:commandButton>
+                    </div>
+                    <h:outputText value="#{registerCatalogBean.departmentMessage}" styleClass="infoMessage"/>
+                    <h:panelGroup rendered="#{registerCatalogBean.departmentsExists}">
+                        <h1>
+                            <h:outputText value="#{bundle.depart}"/>
+                        </h1>
+
+                        <h:dataTable id="dataTableDep" var="dep"
+                                     value="#{registerCatalogBean.listDepartments}"
+                                     columnClasses="cell,cell, cell"
+                                     headerClass="cell label">
+
+
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="#{bundle.catalog_nmb}"/>
+                                </f:facet>
+                                <h:commandLink id="viewDepLnk" title="View department"
+                                               actionListener="#{registerCatalogBean.viewChosenDepartment}">
+                                    <f:param value="#{dep.departmentId}" name="departmentId"/>
+                                    <h:outputText value="#{dep.departmentId}"/>
+
+
+                                </h:commandLink>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Department's name"/>
+                                </f:facet>
+
+                                <h:commandLink id="delDep"
+                                               actionListener="#{registerCatalogBean.deleteChosenDepartment}">
+                                    <f:param value="#{dep.departmentId}" name="departmentId"/>
+                                    <h:outputText style="background-color: #f6d654"
+                                                  value="#{dep.name}"></h:outputText>
+                                    <h:graphicImage id="delDepImg"
+                                                    url="images/deleteNew.gif"
+                                                    title="Delete department"
+                                                    rendered="#{dep.departmentId != null}"/>
+                                </h:commandLink>
+                            </h:column >
+
+                            <h:column >
+                                <f:facet name="header">
+                                    <h:outputText value="Department's creation date"/>
+                                </f:facet>
+                                <h:outputText value="#{dep.creationDate}">
+                                    <f:convertDateTime dateStyle="full"  timeZone="EST" type="date" />
+                                </h:outputText>
+                            </h:column>
+                        </h:dataTable>
+                    </h:panelGroup>
+                </h:form>
+            </div>
+            <div id="panel2" class="panel">
+                <h:form id="Prod">
+3
+                </h:form>
+            </div>
+        </a:tabPanel>
+    </ui:define>
+</ui:composition>
+
+</html>
