@@ -18,6 +18,7 @@ import ua.com.master.model.update.UpdateManager;
 import ua.com.master.utils.HibernateUtil;
 
 import java.sql.SQLException;
+import java.util.Date;
 
 public class InitServlet extends HttpServlet
 {
@@ -38,12 +39,17 @@ public class InitServlet extends HttpServlet
         {
             person = new Person("admin", "admin", null, "M", "", "admin@yahoo.com", "1234567890", "admin", "admin");
             person.setSocialSecurityNumber("1");
+            person.setCreationPerson("admin");
+            person.setLastUpdatePerson("admin");
+            person.setLastUpdateDate(new Date());
+            person.setCreationDate(new Date());
             saveOrUpdate(person);
         }
     }
     private Person saveOrUpdate(Person person)
     {
         PersonDaoImpl personDAO=new PersonDaoImpl();
+
         personDAO.save(person);
         return person;
     }

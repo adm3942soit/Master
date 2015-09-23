@@ -26,7 +26,7 @@ public class CatalogConverter  implements Converter {
         public Object getAsObject(FacesContext context, UIComponent component, String value) {
             //return em.find(Catalog.class, );
             System.out.println("value = " + value);
-            new CatalogBean().initFields(new Integer(value));
+           //// new CatalogBean().initFields(new Integer(value));
             return new CatalogDaoImpl().getById(new Integer(value));
         }
 

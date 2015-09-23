@@ -211,6 +211,7 @@ public class Address implements java.io.Serializable
     public Date getEndDate() {
         return endDate;
     }
+
     @Column(name = "CREATION_DATE", unique = false, nullable = false)
     private Date creationDate;
     @Column(name = "CREATION_PERSON", unique = false, nullable = false)
@@ -252,6 +253,5 @@ public class Address implements java.io.Serializable
     public void setLastUpdatePerson(String lastUpdatePerson) {
         this.lastUpdatePerson = lastUpdatePerson;
     }
-
 
 }

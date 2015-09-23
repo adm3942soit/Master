@@ -27,7 +27,7 @@ public class HibernateUtil
 
 
             sessionFactory = new AnnotationConfiguration().configure()
-            	.setInterceptor(new ua.com.master.utils.HibernateAuditInterceptor())
+            	//.setInterceptor(new ua.com.master.utils.HibernateAuditInterceptor())
                 .buildSessionFactory();
             
         }

@@ -15,7 +15,7 @@ public class Department  implements Serializable{
     @Id
     @Column(name = "DEPARTMENT_ID",unique = true, nullable = false)
     @GeneratedValue
-    private Integer departmentId;
+    public Integer departmentId;
 
     public Integer getDepartmentId() {
         return departmentId;
@@ -35,7 +35,7 @@ public class Department  implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
 
     private Set <Product> products = new HashSet<Product>(0);
 
@@ -46,7 +46,7 @@ public class Department  implements Serializable{
     public void setProducts(Set<Product> products) {
         this.products = products;
     }
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "CATALOG_ID", nullable = false)
     Catalog catalog;
 

@@ -44,8 +44,10 @@ public class DepartmentDaoImpl extends CommonDAO implements DepartmentDao {
     }
     @Override
     public List<Department> listByCatalog(Catalog catalog){
+        System.out.println("DepartmentDaoImpl.listByCatalog");
         List<Department> departmentList=new ArrayList<Department>();
-        for(Department department:list()){
+        List<Department> allList=list();
+        for(Department department:allList){
             if(department.getCatalog()!=null &&
                     department.getCatalog().equals(catalog)){
                 departmentList.add(department);

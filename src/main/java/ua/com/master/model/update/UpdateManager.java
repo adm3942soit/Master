@@ -130,7 +130,11 @@ public class UpdateManager {
     private void createDbVersionParameter(String version)
     {
         SysParameter parameter = new SysParameter(DBVERSION, DBVERSION_DESC, version);
-       sysParameterDao.save(parameter);
+        parameter.setCreationDate(new Date());
+        parameter.setLastUpdateDate(new Date());
+        parameter.setCreationPerson("admin");
+        parameter.setLastUpdatePerson("admin");
+        sysParameterDao.save(parameter);
     }
 
     private void createDbVersionParameter()

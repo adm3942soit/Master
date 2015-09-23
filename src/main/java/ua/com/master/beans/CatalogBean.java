@@ -18,7 +18,7 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
-import javax.faces.event.ValueChangeListener;
+
 import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -31,9 +31,10 @@ import java.util.List;
 @ManagedBean(name = "catalogBean")
 @RequestScoped
 public class CatalogBean extends   BaseBean implements Serializable {
-    Catalog newCatalog;
-
     private Integer tabbedPane;//= Constants.CatalogDetails.CATALOG_TAB_NUMBER;
+    Catalog newCatalog;
+    String title;
+
 
     private String newName;
     private Integer catalogId;
@@ -49,43 +50,11 @@ public class CatalogBean extends   BaseBean implements Serializable {
     private Integer departmentId;
     private String nameDepartmentFile="temp"+File.separator+"department.txt";
     private List<Department> listDepartments=new ArrayList<>();
-    public Integer getCatalogId() {
-        return catalogId;
-    }
-
-    public void setCatalogId(Integer catalogId) {
-        this.catalogId = catalogId;
-    }
-
-    public Department getNewDepartment() {
-        return newDepartment;
-    }
-
-    public void setNewDepartment(Department newDepartment) {
-        this.newDepartment = newDepartment;
-    }
-
-    public String getNewDepartmentName() {
-        return newDepartmentName;
-    }
-
-    public void setNewDepartmentName(String newDepartmentName) {
-        this.newDepartmentName = newDepartmentName;
-    }
-
-    public String getDepartmentMessage() {
-        return departmentMessage;
-    }
-
-    public void setDepartmentMessage(String departmentMessage) {
-        this.departmentMessage = departmentMessage;
-    }
 
     public CatalogBean()
     {
         super();
-        if(getFactoryDao().incomerPerson==null)
-            getFactoryDao().incomerPerson=personDao.getByUsername("admin");
+
         super.setSourcePage("catalog");
     }
     private boolean validateNewCatalog(String name) {
@@ -98,19 +67,37 @@ public class CatalogBean extends   BaseBean implements Serializable {
         depValidator = new DepartmentValidator(name, valid);
         return depValidator.check();
     }
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+
+
     public void tabPaneChange(ActionEvent event)
     {
-        System.out.println("tabPaneChanged!!!!!!!!!!!!!!" + FacesHelper.getParameterAsInteger("tab"));
-        int page=FacesHelper.getParameterAsInteger("tab");
-        setTabbedPane(page);
+        System.out.println("tabPaneChanged!!!!!!!!!!!!!!");
+        int page= FacesHelper.getParameterAsInteger("tab");
+        setTabbedPane(FacesHelper.getParameterAsInteger("tab"));
         switch (page){
            case 0:
+               title=FacesHelper.getBundleMessage("register_catalog");
+
                clearFieldsCatalog();
                setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
                break;
-            case 1:newCatalog=getCatalogFromFile();
+            case 1:
+                title=FacesHelper.getBundleMessage("register_dep");
+
+                newCatalog=getCatalogFromFile();
                 clearFieldsDepartment();
                 setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+                break;
+            case 2:
+                title=FacesHelper.getBundleMessage("register_prod");
                 break;
             default:break;
         }
@@ -127,7 +114,7 @@ public class CatalogBean extends   BaseBean implements Serializable {
         listCatalogs=getCatalogDao().list();
     }
     public void clearFieldsDepartment(){
-        setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+       setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
         System.out.println("CatalogBean.clearFieldDepartment");
         this.newDepartmentName=null;
         this.departmentId=null;
@@ -135,10 +122,10 @@ public class CatalogBean extends   BaseBean implements Serializable {
         Filer.createFile(MyFiler.getCurrentDirectory() + File.separator +
                 nameDepartmentFile);
         refreshListDeparments();
-        setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+        //setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
     }
     public void initFieldsCatalog(ValueChangeEvent event){
-        setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
+       // setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
         System.out.println("CatalogBean.initFieldsCatalog");
         newCatalog=(Catalog)  event.getNewValue();
 
@@ -194,7 +181,7 @@ public class CatalogBean extends   BaseBean implements Serializable {
         listCatalogs=getCatalogDao().list();
     }
     public void deleteChosenDepartment(ActionEvent actionEvent){
-        setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+       setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
         //initFieldsCatalog();
         System.out.println("CatalogBean.deleteChosenDepartment");
         departmentId= FacesHelper.getParameterAsInteger("departmentId");
@@ -205,7 +192,7 @@ public class CatalogBean extends   BaseBean implements Serializable {
         getDepartmentDao().delete(newDepartment);
         clearFieldsDepartment();
        refreshListDeparments();
-        setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+       // setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
     }
     public void createNewCatalog(ActionEvent actionEvent){
         setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
@@ -224,10 +211,14 @@ public class CatalogBean extends   BaseBean implements Serializable {
       catalogDao.save(this.newCatalog);
       Filer.rewriteFile(new File(nameCatalogFile), "Catalog Number:" + newCatalog.getCatalogId());
         listCatalogs=getCatalogDao().list();
-        setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
+      //  setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
   }
     public void  createNewDepartment(ActionEvent actionEvent){
         setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+        if(newCatalog==null){
+            departmentMessage = FacesHelper.getBundleMessage("choose_cat");
+            return;
+        }
         this.newDepartment=new Department();
         this.newDepartment.setName(this.getNewDepartmentName());
         if(!validateNewDepartment(this.newDepartmentName)){
@@ -243,7 +234,7 @@ public class CatalogBean extends   BaseBean implements Serializable {
         getDepartmentDao().save(this.newDepartment);
         Filer.rewriteFile(new File(nameDepartmentFile), "Department Number:" + newDepartment.getDepartmentId());
         refreshListDeparments();
-        setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+       // setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
     }
     public boolean isCreatedNewDepartment(){
         if(newDepartment!=null &&
@@ -251,7 +242,10 @@ public class CatalogBean extends   BaseBean implements Serializable {
         else return false;
     }
     private void refreshListDeparments(){
-        listDepartments=getDepartmentDao().listByCatalog(newCatalog);
+        System.out.println("CatalogBean.refreshListDeparments"+newCatalog);
+        if(newCatalog!=null)
+          listDepartments=getDepartmentDao().listByCatalog(newCatalog);
+        else listDepartments=new ArrayList<>();
        // setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
     }
     private Catalog getCatalogFromFile(){
@@ -292,7 +286,6 @@ public class CatalogBean extends   BaseBean implements Serializable {
         }else return null;
         return newDepartment;
     }
-
     public Person getIncomerPerson() {
         return getFactoryDao().incomerPerson;
     }
@@ -316,9 +309,8 @@ public class CatalogBean extends   BaseBean implements Serializable {
     public void setNameCatalogFile(String nameCatalogFile) {
         this.nameCatalogFile = nameCatalogFile;
     }
-
     public void updateCatalog(ActionEvent actionEvent){
-        setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
+       // setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
         System.out.println("CatalogBean.updateCatalog" + (actionEvent.getSource()).toString());
          getCatalogFromFile();
         this.setNewName((actionEvent.getSource()).toString());
@@ -333,7 +325,7 @@ public class CatalogBean extends   BaseBean implements Serializable {
         catalogDao.save(this.newCatalog);
         //Filer.rewriteFile(new File(nameCatalogFile), "Catalog Number:" + newCatalog.getCatalogId());
         listCatalogs=getCatalogDao().list();
-        setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
+       // setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
 
     }
     public void clearCatalog(ActionEvent actionEvent){
@@ -350,7 +342,7 @@ public class CatalogBean extends   BaseBean implements Serializable {
 
        clearFieldsDepartment();
 
-        setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+       // setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
 
     }
     public void viewChosenCatalog(ActionEvent actionEvent){
@@ -359,16 +351,16 @@ public class CatalogBean extends   BaseBean implements Serializable {
         this.setNewCatalog(getCatalogDao().getById(catalogId));
         Filer.rewriteFile(new File(nameCatalogFile), "Catalog Number:" + newCatalog.getCatalogId());
         this.setNewName(newCatalog.getName());
-        setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
+       // setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
 
     }
     public void viewChosenDepartment(ActionEvent actionEvent){
-        setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+       setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
         departmentId = FacesHelper.getParameterAsInteger("departmentId");
         this.setNewDepartment(getDepartmentDao().getById(departmentId));
         this.setNewDepartmentName(newDepartment.getName());
         Filer.rewriteFile(new File(nameDepartmentFile), "Department Number:" + newDepartment.getDepartmentId());
-        setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+       // setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
     }
     public void clearCatalog(){
         System.out.println("CatalogBean.clearCatalog1");
@@ -379,7 +371,7 @@ public class CatalogBean extends   BaseBean implements Serializable {
     }
     public String passToCatalogs(){
         setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
-        clearFieldsCatalog();
+       //// clearFieldsCatalog();
         return Constants.Navigation.CATALOG;
     }
     public boolean isCreatedNewCatalog(){
@@ -392,11 +384,11 @@ public class CatalogBean extends   BaseBean implements Serializable {
         return true;
     }
     public boolean isDepartmentsExists(){
-       refreshListDeparments();
+        if(newCatalog!=null)
+               refreshListDeparments();
         if(listDepartments.isEmpty())return false;
         return true;
     }
-
     public Integer getDepartmentId() {
         return departmentId;
     }
@@ -452,5 +444,44 @@ public class CatalogBean extends   BaseBean implements Serializable {
 
     public void setCatalogMessage(String catalogMessage) {
         this.catalogMessage = catalogMessage;
+    }
+    public DepartmentValidator getDepValidator() {
+        return depValidator;
+    }
+
+    public void setDepValidator(DepartmentValidator depValidator) {
+        this.depValidator = depValidator;
+    }
+
+    public void setCatalogId(Integer catalogId) {
+        this.catalogId = catalogId;
+    }
+
+    public Department getNewDepartment() {
+        return newDepartment;
+    }
+
+    public void setNewDepartment(Department newDepartment) {
+        this.newDepartment = newDepartment;
+    }
+
+    public String getNewDepartmentName() {
+        return newDepartmentName;
+    }
+
+    public void setNewDepartmentName(String newDepartmentName) {
+        this.newDepartmentName = newDepartmentName;
+    }
+
+    public String getDepartmentMessage() {
+        return departmentMessage;
+    }
+
+    public void setDepartmentMessage(String departmentMessage) {
+        this.departmentMessage = departmentMessage;
+    }
+
+    public Integer getCatalogId() {
+        return catalogId;
     }
 }

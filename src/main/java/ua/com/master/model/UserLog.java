@@ -17,7 +17,7 @@ public class UserLog  implements Serializable
     @Column(name = "USERLOG_ID", unique = true, nullable = false)
     @GeneratedValue(strategy = IDENTITY)
     private Long userLogId;
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "NUMBER", nullable = false)
     private Person person;
     @Column(name = "LOGIN_TIME", unique = false, nullable = false)

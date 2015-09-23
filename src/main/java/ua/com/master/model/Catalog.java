@@ -37,7 +37,7 @@ public class Catalog  implements Serializable{
     }
 
 
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     private Set<Department> departments = new HashSet<Department>(0);
 
     public Set<Department> getDepartments() {

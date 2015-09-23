@@ -98,6 +98,11 @@ public class BaseBean {
         return factoryDao.getCourseUSDDao();
     }
 
+    public BaseBean() {
+        if(getFactoryDao().incomerPerson==null)
+            getFactoryDao().incomerPerson=personDao.getByUsername("admin");
+    }
+
     public String getNameSourceBean() {
 
         return nameSourceBean;

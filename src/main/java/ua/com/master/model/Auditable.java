@@ -12,13 +12,13 @@ import java.util.Date;
 public class Auditable implements Serializable
 {
 	@Column(name = "CREATION_DATE", unique = false, nullable = false)
-    private Date creationDate;
+    public Date creationDate;
 	@Column(name = "CREATION_PERSON", unique = false, nullable = false)
-    private String creationPerson;
+    public String creationPerson;
 	@Column(name = "LAST_UPDATE_DATE", unique = false, nullable = false)
-    private Date lastUpdateDate;
-	@Column(name = "LAST_UPDATE_PERSON", unique = true, nullable = false)
-    private String lastUpdatePerson;
+    public Date lastUpdateDate;
+	@Column(name = "LAST_UPDATE_PERSON", unique = false, nullable = false)
+    public String lastUpdatePerson;
 
 
 	public Date getCreationDate() {
@@ -37,19 +37,19 @@ public class Auditable implements Serializable
 		return lastUpdatePerson; 
 	}
 
-	private void setCreationDate(Date creationDate) {
+	public void setCreationDate(Date creationDate) {
 		this.creationDate = creationDate;
 	}
 
-	private void setCreationPerson(String creationPerson) {
+	public void setCreationPerson(String creationPerson) {
 		this.creationPerson = creationPerson;
 	}
 
-	private void setLastUpdateDate(Date lastUpdateDate) {
+	public void setLastUpdateDate(Date lastUpdateDate) {
 		this.lastUpdateDate = lastUpdateDate;
 	}
 
-	private void setLastUpdatePerson(String lastUpdatePerson) {
+	public void setLastUpdatePerson(String lastUpdatePerson) {
 		this.lastUpdatePerson = lastUpdatePerson;
 	}
 
