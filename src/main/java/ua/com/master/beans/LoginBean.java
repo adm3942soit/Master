@@ -118,6 +118,10 @@ private String nameLoginFile="temp"+File.separator+"login.txt";
         userMessage = FacesHelper.getBundleMessage("loggin_welcomeuser", new Object[]{getFactoryDao().incomerPerson.getUserName()});
         
         UserLog l = new UserLog(getFactoryDao().incomerPerson);
+        l.setCreationDate(new Date());
+        l.setLastUpdateDate(new Date());
+        l.setCreationPerson(getFactoryDao().getIncomerPerson().getLastName());
+        l.setLastUpdatePerson(getFactoryDao().getIncomerPerson().getLastName());
      /*   HibernateAuditInterceptor.setUser(incomerPerson.getUserName())*/;
         userLogDao.save(l);
         UserLogValue v = new UserLogValue(l.getUserLogId());
