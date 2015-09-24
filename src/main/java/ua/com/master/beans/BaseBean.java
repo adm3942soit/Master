@@ -50,6 +50,7 @@ public class BaseBean {
     DepartmentDao departmentDao=new DepartmentDaoImpl();
 
     public DepartmentDao getDepartmentDao() {
+        departmentDao=new DepartmentDaoImpl();
         return departmentDao;
     }
 

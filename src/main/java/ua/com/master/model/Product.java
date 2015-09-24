@@ -38,14 +38,14 @@ public class Product  implements Serializable {
     public String nameImage;
 
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "DEPARTMENT_ID", nullable = false)
     Department department;
     public Department getDepartment() {
         return this.department;
     }
 
-    @ManyToOne(fetch = FetchType.LAZY)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "COURSEUSD_ID", nullable = false)
     CourseUSD courseUSD;
 

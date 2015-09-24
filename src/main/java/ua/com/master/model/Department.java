@@ -35,7 +35,7 @@ public class Department  implements Serializable{
     public void setName(String name) {
         this.name = name;
     }
-    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @OneToMany(fetch = FetchType.EAGER)
 
     private Set <Product> products = new HashSet<Product>(0);
 
@@ -46,7 +46,7 @@ public class Department  implements Serializable{
     public void setProducts(Set<Product> products) {
         this.products = products;
     }
-    @ManyToOne(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "CATALOG_ID", nullable = false)
     Catalog catalog;
 

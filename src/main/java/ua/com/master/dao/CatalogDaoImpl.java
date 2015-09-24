@@ -1,8 +1,10 @@
 package ua.com.master.dao;
 
+import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import ua.com.master.dao.interfases.CatalogDao;
 import ua.com.master.model.Catalog;
+import ua.com.master.model.Person;
 
 import java.util.Date;
 import java.util.List;
@@ -28,8 +30,14 @@ public class CatalogDaoImpl extends CommonDAO implements CatalogDao {
     }
     @Override
     public List<Catalog> list(){
-        return (List<Catalog>)getSessionFactory().getCurrentSession().createCriteria(Catalog.class)
-                .list();
+        Query query = sessionFactory.getCurrentSession().createQuery
+                ("select c  from ua.com.master.model.Catalog  as c");
+        List<Catalog> catalogList=query.list();
+         /*(List<Catalog>)
+                (getSessionFactory().getCurrentSession()
+                .createCriteria(Catalog.class)
+                .list());*/
+        return catalogList;
     }
     @Override
     public  boolean isSuchName(String name){

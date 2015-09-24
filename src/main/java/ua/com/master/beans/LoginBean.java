@@ -127,7 +127,7 @@ private String nameLoginFile="temp"+File.separator+"login.txt";
         UserLogValue v = new UserLogValue(l.getUserLogId());
         FacesHelper.setSessionAttribute("userLogId", v);
 
-        return new CatalogBean().passToCatalogs();
+        return new RegisterCatalogBean().passToCatalogs();
     }
 
 

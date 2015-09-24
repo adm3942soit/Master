@@ -1,6 +1,6 @@
 package ua.com.master.converters;
 
-import ua.com.master.beans.CatalogBean;
+import ua.com.master.beans.RegisterCatalogBean;
 import ua.com.master.dao.CatalogDaoImpl;
 import ua.com.master.model.Catalog;
 
@@ -26,7 +26,7 @@ public class CatalogConverter  implements Converter {
         public Object getAsObject(FacesContext context, UIComponent component, String value) {
             //return em.find(Catalog.class, );
             System.out.println("value = " + value);
-           //// new CatalogBean().initFields(new Integer(value));
+            new RegisterCatalogBean().initFields(new Integer(value));
             return new CatalogDaoImpl().getById(new Integer(value));
         }
 

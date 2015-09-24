@@ -21,7 +21,7 @@ public class CourseUSD  implements Serializable {
     public Double  buyingRate;
     @Column(name = "SELLING_RATE", unique = false, nullable = false)
     public Double sellingRate;
-    @OneToMany(fetch = FetchType.LAZY)
+    @OneToMany(fetch = FetchType.EAGER)
     @JoinColumn(name = "PRODUCT_ID")
     Set<Product> products;
 
