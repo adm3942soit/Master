@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<ui:composition template="templates/layoutPage.xhtml">
+    <h1>
+        <h:outputText value="#{registerCatalogBean.title}" styleClass="infoMessage"/>
+    </h1>
+<ui:define name="title">Currency rate creation</ui:define>
+<ui:define name="midcol">
+<f:view>
+    <h:outputLabel value="Hello, world"/>
+</f:view>
+</ui:define>
+</ui:composition>
+</html>

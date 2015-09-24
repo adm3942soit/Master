@@ -160,6 +160,7 @@ public class BaseBean {
     }
 
     public ProductDao getProductDao() {
+        productDao=new ProductDaoImpl();
         return productDao;
     }
 

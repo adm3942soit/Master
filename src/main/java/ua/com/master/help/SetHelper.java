@@ -4,6 +4,7 @@ package ua.com.master.help;
 
 import ua.com.master.model.Department;
 import ua.com.master.model.PersonStatus;
+import ua.com.master.model.Product;
 
 import java.util.HashSet;
 import java.util.Set;
@@ -29,6 +30,13 @@ public class SetHelper
         if(set.contains(obj))return true;
         return false;
     }
+    public static boolean isSetContainsObj(Set<Product> set, Product obj, Class cl)
+    {
+        if(set==null || set.isEmpty() || obj==null
+                || !obj.getClass().equals(cl)) return false;
+        if(set.contains(obj))return true;
+        return false;
+    }
     public static void addToSetObject(Set<PersonStatus> sourceSet, PersonStatus obj, Class cl)
     {
      if(obj==null || !obj.getClass().equals(cl)) return ;
@@ -38,6 +46,15 @@ public class SetHelper
        sourceSet.add(obj);
      }
     }
+    public static void addToSetObject(Set<Product> sourceSet, Product obj, Class cl)
+    {
+        if(obj==null || !obj.getClass().equals(cl)) return ;
+        if(sourceSet==null)sourceSet=new HashSet();
+        if(!isSetContainsObj(sourceSet, obj, cl))
+        {
+            sourceSet.add(obj);
+        }
+    }
     public static void removeFromSetObject(Set<PersonStatus> sourceSet, PersonStatus obj,  Class cl)
     {
      if(sourceSet==null || sourceSet.isEmpty() || obj==null || !obj.getClass().equals(cl)) return ;
@@ -45,6 +62,14 @@ public class SetHelper
      {
        sourceSet.remove(obj);
      }
+    }
+    public static void removeFromSetObject(Set<Product> sourceSet, Product obj,  Class cl)
+    {
+        if(sourceSet==null || sourceSet.isEmpty() || obj==null || !obj.getClass().equals(cl)) return ;
+        if(isSetContainsObj(sourceSet, obj, cl))
+        {
+            sourceSet.remove(obj);
+        }
     }
     public static void addToSetObject(Set<Department> sourceSet, Department obj, Class cl)
     {

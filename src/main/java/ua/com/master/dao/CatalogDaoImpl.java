@@ -4,10 +4,12 @@ import org.hibernate.Query;
 import org.hibernate.criterion.Restrictions;
 import ua.com.master.dao.interfases.CatalogDao;
 import ua.com.master.model.Catalog;
+import ua.com.master.model.Department;
 import ua.com.master.model.Person;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Set;
 
 /**
  * Created by Oxana on 20.09.2015.
@@ -20,7 +22,14 @@ public class CatalogDaoImpl extends CommonDAO implements CatalogDao {
     }
     @Override
     public void delete(Catalog catalog){
+        Set<Department> list=catalog.getDepartments();
+        for (Department dep: list){
+            getFactoryDao().getDepartmentDao().delete(dep);
+        }
+        catalog=getById(catalog.getCatalogId());
+
         getSessionFactory().getCurrentSession().delete(catalog);
+        getSessionFactory().getCurrentSession().flush();
     }
     @Override
     public Catalog getById(Integer id){

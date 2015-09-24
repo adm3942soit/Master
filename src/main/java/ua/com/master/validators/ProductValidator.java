@@ -5,6 +5,7 @@ package ua.com.master.validators;
 
 import ua.com.master.dao.DepartmentDaoImpl;
 import ua.com.master.help.FacesHelper;
+import ua.com.master.model.Product;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -29,7 +30,11 @@ public class ProductValidator extends FieldValidator
         this.value = value;
         this.valid = valid;
     }
-
+    public ProductValidator(Product product, boolean valid)
+    {
+        this.value = product.name;
+        this.valid = valid;
+    }
     public boolean check()
     {
 

@@ -1,5 +1,6 @@
 package ua.com.master.dao.interfases;
 
+import ua.com.master.model.Department;
 import ua.com.master.model.Product;
 
 import java.util.List;
@@ -9,6 +10,7 @@ import java.util.List;
  */
 public interface ProductDao {
     List<Product> findAll();
+    List<Product> findProductsByDepartment(Department department);
     Product findByName(String name);
     Product findById(Long id);
     boolean createProduct(String name, String description, Double priseUSD,

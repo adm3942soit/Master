@@ -27,6 +27,20 @@
             background-size: 100%;
         }
     </style>
+    <script type="text/javascript" src="http://currencyconverter.55uk.net/currency_converter_json.js"></script>
+    <script type="text/javascript">
+        function getMyRate(jData) {
+            if (jData == null) {
+                alert("There was a problem parsing search results.");
+                return;
+            }
+            var myval = jData.ResultSet;
+            var mydiv = jData.xxMyDiv;
+            document.getElementById(mydiv).innerHTML =  myval;
+        }
+
+    </script>
+
 </h:head>
 
 <h:body onkeypress="trapEnter(event);" >

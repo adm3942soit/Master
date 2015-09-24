@@ -14,6 +14,8 @@ import java.util.Date;
 //Repository
 //Transactional
 public class CourseUSDDaoImpl extends CommonDAO implements CourseUSDDao {
+    public CourseUSDDaoImpl() {
+    }
 
     @Override
     public boolean createCourseUSD(Double buyingRate, Double sellingRate) {
@@ -51,7 +53,8 @@ public class CourseUSDDaoImpl extends CommonDAO implements CourseUSDDao {
     public CourseUSD findCourseUSDByDate(Date createdDate) {
 
         return (CourseUSD) sessionFactory.getCurrentSession().createCriteria(CourseUSD.class)
-                .add(Restrictions.like("createdDate", createdDate)).uniqueResult();
+                .add(Restrictions.le
+                        ("creationDate", createdDate)).uniqueResult();
     }
 
    }

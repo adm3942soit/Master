@@ -2,6 +2,8 @@ package ua.com.master.dao;
 
 import org.hibernate.criterion.Restrictions;
 import ua.com.master.dao.interfases.ProductDao;
+import ua.com.master.help.SetHelper;
+import ua.com.master.model.Department;
 import ua.com.master.model.Product;
 
 import java.util.ArrayList;
@@ -26,7 +28,17 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
 //                createCriteria(Product.class).list();
         return (list == null ? new ArrayList<Product>() : list);
     }
-
+    @Override
+    public List<Product> findProductsByDepartment(Department department){
+        List<Product> listProducts=new ArrayList<Product>();
+        List<Product> list =findAll();
+        for(Product product:list){
+            if(product.getDepartment()!=null && product.getDepartment().equals(department)){
+                listProducts.add(product);
+            }
+        }
+        return listProducts;
+    }
     @Override
     public Product findByName(String name) {
 
@@ -51,6 +63,10 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
             ex.printStackTrace();
             return false;
         }
+        /*Department department=getFactoryDao().getDepartmentDao().getById(product.getDepartment().departmentId);
+        SetHelper.addToSetObject(department.getProducts(),product,Department.class);
+        getFactoryDao().getDepartmentDao().save(department);*/
+
         return true;
 
     }
@@ -74,10 +90,17 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
     public boolean addProduct(Product product) {
         try {
             sessionFactory.getCurrentSession().save(product);
+            sessionFactory.getCurrentSession().flush();
+
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
         }
+
+        Department department=getFactoryDao().getDepartmentDao().getById(product.getDepartment().departmentId);
+        SetHelper.addToSetObject(department.getProducts(),product,Department.class);
+        getFactoryDao().getDepartmentDao().save(department);
+
         return true;
     }
 
@@ -90,6 +113,9 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
             ex.printStackTrace();
             return false;
         }
+        Department department=getFactoryDao().getDepartmentDao().getById(product.getDepartment().departmentId);
+        SetHelper.removeFromSetObject(department.getProducts(), product, Department.class);
+        getFactoryDao().getDepartmentDao().save(department);
 
         return true;
     }
@@ -103,6 +129,9 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
             ex.printStackTrace();
             return false;
         }
+        Department department=getFactoryDao().getDepartmentDao().getById(product.getDepartment().departmentId);
+        SetHelper.removeFromSetObject(department.getProducts(),product,Department.class);
+        getFactoryDao().getDepartmentDao().save(department);
 
         return true;
     }

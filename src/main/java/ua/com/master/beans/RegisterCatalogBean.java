@@ -5,15 +5,20 @@ import com.utils.file.Filer;
 import myFiler.MyFiler;
 import org.apache.log4j.Logger;
 
+import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.UploadedFile;
 import ua.com.master.help.*;
 import ua.com.master.helpers.Constants;
 import ua.com.master.model.*;
 import ua.com.master.validators.*;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
+import javax.faces.event.ValueChangeEvent;
 
 import java.io.File;
 import java.io.Serializable;
@@ -52,11 +57,34 @@ public class RegisterCatalogBean extends BaseBean  implements Serializable
     Product newProduct;
     private ProductValidator prodValidator=new ProductValidator(true);
     private String newProductName;
+    private String newProductDescription;
     private String productMessage;
-    private Integer productId;
-    private String nameProductFile="temp"+File.separator+"product.txt";
-    private List<Department> listProducts=new ArrayList<>();
+    private Long productId;
+    private Double productCount;
+    private Double priceUsd;
+    private Double priceUah;
 
+    private Integer forCount;
+    private String shortName;
+    private String nameImage;
+
+
+    private String nameProductFile="temp"+File.separator+"product.txt";
+    private List<Product> listProducts=new ArrayList<>();
+
+ public static RegisterCatalogBean registerCatalogBean=new RegisterCatalogBean();
+
+    public List<Product> getListProducts() {
+        return listProducts;
+    }
+
+    public static RegisterCatalogBean getRegisterCatalogBean() {
+        return registerCatalogBean;
+    }
+
+    public static void setRegisterCatalogBean(RegisterCatalogBean registerCatalogBean) {
+        RegisterCatalogBean.registerCatalogBean = registerCatalogBean;
+    }
 
     public RegisterCatalogBean()
     {
@@ -75,6 +103,24 @@ public void setTabbedPane(Integer tabbedPane)
         {
         this.tabbedPane = tabbedPane;
         }
+    public void clearFieldsProduct(){
+        // setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
+        System.out.println("clearFieldsCatalog");
+        this.newProductName=null;
+        this.productId=null;
+        this.priceUah=0.0;
+        this.priceUsd=0.0;
+        this.productCount=0.0;
+        this.forCount=0;
+        this.shortName="";
+        this.newProductDescription="";
+        this.nameImage="";
+        this.newProduct=null;
+        Filer.createFile(MyFiler.getCurrentDirectory() + File.separator +
+                nameProductFile);
+        catalogMessage="";
+
+    }
     public void clearFieldsCatalog(){
        // setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
         System.out.println("clearFieldsCatalog");
@@ -87,9 +133,37 @@ public void setTabbedPane(Integer tabbedPane)
 
     }
     public void refreshListCatalogs(){
+        System.out.println("RegisterCatalogBean.refreshListCatalogs");
         listCatalogs.clear();
         listCatalogs=getCatalogDao().list();
-        System.out.println("listCatalogs = " + listCatalogs);
+
+    }
+    private Department getDepartmentFromFile(){
+        System.out.println("RegisterCatalogBean.getDepartmentFromFile");
+        String text=Filer.readFile(new File(MyFiler.getCurrentDirectory()+File.separator
+                +nameDepartmentFile), true, false);
+        Integer number=0;
+        if(text!=null && !text.isEmpty()){
+            String[]ss=text.split(":");
+            for(String s:ss) {
+                try {
+                    System.out.println("!!!!"+s);
+                    number = Integer.parseInt(s.trim());
+                    break;
+                } catch (Exception ex){
+                    continue;
+                }
+            }
+            newDepartment=getDepartmentDao().getById(number);
+        }else return null;
+        return newDepartment;
+    }
+    public void refreshListProducts(){
+        System.out.println("RegisterCatalogBean.refreshListProducts");
+        listProducts.clear();
+        newDepartment=getDepartmentFromFile();
+        listProducts=getProductDao().findProductsByDepartment(newDepartment);
+
     }
     private Catalog getCatalogFromFile(){
         String text=Filer.readFile(new File(MyFiler.getCurrentDirectory()+File.separator
@@ -110,9 +184,30 @@ public void setTabbedPane(Integer tabbedPane)
         }else return null;
         return newCatalog;
     }
+
+    private Product getProductFromFile(){
+        System.out.println("MyFiler.getCurrentDirectory() = " + MyFiler.getCurrentDirectory());
+        String text=Filer.readFile(new File(MyFiler.getCurrentDirectory()+File.separator
+                +nameProductFile), true, false);
+        Long number=0L;
+        if(text!=null && !text.isEmpty()){
+            String[]ss=text.split(":");
+            for(String s:ss) {
+                try {
+                    System.out.println("!!!!"+s);
+                    number = Long.parseLong(s.trim());
+                    break;
+                } catch (Exception ex){
+                    continue;
+                }
+            }
+            newProduct=getProductDao().findById(number);
+        }else return null;
+        return newProduct;
+    }
     public void tabPaneChange(ActionEvent event)
     {
-        System.out.println("RegisterCatalogBean.tabPaneChange"+event.getSource().toString());
+        System.out.println("RegisterCatalogBean.tabPaneChange" + event.getSource().toString());
         int page= FacesHelper.getParameterAsInteger("tab");
         System.out.println("RegisterCatalogBean.tabPaneChange"+page);
         setTabbedPane(FacesHelper.getParameterAsInteger("tab"));
@@ -133,6 +228,10 @@ public void setTabbedPane(Integer tabbedPane)
                 break;
             case 2:
                 title=FacesHelper.getBundleMessage("register_prod");
+                newDepartment=getDepartmentFromFile();
+                clearFieldsProduct();
+                refreshListProducts();
+                setTabbedPane(Constants.CatalogDetails.PRODUCT_TAB_NUMBER);
                 break;
             default:break;
         }
@@ -158,17 +257,27 @@ public void setTabbedPane(Integer tabbedPane)
                 break;
             case 2:
                 title=FacesHelper.getBundleMessage("register_prod");
+                newDepartment=getDepartmentFromFile();
+                if(clearFields)clearFieldsProduct();
+                refreshListProducts();
+                setTabbedPane(Constants.CatalogDetails.PRODUCT_TAB_NUMBER);
                 break;
             default:break;
         }
     }
 
 public void clearCatalog(ActionEvent actionEvent){
-   // clearFieldsCatalog();
+
     System.out.println("RegisterCatalogBean.clearCatalog");
     tabPaneChange(0, true);
-  //  setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
+
 }
+    public void clearProduct(ActionEvent actionEvent){
+
+        System.out.println("RegisterCatalogBean.clearProduct");
+        tabPaneChange(2, true);
+
+    }
 
     public Catalog getNewCatalog() {
         return newCatalog;
@@ -213,6 +322,66 @@ public void clearCatalog(ActionEvent actionEvent){
     public List<Catalog> getListCatalogs() {
         refreshListCatalogs();
         return listCatalogs;
+    }
+
+    public String getNewProductDescription() {
+        return newProductDescription;
+    }
+
+    public void setNewProductDescription(String newProductDescription) {
+        this.newProductDescription = newProductDescription;
+    }
+
+    public Double getProductCount() {
+        return productCount;
+    }
+
+    public void setProductCount(Double productCount) {
+        this.productCount = productCount;
+    }
+
+    public Double getPriceUsd() {
+        return priceUsd;
+    }
+
+    public void setPriceUsd(Double priceUsd) {
+        this.priceUsd = priceUsd;
+    }
+
+    public Double getPriceUah() {
+        return priceUah;
+    }
+
+    public void setPriceUah(Double priceUah) {
+        this.priceUah = priceUah;
+    }
+
+    public Integer getForCount() {
+        return forCount;
+    }
+
+    public void setForCount(Integer forCount) {
+        this.forCount = forCount;
+    }
+
+    public String getShortName() {
+        return shortName;
+    }
+
+    public void setShortName(String shortName) {
+        this.shortName = shortName;
+    }
+
+    public String getNameImage() {
+        return nameImage;
+    }
+
+    public void setNameImage(String nameImage) {
+        this.nameImage = nameImage;
+    }
+
+    public void setListProducts(List<Product> listProducts) {
+        this.listProducts = listProducts;
     }
 
     public void setListCatalogs(List<Catalog> listCatalogs) {
@@ -316,14 +485,34 @@ public void clearCatalog(ActionEvent actionEvent){
         tabPaneChange(1, false);
        // setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
     }
+    public void initFieldsProduct(Product product){
+        this.setNewProductName(product.getName());
+        this.setNewProductDescription(product.getDescription());
+        this.setForCount(product.forCount);
+        this.setPriceUah(product.getPriceUAH());
+        this.setPriceUsd(product.getPriceUSD());
+        this.setProductCount(product.getAllCount());
+        this.setShortName(product.getShortName());
+        this.setNameImage(product.getNameImage());
+        this.setNewProduct(product);
+    }
+    public void viewChosenProduct(ActionEvent actionEvent){
+        System.out.println("RegisterCatalogBean.viewChosenProduct");
+        productId = FacesHelper.getParameterAsLong("productId");
+        this.setNewProduct(getProductDao().findById(productId));
+        initFieldsProduct(newProduct);
+        Filer.rewriteFile(new File(nameProductFile), "Product Number:" + newProduct.getProductId());
+        tabPaneChange(2, false);
+
+    }
     public void clearFieldsDepartment(){
         System.out.println("RegisterCatalogBean.clearFieldsDepartment");
 
         this.newDepartmentName="";
         this.departmentId=null;
-        /*this.newDepartment=null;
+        this.newDepartment=null;
         Filer.createFile(MyFiler.getCurrentDirectory() + File.separator +
-                nameDepartmentFile);*/
+                nameDepartmentFile);
         departmentMessage="";
        // tabPaneChange(1, false);
        // setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
@@ -345,10 +534,23 @@ public void clearCatalog(ActionEvent actionEvent){
        // setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
 
     }
+    public void deleteChosenProduct(ActionEvent actionEvent){
+        System.out.println("RegisterCatalogBean.deleteChosenProduct");
+        productId= FacesHelper.getParameterAsLong("productId");
+        getProductDao().deleteProductById(productId);
+        tabPaneChange(2, true);
+
+    }
     private boolean validateNewDepartment(String name) {
         System.out.println("RegisterCatalogBean.validateNewDepartment");
         boolean valid = true;
         depValidator = new DepartmentValidator(name, valid);
+        return depValidator.check();
+    }
+    private boolean validateNewProduct(Product product) {
+        System.out.println("RegisterCatalogBean.validateNewProduct");
+        boolean valid = true;
+        prodValidator = new ProductValidator(product, valid);
         return depValidator.check();
     }
     public void  createNewDepartment(ActionEvent actionEvent){
@@ -368,20 +570,50 @@ public void clearCatalog(ActionEvent actionEvent){
         newDepartment.setCreationPerson(getFactoryDao().incomerPerson.getLastName());
         newDepartment.setLastUpdateDate(new Date());
         newDepartment.setLastUpdatePerson(getFactoryDao().incomerPerson.getLastName());
-        //newCatalog=getCatalogFromFile();
+
         this.newDepartment.setCatalog(newCatalog);
         getDepartmentDao().save(this.newDepartment);
         Filer.rewriteFile(new File(nameDepartmentFile), "Department Number:" + newDepartment.getDepartmentId());
-        //refreshListDeparments();
-        //setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+
         tabPaneChange(1,false);
+    }
+    public void  createNewProduct(ActionEvent actionEvent){
+        System.out.println("RegisterCatalogBean.createNewProduct");
+        newDepartment=getDepartmentFromFile();
+        if(newDepartment==null){
+            productMessage = FacesHelper.getBundleMessage("choose_dep");
+            return;
+        }
+        this.newProduct=new Product();
+        this.newProduct.setName(this.getNewProductName());
+        if(!validateNewProduct(this.newProduct)){
+            productMessage = FacesHelper.getBundleMessage("validator_name");
+            return;
+        }
+        newProduct.setCreationDate(new Date());
+        newProduct.setCreationPerson(getFactoryDao().incomerPerson.getLastName());
+        newProduct.setLastUpdateDate(new Date());
+        newProduct.setLastUpdatePerson(getFactoryDao().incomerPerson.getLastName());
+        newProduct.setNameImage(this.getNameImage());
+        newProduct.setShortName(this.getShortName());
+        newProduct.setAllCount(this.getProductCount());
+        newProduct.setDescription(this.newProductDescription);
+        newProduct.setPriceUSD(this.getPriceUsd());
+        newProduct.setForCount(this.forCount);
+
+        this.newProduct.setDepartment(newDepartment);
+        getProductDao().addProduct(this.newProduct);
+        Filer.rewriteFile(new File(nameProductFile), "Product Number:" + newProduct.getProductId());
+
+        tabPaneChange(2,false);
     }
     public void clearDepartment(ActionEvent actionEvent){
         System.out.println("RegisterCatalogBean.clearDepartment");
         //tabPaneChange(1, true);
         clearFieldsDepartment();
 
-       // setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
+
+        setTabbedPane(Constants.CatalogDetails.DEPARTMENT_TAB_NUMBER);
     }
     private boolean validateNewCatalog(String name) {
         System.out.println("RegisterCatalogBean.validateNewCatalog");
@@ -420,6 +652,11 @@ public void clearCatalog(ActionEvent actionEvent){
         if(newCatalog!=null && newCatalog.getCatalogId()!=null) return true;
         else return false;
     }
+    public boolean isCreatedNewProduct(){
+        System.out.println("RegisterCatalogBean.isCreatedNewProduct");
+        if(newProduct!=null && newProduct.getProductId()!=0L) return true;
+        else return false;
+    }
     public void updateCatalog(ActionEvent actionEvent){
 
         System.out.println("RegisterCatalogBean.updateCatalog" + (actionEvent.getSource()).toString());
@@ -430,6 +667,7 @@ public void clearCatalog(ActionEvent actionEvent){
             catalogMessage = FacesHelper.getBundleMessage("validator_name");
             return;
         }
+        newCatalog=getCatalogFromFile();
         newCatalog.setName(this.newName);
         newCatalog.setLastUpdateDate(new Date());
         newCatalog.setLastUpdatePerson(getFactoryDao().incomerPerson.getLastName());
@@ -438,13 +676,67 @@ public void clearCatalog(ActionEvent actionEvent){
        // Filer.rewriteFile(new File(nameCatalogFile), "Catalog Number:" + newCatalog.getCatalogId());
         //refreshListCatalogs();
        // setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
-        tabPaneChange(0,false);
+        tabPaneChange(0, false);
+
+    }
+    public void updateDepartment(ActionEvent actionEvent){
+
+        System.out.println("RegisterCatalogBean.updateDepartment" + (actionEvent.getSource()).toString());
+
+
+
+        if(!validateNewCatalog(this.newDepartmentName)){
+            departmentMessage = FacesHelper.getBundleMessage("validator_name");
+            return;
+        }
+        newDepartment=getDepartmentFromFile();
+        newDepartment.setName(this.newDepartmentName);
+        newDepartment.setLastUpdateDate(new Date());
+        newDepartment.setLastUpdatePerson(getFactoryDao().incomerPerson.getLastName());
+
+        getDepartmentDao().save(this.newDepartment);
+
+        tabPaneChange(1, false);
+
+    }
+
+    public void updateProduct(ActionEvent actionEvent){
+
+        System.out.println("RegisterCatalogBean.updateCatalog" + (actionEvent.getSource()).toString());
+
+        newDepartment=getDepartmentFromFile();
+        if(newDepartment==null){
+            productMessage = FacesHelper.getBundleMessage("choose_dep");
+            return;
+        }
+        newProduct=getProductFromFile();
+
+        newProduct.setCreationDate(new Date());
+        newProduct.setCreationPerson(getFactoryDao().incomerPerson.getLastName());
+        newProduct.setLastUpdateDate(new Date());
+        newProduct.setLastUpdatePerson(getFactoryDao().incomerPerson.getLastName());
+        newProduct.setNameImage(this.getNameImage());
+        newProduct.setShortName(this.getShortName());
+        newProduct.setAllCount(this.getProductCount());
+        newProduct.setDescription(this.newProductDescription);
+        newProduct.setPriceUSD(this.getPriceUsd());
+        newProduct.setForCount(this.forCount);
+
+        this.newProduct.setDepartment(newDepartment);
+        getProductDao().addProduct(this.newProduct);
+        tabPaneChange(2,false);
 
     }
     public boolean isCatalogsExists(){
         System.out.println("RegisterCatalogBean.isCatalogsExists");
         refreshListCatalogs();
         if(listCatalogs.isEmpty())return false;
+        return true;
+    }
+    public boolean isProductsExists(){
+        System.out.println("RegisterCatalogBean.isProductsExists");
+        refreshListProducts();
+        if(listProducts.isEmpty())return false;
         return true;
     }
     public void viewChosenCatalog(ActionEvent actionEvent){
@@ -456,6 +748,7 @@ public void clearCatalog(ActionEvent actionEvent){
        // setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
         tabPaneChange(0,false);
           }
+
     public void deleteChosenCatalog(ActionEvent actionEvent){
 
 
@@ -476,9 +769,7 @@ public void clearCatalog(ActionEvent actionEvent){
     public String passToCatalogs(){
         System.out.println("RegisterCatalogBean.passToCatalogs");
         tabPaneChange(0, true);
-        /*clearFieldsCatalog();
-        refreshListCatalogs();
-        setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);*/
+
         return Constants.Navigation.CATALOG;
     }
     public void initFields(Integer id){
@@ -525,11 +816,11 @@ public void clearCatalog(ActionEvent actionEvent){
         this.productMessage = productMessage;
     }
 
-    public Integer getProductId() {
+    public Long getProductId() {
         return productId;
     }
 
-    public void setProductId(Integer productId) {
+    public void setProductId(Long productId) {
         this.productId = productId;
     }
 
@@ -540,15 +831,52 @@ public void clearCatalog(ActionEvent actionEvent){
     public void setNameProductFile(String nameProductFile) {
         this.nameProductFile = nameProductFile;
     }
+    public void convert() {
+        Double course=getFactoryDao().getCourseUSDDao().findCourseUSDByDate(new Date()).getSellingRate();
+        priceUah=this.getPriceUsd()*course;
 
-    public List<Department> getListProducts() {
-        return listProducts;
+        return ;
+    }
+    public void convert(ValueChangeEvent event) {
+        System.out.println("RegisterCatalogBean.convert");
+      CourseUSD courseUSD =getFactoryDao().
+                getCourseUSDDao().
+                findCourseUSDByDate(new Date());
+        if(courseUSD==null){
+            productMessage=FacesHelper.getBundleMessage("course_not_exist");
+            tabPaneChange(2,false);
+            return;
+        }
+                Double course = courseUSD.getSellingRate();
+        priceUah=this.getPriceUsd()*course;
+        tabPaneChange(2,false);
+        return ;
+    }
+    private UploadedFile file;
+
+    public UploadedFile getFile() {
+        return file;
     }
 
-    public void setListProducts(List<Department> listProducts) {
-        this.listProducts = listProducts;
+    public void setFile(UploadedFile file) {
+        this.file = file;
     }
-}
+    public void fileUploadListener(FileUploadEvent e){
+        System.out.println("RegisterCatalogBean.fileUploadListener");
+        // Get uploaded file from the FileUploadEvent
+        this.file = e.getFile();
+        // Print out the information of the file
+        System.out.println("Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize());
+    }
+    public void upload() {
+        System.out.println("RegisterCatalogBean.upload");
+        System.out.println("file = " + file);
+        if(file != null) {
+            FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
+            FacesContext.getCurrentInstance().addMessage(null, message);
+        }
+    }
+    }
 
 
 
