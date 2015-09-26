@@ -269,7 +269,7 @@
                                 <h:outputText
                                 value="#{registerCatalogBean.priceUah}">
                                      <f:convertNumber currencyCode="840" groupingUsed="true"
-                                                    maxFractionDigits="2" type="number" />
+                                                    maxFractionDigits="2" type="currency" />
 
                                 </h:outputText>
                                 <!--<script type="text/javascript">getExchangeRates('#{registerCatalogBean.priceUsd}','USD','UAH','true')</script>-->
@@ -300,26 +300,32 @@
                                              actionListener="#{registerCatalogBean.upload}"
                                              update="view,viewH,messages"
                                              disabled="false" >
-                                <f:ajax execute="@all" render="@form"/>
+                                <f:ajax execute="@all" render="@form"  />
                             </p:commandButton>
                             </td>
                             <td class="cell">
                                 <img id= "view" src="#{registerCatalogBean.path}"  ></img>
                                 <h:graphicImage id="viewH" name="view picture" url="#{registerCatalogBean.path}" rendered="#{registerCatalogBean.file!=null}"></h:graphicImage>
                             </td>
+                            <td class="cell">
+                                <h:outputText id="name" value="#{registerCatalogBean.nameImage}"></h:outputText>
+
+                            </td>
 
                             </tr>
-<!--<tr>
+                        <tr>
+                        <td class="cell label">
+                            <h:outputText value="Count:"></h:outputText>
+                        </td>
+                            <td class="cell">
+<h:inputText value="#{registerCatalogBean.productCount}">
+    <f:convertNumber  groupingUsed="true"
+                     maxFractionDigits="2" type="number" />
 
-    <td class="cell" >
-        <h:inputFile id="file" value="#{registerCatalogBean.file}"
-                     validator="#{registerCatalogBean.validateFile}">
-            <f:ajax listener="#{registerCatalogBean.save}" />
-        </h:inputFile>
-        <h:commandButton value="Upload"
-                         action="#{registerCatalogBean.uploadF}"/>
-    </td>
-</tr>-->
+</h:inputText>
+                            </td>
+                        </tr>
+
                     </table>
                     <div class="button">
                         <h:commandButton id="but41" value="#{bundle.button_create}"

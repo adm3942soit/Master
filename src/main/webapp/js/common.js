@@ -336,3 +336,8 @@ function dataTableSelectOneRadio(radio) {
 
     radio.checked = true;
 }
+/*
+function updatePicture()
+{
+    document.getElementById("viewH").update();
+}*/

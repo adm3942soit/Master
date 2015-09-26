@@ -967,16 +967,19 @@ public void clearCatalog(ActionEvent actionEvent){
 
     public void upload() {
         System.out.println("RegisterCatalogBean.upload");
-        System.out.println("file = " + file.getFileName());
+
         if(file != null) {
 
-
+            System.out.println("file = " + file.getFileName());
             try {
          /*image = new DefaultStreamedContent(file.getInputstream(),
                         "image/"+ getExtension(file.getFileName()));*/
                 /*image=new DefaultStreamedContent(new ByteArrayInputStream(file.getContents()),
                         "image/"+ getExtension(file.getFileName()));*/
                 save();
+                this.nameImage=path;
+              /*  getProductDao().addProduct(newProduct);*/
+
             }catch(Exception ex){ex.printStackTrace();}
             System.out.println("Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize());
             productMessage="Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize();
