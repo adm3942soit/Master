@@ -484,8 +484,10 @@ public void clearCatalog(ActionEvent actionEvent){
     }
     public boolean isDepartmentsExists(){
         System.out.println("RegisterCatalogBean.isDepartmentsExists");
-        if(newCatalog!=null)
-            refreshListDeparments();
+       /* if(newCatalog!=null)
+            refreshListDeparments();*/
+        newCatalog=getCatalogFromFile();
+        tabPaneChange(2,false);
         if(listDepartments.isEmpty())return false;
         return true;
     }
