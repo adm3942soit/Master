@@ -14,13 +14,13 @@
         <h1>
             <h:outputText value="#{registerCatalogBean.title}" styleClass="infoMessage"/>
         </h1>
-<h:form id="rate">
-        <h:commandLink
-                onclick="window.open('course.xhtml');return false;"
-                target="newWin">
-            <h:outputText value="Input currency rate..." styleClass="infoMessage"></h:outputText>
-        </h:commandLink>
-</h:form>
+        <h:form id="rate">
+            <h:commandLink
+                    onclick="window.open('course.xhtml');return false;"
+                    target="newWin">
+                <h:outputText value="Input currency rate..." styleClass="infoMessage"></h:outputText>
+            </h:commandLink>
+        </h:form>
         <a:tabPanel selected="#{registerCatalogBean.tabbedPane}"
                     bean="${registerCatalogBean}"
                     action="tabPaneChange"
@@ -32,15 +32,15 @@
                     <table id="regCat">
                         <tr>
                             <td class="cell label">
-                                <h:outputText value="#{bundle.person_number}" />
+                                <h:outputText value="#{bundle.person_number}"/>
                             </td>
                             <td class="cell">
-                                <h:outputText value="#{registerCatalogBean.newCatalog.catalogId}" />
+                                <h:outputText value="#{registerCatalogBean.newCatalog.catalogId}"/>
                             </td>
                         </tr>
                         <a:field id="f1" label="#{bundle.name_catalog}"
                                  value="#{registerCatalogBean.newName}"
-                                 message="#{registerregisterCatalogBean.validator.message}"
+                                 message="#{registerCatalogBean.validator.message}"
                                  size="40"
                                  maxlength="100"/>
                     </table>
@@ -52,17 +52,18 @@
                         </h:commandButton>
 
                         <h:commandButton id="but2" value="#{bundle.button_update}"
-                                                     actionListener="#{registerCatalogBean.updateCatalog}"
-                                                     rendered="#{registerCatalogBean.createdNewCatalog}"
-                            >
-                    </h:commandButton>
-                        <h:commandButton id= "but3" value="#{bundle.button_new}"
+                                         actionListener="#{registerCatalogBean.updateCatalog}"
+                                         rendered="#{registerCatalogBean.createdNewCatalog}"
+                                >
+                        </h:commandButton>
+                        <h:commandButton id="but3" value="#{bundle.button_new}"
                                          actionListener="#{registerCatalogBean.clearCatalog}"
                                          rendered="#{registerCatalogBean.createdNewCatalog}">
                         </h:commandButton>
                     </div>
                     <h:outputText value="#{registerCatalogBean.catalogMessage}" styleClass="infoMessage"/>
-                    <h:panelGroup rendered="#{registerCatalogBean.createdNewCatalog or registerCatalogBean.catalogsExists}">
+                    <h:panelGroup
+                            rendered="#{registerCatalogBean.createdNewCatalog or registerCatalogBean.catalogsExists}">
                         <h1>
                             <h:outputText value="#{bundle.catalogs}"/>
                         </h1>
@@ -89,7 +90,7 @@
 
                                 </h:commandLink>
                             </h:column>
-                            <h:column >
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Catalog's name"/>
                                 </f:facet>
@@ -101,14 +102,14 @@
                                                   value="#{cat.name}"></h:outputText>
 
                                 </h:commandLink>
-                            </h:column >
+                            </h:column>
 
-                            <h:column >
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Catalog's creation date"/>
                                 </f:facet>
                                 <h:outputText value="#{cat.creationDate}">
-                                  <f:convertDateTime dateStyle="full" timeZone="EEST" type="date" />
+                                    <f:convertDateTime dateStyle="full" timeZone="EEST" type="date"/>
                                 </h:outputText>
                             </h:column>
                         </h:dataTable>
@@ -121,10 +122,10 @@
                     <table id="regDep">
                         <tr>
                             <td class="cell label">
-                                <h:outputText value="#{bundle.person_number}" />
+                                <h:outputText value="#{bundle.person_number}"/>
                             </td>
                             <td class="cell">
-                                <h:outputText value="#{registerCatalogBean.newDepartment.departmentId}" />
+                                <h:outputText value="#{registerCatalogBean.newDepartment.departmentId}"/>
                             </td>
                         </tr>
                         <a:field id="f1" label="#{bundle.name_dep}"
@@ -139,11 +140,11 @@
                                          rendered="#{!registerCatalogBean.createdNewDepartment}"
                                 >
                         </h:commandButton>
-                        <h:commandButton id= "but51" value="#{bundle.button_update}"
+                        <h:commandButton id="but51" value="#{bundle.button_update}"
                                          actionListener="#{registerCatalogBean.updateDepartment}"
                                          rendered="#{registerCatalogBean.createdNewDepartment}">
                         </h:commandButton>
-                        <h:commandButton id= "but5" value="#{bundle.button_new}"
+                        <h:commandButton id="but5" value="#{bundle.button_new}"
                                          actionListener="#{registerCatalogBean.clearDepartment}"
                                          rendered="#{registerCatalogBean.createdNewDepartment}">
                         </h:commandButton>
@@ -169,7 +170,7 @@
                                 <h:commandLink id="delDep"
                                                actionListener="#{registerCatalogBean.deleteChosenDepartment}">
 
-                                <f:param value="#{dep.departmentId}" name="departmentId"/>
+                                    <f:param value="#{dep.departmentId}" name="departmentId"/>
                                     <h:graphicImage id="delDepImg"
                                                     url="images/deleteNew.gif"
                                                     title="Delete department"
@@ -191,14 +192,14 @@
                                                   value="#{dep.name}"></h:outputText>
 
                                 </h:commandLink>
-                            </h:column >
+                            </h:column>
 
-                            <h:column >
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Department's creation date"/>
                                 </f:facet>
                                 <h:outputText value="#{dep.creationDate}">
-                                    <f:convertDateTime dateStyle="full"  timeZone="EEST" type="date" />
+                                    <f:convertDateTime dateStyle="full" timeZone="EEST" type="date"/>
                                 </h:outputText>
                             </h:column>
                         </h:dataTable>
@@ -211,10 +212,10 @@
                     <table id="regProd">
                         <tr>
                             <td class="cell label">
-                                <h:outputText value="#{bundle.person_number}" />
+                                <h:outputText value="#{bundle.person_number}"/>
                             </td>
                             <td class="cell">
-                                <h:outputText value="#{registerCatalogBean.newProduct.productId}" />
+                                <h:outputText value="#{registerCatalogBean.newProduct.productId}"/>
                             </td>
                         </tr>
                         <a:field id="f1" label="#{bundle.name_prod}"
@@ -224,53 +225,54 @@
                                  maxlength="100"/>
                         <tr>
                             <td class="cell label">
-                                <h:outputText value="#{bundle.descr}" />
+                                <h:outputText value="#{bundle.descr}"/>
                             </td>
                             <td class="cell">
-                                <h:inputText id="descr" value="#{registerCatalogBean.newProductDescription}" maxlength="60">
+                                <h:inputText id="descr" value="#{registerCatalogBean.newProductDescription}"
+                                             maxlength="60">
                                     <!--<f:validateRequired binding="descr"></f:validateRequired>-->
                                 </h:inputText>
                             </td>
                         </tr>
                         <tr>
                             <td class="cell label">
-                                <h:outputText value="#{bundle.priceUsd}" />
+                                <h:outputText value="#{bundle.priceUsd}"/>
                             </td>
                             <td class="cell">
                                 <h:inputText id="pr" value="#{registerCatalogBean.priceUsd}"
                                              converter="usdToUahConverter"
-                             valueChangeListener="#{registerCatalogBean.convert}"
+                                             valueChangeListener="#{registerCatalogBean.convert}"
                                              styleClass="mandatory">
-                                <f:convertNumber currencySymbol="$" groupingUsed="true"
-                                                 maxFractionDigits="2" type="currency" />
-                                   <!-- <f:validateRequired binding="pr"></f:validateRequired>-->
+                                    <f:convertNumber currencySymbol="$" groupingUsed="true"
+                                                     maxFractionDigits="2" type="currency"/>
+                                    <!-- <f:validateRequired binding="pr"></f:validateRequired>-->
                                 </h:inputText>
                             </td>
                             <td class="cell">
-                                <h:outputText value="for" />
+                                <h:outputText value="for"/>
                             </td>
                             <td class="cell">
-                                <h:inputText id="forC" value="#{registerCatalogBean.forCount}" >
+                                <h:inputText id="forC" value="#{registerCatalogBean.forCount}">
                                     <f:convertNumber groupingUsed="false"
-                                                     maxFractionDigits="0" type="number" />
+                                                     maxFractionDigits="0" type="number"/>
                                 </h:inputText>
                                 <!--<f:validateRequired binding="forC"></f:validateRequired>-->
                             </td>
                             <td class="cell">
-                                <h:inputText id="sh" value="#{registerCatalogBean.shortName}" maxlength="5" />
-                               <!-- <f:validateRequired binding="sh"></f:validateRequired>-->
+                                <h:inputText id="sh" value="#{registerCatalogBean.shortName}" maxlength="5"/>
+                                <!-- <f:validateRequired binding="sh"></f:validateRequired>-->
                             </td>
                         </tr>
-                            <tr>
-                                <td class="cell label">
-                                    <h:outputText value="#{bundle.priceUah}"></h:outputText>
-                                </td>
+                        <tr>
+                            <td class="cell label">
+                                <h:outputText value="#{bundle.priceUah}"></h:outputText>
+                            </td>
                             <td class="cell">
                                 <h:outputText id="prUah"
-                                value="#{registerCatalogBean.priceUah}"
-                               >
-                                     <f:convertNumber currencyCode="840" groupingUsed="true"
-                                                    maxFractionDigits="2" type="number" />
+                                              value="#{registerCatalogBean.priceUah}"
+                                        >
+                                    <f:convertNumber currencyCode="840" groupingUsed="true"
+                                                     maxFractionDigits="2" type="number"/>
 
                                 </h:outputText>
                                 <!--<script type="text/javascript">getExchangeRates('#{registerCatalogBean.priceUsd}','USD','UAH','true')</script>-->
@@ -284,28 +286,28 @@
 
                             </td>
                             <td class="cell">
-                            <p:growl id="messages" showDetail="true" />
+                                <p:growl id="messages" showDetail="true"/>
 
-                            <p:fileUpload value="#{registerCatalogBean.file}"
-                                          mode="simple" auto="true"
-                                          validator="#{registerCatalogBean.validateFile}"
-                                          update="messages, viewH"
-                                          multiple="false"
-                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                                          required="true"
-                                          fileUploadListener="#{registerCatalogBean.fileUploadListener}"/>
+                                <p:fileUpload value="#{registerCatalogBean.file}"
+                                              mode="simple" auto="true"
+                                              validator="#{registerCatalogBean.validateFile}"
+                                              update="messages, viewH"
+                                              multiple="false"
+                                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                              required="true"
+                                              fileUploadListener="#{registerCatalogBean.fileUploadListener}"/>
 
                             </td>
                             <td class="cell">
-                            <p:commandButton value="Submit" ajax="false"
-                                             actionListener="#{registerCatalogBean.upload}"
-                                             update="viewH,messages, name"
-                                             disabled="false" >
-                                <!--<f:ajax update ="name" execute="@all" render="@form"  />-->
-                            </p:commandButton>
+                                <p:commandButton value="Submit" ajax="false"
+                                                 actionListener="#{registerCatalogBean.upload}"
+                                                 update="viewH,messages, name"
+                                                 disabled="false">
+                                    <!--<f:ajax update ="name" execute="@all" render="@form"  />-->
+                                </p:commandButton>
                             </td>
                             <td class="cell">
-                               <!-- <img id= "view" src="#{registerCatalogBean.file.fileName}"  ></img>-->
+                                <!-- <img id= "view" src="#{registerCatalogBean.file.fileName}"  ></img>-->
                                 <h:graphicImage id="viewH"
                                                 url="#{registerCatalogBean.file.fileName}"
                                                 rendered="#{registerCatalogBean.file!=null}">
@@ -314,22 +316,23 @@
                             </td>
                             <td class="cell label">
                                 <h:outputText id="name"
-                                              value="#{registerCatalogBean.file.fileName}" rendered="#{registerCatalogBean.file!=null and registerCatalogBean.file.fileName!=null}"></h:outputText>
+                                              value="#{registerCatalogBean.file.fileName}"
+                                              rendered="#{registerCatalogBean.file!=null and registerCatalogBean.file.fileName!=null}"></h:outputText>
 
                             </td>
 
-                            </tr>
+                        </tr>
                         <tr>
-                        <td class="cell label">
-                            <h:outputText value="Count:"></h:outputText>
-                        </td>
+                            <td class="cell label">
+                                <h:outputText value="Count:"></h:outputText>
+                            </td>
                             <td class="cell">
-<h:inputText id="prC" value="#{registerCatalogBean.productCount}"
-             converter="usdToUahConverter">
-    <f:convertNumber  groupingUsed="true"
-                     maxFractionDigits="2" type="number" />
+                                <h:inputText id="prC" value="#{registerCatalogBean.productCount}"
+                                             converter="usdToUahConverter">
+                                    <f:convertNumber groupingUsed="true"
+                                                     maxFractionDigits="2" type="number"/>
 
-</h:inputText>
+                                </h:inputText>
                             </td>
                         </tr>
 
@@ -340,17 +343,19 @@
                                          rendered="#{!registerCatalogBean.createdNewProduct}"
                                 >
                         </h:commandButton>
-                        <h:commandButton id= "but511" value="#{bundle.button_update}"
+                        <h:commandButton id="but511" value="#{bundle.button_update}"
                                          actionListener="#{registerCatalogBean.updateProduct}"
                                          rendered="#{registerCatalogBean.createdNewProduct}">
                         </h:commandButton>
-                        <h:commandButton id= "but52" value="#{bundle.button_new}"
+                        <h:commandButton id="but52" value="#{bundle.button_new}"
                                          actionListener="#{registerCatalogBean.clearProduct}"
                                          rendered="#{registerCatalogBean.createdNewProduct}">
                         </h:commandButton>
                     </div>
-                    <h:outputText value="#{registerCatalogBean.productMessage}" styleClass="infoMessage"/>
-                    <h:panelGroup rendered="#{registerCatalogBean.productsExists}">
+                    <h:outputText value="#{registerCatalogBean.productMessage}"
+                                  styleClass="infoMessage"/>
+                    <h:panelGroup rendered="#{registerCatalogBean.createdNewProduct or
+                              registerCatalogBean.productsExists}">
                         <h1>
                             <h:outputText value="#{bundle.name_dep}"/>&#160;
                             <h:outputText value="#{department}"/>&#160;
@@ -393,14 +398,14 @@
                                                   value="#{prod.name}"></h:outputText>
 
                                 </h:commandLink>
-                            </h:column >
+                            </h:column>
 
-                            <h:column >
+                            <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Product's creation date"/>
                                 </f:facet>
                                 <h:outputText value="#{prod.creationDate}">
-                                    <f:convertDateTime dateStyle="full"  timeZone="EEST" type="date" />
+                                    <f:convertDateTime dateStyle="full" timeZone="EEST" type="date"/>
                                 </h:outputText>
                             </h:column>
                         </h:dataTable>

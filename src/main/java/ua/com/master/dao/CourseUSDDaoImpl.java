@@ -7,6 +7,7 @@ import ua.com.master.dao.interfases.CourseUSDDao;
 import ua.com.master.model.CourseUSD;
 
 import java.util.Date;
+import java.util.List;
 
 /**
  * Created by Oxana on 29.08.2015.
@@ -56,5 +57,26 @@ public class CourseUSDDaoImpl extends CommonDAO implements CourseUSDDao {
                 .add(Restrictions.le
                         ("creationDate", createdDate)).uniqueResult();
     }
+    @Override
+    public List<CourseUSD> findAll(){
+        return (List<CourseUSD>) sessionFactory.getCurrentSession().
+                createCriteria(CourseUSD.class).list();
 
+    }
+    @Override
+    public CourseUSD findById(Long id){
+        return (CourseUSD) sessionFactory.getCurrentSession().createCriteria(CourseUSD.class)
+                .add(Restrictions.eq
+                        ("courseUSDId", id)).uniqueResult();
+    }
+    @Override
+    public void delete(CourseUSD courseUSD){
+        sessionFactory.getCurrentSession().delete(courseUSD);
+        sessionFactory.getCurrentSession().flush();
+    }
+    @Override
+    public void save(CourseUSD courseUSD){
+        sessionFactory.getCurrentSession().save(courseUSD);
+        sessionFactory.getCurrentSession().flush();
+    }
    }

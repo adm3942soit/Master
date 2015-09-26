@@ -15,13 +15,138 @@
     <a:tabPanel selected="#{courseUSDBean.tabbedPane}"
                 bean="${courseUSDBean}"
                 action="tabPaneChange"
-                tab0="#{bundle.catalogs}"
+                tab0="#{bundle.crs}"
                 >
+        <div id="panel0" class="panel">
+        <h:form id="Course"  >
 
+        <table id="regCourse">
+            <tr>
+                <td class="cell label">
+                    <h:outputText value="#{bundle.person_number}"/>
+                </td>
+                <td class="cell">
+                    <h:outputText value="#{courseUSDBean.courseUSD.courseUSDId}"/>
+                </td>
+            </tr>
+            <tr>
+                <td class="cell label">
+                    <h:outputText value="#{bundle.buy_rate}"/>
+                </td>
+                <td class="cell">
+                    <h:inputText value="#{courseUSDBean.buyingRate}"
+                                 converter="usdToUahConverter"
+                            >
+                        <f:convertNumber currencySymbol="uah" groupingUsed="true"
+                                         maxFractionDigits="2" type="currency"/>
+                    </h:inputText>
+                </td>
+            </tr>
+            <tr>
+                <td class="cell label">
+                    <h:outputText value="#{bundle.sell_rate}"/>
+                </td>
+                <td class="cell">
+                    <h:inputText value="#{courseUSDBean.sellingRate}" converter="usdToUahConverter">
+                        <f:convertNumber currencySymbol="uah" groupingUsed="true"
+                                         maxFractionDigits="2" type="currency"/>
+                    </h:inputText>
+                </td>
+            </tr>
+
+        </table>
+            <div class="button">
+                <h:commandButton id="but1" value="#{bundle.button_create}"
+                                 actionListener="#{courseUSDBean.createNewCourse}"
+                                 rendered="#{!courseUSDBean.createdNewCourse}"
+                        >
+                </h:commandButton>
+                <h:commandButton id="but2" value="#{bundle.button_update}"
+                                 actionListener="#{courseUSDBean.updateCourse}"
+                                 rendered="#{courseUSDBean.createdNewCourse}">
+                </h:commandButton>
+                <h:commandButton id="but3" value="#{bundle.button_new}"
+                                 actionListener="#{courseUSDBean.clearCourse}"
+                                 rendered="#{courseUSDBean.createdNewCourse}">
+                </h:commandButton>
+            </div>
+            <h:outputText value="#{courseUSDBean.courseMessage}"
+                          styleClass="infoMessage"/>
+            <h:panelGroup rendered="#{courseUSDBean.createdNewCourse or
+                              courseUSDBean.coursesExists}">
+
+
+                <h:dataTable id="dataTableCourse" var="crs"
+                             value="#{courseUSDBean.list}"
+                             columnClasses="cell,cell, cell, cell"
+                             headerClass="cell label">
+
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="#{bundle.catalog_nmb}"/>
+                        </f:facet>
+                        <h:commandLink id="delC"
+                                       actionListener="#{courseUSDBean.deleteChosenCourse}">
+
+                            <f:param value="#{crs.courseUSDId}" name="courseId"/>
+                            <h:graphicImage id="delCImg"
+                                            url="images/deleteNew.gif"
+                                            title="Delete course"
+                                            rendered="#{crs.courseUSDId != null}"/>
+
+                            <h:outputText value="#{crs.courseUSDId}"/>
+
+
+                        </h:commandLink>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Buying rate"/>
+                        </f:facet>
+                        <h:commandLink id="viewCLnk" title="View course"
+                                       actionListener="#{courseUSDBean.viewChosenCourse}">
+
+                            <f:param value="#{crs.courseUSDId}" name="courseId"/>
+                            <h:outputText style="background-color: #f6d654"
+                                          value="#{crs.buyingRate}">
+                                <f:convertNumber currencySymbol="uah" groupingUsed="true"
+                                                 maxFractionDigits="2" type="currency"/>
+                            </h:outputText>
+
+                        </h:commandLink>
+                    </h:column>
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Selling rate"/>
+                        </f:facet>
+                        <h:commandLink id="viewCLnk1" title="View course"
+                                       actionListener="#{courseUSDBean.viewChosenCourse}">
+
+                            <f:param value="#{crs.courseUSDId}" name="courseId"/>
+                            <h:outputText style="background-color: #f6d654"
+                                          value="#{crs.sellingRate}">
+                                <f:convertNumber currencySymbol="uah" groupingUsed="true"
+                                                 maxFractionDigits="2" type="currency"/>
+                            </h:outputText>
+
+                        </h:commandLink>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputText value="Course's creation date"/>
+                        </f:facet>
+                        <h:outputText value="#{crs.creationDate}">
+                            <f:convertDateTime dateStyle="full" timeZone="EEST" type="date"/>
+                        </h:outputText>
+                    </h:column>
+                </h:dataTable>
+            </h:panelGroup>
+        </h:form>
+        </div>
     </a:tabPanel>
-<f:view>
-    <h:outputLabel value="Hello, world"/>
-</f:view>
+
 </ui:define>
 </ui:composition>
 </html>
