@@ -299,7 +299,9 @@
                             <p:commandButton value="Submit" ajax="false"
                                              actionListener="#{registerCatalogBean.upload}"
                                              update="view,viewH,messages"
-                                             disabled="false" />
+                                             disabled="false" >
+                                <f:ajax execute="@all" render="@form"/>
+                            </p:commandButton>
                             </td>
                             <td class="cell">
                                 <img id= "view" src="#{registerCatalogBean.path}"  ></img>
