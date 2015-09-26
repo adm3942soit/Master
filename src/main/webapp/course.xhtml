@@ -3,13 +3,22 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://it84.nl/jsf"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="templates/layoutPage.xhtml">
-    <h1>
-        <h:outputText value="#{registerCatalogBean.title}" styleClass="infoMessage"/>
-    </h1>
+
 <ui:define name="title">Currency rate creation</ui:define>
 <ui:define name="midcol">
+    <h1>
+        <h:outputText value="#{courseUSDBean.title}" styleClass="infoMessage"/>
+    </h1>
+    <a:tabPanel selected="#{courseUSDBean.tabbedPane}"
+                bean="${courseUSDBean}"
+                action="tabPaneChange"
+                tab0="#{bundle.catalogs}"
+                >
+
+    </a:tabPanel>
 <f:view>
     <h:outputLabel value="Hello, world"/>
 </f:view>

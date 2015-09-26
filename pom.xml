@@ -319,6 +319,23 @@
 
             </systemPath>
         </dependency>
+        <dependency>
+            <groupId>org.apache.commons.io</groupId>
+            <artifactId>commons-io</artifactId>
+            <version>2.4</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/commons-io-2.4.jar</systemPath>
+        </dependency>
+        <dependency>
+            <groupId>commons-fileupload</groupId>
+            <artifactId>commons-fileupload</artifactId>
+            <version>1.2.1</version>
+        </dependency>
+        <dependency>
+            <groupId>portlet-api</groupId>
+            <artifactId>portlet-api</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
     <repositories>
         <repository>

@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:t="http://myfaces.apache.org/tomahawk"
+      xmlns:a="http://it84.nl/jsf"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jstl/core">
+<ui:composition template="templates/layoutPage.xhtml">
+
+    <ui:define name="title">Products </ui:define>
+    <ui:define name="midcol">
+
+
+   <h:form id="ShowProducts">
+            <h1>
+                <h:outputText value="#{registerCatalogBean.title}" styleClass="infoMessage"/>
+            </h1>
+      <p:dataTable rowsPerPageTemplate="3,6,9" var="products" paginator="true" rows="3"
+                 emptyMessage="Catalog is empty"
+                 value="#{registerCatalogBean.listProducts}">
+        <p:column headerText="Product Name">
+            <p:graphicImage width="80" height="80" value="#{products.nameImage}">
+                <f:param name="id" value="#{products.productId}" />
+            </p:graphicImage>
+            #{products.productName}
+        </p:column>
+    </p:dataTable>
+</h:form>
+        </ui:define>
+    </ui:composition>
+</html>

@@ -285,22 +285,39 @@
                             <td class="cell">
                             <p:growl id="messages" showDetail="true" />
 
-                            <p:fileUpload value="#{registerCatalogBean.file}" mode="simple"
+                            <p:fileUpload value="#{registerCatalogBean.file}"
+                                          mode="simple" auto="true"
+                                          validator="#{registerCatalogBean.validateFile}"
+                                          update="view, messages, viewH"
+                                          multiple="false"
+                                          allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
+                                          required="true"
                                           fileUploadListener="#{registerCatalogBean.fileUploadListener}"/>
-                                      <!--    mode="simple" skinSimple="true"/>-->
+
                             </td>
                             <td class="cell">
                             <p:commandButton value="Submit" ajax="false"
                                              actionListener="#{registerCatalogBean.upload}"
+                                             update="view,viewH,messages"
                                              disabled="false" />
                             </td>
                             <td class="cell">
-                                <h:graphicImage id="viewImg"
-                                                url="#{registerCatalogBean.file.fileName}"
-                                                title="View img"
-                                                rendered="#{registerCatalogBean.file.fileName != null}"/>
+                                <img id= "view" src="#{registerCatalogBean.path}"  ></img>
+                                <h:graphicImage id="viewH" name="view picture" url="#{registerCatalogBean.path}" rendered="#{registerCatalogBean.file!=null}"></h:graphicImage>
                             </td>
-                        </tr>
+
+                            </tr>
+<!--<tr>
+
+    <td class="cell" >
+        <h:inputFile id="file" value="#{registerCatalogBean.file}"
+                     validator="#{registerCatalogBean.validateFile}">
+            <f:ajax listener="#{registerCatalogBean.save}" />
+        </h:inputFile>
+        <h:commandButton value="Upload"
+                         action="#{registerCatalogBean.uploadF}"/>
+    </td>
+</tr>-->
                     </table>
                     <div class="button">
                         <h:commandButton id="but41" value="#{bundle.button_create}"
@@ -343,6 +360,7 @@
                                                     url="images/deleteNew.gif"
                                                     title="Delete product"
                                                     rendered="#{prod.productId != null}"/>
+
                                     <h:outputText value="#{prod.productId}"/>
 
 

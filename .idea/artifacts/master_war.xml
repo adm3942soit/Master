@@ -12,6 +12,7 @@
           <element id="library" level="project" name="richfaces-impl-3.1.0" />
           <element id="library" level="project" name="richfaces-api-3.1.0" />
           <element id="library" level="project" name="richfaces-api-3.2.1.ga" />
+          <element id="library" level="project" name="commons-io-2.4" />
         </element>
       </element>
     </root>

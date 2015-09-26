@@ -2,34 +2,50 @@ package ua.com.master.beans;
 
 
 import com.utils.file.Filer;
+import com.utils.workWithStr.Stringer;
 import myFiler.MyFiler;
 import org.apache.log4j.Logger;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultStreamedContent;
+import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 import ua.com.master.help.*;
 import ua.com.master.helpers.Constants;
 import ua.com.master.model.*;
 import ua.com.master.validators.*;
 
+import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
+import javax.faces.bean.ViewScoped;
+import javax.faces.component.UIComponent;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
+import javax.faces.validator.ValidatorException;
+import javax.print.DocFlavor;
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
-import java.io.File;
-import java.io.Serializable;
+import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+import java.net.*;
+import java.util.Scanner;
 
 @ManagedBean(name = "registerCatalogBean")
 @RequestScoped
-
+@ViewScoped
 public class RegisterCatalogBean extends BaseBean  implements Serializable
 {
 
@@ -865,18 +881,206 @@ public void clearCatalog(ActionEvent actionEvent){
         System.out.println("RegisterCatalogBean.fileUploadListener");
         // Get uploaded file from the FileUploadEvent
         this.file = e.getFile();
+        if(this.file.getContents()!=null){
+            System.out.println("file.getContents() = " + file.getFileName());
+        }
+
         // Print out the information of the file
-        System.out.println("Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize());
+      //  System.out.println("Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize());
     }
+    public StreamedContent image = null;
+
+    public StreamedContent getImage() {
+        return image;
+    }
+
+    public void setImage(StreamedContent image) {
+        this.image = image;
+    }
+
+    private String getExtension(String fileName){
+         char smb=46;
+       int index=fileName.indexOf(smb);
+        System.out.println("fileName = " + fileName.substring(index+1));
+        return fileName.substring(index+1);
+
+    }
+    public String path;
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        path = path;
+    }
+
+    public String save() throws IOException {
+        String name = file.getFileName();
+        System.out.println("File name: " + name);
+
+        String type = file.getContentType();
+        System.out.println("File type: " + type);
+
+        long size = file.getSize();
+        System.out.println("File size: " + size);
+
+        FacesContext context = FacesContext.getCurrentInstance();
+        ServletContext servletContext = (ServletContext) context
+                .getExternalContext().getContext();
+        String path = servletContext.getRealPath("");
+
+        InputStream stream = file.getInputstream();
+        Path folder=Paths.get(path //+ File.separator //+ "WEB-INF"
+                + File.separator + name);
+        try {
+
+            Files.copy(stream, folder,StandardCopyOption.REPLACE_EXISTING);
+            System.out.println("Uploaded file successfully saved in " + folder);
+        }catch(Exception ex){ex.printStackTrace();}
+
+
+
+        byte[] buffer = new byte[(int) size];
+        stream.read(buffer, 0, (int) size);
+        stream.close();
+        String s=folder.toString();
+
+        path="";//http://localhost/
+        for(int i=0;i<s.length();i++){
+
+            char smb=s.charAt(i);
+            if(smb==92) path=path+'/';
+            else path=path+s.charAt(i);
+
+        }
+        path=name;
+        System.out.println("path = " + path);
+       // file:///C:/wildfly-10.0.0.Beta1/bin/temp/images.jpg
+        return path;
+    }
+    URL url;
+
+    public URL getUrl() {
+        return url;
+    }
+
+    public void setUrl(URL url) {
+        this.url = url;
+    }
+
     public void upload() {
         System.out.println("RegisterCatalogBean.upload");
-        System.out.println("file = " + file);
+        System.out.println("file = " + file.getFileName());
         if(file != null) {
+
+
+            try {
+         /*image = new DefaultStreamedContent(file.getInputstream(),
+                        "image/"+ getExtension(file.getFileName()));*/
+                /*image=new DefaultStreamedContent(new ByteArrayInputStream(file.getContents()),
+                        "image/"+ getExtension(file.getFileName()));*/
+                save();
+            }catch(Exception ex){ex.printStackTrace();}
+            System.out.println("Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize());
+            productMessage="Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize();
             FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
     }
+
+
+
+    private UploadedFile getUploadedPicture()
+    {
+        FacesContext context = FacesContext.getCurrentInstance();
+        ELContext elContext = context.getELContext();
+        UploadedBean uploadBean = (UploadedBean) elContext.getELResolver().getValue(elContext, null, "uploadBean");
+        return uploadBean.getUploadedFile();
     }
+    public  void update(){
+        UploadedFile uploadedPicture = getUploadedPicture();
+    }
+    public void validateFile(FacesContext ctx,
+                             UIComponent comp,
+                             Object value) {
+        List<FacesMessage> msgs = new ArrayList<FacesMessage>();
+        UploadedFile file = (UploadedFile)value;
+        long fileByte = file.getSize();
+        if(fileByte > 15360){
+            msgs.add(new FacesMessage("Too big must be at most 15KB"));
+        }
+        if (!(file.getContentType().startsWith("image"))) {
+            msgs.add(new FacesMessage("not an Image file"));
+        }
+        if (!msgs.isEmpty()) {
+            throw new ValidatorException(msgs);
+        }
+    }
+    public void validateFile2(FacesContext ctx,
+                             UIComponent comp,
+                             Object value) {
+        List<FacesMessage> msgs = new ArrayList<FacesMessage>();
+        Part file = (Part)value;
+        if (file.getSize() > 1024) {
+            msgs.add(new FacesMessage("file too big"));
+        }
+        /*if (!"text/plain".equals(file.getContentType())) {
+            msgs.add(new FacesMessage("not a text file"));
+        }*/
+        if (!(file.getContentType().startsWith("image"))) {
+            msgs.add(new FacesMessage("not an Image file"));
+        }
+        if (!msgs.isEmpty()) {
+            throw new ValidatorException(msgs);
+        }
+    }
+    private Part partFile;
+    private String fileContent;
+
+    public void processUpload() {
+        try {
+            fileContent = new Scanner(partFile.getInputStream())
+                    .useDelimiter("\\A").next();
+        } catch (IOException e) {
+            // Error handling
+        }
+    }
+    public  String getFileNameFromPart(Part part) {
+        final String partHeader = part.getHeader("content-disposition");
+        for (String content : partHeader.split(";")) {
+            if (content.trim().startsWith("filename")) {
+                String fileName = content.substring(content.indexOf('=') + 1)
+                        .trim().replace("\"", "");
+                return fileName;
+            }
+        }
+        return null;
+    }
+    public void saveP() {
+        try (InputStream input = partFile.getInputStream()) {
+            Path folder=Paths.get(MyFiler.getCurrentDirectory()+File.separator+"temp" + File.separator +
+                   getFileNameFromPart(partFile));
+            try {
+
+                Files.copy(input, folder,StandardCopyOption.REPLACE_EXISTING);
+                System.out.println("Uploaded file successfully saved in " + folder);
+            }catch(Exception ex){ex.printStackTrace();}
+        }
+        catch (IOException e) {
+            // Show faces message?
+        }
+    }
+
+
+    public Part getPartFile() {
+        return partFile;
+    }
+
+    public void setPartFile(Part partFile) {
+        this.partFile = partFile;
+    }
+}
 
 
 
