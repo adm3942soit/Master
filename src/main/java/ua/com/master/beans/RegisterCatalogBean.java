@@ -6,6 +6,7 @@ import myFiler.MyFiler;
 import org.apache.log4j.Logger;
 
 import org.primefaces.event.FileUploadEvent;
+import org.primefaces.model.DefaultUploadedFile;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 import ua.com.master.help.*;
@@ -864,7 +865,8 @@ public void clearCatalog(ActionEvent actionEvent){
         tabPaneChange(2,false);
         return ;
     }
-    private UploadedFile file;
+    private UploadedFile file=new DefaultUploadedFile();
+
 
     public UploadedFile getFile() {
         return file;

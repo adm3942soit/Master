@@ -301,7 +301,7 @@
                                              actionListener="#{registerCatalogBean.upload}"
                                              update="view,viewH,messages, name"
                                              disabled="false" >
-                                <f:ajax execute="@all" render="@form"  />
+                                <f:ajax update ="name" execute="@all" render="@form"  />
                             </p:commandButton>
                             </td>
                             <td class="cell">
@@ -309,7 +309,8 @@
                                 <h:graphicImage id="viewH" name="view picture" url="#{registerCatalogBean.path}" rendered="#{registerCatalogBean.file!=null}"></h:graphicImage>
                             </td>
                             <td class="cell label">
-                                <h:outputText id="name" value="#{registerCatalogBean.nameImage}"></h:outputText>
+                                <h:outputText id="name"
+                                              value="#{registerCatalogBean.file.fileName}"></h:outputText>
 
                             </td>
 
