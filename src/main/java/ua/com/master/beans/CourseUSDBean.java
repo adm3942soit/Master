@@ -192,7 +192,9 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
         System.out.println("CourseUSDBean.isCreatedNewCourse");
         if(courseUSD!=null &&
                 courseUSD.getCourseUSDId()!=0L) return true;
-        else return false;
+        else{
+            System.out.println("CourseUSDBean.isCreatedNewCourse" +false);
+            return false;}
     }
     public void updateCourse(ActionEvent actionEvent){
         System.out.println("CourseUSDBean.updateCourse");

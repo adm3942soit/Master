@@ -76,6 +76,7 @@ public class CourseUSDDaoImpl extends CommonDAO implements CourseUSDDao {
     }
     @Override
     public void save(CourseUSD courseUSD){
+        System.out.println("CourseUSDDaoImpl.save");
         sessionFactory.getCurrentSession().save(courseUSD);
         sessionFactory.getCurrentSession().flush();
     }
