@@ -221,4 +221,13 @@
 
         </navigation-case>
     </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/catalog.xhtml</from-view-id>
+        <navigation-case>
+
+            <from-outcome>course</from-outcome>
+            <to-view-id>/course.xhtml</to-view-id>
+
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

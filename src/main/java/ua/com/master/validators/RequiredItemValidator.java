@@ -32,8 +32,8 @@ public class RequiredItemValidator extends FieldValidator
     public RequiredItemValidator(Double value, Double undefinedValue, boolean valid)
     {
         super(valid);
-        this.value = value.toString();
-        this.undefinedValue = undefinedValue.toString();
+        this.value = String.valueOf(value);
+        this.undefinedValue =String.valueOf(undefinedValue);
     }
     public boolean check()
     {

@@ -80,6 +80,10 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     }
     private boolean validate(Double value){
         double zero=0.0;
+        if(value==null){
+            courseMessage= FacesHelper.getBundleMessage("validator_required");
+            return false;
+        }
         validator2=new RequiredFieldValidator(String.valueOf(value), true);
         if(validator2.check()) {
             validator1 = new RequiredItemValidator(value, zero, true);
@@ -171,7 +175,7 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     }
     public void  createNewCourse(ActionEvent actionEvent){
         System.out.println("CourseUSDBean.createNewCourse");
-      this.courseUSD=new CourseUSD();
+       this.courseUSD=new CourseUSD();
         if(!validate(this.getBuyingRate())) return;
         if(!validate(this.getSellingRate()))return;
      this.courseUSD.setBuyingRate(this.getBuyingRate());

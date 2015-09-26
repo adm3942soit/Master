@@ -4,6 +4,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:a="http://it84.nl/jsf"
+      xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="templates/layoutPage.xhtml">
 
@@ -35,10 +36,10 @@
                 </td>
                 <td class="cell">
                     <h:inputText value="#{courseUSDBean.buyingRate}"
-                                 converter="usdToUahConverter"
-                            >
-                        <f:convertNumber currencySymbol="uah" groupingUsed="true"
-                                         maxFractionDigits="2" type="currency" />
+                                 converter="usdToUahConverter">
+                        <f:convertNumber currencyCode="980" groupingUsed="true"
+                                         maxFractionDigits="2" type="currency"
+                                         minFractionDigits="2"/>
                     </h:inputText>
                 </td>
             </tr>
@@ -48,27 +49,27 @@
                 </td>
                 <td class="cell">
                     <h:inputText value="#{courseUSDBean.sellingRate}" converter="usdToUahConverter">
-                        <f:convertNumber currencySymbol="uah" groupingUsed="true"
-                                         maxFractionDigits="2" type="currency"/>
+                        <f:convertNumber currencyCode="980" groupingUsed="true"
+                                         maxFractionDigits="2" type="currency"
+                                         minFractionDigits="2"/>
                     </h:inputText>
                 </td>
             </tr>
 
         </table>
             <div class="button">
-                <h:commandButton id="but1" value="#{bundle.button_create}"
+                <p:commandButton id="bt1" value="#{bundle.button_create}"
                                  actionListener="#{courseUSDBean.createNewCourse}"
-                                 rendered="#{!courseUSDBean.createdNewCourse}"
-                        >
-                </h:commandButton>
-                <h:commandButton id="but2" value="#{bundle.button_update}"
+                                 rendered="#{!courseUSDBean.createdNewCourse}">
+                </p:commandButton>
+                <p:commandButton id="bt2" value="#{bundle.button_update}"
                                  actionListener="#{courseUSDBean.updateCourse}"
                                  rendered="#{courseUSDBean.createdNewCourse}">
-                </h:commandButton>
-                <h:commandButton id="but3" value="#{bundle.button_new}"
+                </p:commandButton>
+                <p:commandButton id="bt3" value="#{bundle.button_new}"
                                  actionListener="#{courseUSDBean.clearCourse}"
-                                 rendered="#{courseUSDBean.createdNewCourse}">
-                </h:commandButton>
+                                 rendered="#{!courseUSDBean.createdNewCourse}">
+                </p:commandButton>
             </div>
             <h:outputText value="#{courseUSDBean.courseMessage}"
                           styleClass="infoMessage"/>

@@ -15,7 +15,7 @@
             <h:outputText value="#{registerCatalogBean.title}" styleClass="infoMessage"/>
         </h1>
         <h:form id="rate">
-            <h:commandLink
+            <h:commandLink style="text-align: right"
                     onclick="window.open('course.xhtml');return false;"
                     target="newWin">
                 <h:outputText value="Input currency rate..." styleClass="infoMessage"></h:outputText>
@@ -244,7 +244,7 @@
                                              valueChangeListener="#{registerCatalogBean.convert}"
                                              styleClass="mandatory">
                                     <f:convertNumber currencySymbol="$" groupingUsed="true"
-                                                     maxFractionDigits="2" type="currency"/>
+                                                     maxFractionDigits="2" type="currency" minFractionDigits="2"/>
                                     <!-- <f:validateRequired binding="pr"></f:validateRequired>-->
                                 </h:inputText>
                             </td>
@@ -271,8 +271,8 @@
                                 <h:outputText id="prUah"
                                               value="#{registerCatalogBean.priceUah}"
                                         >
-                                    <f:convertNumber currencySymbol="uah" groupingUsed="true"
-                                                     maxFractionDigits="2" type="number"/>
+                                    <f:convertNumber currencyCode="980" groupingUsed="true"
+                                                     maxFractionDigits="2" type="currency" minFractionDigits="2"/>
 
                                 </h:outputText>
                                 <!--<script type="text/javascript">getExchangeRates('#{registerCatalogBean.priceUsd}','USD','UAH','true')</script>-->
