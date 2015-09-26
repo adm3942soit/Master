@@ -487,7 +487,7 @@ public void clearCatalog(ActionEvent actionEvent){
        /* if(newCatalog!=null)
             refreshListDeparments();*/
         newCatalog=getCatalogFromFile();
-        tabPaneChange(2,false);
+        tabPaneChange(1,false);
         if(listDepartments.isEmpty())return false;
         return true;
     }
