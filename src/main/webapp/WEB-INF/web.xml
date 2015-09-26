@@ -44,7 +44,7 @@
     </servlet>-->
     <servlet-mapping>
         <servlet-name>Faces Servlet</servlet-name>
-        <url-pattern>*.xhtml</url-pattern>
+        <url-pattern>*.jsf</url-pattern>
     </servlet-mapping>
     <!--<servlet-mapping>
         <servlet-name>dispatcher</servlet-name>
@@ -187,9 +187,18 @@
         <filter-name>PrimeFaces FileUpload Filter</filter-name>
         <servlet-name>Faces Servlet</servlet-name>
     </filter-mapping>
-    <context-param>
+    <filter-mapping>
+        <filter-name>PrimeFaces FileUpload Filter</filter-name>
+        <servlet-name>Faces Servlet</servlet-name>
+        <dispatcher>REQUEST</dispatcher>
+        <dispatcher>FORWARD</dispatcher>
+    </filter-mapping>
+    <!--<context-param>
         <param-name>primefaces.UPLOADER</param-name>
         <param-value>auto</param-value>
+    </context-param>-->
+    <context-param>
+        <param-name>primefaces.UPLOADER</param-name>
+        <param-value>commons</param-value><!-- Allowed values: auto, native and commons. -->
     </context-param>
-
 </web-app>
