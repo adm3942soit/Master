@@ -867,7 +867,7 @@ public void clearCatalog(ActionEvent actionEvent){
         tabPaneChange(2,false);
         return ;
     }
-    private UploadedFile file=new DefaultUploadedFile();
+    private UploadedFile file;
 
 
     public UploadedFile getFile() {
