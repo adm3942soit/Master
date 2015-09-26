@@ -98,7 +98,7 @@
                                 <h:commandLink id="viewCatLnk" title="View catalog"
                                                actionListener="#{registerCatalogBean.viewChosenCatalog}">
                                     <f:param value="#{cat.catalogId}" name="catalogId"/>
-                                    <h:outputText style="background-color: red"
+                                    <h:outputText
                                                   value="#{cat.name}"></h:outputText>
 
                                 </h:commandLink>
@@ -188,7 +188,7 @@
                                                actionListener="#{registerCatalogBean.viewChosenDepartment}">
 
                                     <f:param value="#{dep.departmentId}" name="departmentId"/>
-                                    <h:outputText style="background-color: #f6d654"
+                                    <h:outputText
                                                   value="#{dep.name}"></h:outputText>
 
                                 </h:commandLink>
@@ -270,6 +270,7 @@
                             <td class="cell">
                                 <h:outputText id="prUah"
                                               value="#{registerCatalogBean.priceUah}"
+                                              converter="usdToUahConverter"
                                         >
                                     <f:convertNumber currencyCode="980" groupingUsed="true"
                                                      maxFractionDigits="2" type="currency" minFractionDigits="2"/>
@@ -394,7 +395,7 @@
                                                actionListener="#{registerCatalogBean.viewChosenProduct}">
 
                                     <f:param value="#{prod.productId}" name="productId"/>
-                                    <h:outputText style="background-color: #f6d654"
+                                    <h:outputText
                                                   value="#{prod.name}"></h:outputText>
 
                                 </h:commandLink>

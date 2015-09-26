@@ -66,27 +66,28 @@
 #slideShowImages { /* The following CSS rules are optional. */
    /* border: 1px gray solid;*/
    /* position: absolute;*/
-    padding-top: 130px;
-    padding-left: 25%;
-    padding-right: 15%;
+    padding-top: 100px;
+    padding-left: 5%;
+
     background-color: transparent;
-    alignment: center;
-    background-position: right;
-    align-content: right;
-    align-items: right;
-    align:right;
+    background-size: 1400px,600px;
+    alignment: left;
+    background-position: left;
+    align-content: left;
+    align-items: left;
+    align:left;
 
 }
 
 #slideShowImages img { /* The following CSS rules are optional. */
   /*  border: 0.8em black solid;*/
    /* position: absolute;*/
-    padding-top: 130px;
-    padding-left: 25%;
-    padding-right: 15%;
-    alignment: right;
-    background-position: right;
-    align:right;
+    padding-top: 100px;
+    padding-left:5%;
+    background-size: 1400px,600px;
+    alignment: left;
+    background-position: left;
+    align:left;
 
 }
 #video{

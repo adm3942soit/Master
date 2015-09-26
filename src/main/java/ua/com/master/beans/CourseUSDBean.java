@@ -27,7 +27,9 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     private String title=FacesHelper.getBundleMessage("register_course") ;
     private Integer tabbedPane= Constants.CatalogDetails.CATALOG_TAB_NUMBER;
     public Double buyingRate;
+    public String buyingRateString;
     public Double sellingRate;
+    public String sellingRateString;
     public CourseUSD courseUSD;
     public Long courseId;
     public String nameCourseFile=MyFiler.getCurrentDirectory()+File.separator+"temp"+
@@ -103,6 +105,8 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
         this.courseUSD=null;
         this.buyingRate=null;
         this.sellingRate=null;
+        this.buyingRateString=null;
+        this.sellingRateString=null;
         this.courseId=null;
         Filer.createFile( nameCourseFile);
         courseMessage="";
@@ -157,8 +161,11 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     }
     public void initFieldsCourse(CourseUSD course){
         System.out.println("CourseUSDBean.initFieldsCourse");
+
         this.setBuyingRate(course.buyingRate);
+        this.setBuyingRateString(String.valueOf(getBuyingRate()));
         this.setSellingRate(course.sellingRate);
+        this.setSellingRateString(String.valueOf(getSellingRate()));
         this.setCourseUSD(course);
         this.courseId=course.getCourseUSDId();
 
@@ -176,8 +183,15 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     public void  createNewCourse(ActionEvent actionEvent){
         System.out.println("CourseUSDBean.createNewCourse");
        this.courseUSD=new CourseUSD();
-        if(!validate(this.getBuyingRate())) return;
-        if(!validate(this.getSellingRate()))return;
+        try {
+            this.setBuyingRate(Double.parseDouble(getBuyingRateString().trim()));
+            if (!validate(this.getBuyingRate())) return;
+            this.setSellingRate(Double.parseDouble(getSellingRateString().trim()));
+            if (!validate(this.getSellingRate())) return;
+        }catch(Exception ex){
+            courseMessage="Symbols are not valid!";
+            return;
+        }
      this.courseUSD.setBuyingRate(this.getBuyingRate());
         this.courseUSD.setSellingRate(this.sellingRate);
         this.courseUSD.setCreationDate(new Date());
@@ -203,6 +217,15 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     public void updateCourse(ActionEvent actionEvent){
         System.out.println("CourseUSDBean.updateCourse");
         courseUSD=getCourseUSDFromFile();
+        try {
+            this.setBuyingRate(Double.parseDouble(getBuyingRateString().trim()));
+            if (!validate(this.getBuyingRate())) return;
+            this.setSellingRate(Double.parseDouble(getSellingRateString().trim()));
+            if (!validate(this.getSellingRate())) return;
+        }catch(Exception ex){
+            courseMessage="Symbols are not valid!";
+            return;
+        }
        courseUSD.setBuyingRate(this.getBuyingRate());
         courseUSD.setSellingRate(this.getSellingRate());
         courseUSD.setLastUpdateDate(new Date());
@@ -257,9 +280,7 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
 
       return new ArrayList<CourseUSD>();
     }
-    public boolean createCourseUSD(Double buyingRate, Double sellingRate){
-        return courseUSDDao.createCourseUSD(buyingRate, sellingRate);
-    }
+
     public CourseUSD getTodayCourseUSD(){
         return courseUSDDao.findTodayCourseUsd();
     }
@@ -286,5 +307,37 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
 
     public void setSellingRate(Double sellingRate) {
         this.sellingRate = sellingRate;
+    }
+
+    public String getBuyingRateString() {
+        return buyingRateString;
+    }
+
+    public void setBuyingRateString(String buyingRateString) {
+        this.buyingRateString = buyingRateString;
+    }
+
+    public String getSellingRateString() {
+        return sellingRateString;
+    }
+
+    public void setSellingRateString(String sellingRateString) {
+        this.sellingRateString = sellingRateString;
+    }
+
+    public RequiredItemValidator getValidator1() {
+        return validator1;
+    }
+
+    public void setValidator1(RequiredItemValidator validator1) {
+        this.validator1 = validator1;
+    }
+
+    public RequiredFieldValidator getValidator2() {
+        return validator2;
+    }
+
+    public void setValidator2(RequiredFieldValidator validator2) {
+        this.validator2 = validator2;
     }
 }
