@@ -268,9 +268,9 @@
                             <td class="cell">
                                 <h:outputText id="prUah"
                                 value="#{registerCatalogBean.priceUah}"
-                                converter="usdToUahConverter">
+                               >
                                      <f:convertNumber currencyCode="840" groupingUsed="true"
-                                                    maxFractionDigits="2" type="currency" />
+                                                    maxFractionDigits="2" type="number" />
 
                                 </h:outputText>
                                 <!--<script type="text/javascript">getExchangeRates('#{registerCatalogBean.priceUsd}','USD','UAH','true')</script>-->
@@ -299,7 +299,7 @@
                             <td class="cell">
                             <p:commandButton value="Submit" ajax="false"
                                              actionListener="#{registerCatalogBean.upload}"
-                                             update="view,viewH,messages"
+                                             update="view,viewH,messages, name"
                                              disabled="false" >
                                 <f:ajax execute="@all" render="@form"  />
                             </p:commandButton>
@@ -308,7 +308,7 @@
                                 <img id= "view" src="#{registerCatalogBean.path}"  ></img>
                                 <h:graphicImage id="viewH" name="view picture" url="#{registerCatalogBean.path}" rendered="#{registerCatalogBean.file!=null}"></h:graphicImage>
                             </td>
-                            <td class="cell">
+                            <td class="cell label">
                                 <h:outputText id="name" value="#{registerCatalogBean.nameImage}"></h:outputText>
 
                             </td>
