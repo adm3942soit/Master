@@ -2,17 +2,16 @@ package ua.com.master.beans;
 
 
 import com.utils.file.Filer;
-import com.utils.workWithStr.Stringer;
 import myFiler.MyFiler;
 import org.apache.log4j.Logger;
 
 import org.primefaces.event.FileUploadEvent;
-import org.primefaces.model.DefaultStreamedContent;
 import org.primefaces.model.StreamedContent;
 import org.primefaces.model.UploadedFile;
 import ua.com.master.help.*;
 import ua.com.master.helpers.Constants;
 import ua.com.master.model.*;
+import ua.com.master.validators.DepartmentValidator;
 import ua.com.master.validators.*;
 
 import javax.el.ELContext;
@@ -22,14 +21,11 @@ import javax.faces.bean.RequestScoped;
 
 import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
-import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.validator.ValidatorException;
-import javax.print.DocFlavor;
 import javax.servlet.ServletContext;
-import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 import java.io.*;
