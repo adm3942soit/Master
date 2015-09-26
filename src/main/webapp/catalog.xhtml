@@ -266,8 +266,9 @@
                                     <h:outputText value="#{bundle.priceUah}"></h:outputText>
                                 </td>
                             <td class="cell">
-                                <h:outputText
-                                value="#{registerCatalogBean.priceUah}">
+                                <h:outputText id="prUah"
+                                value="#{registerCatalogBean.priceUah}"
+                                converter="usdToUahConverter">
                                      <f:convertNumber currencyCode="840" groupingUsed="true"
                                                     maxFractionDigits="2" type="currency" />
 
@@ -318,7 +319,8 @@
                             <h:outputText value="Count:"></h:outputText>
                         </td>
                             <td class="cell">
-<h:inputText value="#{registerCatalogBean.productCount}">
+<h:inputText id="prC" value="#{registerCatalogBean.productCount}"
+             converter="usdToUahConverter">
     <f:convertNumber  groupingUsed="true"
                      maxFractionDigits="2" type="number" />
 

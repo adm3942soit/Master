@@ -11,7 +11,7 @@ import org.primefaces.model.UploadedFile;
 import ua.com.master.help.*;
 import ua.com.master.helpers.Constants;
 import ua.com.master.model.*;
-import ua.com.master.validators.DepartmentValidator;
+import ua.com.master.utils.DepartmentValidator;
 import ua.com.master.validators.*;
 
 import javax.el.ELContext;
