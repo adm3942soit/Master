@@ -981,7 +981,7 @@ public void clearCatalog(ActionEvent actionEvent){
                 /*image=new DefaultStreamedContent(new ByteArrayInputStream(file.getContents()),
                         "image/"+ getExtension(file.getFileName()));*/
                 save();
-                this.nameImage=path;
+                this.nameImage=file.getFileName();
               /*  getProductDao().addProduct(newProduct);*/
 
             }catch(Exception ex){ex.printStackTrace();}
@@ -990,6 +990,7 @@ public void clearCatalog(ActionEvent actionEvent){
             FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
         }
+        tabPaneChange(2, false);
     }
 
 
