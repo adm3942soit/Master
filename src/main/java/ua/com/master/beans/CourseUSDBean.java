@@ -9,8 +9,10 @@ import ua.com.master.model.CourseUSD;
 import ua.com.master.validators.RequiredFieldValidator;
 import ua.com.master.validators.RequiredItemValidator;
 
+import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import java.io.File;
 import java.io.Serializable;
@@ -75,6 +77,7 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
 
                 if(clearFields)clearFieldsCourse();
                 if(refr)refreshListCourses();
+                setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
                 break;
 
             default:break;
@@ -84,6 +87,7 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
         double zero=0.0;
         if(value==null){
             courseMessage= FacesHelper.getBundleMessage("validator_required");
+            addMessage(courseMessage);
             return false;
         }
         validator2=new RequiredFieldValidator(String.valueOf(value), true);
@@ -91,10 +95,13 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
             validator1 = new RequiredItemValidator(value, zero, true);
             if (!validator1.check()) {
                   courseMessage=validator1.getMessage();
+                addMessage(courseMessage);
                 return false;
-            }else return true;
+            }else
+            return true;
         }    else{
             courseMessage=validator1.getMessage();
+            addMessage(courseMessage);
             return false;
         }
 
@@ -102,7 +109,8 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     public void clearFieldsCourse(){
 
         System.out.println("clearFieldsCourse");
-        this.courseUSD=null;
+        this.courseId=0L;
+        //this.courseUSD=null;
         this.buyingRate=null;
         this.sellingRate=null;
         this.buyingRateString=null;
@@ -161,7 +169,7 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     }
     public void initFieldsCourse(CourseUSD course){
         System.out.println("CourseUSDBean.initFieldsCourse");
-
+        this.setCourseId(course.courseUSDId);
         this.setBuyingRate(course.buyingRate);
         this.setBuyingRateString(String.valueOf(getBuyingRate()));
         this.setSellingRate(course.sellingRate);
@@ -180,13 +188,13 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
 
 
     }
-    public void  createNewCourse(ActionEvent actionEvent){
+    public void  createNewCourse(ActionEvent event){
         System.out.println("CourseUSDBean.createNewCourse");
        this.courseUSD=new CourseUSD();
         try {
-            this.setBuyingRate(Double.parseDouble(getBuyingRateString().trim()));
+            //this.setBuyingRate(Double.parseDouble(getBuyingRateString().trim()));
             if (!validate(this.getBuyingRate())) return;
-            this.setSellingRate(Double.parseDouble(getSellingRateString().trim()));
+           // this.setSellingRate(Double.parseDouble(getSellingRateString().trim()));
             if (!validate(this.getSellingRate())) return;
         }catch(Exception ex){
             courseMessage="Symbols are not valid!";
@@ -218,12 +226,13 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
         System.out.println("CourseUSDBean.updateCourse");
         courseUSD=getCourseUSDFromFile();
         try {
-            this.setBuyingRate(Double.parseDouble(getBuyingRateString().trim()));
+            //this.setBuyingRate(Double.parseDouble(getBuyingRateString().trim()));
             if (!validate(this.getBuyingRate())) return;
-            this.setSellingRate(Double.parseDouble(getSellingRateString().trim()));
+            //this.setSellingRate(Double.parseDouble(getSellingRateString().trim()));
             if (!validate(this.getSellingRate())) return;
         }catch(Exception ex){
             courseMessage="Symbols are not valid!";
+            addMessage(courseMessage);
             return;
         }
        courseUSD.setBuyingRate(this.getBuyingRate());
@@ -235,6 +244,10 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
 
         tabPaneChange(0, false, true);
 
+    }
+    public void addMessage(String summary) {
+        FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, summary,  null);
+        FacesContext.getCurrentInstance().addMessage(null, message);
     }
     public Long getCourseId() {
         return courseId;

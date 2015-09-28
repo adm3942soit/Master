@@ -18,26 +18,38 @@ import java.util.List;
 @ManagedBean(name = "documentService")
 @ApplicationScoped
 public class CatalogService extends  BaseBean{
+public int countRoot;
+    public CatalogService() {
+    }
 
-
-    public TreeNode createDocuments() {
+    public TreeNode[][][] createDocuments() {
         List<Catalog>listCatalog= getCatalogDao().list();
         TreeNode root[][][]=new TreeNode[100][100][100];
         int i=0, j=0, k=0;
        for(Catalog catalog:listCatalog){
           root[i][j][k] = new DefaultTreeNode(new Document(catalog.getName(), "-", "Folder"), null);
+           TreeNode r=root[i][j][k];
            List<Department>departmentList=getDepartmentDao().listByCatalog(catalog);
           for (Department department: departmentList){
-              root[i][++j][k] = new DefaultTreeNode(new Document(department.getName(), "-", "Folder"), root[i][j-1][k]);
+              root[i][++j][k] = new DefaultTreeNode(new Document(department.getName(), "-", "Folder"), r);
+              TreeNode rr=root[i][j][k];
               List<Product>productList =getProductDAO().findProductsByDepartment(department);
               for(Product product:productList){
-                  root[i][j][++k] = new DefaultTreeNode(new Document(product.getName(), "-", product.description), root[i][j-1][k-1]);
+                  root[i][j][++k] = new DefaultTreeNode(new Document(product.getName(), "-", product.description), rr);
 
               }
-              ++i;
+              ++i;j=0;k=0;
           }
        }
+        countRoot=--i;
+        return root;
+    }
 
-        return root[0][0][0];
+    public int getCountRoot() {
+        return countRoot;
+    }
+
+    public void setCountRoot(int countRoot) {
+        this.countRoot = countRoot;
     }
 }

@@ -14,7 +14,12 @@
 </h1>
 
       <h:form id="form">
-            <p:treeTable value="#{ttBasicView.root}" var="document">
+            <h:dataTable id="dataTable" var="root"
+                         value="#{ttBasicView.listRoot}"
+                         columnClasses="cell"
+                         headerClass="cell label">
+                  <h:column>
+            <p:treeTable value="#{root}" var="document">
                   <f:facet name="header">
                         Document Viewer
                   </f:facet>
@@ -38,6 +43,8 @@
                         </p:commandLink>
                   </p:column>
             </p:treeTable>
+                  </h:column>
+            </h:dataTable>
 
             <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true" resizable="false">
                   <p:outputPanel id="documentPanel">

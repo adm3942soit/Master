@@ -152,6 +152,7 @@ public class BaseBean {
     }
 
     public CourseUSDDao getCourseUSDDao() {
+        courseUSDDao=new CourseUSDDaoImpl();
         return courseUSDDao;
     }
 

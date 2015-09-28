@@ -18,9 +18,9 @@
                 tab0="#{bundle.crs}"
                 >
         <div id="panel0" class="panel">
-        <h:form id="Course"  >
+        <h:form id="Course"  enctype="multipart/form-data">
 
-        <table id="regCourse">
+            <table id="regCourse">
             <tr>
                 <td class="cell label">
                     <h:outputText value="#{bundle.person_number}"/>
@@ -34,12 +34,17 @@
                     <h:outputText value="#{bundle.buy_rate}"/>
                 </td>
                 <td class="cell">
-                    <h:inputText id = "br" value="#{courseUSDBean.buyingRateString}"
-                                 >
-                        <f:convertNumber currencyCode="980" groupingUsed="true"
-                                         maxFractionDigits="2" type="currency"
+                    <p:inputText id = "buyingRate" value="#{courseUSDBean.buyingRate}"
+                                 required="true" >
+                        <f:convertNumber  groupingUsed="true"
+                                         maxFractionDigits="2" type="number"
                                          minFractionDigits="2"/>
-                    </h:inputText>
+                        <f:validateLength minimum="2" />
+                    </p:inputText>
+
+                </td>
+                <td class="cell">
+                    <p:message for="buyingRate" display="icon" />
                 </td>
             </tr>
             <tr>
@@ -47,35 +52,53 @@
                     <h:outputText value="#{bundle.sell_rate}"/>
                 </td>
                 <td class="cell">
-                    <h:inputText id = "sr" value="#{courseUSDBean.sellingRateString}"
-                                >
-                        <f:convertNumber currencyCode="980" groupingUsed="true"
-                                         maxFractionDigits="2" type="currency"
+                    <p:inputText id = "sellingRate" value="#{courseUSDBean.sellingRate}"
+                                 required="true"
+
+                              >
+                        <f:validateLength minimum="2" />
+                        <f:convertNumber  groupingUsed="true"
+                                         maxFractionDigits="2" type="number"
                                          minFractionDigits="2"/>
-                    </h:inputText>
+                        <p:ajax update="msSr" event="keyup" />
+                    </p:inputText>
+
+                </td>
+                <td class="cell">
+                    <p:message for="sellingRate" id="msSr" display="icon" />
                 </td>
             </tr>
 
         </table>
             <div class="button">
+                <p:growl id="growl" life="2000" />
                 <p:commandButton id="bt11"
                                  value="#{bundle.button_create}"
                                  actionListener="#{courseUSDBean.createNewCourse}"
-                                 rendered="#{!courseUSDBean.createdNewCourse}">
+                                 rendered="#{!courseUSDBean.createdNewCourse}"
+                                 update="growl"
+                                 styleClass="ui-priority-primary"
+                        >
                 </p:commandButton>
-                <p:commandButton id="bt21" value="#{bundle.button_update}"
+                <!--<p:commandButton id="bt21" value="#{bundle.button_update}"
                                  actionListener="#{courseUSDBean.updateCourse}"
-                                 rendered="#{courseUSDBean.createdNewCourse}">
-                </p:commandButton>
+                                 rendered="#{courseUSDBean.createdNewCourse}"
+                                 update="growl"
+                                 styleClass="ui-priority-primary">
+                </p:commandButton>-->
                 <p:commandButton id="bt31" value="#{bundle.button_new}"
                                  actionListener="#{courseUSDBean.clearCourse}"
-                                 update="br, sr"
-                                 rendered="#{courseUSDBean.createdNewCourse}">
+                                 rendered="#{courseUSDBean.createdNewCourse}"
+                                 update="sellingRate, buyingRate, growl"
+
+                                 styleClass="ui-priority-primary">
+
                 </p:commandButton>
             </div>
             <h:outputText value="#{courseUSDBean.courseMessage}"
                           styleClass="infoMessage"/>
-          <!--  <h:panelGroup rendered="#{courseUSDBean.createdNewCourse or
+            <p:messages id="msgs" />
+            <h:panelGroup rendered="#{courseUSDBean.createdNewCourse or
                               courseUSDBean.coursesExists}">
 
 
@@ -111,9 +134,9 @@
                                        actionListener="#{courseUSDBean.viewChosenCourse}">
 
                             <f:param value="#{crs.courseUSDId}" name="courseId"/>
-                            <h:outputText style="background-color: #f6d654"
+                            <h:outputText
                                           value="#{crs.buyingRate}">
-                                <f:convertNumber currencySymbol="uah" groupingUsed="true"
+                                <f:convertNumber currencyCode="UAH" groupingUsed="true"
                                                  maxFractionDigits="2" type="currency"/>
                             </h:outputText>
 
@@ -127,9 +150,9 @@
                                        actionListener="#{courseUSDBean.viewChosenCourse}">
 
                             <f:param value="#{crs.courseUSDId}" name="courseId"/>
-                            <h:outputText style="background-color: #f6d654"
+                            <h:outputText
                                           value="#{crs.sellingRate}">
-                                <f:convertNumber currencySymbol="uah" groupingUsed="true"
+                                <f:convertNumber currencyCode="UAH" groupingUsed="true"
                                                  maxFractionDigits="2" type="currency"/>
                             </h:outputText>
 
@@ -145,7 +168,7 @@
                         </h:outputText>
                     </h:column>
                 </h:dataTable>
-            </h:panelGroup>-->
+            </h:panelGroup>
         </h:form>
         </div>
     </a:tabPanel>

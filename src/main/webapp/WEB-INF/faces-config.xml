@@ -134,6 +134,15 @@
             <value>#{personDao}</value>
         </managed-property>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>ttBasicView</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.BasicView</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
+        <managed-property>
+            <property-name>catalogService</property-name>
+            <value>#{catalogService}</value>
+        </managed-property>
+    </managed-bean>
    <!-- <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>

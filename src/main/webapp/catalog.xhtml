@@ -244,7 +244,8 @@
                                              valueChangeListener="#{registerCatalogBean.convert}"
                                              styleClass="mandatory">
                                     <f:convertNumber currencySymbol="$" groupingUsed="true"
-                                                     maxFractionDigits="2" type="currency" minFractionDigits="2"/>
+                                                     maxFractionDigits="2" type="currency"
+                                                     minFractionDigits="2"/>
                                     <!-- <f:validateRequired binding="pr"></f:validateRequired>-->
                                 </h:inputText>
                             </td>
@@ -270,10 +271,11 @@
                             <td class="cell">
                                 <h:outputText id="prUah"
                                               value="#{registerCatalogBean.priceUah}"
-                                              converter="usdToUahConverter"
+
                                         >
-                                    <f:convertNumber currencyCode="980" groupingUsed="true"
-                                                     maxFractionDigits="2" type="currency" minFractionDigits="2"/>
+                                    <f:convertNumber currencyCode="UAH" groupingUsed="true"
+                                                     maxFractionDigits="2" type="currency"
+                                                     minFractionDigits="2"/>
 
                                 </h:outputText>
                                 <!--<script type="text/javascript">getExchangeRates('#{registerCatalogBean.priceUsd}','USD','UAH','true')</script>-->
@@ -329,7 +331,7 @@
                             </td>
                             <td class="cell">
                                 <h:inputText id="prC" value="#{registerCatalogBean.productCount}"
-                                             converter="usdToUahConverter">
+                                             >
                                     <f:convertNumber groupingUsed="true"
                                                      maxFractionDigits="2" type="number"/>
 
