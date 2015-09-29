@@ -50,12 +50,12 @@
         <managed-bean-scope>request</managed-bean-scope>
 
     </managed-bean>
-    <managed-bean>
+    <!--<managed-bean>
         <managed-bean-name>nodeElement</managed-bean-name>
         <managed-bean-class>ua.com.master.beans.NodeElement</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
 
-    </managed-bean>
+    </managed-bean>-->
     <managed-bean>
         <managed-bean-name>loginBean</managed-bean-name>
         <managed-bean-class>ua.com.master.beans.LoginBean</managed-bean-class>

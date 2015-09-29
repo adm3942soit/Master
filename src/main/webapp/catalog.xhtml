@@ -225,13 +225,20 @@
                                  maxlength="100"/>
                         <tr>
                             <td class="cell label">
-                                <h:outputText value="#{bundle.descr}"/>
+                                <h:outputText value="#{bundle.descr}" >
+
+                                </h:outputText>
                             </td>
                             <td class="cell">
-                                <h:inputText id="descr" value="#{registerCatalogBean.newProductDescription}"
+                                <p:inputText id="descr" value="#{registerCatalogBean.newProductDescription}"
                                              maxlength="60">
                                     <!--<f:validateRequired binding="descr"></f:validateRequired>-->
-                                </h:inputText>
+                                    <f:validateLength maximum="60" />
+                                    <p:ajax update="ms1" event="keyup" />
+                                </p:inputText>
+                            </td>
+                            <td class="cell">
+                                <p:message for="descr" id="ms1" display="icon" />
                             </td>
                         </tr>
                         <tr>
@@ -239,31 +246,36 @@
                                 <h:outputText value="#{bundle.priceUsd}"/>
                             </td>
                             <td class="cell">
-                                <h:inputText id="pr" value="#{registerCatalogBean.priceUsd}"
-                                      converter="usdToUahConverter"
-                                             converterMessage="#{registerCatalogBean.productMessage}"
-                                             valueChangeListener="#{registerCatalogBean.convert}"
+                                <p:inputText id="pr" value="#{registerCatalogBean.priceUsd}"
+
                                              styleClass="mandatory"
                                         update="prUah">
-                                    <f:convertNumber currencySymbol="$" groupingUsed="true"
-                                                     maxFractionDigits="2" type="currency"
+                                    <f:convertNumber
+                                            pattern="#00.00"
+                                            groupingUsed="false"
+                                                     maxFractionDigits="2" type="number"
                                                      minFractionDigits="2"/>
+                                    <p:ajax update="ms2" event="keyup" />
                                     <!-- <f:validateRequired binding="pr"></f:validateRequired>-->
-                                </h:inputText>
+                                </p:inputText>
+                                <!--valueChangeListener="#{registerCatalogBean.convert}"-->
                             </td>
                             <td class="cell">
                                 <h:outputText value="for"/>
                             </td>
                             <td class="cell">
-                                <h:inputText id="forC" value="#{registerCatalogBean.forCount}">
+                                <p:inputText id="forC" value="#{registerCatalogBean.forCount}">
                                     <f:convertNumber groupingUsed="false"
                                                      maxFractionDigits="0" type="number"/>
-                                </h:inputText>
+                                </p:inputText>
                                 <!--<f:validateRequired binding="forC"></f:validateRequired>-->
                             </td>
                             <td class="cell">
-                                <h:inputText id="sh" value="#{registerCatalogBean.shortName}" maxlength="5"/>
+                                <p:inputText id="sh" value="#{registerCatalogBean.shortName}" maxlength="5"/>
                                 <!-- <f:validateRequired binding="sh"></f:validateRequired>-->
+                            </td>
+                            <td class="cell">
+                                <p:message for="descr" id="ms2" display="icon" />
                             </td>
                         </tr>
                         <tr>
@@ -275,9 +287,14 @@
                                               value="#{registerCatalogBean.priceUah}"
 
                                         >
-                                    <f:convertNumber currencyCode="UAH" groupingUsed="true"
+                                    <!--<f:convertNumber currencyCode="UAH" groupingUsed="true"
                                                      maxFractionDigits="2" type="currency"
-                                                     minFractionDigits="2"/>
+                                                     minFractionDigits="2"/>-->
+                                    <f:convertNumber
+                                            pattern="#00.00"
+                                            groupingUsed="false"
+                                            maxFractionDigits="2" type="number"
+                                            minFractionDigits="2"/>
 
                                 </h:outputText>
                                 <!--<script type="text/javascript">getExchangeRates('#{registerCatalogBean.priceUsd}','USD','UAH','true')</script>-->
@@ -285,6 +302,20 @@
                             </td>
 
                         </tr>
+                        <tr>
+                            <td class="cell label">
+                                <h:outputText value="Count:"></h:outputText>
+                            </td>
+                            <td class="cell">
+                                <p:inputText id="prC" value="#{registerCatalogBean.productCount}"
+                                        >
+                                    <f:convertNumber groupingUsed="true"
+                                                     maxFractionDigits="2" type="number"/>
+
+                                </p:inputText>
+                            </td>
+                        </tr>
+
                         <tr>
                             <td class="cell label">
                                 <h:outputText value="Upload image:"></h:outputText>
@@ -300,6 +331,7 @@
                                               multiple="false"
                                               allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
                                               required="true"
+                                              rendered="#{!registerCatalogBean.buttonCreatePressed}"
                                               fileUploadListener="#{registerCatalogBean.fileUploadListener}"/>
 
                             </td>
@@ -307,56 +339,53 @@
                                 <p:commandButton value="Submit" ajax="false"
                                                  actionListener="#{registerCatalogBean.upload}"
                                                  update="viewH,messages, name"
-                                                 disabled="false">
+                                                 disabled="false" rendered="#{!registerCatalogBean.buttonCreatePressed}">
                                     <!--<f:ajax update ="name" execute="@all" render="@form"  />-->
                                 </p:commandButton>
                             </td>
                             <td class="cell">
                                 <!-- <img id= "view" src="#{registerCatalogBean.file.fileName}"  ></img>-->
                                 <h:graphicImage id="viewH"
-                                                url="#{registerCatalogBean.file.fileName}"
-                                                rendered="#{registerCatalogBean.file!=null}">
+                                                url="#{registerCatalogBean.nameImage}"
+                                                rendered="#{registerCatalogBean.nameImage!=null
+                                                }">
 
                                 </h:graphicImage>
                             </td>
                             <td class="cell label">
                                 <h:outputText id="name"
-                                              value="#{registerCatalogBean.file.fileName}"
-                                              rendered="#{registerCatalogBean.file!=null and registerCatalogBean.file.fileName!=null}"></h:outputText>
+                                              value="#{registerCatalogBean.nameImage}"
+                                              rendered="#{registerCatalogBean.nameImage!=null}"
+                                              >
+
+                                </h:outputText>
 
                             </td>
 
-                        </tr>
-                        <tr>
-                            <td class="cell label">
-                                <h:outputText value="Count:"></h:outputText>
-                            </td>
-                            <td class="cell">
-                                <h:inputText id="prC" value="#{registerCatalogBean.productCount}"
-                                             >
-                                    <f:convertNumber groupingUsed="true"
-                                                     maxFractionDigits="2" type="number"/>
-
-                                </h:inputText>
-                            </td>
                         </tr>
 
                     </table>
                     <div class="button">
-                        <h:commandButton id="but41" value="#{bundle.button_create}"
+                        <p:growl id="growl" life="2000" />
+                        <p:commandButton id="but41" value="#{bundle.button_create}"
                                          actionListener="#{registerCatalogBean.createNewProduct}"
                                          rendered="#{!registerCatalogBean.createdNewProduct}"
+
+                                         update="growl"
                                 >
-                        </h:commandButton>
-                        <h:commandButton id="but511" value="#{bundle.button_update}"
+                        </p:commandButton>
+                        <p:commandButton id="but511" value="#{bundle.button_update}"
                                          actionListener="#{registerCatalogBean.updateProduct}"
-                                         rendered="#{registerCatalogBean.createdNewProduct}">
-                        </h:commandButton>
-                        <h:commandButton id="but52" value="#{bundle.button_new}"
+                                         rendered="#{registerCatalogBean.createdNewProduct}"
+                                         update="growl">
+                        </p:commandButton>
+                        <p:commandButton id="but52" value="#{bundle.button_new}"
                                          actionListener="#{registerCatalogBean.clearProduct}"
-                                         rendered="#{registerCatalogBean.createdNewProduct}">
-                        </h:commandButton>
+                                         rendered="#{registerCatalogBean.createdNewProduct}"
+                                         update="growl">
+                        </p:commandButton>
                     </div>
+                    <p:messages id="msgs" />
                     <h:outputText value="#{registerCatalogBean.productMessage}"
                                   styleClass="infoMessage"/>
                     <h:panelGroup rendered="#{registerCatalogBean.createdNewProduct or

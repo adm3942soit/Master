@@ -10,8 +10,8 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
 import java.util.Date;
-@ManagedBean(name = "nodeElement")
-@RequestScoped
+/*@ManagedBean(name = "nodeElement")
+@RequestScoped*/
 public class NodeElement extends FactoryDao implements Serializable, Comparable<NodeElement> {
 
     private String name;

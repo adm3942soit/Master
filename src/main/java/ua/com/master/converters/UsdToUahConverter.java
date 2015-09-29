@@ -20,7 +20,7 @@ public class UsdToUahConverter implements Converter {
 
         @Override
         public Object getAsObject(FacesContext context, UIComponent component, String value) {
-
+            System.out.println("UsdToUahConverter.getAsObject");
             System.out.println("value = " + value);
             StringBuffer result=new StringBuffer("");
             for(char s:value.toCharArray()){
