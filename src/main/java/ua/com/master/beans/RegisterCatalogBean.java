@@ -866,7 +866,9 @@ public void clearCatalog(ActionEvent actionEvent){
             tabPaneChange(2,false, false);
             return;
         }
-                Double course = courseUSD.getSellingRate();
+       Double course = courseUSD.getSellingRate();
+        System.out.println("getPriceUsd() = " + getPriceUsd());
+        System.out.println("course = " + course);
         priceUah=this.getPriceUsd()*course;
         tabPaneChange(2,false,false);
         return ;

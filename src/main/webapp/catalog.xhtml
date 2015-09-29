@@ -242,7 +242,8 @@
                                 <h:inputText id="pr" value="#{registerCatalogBean.priceUsd}"
                                              converter="usdToUahConverter"
                                              valueChangeListener="#{registerCatalogBean.convert}"
-                                             styleClass="mandatory">
+                                             styleClass="mandatory"
+                                        update="prUah">
                                     <f:convertNumber currencySymbol="$" groupingUsed="true"
                                                      maxFractionDigits="2" type="currency"
                                                      minFractionDigits="2"/>
