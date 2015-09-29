@@ -7,56 +7,81 @@
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="templates/layoutPage.xhtml">
 
-<ui:define name="title">Currency rate creation</ui:define>
+<ui:define name="title">View products</ui:define>
 <ui:define name="midcol">
 <h1>
     <h:outputText value="View our products" styleClass="infoMessage"/>
 </h1>
 
       <h:form id="form">
-            <h:dataTable id="dataTable" var="root"
+            <!--<p:dataTable id="dataTable" var="root"
                          value="#{ttBasicView.listRoot}"
                          columnClasses="cell"
                          headerClass="cell label">
-                  <h:column>
-            <p:treeTable value="#{root}" var="document">
+           <p:column>-->
+            <p:treeTable id="tt" value="#{ttBasicView.root}" var="nodeElement">
                   <f:facet name="header">
-                        Document Viewer
+                        Catalog Viewer
                   </f:facet>
-                  <p:column headerText="Name">
-                        <h:outputText value="#{document.name}" />
+                  <p:column  headerText="Name">
+                        <h:outputText value="#{nodeElement.name}" />
                   </p:column>
-                  <p:column headerText="Size">
-                        <h:outputText value="#{document.size}" />
+                  <!--<p:column headerText="Size">
+                        <h:outputText value="#{nodeElement.size}" />
                   </p:column>
                   <p:column headerText="Type">
-                        <h:outputText value="#{document.type}" />
-                  </p:column>
+                        <h:outputText value="#{nodeElement.type}" />
+                  </p:column>-->
                   <p:column style="width:24px">
-                        <p:commandLink update=":form:documentPanel"
-                                       oncomplete="PF('documentDialog').show()"
+                        <p:commandLink update=":form:nodePanel"
+                                       oncomplete="PF('nodeDialog').show()"
                                        title="View Detail"
                                        styleClass="ui-icon ui-icon-search">
                               <f:setPropertyActionListener
-                                      value="#{document}"
-                                      target="#{ttBasicView.selectedDocument}" />
+                                      value="#{nodeElement}"
+                                      target="#{ttBasicView.selectedNodeElement}" />
                         </p:commandLink>
                   </p:column>
-            </p:treeTable>
-                  </h:column>
-            </h:dataTable>
+                  <!--<p:column style="width:24px">
+                        <h:graphicImage id="viewH"
+                                        url="#{nodeElement.nameImage}"
+                                        rendered="#{nodeElement.nameImage!=null}">
 
-            <p:dialog id="dialog" header="Document Detail" showEffect="fade" widgetVar="documentDialog" modal="true" resizable="false">
-                  <p:outputPanel id="documentPanel">
-                        <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty ttBasicView.selectedDocument}">
+                        </h:graphicImage>
+                  </p:column>
+                  <p:column style="width:24px">
+                        <h:outputText id="prUah"
+                                      value="#{nodeElement.priceUah}"
+rendered="#{nodeElement.priceUSD!=null}"
+                                >
+                              <f:convertNumber currencyCode="UAH" groupingUsed="true"
+                                               maxFractionDigits="2" type="currency"
+                                               minFractionDigits="2"/>
+
+                        </h:outputText>
+                  </p:column>-->
+
+            </p:treeTable>
+                  <!--</p:column>
+            </p:dataTable>-->
+
+            <p:dialog id="dialog" header="Detail" showEffect="fade" widgetVar="nodeDialog" modal="true" resizable="false">
+                  <p:outputPanel id="nodePanel">
+                        <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty ttBasicView.selectedNodeElement}">
                               <h:outputLabel for="name" value="Name: " />
-                              <h:outputText id="name" value="#{ttBasicView.selectedDocument.name}" style="font-weight:bold" />
+                              <h:outputText id="name" value="#{ttBasicView.selectedNodeElement.name}" style="font-weight:bold" />
 
                               <h:outputLabel for="size" value="Size: " />
-                              <h:outputText id="size" value="#{ttBasicView.selectedDocument.size}" style="font-weight:bold" />
+                              <h:outputText id="size" value="#{ttBasicView.selectedNodeElement.size}" style="font-weight:bold" />
 
                               <h:outputLabel for="type" value="Type " />
-                              <h:outputText id="type" value="#{ttBasicView.selectedDocument.type}" style="font-weight:bold" />
+                              <h:outputText id="type" value="#{ttBasicView.selectedNodeElement.type}" style="font-weight:bold" />
+                              <h:outputLabel for="priceUsd" value="PriceUsd " rendered="#{ttBasicView.selectedNodeElement.priceUsd}!=null"/>
+                              <h:outputText id="priceUsd" value="#{ttBasicView.selectedNodeElement.priceUsd}" style="font-weight:bold" rendered="#{ttBasicView.selectedNodeElement.priceUsd}!=null">
+                                    <f:convertNumber currencyCode="UAH" groupingUsed="true"
+                                                     maxFractionDigits="2" type="currency"
+                                                     minFractionDigits="2"/>
+                              </h:outputText>
                         </p:panelGrid>
                   </p:outputPanel>
             </p:dialog>

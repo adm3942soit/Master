@@ -52,15 +52,18 @@ public class CourseUSDDaoImpl extends CommonDAO implements CourseUSDDao {
 
     @Override
     public CourseUSD findCourseUSDByDate(Date createdDate) {
-
+        System.out.println("CourseUSDDaoImpl.findCourseUSDByDate");
         List<CourseUSD>list=(List<CourseUSD>) sessionFactory.getCurrentSession().createCriteria(CourseUSD.class)
-                .add(Restrictions.le
-                        ("creationDate", createdDate)).list();
+                /*.add(Restrictions.le
+                        ("creationDate", createdDate))*/
+                .list();
         long maxId=0L; CourseUSD course=null;
         for (CourseUSD courseUSD:list){
             if(maxId>courseUSD.getCourseUSDId()){
                 maxId=courseUSD.getCourseUSDId();
                 course=courseUSD;
+                System.out.println("courseUSD.getCreationDate() = " + courseUSD.getCreationDate());
+
             }
         }
         return course;

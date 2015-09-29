@@ -51,6 +51,12 @@
 
     </managed-bean>
     <managed-bean>
+        <managed-bean-name>nodeElement</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.NodeElement</managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+
+    </managed-bean>
+    <managed-bean>
         <managed-bean-name>loginBean</managed-bean-name>
         <managed-bean-class>ua.com.master.beans.LoginBean</managed-bean-class>
         <managed-bean-scope>request</managed-bean-scope>
@@ -143,6 +149,12 @@
             <value>#{catalogService}</value>
         </managed-property>
     </managed-bean>
+    <managed-bean>
+        <managed-bean-name>catalogService</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.CatalogService</managed-bean-class>
+        <managed-bean-scope>application</managed-bean-scope>
+
+    </managed-bean>
    <!-- <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
         <navigation-case>
@@ -171,6 +183,17 @@
             <from-action>#{loginBean.signIn}</from-action>
             <from-outcome>login</from-outcome>
             <to-view-id>/login.xhtml</to-view-id>
+
+        </navigation-case>
+
+
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>/index.xhtml</from-view-id>
+        <navigation-case>
+
+            <from-outcome>viewTree</from-outcome>
+            <to-view-id>/viewTree.xhtml</to-view-id>
 
         </navigation-case>
 

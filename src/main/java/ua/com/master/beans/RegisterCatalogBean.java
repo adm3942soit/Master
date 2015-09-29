@@ -849,7 +849,9 @@ public void clearCatalog(ActionEvent actionEvent){
         this.nameProductFile = nameProductFile;
     }
     public void convert() {
+        System.out.println("RegisterCatalogBean.convert");
         Double course=getFactoryDao().getCourseUSDDao().findCourseUSDByDate(new Date()).getSellingRate();
+        System.out.println("course"+course);
         priceUah=this.getPriceUsd()*course;
 
         return ;

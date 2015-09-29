@@ -1,13 +1,10 @@
 package ua.com.master.beans;
 
 import org.primefaces.model.TreeNode;
-import ua.com.master.dao.interfases.CatalogDao;
-import ua.com.master.model.Catalog;
 
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ManagedProperty;
-import javax.faces.bean.RequestScoped;
 import javax.faces.bean.ViewScoped;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -22,19 +19,19 @@ public class BasicView extends BaseBean implements Serializable {
     private TreeNode[][][] rootA;
     private TreeNode root;
     private List<TreeNode> listRoot=new ArrayList<TreeNode>();
-    private Document selectedDocument;
+    private NodeElement selectedNodeElement;
 
     @ManagedProperty("#{catalogService}")
     private CatalogService catalogService=new CatalogService();
 
     @PostConstruct
     public void init() {
-        rootA=getCatalogService().createDocuments();
+        root=getCatalogService().createNodes();
         for(int i=0;i<getCatalogService().countRoot;i++){
-            root=rootA[i][0][0];
+
             listRoot.add(rootA[i][0][0]);
         }
-        root=rootA[0][0][0];
+        System.out.println("listRoot = " + listRoot.size());
     }
 
     public TreeNode[][][] getRootA() {
@@ -45,12 +42,12 @@ public class BasicView extends BaseBean implements Serializable {
         this.rootA = rootA;
     }
 
-    public Document getSelectedDocument() {
-        return selectedDocument;
+    public NodeElement getSelectedNodeElement() {
+        return selectedNodeElement;
     }
 
-    public void setSelectedDocument(Document selectedDocument) {
-        this.selectedDocument = selectedDocument;
+    public void setSelectedNodeElement(NodeElement selectedNodeElement) {
+        this.selectedNodeElement = selectedNodeElement;
     }
 
     public CatalogService getCatalogService() {

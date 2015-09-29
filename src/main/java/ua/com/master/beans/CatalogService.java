@@ -15,34 +15,52 @@ import java.util.List;
  * Created by Oxana on 26.09.2015.
  */
 
-@ManagedBean(name = "documentService")
+@ManagedBean(name = "catalogService")
 @ApplicationScoped
 public class CatalogService extends  BaseBean{
 public int countRoot;
     public CatalogService() {
     }
 
-    public TreeNode[][][] createDocuments() {
+    public TreeNode createNodes() {
         List<Catalog>listCatalog= getCatalogDao().list();
+        System.out.println("listCatalog.size() = " + listCatalog.size());
         TreeNode root[][][]=new TreeNode[100][100][100];
+
+        TreeNode rootFirst = new DefaultTreeNode(new NodeElement("Catalogs",0,"",null, null), null);
         int i=0, j=0, k=0;
        for(Catalog catalog:listCatalog){
-          root[i][j][k] = new DefaultTreeNode(new Document(catalog.getName(), "-", "Folder"), null);
+          root[i][j][k] = new DefaultTreeNode(new NodeElement(catalog.getName(),0,"catalog",null, null), rootFirst);
            TreeNode r=root[i][j][k];
+           System.out.println("i = " + i);
+           System.out.println("j = " + j);
+           System.out.println("k = " + k);
            List<Department>departmentList=getDepartmentDao().listByCatalog(catalog);
-          for (Department department: departmentList){
-              root[i][++j][k] = new DefaultTreeNode(new Document(department.getName(), "-", "Folder"), r);
+           System.out.println("departmentList.size() = " + departmentList.size());
+           for (Department department: departmentList){
+              root[i][++j][k] = new DefaultTreeNode(new NodeElement(department.getName(),0,"department", null, null), r);
               TreeNode rr=root[i][j][k];
-              List<Product>productList =getProductDAO().findProductsByDepartment(department);
-              for(Product product:productList){
-                  root[i][j][++k] = new DefaultTreeNode(new Document(product.getName(), "-", product.description), rr);
+               System.out.println("i = " + i);
+               System.out.println("j = " + j);
+               System.out.println("k = " + k);
+             List<Product>productList =getProductDAO().findProductsByDepartment(department);
+               System.out.println("productList.size() = " + productList.size());
+               for(Product product:productList){
+                  root[i][j][++k] = new DefaultTreeNode(new NodeElement(product.getName(),0,"product",product.priceUSD,product.nameImage), rr);
 
               }
-              ++i;j=0;k=0;
+               System.out.println("1");
+               k=0;
           }
+           System.out.println("2!!!!"+i);
+           ++i;j=0;
        }
+        System.out.println("3");
         countRoot=--i;
-        return root;
+        System.out.println("countRoot = " + countRoot);
+        if(rootFirst!=null)
+           System.out.println("rootFirst = " + rootFirst.getChildren().size());
+        return rootFirst;
     }
 
     public int getCountRoot() {

@@ -19,6 +19,10 @@ public class NavigationBean implements Serializable{
         return
                 "home";
     }
+    public String view(){
+        return
+                "viewTree";
+    }
     String videoURL="video1.mp4";
 
     public String getVideoURL() {
