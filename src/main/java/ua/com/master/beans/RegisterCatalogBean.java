@@ -873,6 +873,23 @@ public void clearCatalog(ActionEvent actionEvent){
         tabPaneChange(2,false,false);
         return ;
     }
+    public void convert(Double number) {
+        this.setPriceUsd(number);
+        CourseUSD courseUSD =getFactoryDao().
+                getCourseUSDDao().
+                findCourseUSDByDate(new Date());
+        if(courseUSD==null){
+            productMessage=FacesHelper.getBundleMessage("course_not_exist");
+            tabPaneChange(2,false, false);
+            return;
+        }
+        Double course = courseUSD.getSellingRate();
+        System.out.println("getPriceUsd() = " + getPriceUsd());
+        System.out.println("course = " + course);
+        priceUah=this.getPriceUsd()*course;
+        tabPaneChange(2,false,false);
+        return ;
+    }
     private UploadedFile file;
 
 

@@ -240,7 +240,8 @@
                             </td>
                             <td class="cell">
                                 <h:inputText id="pr" value="#{registerCatalogBean.priceUsd}"
-                                             converter="usdToUahConverter"
+                                      converter="usdToUahConverter"
+                                             converterMessage="#{registerCatalogBean.productMessage}"
                                              valueChangeListener="#{registerCatalogBean.convert}"
                                              styleClass="mandatory"
                                         update="prUah">

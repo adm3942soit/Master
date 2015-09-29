@@ -22,8 +22,18 @@ public class UsdToUahConverter implements Converter {
         public Object getAsObject(FacesContext context, UIComponent component, String value) {
 
             System.out.println("value = " + value);
-            RegisterCatalogBean.registerCatalogBean.convert();
-            return new Double(value);
+            StringBuffer result=new StringBuffer("");
+            for(char s:value.toCharArray()){
+                if(!new Character(s).isDigit(s)){
+                if(s==44) {
+                    result.append(46);
+                }
+                }
+                else result.append(s);
+            }
+            Double number=Double.parseDouble(result.toString());
+            RegisterCatalogBean.registerCatalogBean.convert(number);
+            return number;
         }
 
         @Override
