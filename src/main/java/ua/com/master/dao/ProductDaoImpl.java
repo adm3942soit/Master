@@ -24,8 +24,8 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
     public List<Product> findAll() {
 
         List<Product> list = (ArrayList<Product>) sessionFactory.getCurrentSession().
-                createQuery("FROM Product").list();
-//                createCriteria(Product.class).list();
+                //createQuery("FROM Product").list();
+                createCriteria(Product.class).list();
         return (list == null ? new ArrayList<Product>() : list);
     }
     @Override
@@ -49,7 +49,7 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
     @Override
     public Product findById(Long id) {
         return (Product) sessionFactory.getCurrentSession().createCriteria(Product.class)
-                .add(Restrictions.eq("productID", id)).uniqueResult();
+                .add(Restrictions.eq("productId", id)).uniqueResult();
     }
 
     @Override
@@ -77,7 +77,7 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
     ) {
         Product product = new Product(name, description, priseUSD, forCount, count, shortName);
         try {
-            sessionFactory.getCurrentSession().save(product);
+            sessionFactory.getCurrentSession().saveOrUpdate(product);
         } catch (Exception ex) {
             ex.printStackTrace();
             return false;
@@ -89,8 +89,8 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
     @Override
     public boolean addProduct(Product product) {
         try {
-            sessionFactory.getCurrentSession().save(product);
-            sessionFactory.getCurrentSession().flush();
+            sessionFactory.getCurrentSession().saveOrUpdate(product);
+            //sessionFactory.getCurrentSession().flush();
 
         } catch (Exception ex) {
             ex.printStackTrace();
@@ -149,5 +149,12 @@ public class ProductDaoImpl extends CommonDAO implements ProductDao {
         return true;
     }
 
-
+    @Override
+    public  boolean isSuchName(String name){
+        List<Product>list=findAll();
+        for(Product product:list){
+            if(product.getName().equals(name)) return true;
+        }
+        return false;
+    }
 }

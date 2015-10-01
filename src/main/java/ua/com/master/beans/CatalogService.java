@@ -27,10 +27,10 @@ public int countRoot;
         System.out.println("listCatalog.size() = " + listCatalog.size());
         TreeNode root[][][]=new TreeNode[100][100][100];
 
-        TreeNode rootFirst = new DefaultTreeNode(new NodeElement("Catalogs",0,"",null, null), null);
+        TreeNode rootFirst = new DefaultTreeNode(new NodeElement("Catalogs",0,"",null, null, null), null);
         int i=0, j=0, k=0;
        for(Catalog catalog:listCatalog){
-          root[i][j][k] = new DefaultTreeNode(new NodeElement(catalog.getName(),0,"catalog",null, null), rootFirst);
+          root[i][j][k] = new DefaultTreeNode(new NodeElement(catalog.getName(),0,"catalog",null, null, null), rootFirst);
            TreeNode r=root[i][j][k];
            System.out.println("i = " + i);
            System.out.println("j = " + j);
@@ -38,7 +38,7 @@ public int countRoot;
            List<Department>departmentList=getDepartmentDao().listByCatalog(catalog);
            System.out.println("departmentList.size() = " + departmentList.size());
            for (Department department: departmentList){
-              root[i][++j][k] = new DefaultTreeNode(new NodeElement(department.getName(),0,"department", null, null), r);
+              root[i][++j][k] = new DefaultTreeNode(new NodeElement(department.getName(),0,"department", null, null, null), r);
               TreeNode rr=root[i][j][k];
                System.out.println("i = " + i);
                System.out.println("j = " + j);
@@ -46,20 +46,25 @@ public int countRoot;
              List<Product>productList =getProductDAO().findProductsByDepartment(department);
                System.out.println("productList.size() = " + productList.size());
                for(Product product:productList){
-                  root[i][j][++k] = new DefaultTreeNode(new NodeElement(product.getName(),0,"product",product.priceUSD,product.nameImage), rr);
-
+                  root[i][j][++k] = new DefaultTreeNode(new NodeElement(product.getName(),0,"product",product.priceUSD,product.getCourseUSD(),product.nameImage), rr);
+                   System.out.println("i = " + i);
+                   System.out.println("j = " + j);
+                   System.out.println("k = " + k);
               }
-               System.out.println("1");
+
                k=0;
           }
-           System.out.println("2!!!!"+i);
+
            ++i;j=0;
+           System.out.println("i!!!!"+i);
        }
-        System.out.println("3");
+
         countRoot=--i;
         System.out.println("countRoot = " + countRoot);
-        if(rootFirst!=null)
-           System.out.println("rootFirst = " + rootFirst.getChildren().size());
+        if(rootFirst!=null) {
+            System.out.println("rootFirst.getChildren().size() = " + rootFirst.getChildren().size());
+            System.out.println("rootFirst.getChildren().size() = " + rootFirst.getChildren().get(0).getChildCount());
+        }
         return rootFirst;
     }
 

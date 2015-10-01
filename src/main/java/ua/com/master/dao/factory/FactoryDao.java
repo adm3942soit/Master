@@ -53,6 +53,7 @@ public class FactoryDao {
     }
 
     public DepartmentDao getDepartmentDao() {
+        departmentDao=new DepartmentDaoImpl();
         return departmentDao;
     }
 

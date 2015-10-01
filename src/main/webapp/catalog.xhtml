@@ -327,25 +327,22 @@
                                 <p:fileUpload value="#{registerCatalogBean.file}"
                                               mode="simple" auto="true"
                                               validator="#{registerCatalogBean.validateFile}"
-                                              update="messages, viewH"
-                                              multiple="false"
-                                              allowTypes="/(\.|\/)(gif|jpe?g|png)$/"
-                                              required="true"
-                                              rendered="#{!registerCatalogBean.buttonCreatePressed}"
-                                              fileUploadListener="#{registerCatalogBean.fileUploadListener}"/>
 
+                                              multiple="false"
+                                              allowTypes="/(\.|\/)(gif|jpg|jpeg|gif|png|PNG|GIF|JPG|JPEG)$/"
+                                              required="true"
+                                              update="@form"
+                                              oncomplete="window.location.reload();"
+
+                                              fileUploadListener="#{registerCatalogBean.fileUploadListener}"/>
                             </td>
+                            <!--rendered="#{!registerCatalogBean.createdNewProduct}"-->
+
                             <td class="cell">
-                                <p:commandButton value="Submit" ajax="false"
-                                                 actionListener="#{registerCatalogBean.upload}"
-                                                 update="viewH,messages, name"
-                                                 disabled="false" rendered="#{!registerCatalogBean.buttonCreatePressed}">
-                                    <!--<f:ajax update ="name" execute="@all" render="@form"  />-->
-                                </p:commandButton>
-                            </td>
-                            <td class="cell">
-                                <!-- <img id= "view" src="#{registerCatalogBean.file.fileName}"  ></img>-->
+
                                 <h:graphicImage id="viewH"
+                                                width="150"
+                                                height="120"
                                                 url="#{registerCatalogBean.nameImage}"
                                                 rendered="#{registerCatalogBean.nameImage!=null
                                                 }">
@@ -367,19 +364,29 @@
                     </table>
                     <div class="button">
                         <p:growl id="growl" life="2000" />
-                        <p:commandButton id="but41" value="#{bundle.button_create}"
+                        <p:commandButton value="#{bundle.button_create}"
+                                         ajax="false"
+                                         actionListener="#{registerCatalogBean.upload}"
+                                         update="viewH,messages, name, growl"
+                                         disabled="false" rendered="#{!registerCatalogBean.createdNewProduct}">
+                            <!--<f:ajax update ="name" execute="@all" render="@form"  />-->
+                        </p:commandButton>
+                        <!--<p:commandButton id="but41" value="#{bundle.button_create}"
+                                         ajax="false"
                                          actionListener="#{registerCatalogBean.createNewProduct}"
                                          rendered="#{!registerCatalogBean.createdNewProduct}"
 
                                          update="growl"
                                 >
-                        </p:commandButton>
+                        </p:commandButton>-->
                         <p:commandButton id="but511" value="#{bundle.button_update}"
+                                         ajax="false"
                                          actionListener="#{registerCatalogBean.updateProduct}"
                                          rendered="#{registerCatalogBean.createdNewProduct}"
                                          update="growl">
                         </p:commandButton>
                         <p:commandButton id="but52" value="#{bundle.button_new}"
+                                         ajax="false"
                                          actionListener="#{registerCatalogBean.clearProduct}"
                                          rendered="#{registerCatalogBean.createdNewProduct}"
                                          update="growl">
@@ -422,7 +429,7 @@
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
-                                    <h:outputText value="Department's name"/>
+                                    <h:outputText value="Product's name"/>
                                 </f:facet>
                                 <h:commandLink id="viewProdLnk" title="View product"
                                                actionListener="#{registerCatalogBean.viewChosenProduct}">
@@ -430,6 +437,19 @@
                                     <f:param value="#{prod.productId}" name="productId"/>
                                     <h:outputText
                                                   value="#{prod.name}"></h:outputText>
+
+                                </h:commandLink>
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Product's description"/>
+                                </f:facet>
+                                <h:commandLink id="viewProdLnk1" title="View product"
+                                               actionListener="#{registerCatalogBean.viewChosenProduct}">
+
+                                    <f:param value="#{prod.productId}" name="productId"/>
+                                    <h:outputText
+                                            value="#{prod.description}"></h:outputText>
 
                                 </h:commandLink>
                             </h:column>

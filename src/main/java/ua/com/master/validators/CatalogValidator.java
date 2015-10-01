@@ -36,19 +36,27 @@ public class CatalogValidator extends FieldValidator
             message = FacesHelper.getBundleMessage("validator_required");
             return  false;
         }
-        Pattern pattern = Pattern.compile("\\w+");
+        /*Pattern pattern = Pattern.compile("\\w+");
         Matcher m = pattern.matcher(value);
         boolean matchFound = m.matches();
         if (!matchFound)
         {
             message = FacesHelper.getBundleMessage("validator_name");
             return false;
-        }
+        }*/
         if (new CatalogDaoImpl().isSuchName(value)){
             message = FacesHelper.getBundleMessage("name_exist");
             return false;
         }
         setMessage("");
         return valid;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }

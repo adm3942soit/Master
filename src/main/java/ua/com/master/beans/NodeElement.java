@@ -3,6 +3,7 @@ package ua.com.master.beans;
 /**
  * Created by Oxana on 26.09.2015.
  */
+import com.utils.digits.Rounder;
 import ua.com.master.dao.factory.FactoryDao;
 import ua.com.master.model.CourseUSD;
 
@@ -22,18 +23,18 @@ public class NodeElement extends FactoryDao implements Serializable, Comparable<
     private Double priceUsd;
     private Double priceUah;
     private String nameImage;
-
+ private  CourseUSD course;
     public NodeElement() {
     }
 
-    public NodeElement(String name, int size, String type, Double priceUsd,String nameImage) {
+    public NodeElement(String name, int size, String type, Double priceUsd,CourseUSD course,String nameImage) {
         this.name = name;
         this.size = size;
         this.type = type;
         this.priceUsd=priceUsd;
-        CourseUSD course=getCourseUSDDao().findCourseUSDByDate(new Date());
-if(course!=null)
-           this.priceUah=course.getSellingRate()*this.priceUsd;
+        this.course=course;
+        if(course!=null)
+           this.priceUah= Rounder.roundToMoney(course.getSellingRate()*this.priceUsd);
         this.nameImage=nameImage;
     }
 
@@ -83,6 +84,14 @@ if(course!=null)
 
     public void setNameImage(String nameImage) {
         this.nameImage = nameImage;
+    }
+
+    public CourseUSD getCourse() {
+        return course;
+    }
+
+    public void setCourse(CourseUSD course) {
+        this.course = course;
     }
 
     @Override

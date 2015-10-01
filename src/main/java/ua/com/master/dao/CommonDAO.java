@@ -27,6 +27,7 @@ public class CommonDAO
     FactoryDao factoryDao=FactoryDao.factoryDao;
 
     public FactoryDao getFactoryDao() {
+        factoryDao=FactoryDao.factoryDao;
         return factoryDao;
     }
 

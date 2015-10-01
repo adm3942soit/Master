@@ -162,8 +162,8 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
         courseId = FacesHelper.getParameterAsLong("courseId");
         this.setCourseUSD(getCourseUSDDao().findById(courseId));
         initFieldsCourse(this.getCourseUSD());
-        Filer.rewriteFile(new File(nameCourseFile), "CourseUSD Number:" +
-                courseUSD.getCourseUSDId());
+        /*Filer.rewriteFile(new File(nameCourseFile), "CourseUSD Number:" +
+                courseUSD.getCourseUSDId());*/
         tabPaneChange(0, false, false);
 
     }
@@ -171,9 +171,9 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
         System.out.println("CourseUSDBean.initFieldsCourse");
         this.setCourseId(course.courseUSDId);
         this.setBuyingRate(course.buyingRate);
-        this.setBuyingRateString(String.valueOf(getBuyingRate()));
+
         this.setSellingRate(course.sellingRate);
-        this.setSellingRateString(String.valueOf(getSellingRate()));
+
         this.setCourseUSD(course);
         this.courseId=course.getCourseUSDId();
 
@@ -191,16 +191,25 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     public void  createNewCourse(ActionEvent event){
         System.out.println("CourseUSDBean.createNewCourse");
        this.courseUSD=new CourseUSD();
+
+        if(!initCourseUSDFromFields())return;
+        getCourseUSDDao().save(this.courseUSD);
+        Filer.rewriteFile(new File(nameCourseFile), "CourseUSD Number:" +
+                this.courseUSD.getCourseUSDId());
+
+        tabPaneChange(0,false, true);
+    }
+    public boolean initCourseUSDFromFields(){
         try {
-            //this.setBuyingRate(Double.parseDouble(getBuyingRateString().trim()));
-            if (!validate(this.getBuyingRate())) return;
-           // this.setSellingRate(Double.parseDouble(getSellingRateString().trim()));
-            if (!validate(this.getSellingRate())) return;
+
+            if (!validate(this.getBuyingRate())) return false;
+
+            if (!validate(this.getSellingRate())) return false;
         }catch(Exception ex){
             courseMessage="Symbols are not valid!";
-            return;
+            return false;
         }
-     this.courseUSD.setBuyingRate(this.getBuyingRate());
+        this.courseUSD.setBuyingRate(this.getBuyingRate());
         this.courseUSD.setSellingRate(this.sellingRate);
         this.courseUSD.setCreationDate(new Date());
         this.courseUSD.setCreationPerson(getFactoryDao().incomerPerson.getLastName());
@@ -208,11 +217,7 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
         this.courseUSD.setLastUpdatePerson(getFactoryDao().incomerPerson.getLastName());
 
 
-        getCourseUSDDao().save(this.courseUSD);
-        Filer.rewriteFile(new File(nameCourseFile), "CourseUSD Number:" +
-                this.courseUSD.getCourseUSDId());
-
-        tabPaneChange(0,false, true);
+        return true;
     }
     public boolean isCreatedNewCourse(){
         System.out.println("CourseUSDBean.isCreatedNewCourse");
@@ -225,7 +230,7 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
     public void updateCourse(ActionEvent actionEvent){
         System.out.println("CourseUSDBean.updateCourse");
         courseUSD=getCourseUSDFromFile();
-        try {
+        /*try {
             //this.setBuyingRate(Double.parseDouble(getBuyingRateString().trim()));
             if (!validate(this.getBuyingRate())) return;
             //this.setSellingRate(Double.parseDouble(getSellingRateString().trim()));
@@ -239,7 +244,8 @@ public class CourseUSDBean extends  BaseBean implements Serializable {
         courseUSD.setSellingRate(this.getSellingRate());
         courseUSD.setLastUpdateDate(new Date());
         courseUSD.setLastUpdatePerson(getFactoryDao().incomerPerson.getLastName());
-
+*/
+        if(!initCourseUSDFromFields())return;
         getCourseUSDDao().save(this.courseUSD);
 
         tabPaneChange(0, false, true);

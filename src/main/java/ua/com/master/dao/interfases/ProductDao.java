@@ -23,4 +23,5 @@ public interface ProductDao {
     boolean deleteProductByName(String name);
     boolean deleteProductById(Long id);
     boolean changeImage(String name, String nameImage);
+    public  boolean isSuchName(String name);
 }

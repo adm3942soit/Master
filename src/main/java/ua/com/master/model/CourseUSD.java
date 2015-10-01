@@ -21,8 +21,7 @@ public class CourseUSD  implements Serializable {
     public Double  buyingRate;
     @Column(name = "SELLING_RATE", unique = false, nullable = false)
     public Double sellingRate;
-    @OneToMany(fetch = FetchType.EAGER)
-    @JoinColumn(name = "PRODUCT_ID")
+    @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     Set<Product> products;
 
     public Set<Product> getProducts() {

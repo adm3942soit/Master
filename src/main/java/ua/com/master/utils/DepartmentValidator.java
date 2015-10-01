@@ -40,7 +40,7 @@ public class DepartmentValidator extends FieldValidator
             message = FacesHelper.getBundleMessage("validator_required");
             return  false;
         }
-        Pattern pattern = Pattern.compile("\\w+");
+        /*Pattern pattern = Pattern.compile("\\w+");
         Matcher m = pattern.matcher(value);
         boolean matchFound = m.matches();
         System.out.println("matchFound = " + matchFound);
@@ -48,7 +48,7 @@ public class DepartmentValidator extends FieldValidator
         {
             message = FacesHelper.getBundleMessage("validator_name");
             return false;
-        }
+        }*/
 
         if (new DepartmentDaoImpl().isSuchName(value)){
             message = FacesHelper.getBundleMessage("name_exist");
@@ -56,5 +56,13 @@ public class DepartmentValidator extends FieldValidator
         }
         setMessage("");
         return valid;
+    }
+
+    public String getValue() {
+        return value;
+    }
+
+    public void setValue(String value) {
+        this.value = value;
     }
 }
