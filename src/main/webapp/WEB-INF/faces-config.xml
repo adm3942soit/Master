@@ -14,12 +14,22 @@
     </application>
 
     <managed-bean>
-        <managed-bean-name>productBean</managed-bean-name>
-        <managed-bean-class>ua.com.master.beans.ProductBean</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
+    <managed-bean-name>productBean</managed-bean-name>
+    <managed-bean-class>ua.com.master.beans.ProductBean</managed-bean-class>
+    <managed-bean-scope>request</managed-bean-scope>
+    <managed-property>
+        <property-name>productDao</property-name>
+        <value>#{productDao}</value>
+    </managed-property>
+
+</managed-bean>
+    <managed-bean>
+        <managed-bean-name>ttEventsView</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.TreeEvent</managed-bean-class>
+        <managed-bean-scope>view</managed-bean-scope>
         <managed-property>
-            <property-name>productDao</property-name>
-            <value>#{productDao}</value>
+            <property-name>service</property-name>
+            <value>#{catalogService}</value>
         </managed-property>
 
     </managed-bean>

@@ -14,13 +14,15 @@
 </h1>
 
       <h:form id="form">
-            <!--<p:dataTable id="dataTable" var="root"
-                         value="#{ttBasicView.listRoot}"
-                         columnClasses="cell"
-                         headerClass="cell label">
-           <p:column>-->
-            <p:treeTable id="tt" value="#{ttBasicView.root}" var="nodeElement">
-                  <f:facet name="header">
+
+          <p:growl id="messages" showDetail="true" />
+          <p:treeTable id="tt" value="#{ttEventsView.root}" var="nodeElement" selectionMode="single" selection="#{ttEventsView.selectedNode}">
+                <p:ajax event="expand" listener="#{ttEventsView.onNodeExpand}" update=":form:messages" />
+                <p:ajax event="collapse" listener="#{ttEventsView.onNodeCollapse}" update=":form:messages" />
+                <p:ajax event="select" listener="#{ttEventsView.onNodeSelect}" update=":form:messages" />
+                <p:ajax event="unselect" listener="#{ttEventsView.onNodeUnselect}" update=":form:messages" />
+
+                <f:facet name="header">
                         Catalog Viewer
                   </f:facet>
                   <p:column  headerText="Name">
@@ -62,8 +64,7 @@ rendered="#{nodeElement.priceUSD!=null}"
                   </p:column>-->
 
             </p:treeTable>
-                  <!--</p:column>
-            </p:dataTable>-->
+
 
             <p:dialog id="dialog" header="Detail" showEffect="fade" widgetVar="nodeDialog" modal="true" resizable="false">
                   <p:outputPanel id="nodePanel">

@@ -23,7 +23,7 @@ public class NodeElement extends FactoryDao implements Serializable, Comparable<
     private Double priceUsd;
     private Double priceUah;
     private String nameImage;
- private  CourseUSD course;
+    private  CourseUSD course;
     public NodeElement() {
     }
 

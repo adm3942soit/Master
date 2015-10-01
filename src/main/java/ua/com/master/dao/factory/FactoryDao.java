@@ -119,4 +119,12 @@ public class FactoryDao {
     public void setPersonDao(PersonDao personDao) {
         this.personDao = personDao;
     }
+
+    public static FactoryDao getFactoryDao() {
+        return factoryDao;
+    }
+
+    public static void setFactoryDao(FactoryDao factoryDao) {
+        FactoryDao.factoryDao = factoryDao;
+    }
 }

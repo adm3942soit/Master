@@ -27,11 +27,7 @@ public class BasicView extends BaseBean implements Serializable {
     @PostConstruct
     public void init() {
         root=getCatalogService().createNodes();
-        for(int i=0;i<getCatalogService().countRoot;i++){
 
-            listRoot.add(rootA[i][0][0]);
-        }
-        System.out.println("listRoot = " + listRoot.size());
     }
 
     public TreeNode[][][] getRootA() {
