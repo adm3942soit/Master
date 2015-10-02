@@ -16,7 +16,9 @@ import java.util.Date;
 public class NodeElement extends FactoryDao implements Serializable, Comparable<NodeElement> {
 
     private String name;
-
+    public static final String CATALOG_TYPE="catalog";
+    public static final String DEPARTMENT_TYPE="department";
+    public static final String PRODUCT_TYPE="product";
     private int size;
 
     private String type;

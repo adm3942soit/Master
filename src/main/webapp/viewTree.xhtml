@@ -16,24 +16,26 @@
       <h:form id="form">
 
           <p:growl id="messages" showDetail="true" />
-          <p:treeTable id="tt" value="#{ttEventsView.root}" var="nodeElement" selectionMode="single" selection="#{ttEventsView.selectedNode}">
-                <p:ajax event="expand" listener="#{ttEventsView.onNodeExpand}" update=":form:messages" />
-                <p:ajax event="collapse" listener="#{ttEventsView.onNodeCollapse}" update=":form:messages" />
-                <p:ajax event="select" listener="#{ttEventsView.onNodeSelect}" update=":form:messages" />
-                <p:ajax event="unselect" listener="#{ttEventsView.onNodeUnselect}" update=":form:messages" />
-
+          <p:treeTable id="tt" value="#{treeEvent.root}"
+                       var="nodeElement"
+                       selectionMode="single"
+                       selection="#{treeEvent.selectedNode}">
+                <p:ajax event="expand" listener="#{treeEvent.onNodeExpand}" update=":form:messages" />
+                <p:ajax event="collapse" listener="#{treeEvent.onNodeCollapse}" update=":form:messages" />
+                <!--<p:ajax event="select" listener="#{treeEvent.onNodeSelect}" update=":form:messages" />-->
+                <p:ajax event="unselect" listener="#{treeEvent.onNodeUnselect}" update=":form:messages" />
+              <p:ajax event="select"
+                      update=":form:detailCatalog,:form:detailDepartment,:form:detailProduct"
+                      listener="#{treeEvent.handleSelection}"/>
                 <f:facet name="header">
                         Catalog Viewer
                   </f:facet>
                   <p:column  headerText="Name">
                         <h:outputText value="#{nodeElement.name}" />
                   </p:column>
-                  <!--<p:column headerText="Size">
-                        <h:outputText value="#{nodeElement.size}" />
-                  </p:column>
                   <p:column headerText="Type">
                         <h:outputText value="#{nodeElement.type}" />
-                  </p:column>-->
+                  </p:column>
                   <p:column style="width:24px">
                         <p:commandLink update=":form:nodePanel"
                                        oncomplete="PF('nodeDialog').show()"
@@ -41,7 +43,7 @@
                                        styleClass="ui-icon ui-icon-search">
                               <f:setPropertyActionListener
                                       value="#{nodeElement}"
-                                      target="#{ttBasicView.selectedNodeElement}" />
+                                      target="#{treeEvent.selectedNodeElement}" />
                         </p:commandLink>
                   </p:column>
                   <!--<p:column style="width:24px">
@@ -70,15 +72,15 @@ rendered="#{nodeElement.priceUSD!=null}"
                   <p:outputPanel id="nodePanel">
                         <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty ttBasicView.selectedNodeElement}">
                               <h:outputLabel for="name" value="Name: " />
-                              <h:outputText id="name" value="#{ttBasicView.selectedNodeElement.name}" style="font-weight:bold" />
+                              <h:outputText id="name" value="#{treeEvent.selectedNodeElement.name}" style="font-weight:bold" />
 
                               <h:outputLabel for="size" value="Size: " />
-                              <h:outputText id="size" value="#{ttBasicView.selectedNodeElement.size}" style="font-weight:bold" />
+                              <h:outputText id="size" value="#{treeEvent.selectedNodeElement.size}" style="font-weight:bold" />
 
                               <h:outputLabel for="type" value="Type " />
-                              <h:outputText id="type" value="#{ttBasicView.selectedNodeElement.type}" style="font-weight:bold" />
-                              <h:outputLabel for="priceUsd" value="PriceUsd " rendered="#{ttBasicView.selectedNodeElement.priceUsd}!=null"/>
-                              <h:outputText id="priceUsd" value="#{ttBasicView.selectedNodeElement.priceUsd}" style="font-weight:bold" rendered="#{ttBasicView.selectedNodeElement.priceUsd}!=null">
+                              <h:outputText id="type" value="#{treeEvent.selectedNodeElement.type}" style="font-weight:bold" />
+                              <h:outputLabel for="priceUsd" value="PriceUsd " rendered="#{treeEvent.selectedNodeElement.priceUsd}!=null"/>
+                              <h:outputText id="priceUsd" value="#{treeEvent.selectedNodeElement.priceUsd}" style="font-weight:bold" rendered="#{treeEvent.selectedNodeElement.priceUsd}!=null">
                                     <f:convertNumber currencyCode="UAH" groupingUsed="true"
                                                      maxFractionDigits="2" type="currency"
                                                      minFractionDigits="2"/>
@@ -86,7 +88,19 @@ rendered="#{nodeElement.priceUSD!=null}"
                         </p:panelGrid>
                   </p:outputPanel>
             </p:dialog>
+          <p:panel id="detailCatalog" header="Detail View Country" visible="#{treeTableTutorialBean.showCountryDetail}">
+              This is the Detail view of country
+          </p:panel>
+
+          <p:panel id="detailDepartment" header="Detail View State" visible="#{treeTableTutorialBean.showStateDetail}">
+              This is the Detail view of state
+          </p:panel>
+
+          <p:panel id="detailProduct" header="Detail View City" visible="#{treeTableTutorialBean.showCityDetail}">
+              This is the Detail view of city
+          </p:panel>
       </h:form>
+
 </ui:define>
 </ui:composition>
 </html>

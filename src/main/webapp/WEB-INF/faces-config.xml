@@ -24,7 +24,7 @@
 
 </managed-bean>
     <managed-bean>
-        <managed-bean-name>ttEventsView</managed-bean-name>
+        <managed-bean-name>treeEvent</managed-bean-name>
         <managed-bean-class>ua.com.master.beans.TreeEvent</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
         <managed-property>
@@ -150,7 +150,7 @@
             <value>#{personDao}</value>
         </managed-property>
     </managed-bean>
-    <managed-bean>
+    <!--<managed-bean>
         <managed-bean-name>ttBasicView</managed-bean-name>
         <managed-bean-class>ua.com.master.beans.BasicView</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
@@ -158,11 +158,11 @@
             <property-name>catalogService</property-name>
             <value>#{catalogService}</value>
         </managed-property>
-    </managed-bean>
+    </managed-bean>-->
     <managed-bean>
         <managed-bean-name>catalogService</managed-bean-name>
         <managed-bean-class>ua.com.master.beans.CatalogService</managed-bean-class>
-        <managed-bean-scope>application</managed-bean-scope>
+        <managed-bean-scope>view</managed-bean-scope>
 
     </managed-bean>
    <!-- <navigation-rule>

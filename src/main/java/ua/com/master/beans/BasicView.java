@@ -13,18 +13,18 @@ import java.util.List;
 /**
  * Created by Oxana on 26.09.2015.
  */
-@ManagedBean(name = "courseUSDBean")
-@ViewScoped
+/*@ManagedBean(name = "courseUSDBean")
+@ViewScoped*/
 public class BasicView extends BaseBean implements Serializable {
     private TreeNode[][][] rootA;
     private TreeNode root;
     private List<TreeNode> listRoot=new ArrayList<TreeNode>();
     private NodeElement selectedNodeElement;
 
-    @ManagedProperty("#{catalogService}")
+   /* @ManagedProperty("#{catalogService}")*/
     private CatalogService catalogService=new CatalogService();
 
-    @PostConstruct
+  /*  @PostConstruct*/
     public void init() {
         root=getCatalogService().createNodes();
 
