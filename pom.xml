@@ -414,30 +414,50 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
+                <version>2.4</version>
                 <executions>
                     <execution>
-                        <id>install</id>
-                        <phase>install</phase>
+                        <id>unpack</id>
+                        <phase>prepare-package</phase>
                         <goals>
-                            <goal>sources</goal>
+                            <goal>unpack</goal>
+                            <goal>unpack-dependencies</goal>
+                            <goal>copy-dependencies</goal>
                         </goals>
+                        <configuration>
+                            <artifactItems>
+                                <artifactItem>
+                                    <groupId>com.utils</groupId>
+                                    <artifactId>library-java-utils</artifactId>
+                                    <version>1.0.0</version>
+                                    <type>jar</type>
+                                    <includes>${project.basedir}/lib</includes>
+                                    <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                                </artifactItem>
+                            </artifactItems>
+                            <outputDirectory>${project.build.directory}/classes</outputDirectory>
+                        </configuration>
+                        <!-- <configuration>
+                             &lt;!&ndash;<includeScope>compile</includeScope>&ndash;&gt;
+                             <outputDirectory>${project.build.directory}</outputDirectory>
+                         </configuration>-->
                     </execution>
                 </executions>
             </plugin>
 
-               <!-- <plugin>
-                    <artifactId>maven-assembly-plugin</artifactId>
-                    <configuration>
-                       &lt;!&ndash; <archive>
-                            <manifest>
-                                <mainClass>fully.qualified.MainClass</mainClass>
-                            </manifest>
-                        </archive>&ndash;&gt;
-                        <descriptorRefs>
-                            <descriptorRef>jar-with-dependencies</descriptorRef>
-                        </descriptorRefs>
-                    </configuration>
-                </plugin>-->
+            <!-- <plugin>
+                 <artifactId>maven-assembly-plugin</artifactId>
+                 <configuration>
+                    &lt;!&ndash; <archive>
+                         <manifest>
+                             <mainClass>fully.qualified.MainClass</mainClass>
+                         </manifest>
+                     </archive>&ndash;&gt;
+                     <descriptorRefs>
+                         <descriptorRef>jar-with-dependencies</descriptorRef>
+                     </descriptorRefs>
+                 </configuration>
+             </plugin>-->
 
         </plugins>
     </build>

@@ -61,11 +61,13 @@ public class TreeEvent implements Serializable{
     }
 
     public void onNodeSelect(NodeSelectEvent event) {
+        ((NodeElement)(event.getTreeNode().getData())).setSelected(true);
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
     public void onNodeUnselect(NodeUnselectEvent event) {
+        ((NodeElement)(event.getTreeNode().getData())).setSelected(false);
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Unselected", event.getTreeNode().toString());
         FacesContext.getCurrentInstance().addMessage(null, message);
     }

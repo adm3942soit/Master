@@ -25,6 +25,8 @@ public class NodeElement extends FactoryDao implements Serializable, Comparable<
     private Double priceUsd;
     private Double priceUah;
     private String nameImage;
+    private Boolean selected;
+    private Boolean isProduct;
     private  CourseUSD course;
     public NodeElement() {
     }
@@ -133,4 +135,22 @@ public class NodeElement extends FactoryDao implements Serializable, Comparable<
     public int compareTo(NodeElement nodeElement) {
         return this.getName().compareTo(nodeElement.getName());
     }
+
+    public Boolean getSelected() {
+        return selected;
+    }
+
+    public void setSelected(Boolean selected) {
+        this.selected = selected;
+    }
+
+    public Boolean getIsProduct() {
+        isProduct=this.type.equals(PRODUCT_TYPE);
+        return isProduct;
+    }
+
+    public void setIsProduct(Boolean isProduct) {
+        this.isProduct = isProduct;
+    }
+
 }

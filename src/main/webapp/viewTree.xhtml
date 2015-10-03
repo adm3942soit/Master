@@ -22,21 +22,23 @@
                        selection="#{treeEvent.selectedNode}">
                 <p:ajax event="expand" listener="#{treeEvent.onNodeExpand}" update=":form:messages" />
                 <p:ajax event="collapse" listener="#{treeEvent.onNodeCollapse}" update=":form:messages" />
-                <!--<p:ajax event="select" listener="#{treeEvent.onNodeSelect}" update=":form:messages" />-->
+                <p:ajax event="select" listener="#{treeEvent.onNodeSelect}" update=":form:messages" />
                 <p:ajax event="unselect" listener="#{treeEvent.onNodeUnselect}" update=":form:messages" />
-              <p:ajax event="select"
+             <!-- <p:ajax event="select"
                       update=":form:detailCatalog,:form:detailDepartment,:form:detailProduct"
-                      listener="#{treeEvent.handleSelection}"/>
+                      listener="#{treeEvent.handleSelection}"/>-->
                 <f:facet name="header">
                         Catalog Viewer
                   </f:facet>
                   <p:column  headerText="Name">
-                        <h:outputText value="#{nodeElement.name}" />
+
+                      <p:selectBooleanCheckbox value="#{nodeElement.selected}" rendered="#{nodeElement.isProduct}"/>
+                      <h:outputText value="#{nodeElement.name}" />
                   </p:column>
                   <p:column headerText="Type">
                         <h:outputText value="#{nodeElement.type}" />
                   </p:column>
-                  <p:column style="width:24px">
+                  <p:column style="width:24px" >
                         <p:commandLink update=":form:nodePanel"
                                        oncomplete="PF('nodeDialog').show()"
                                        title="View Detail"
@@ -46,7 +48,8 @@
                                       target="#{treeEvent.selectedNodeElement}" />
                         </p:commandLink>
                   </p:column>
-                  <!--<p:column style="width:24px">
+
+                  <p:column style="width:24px">
                         <h:graphicImage id="viewH"
                                         url="#{nodeElement.nameImage}"
                                         rendered="#{nodeElement.nameImage!=null}">
@@ -56,31 +59,31 @@
                   <p:column style="width:24px">
                         <h:outputText id="prUah"
                                       value="#{nodeElement.priceUah}"
-rendered="#{nodeElement.priceUSD!=null}"
+rendered="#{nodeElement.priceUsd!=null}"
                                 >
                               <f:convertNumber currencyCode="UAH" groupingUsed="true"
                                                maxFractionDigits="2" type="currency"
                                                minFractionDigits="2"/>
 
                         </h:outputText>
-                  </p:column>-->
+                  </p:column>
 
             </p:treeTable>
 
 
             <p:dialog id="dialog" header="Detail" showEffect="fade" widgetVar="nodeDialog" modal="true" resizable="false">
                   <p:outputPanel id="nodePanel">
-                        <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty ttBasicView.selectedNodeElement}">
+                        <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty treeEvent.selectedNode}">
                               <h:outputLabel for="name" value="Name: " />
-                              <h:outputText id="name" value="#{treeEvent.selectedNodeElement.name}" style="font-weight:bold" />
+                              <h:outputText id="name" value="#{treeEvent.selectedNode.name}" style="font-weight:bold" />
 
                               <h:outputLabel for="size" value="Size: " />
-                              <h:outputText id="size" value="#{treeEvent.selectedNodeElement.size}" style="font-weight:bold" />
+                              <h:outputText id="size" value="#{treeEvent.selectedNode.size}" style="font-weight:bold" />
 
                               <h:outputLabel for="type" value="Type " />
-                              <h:outputText id="type" value="#{treeEvent.selectedNodeElement.type}" style="font-weight:bold" />
-                              <h:outputLabel for="priceUsd" value="PriceUsd " rendered="#{treeEvent.selectedNodeElement.priceUsd}!=null"/>
-                              <h:outputText id="priceUsd" value="#{treeEvent.selectedNodeElement.priceUsd}" style="font-weight:bold" rendered="#{treeEvent.selectedNodeElement.priceUsd}!=null">
+                              <h:outputText id="type" value="#{treeEvent.selectedNode.type}" style="font-weight:bold" />
+                              <h:outputLabel for="priceUsd" value="PriceUsd " rendered="#{treeEvent.selectedNode.priceUsd}!=null"/>
+                              <h:outputText id="priceUsd" value="#{treeEvent.selectedNode.priceUsd}" style="font-weight:bold" rendered="#{treeEvent.selectedNode.priceUsd}!=null">
                                     <f:convertNumber currencyCode="UAH" groupingUsed="true"
                                                      maxFractionDigits="2" type="currency"
                                                      minFractionDigits="2"/>
