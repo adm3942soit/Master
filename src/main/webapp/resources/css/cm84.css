@@ -1,0 +1,1406 @@
+body {
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    line-height: 1.8;
+    background: #FFF;
+    background-image: none;
+}
+
+table {
+    padding: 0pt;
+    border-spacing: 0pt;
+}
+/*tableS {
+    width:100%;
+    padding: 0pt;
+    border-spacing: 0pt;
+    border-top: none;
+}*/
+
+ul {
+    padding: 0 0 0 4em;
+    margin: 0;
+}
+
+tr {
+    padding: 0;
+}
+
+td {
+    padding: 0;
+    margin: 0; /*height: 4px;*/
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.h1 {
+    font-size: 100%;
+    color: #B70000;
+    border-bottom: 1px solid #999999;
+    padding: 1em;
+    margin: 1em;
+}
+
+/*Table header and cell*/
+.heading {
+    background-color: palegreen;
+}
+
+/*TODO heading_id */
+.heading_id {
+    padding: 0;
+    margin: 0;
+    height: 120px;
+    width: 100%;
+    background-color: palegreen; /*background: transparent url(../images/head.gif) left repeat-x; */
+}
+
+.shadow {
+    padding: 0;
+    margin: 0;
+    height: 7px;
+    width: 100%;
+    background: transparent url( ../../WEB-INF/images/schadow.png ) top left repeat-x;
+}
+
+/*TODO use*/
+.logo-image {
+    padding: 3em 0 0 2em;
+    height: 120px;
+}
+
+.leftcol a, h1, table, ul, form {
+    padding: 0;
+    margin: 0;
+}
+
+.leftcol {
+    text-align: center;
+    left: 2em; /*width: 20em;*/
+    min-height: 300em;
+    padding: 0;
+    margin: 0;
+    font-size: 50%;
+}
+
+.rightcol {
+    text-align: center; /*width: 20em;*/
+    min-height: 300em;
+    padding: 0;
+    margin: 0;
+    font-size: 50%;
+}
+
+/*TODO leftcol ul*/
+/*.leftcol .ul {*/
+/*padding: 0 0 0 1em;*/
+/*list-style-type: none;*/
+/*}*/
+
+/*TODO my*/
+.ul {
+/*padding-left:5%;*/
+/*padding-right:1%;*/
+    text-align: left;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+}
+
+/*TODO my*/
+.current {
+/*padding-left:5%;*/
+/*padding-right:1%;*/
+    text-align: left;
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+/*TODO my*/
+.menu_block {
+    margin-left: 20%;
+}
+
+.leftcol a {
+    color: #000000;
+}
+
+.leftcol .module {
+    margin: -14px 0 0 0;
+    padding: 1em;
+    background: transparent url( ../../WEB-INF/images/module_middle.jpg ) left repeat-y;
+}
+
+.leftcol .moduletop {
+    background: transparent url( ../../WEB-INF/images/module_top.gif ) top left no-repeat;
+}
+
+.leftcol .modulebot {
+/*margin: -14px 0 0 0;*/
+    background: transparent url( ../../WEB-INF/images/module_bottom.jpg ) bottom left no-repeat;
+}
+
+.leftcol .modulewide {
+/*margin: -14px 0 0 0;*/
+/*padding: 1em;*/
+    text-align: center;
+    background: transparent url( ../../WEB-INF/images/module_middle_wide.jpg ) center repeat-y;
+}
+
+.leftcol .modulewidetop {
+    background: transparent url( ../../WEB-INF/images/module_top_wide.jpg ) top left no-repeat;
+}
+
+.leftcol .modulewidebot {
+/*margin: -14px 0 0 0;*/
+    background: transparent url( ../../WEB-INF/images/module_bottom_wide.jpg ) bottom left no-repeat;
+}
+
+/*.leftcol current {
+    text-decoration: underline;
+}*/
+
+.helpcol {
+/*margin-top: 4em;*/
+/*margin-left: 5%;*/
+/*padding-top: 1em;*/
+/*width: 160px;*/
+    font-weight: bolder;
+    text-align: left; /*border-top: 1px solid #999999;*/
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+}
+
+.helpcol .image {
+    background-color: transparent;
+}
+
+.copyright {
+    font-family: 'MV Boli';
+    font-weight: bold;
+    font-size: 24px;
+    text-fill: red;
+    -webkit-text-fill-color: black;
+    background-color: red;
+    color:red;
+    margin-top: 2em;
+    display: block;
+
+}
+#footer .copyright {
+    font-family: 'MV Boli';
+    font-weight: bold;
+    font-size: 24px;
+    text-fill: red;
+    -webkit-text-fill-color: black;
+    /*background-color: red;*/
+    color: red;
+    text-align: left;
+    margin-top: 2em;
+    display: block;
+
+}
+
+.helpcol a {
+    color: #000000;
+}
+
+.midcol {
+    left: 15em;
+    width: 60em;
+    max-width: 60em;
+    padding: 1em 0 5em 5em;
+}
+
+.midcol a, h1, table,ul, form {
+    padding: 0;
+    margin: 0;
+}
+
+/*.midcol table {*/
+/*border-top: 12px solid #FF0000;*/
+/*}*/
+
+.midcol input, select {
+    font-size: 100%;
+}
+
+.midcol input {
+/*border: 1px solid #999999;*/
+    padding-left: 1em;
+}
+
+.login_table_rows {
+    border-bottom: 1px inset #999999;
+}
+
+.login_table_label {
+    text-align: left;
+    font-family: Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal; /*background-color:#EEEEEE;*/
+    padding-left: 1em;
+    width: 50%;
+}
+
+.login_table_value {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal; /*width:30%;*/
+    text-align: left;
+    padding-right: 1em;
+    width: 50%;
+}
+
+.login_table_value .txt {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.login_table_value .mandatory {
+    border: 1px solid #F74A37;
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.login_table_message {
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    width: 80%;
+    text-align: right;
+    color: red;
+    padding-right: 1em;
+}
+
+.register_table_rows {
+    border-bottom: 1px inset #999999;
+}
+
+.register_table_label {
+    text-align: left;
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    background-color: transparent;
+    padding-left: 1em;
+    width: 30%;
+}
+
+.register_table_label_grey {
+    text-align: left;
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    background-color: #EEEEEE; /*    background-color:transparent; */
+    padding-left: 1em;
+    width: 30%;
+}
+
+.register_table_value {
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal; /*width:30%;*/
+    text-align: left;
+    padding-left: 1em;
+    width: 30%;
+    border-width:0;
+}
+
+.register_table_value .txt {
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 1em;
+}
+
+.txt {
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 0.5em;
+  
+}
+
+.register_table_value .mandatory {
+    border: 1px solid #F74A37;
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 1em;
+}
+
+.register_table_value .mandatory_black {
+    border: 1px solid #9999EE;
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 1em;
+}
+
+.register_table_message {
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    width: 30%;
+    text-align: right;
+    color: red;
+    padding-right: 1em;
+}
+
+.register_table_message_small {
+    font-family: Verdana, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    width: 15%;
+    text-align: right;
+    color: red;
+}
+
+.register_table_link {
+    font-weight: normal;
+    width: 15%;
+    text-align: left;
+}
+
+.midcol_table_rows {
+    border-bottom: 1px inset #999999;
+}
+
+.midcol_table_value {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    width: 25%;
+    text-align: right;
+    padding-right: 1em;
+}
+
+.left {
+    text-align: left;
+}
+
+.right {
+    text-align: right;
+}
+
+.top {
+    vertical-align: text-top;
+}
+
+.home_table_value {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    width: 100%;
+    text-align: left;
+    padding-right: 1em;
+}
+
+.midcol_table_value .txt {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.midcol_table_value .mandatory {
+    border: 1px solid #F74A37;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+
+}
+
+.midcol_table_message {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    width: 30%;
+    text-align: left;
+    color: red;
+    padding-left: 1em;
+}
+
+.midcol_table_label {
+    text-align: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    background-color: #EEEEEE; /*    background-color: transparent; */
+    padding-left: 1em;
+    width: 25%;
+
+}
+
+/*.midcol_table_message_small {*/
+/*font-family: Verdana,Arial, sans-serif;*/
+/*font-size: 13px;*/
+/*font-weight: normal;*/
+/*width: 15%;*/
+/*text-align: right;*/
+/*color: red;*/
+/*}*/
+
+/*.midcol_table_link {*/
+/*font-weight: normal;*/
+/*width: 15%;*/
+/*text-align: left;*/
+/*}*/
+
+.midcol .value {
+    text-align: right;
+}
+
+.select .left {
+    text-align: left;
+}
+
+.midcol .process {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 100%;
+    font-weight: bold;
+    color: #666666;
+}
+
+.midcol .process a {
+    text-decoration: none;
+    font-size: 100%;
+    font-weight: bold;
+    color: #666666;
+}
+
+.midcol .process a:hover {
+    text-decoration: underline;
+}
+
+.bot {
+    width: 20%;
+    background-color: #ffffff;
+    vertical-align: middle;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.w5 {
+    width: 5%
+}
+
+.w10 {
+    width: 10%
+}
+
+.w20 {
+    width: 20%
+}
+
+.w25 {
+    width: 25%
+}
+
+.w30 {
+    width: 30%
+}
+
+.w40 {
+    width: 40%
+}
+
+.w45 {
+    width: 45%
+}
+
+.w50 {
+    width: 50%
+}
+
+.w60 {
+    width: 60%
+}
+
+.w70 {
+    width: 70%
+}
+
+.w80 {
+    width: 80%
+}
+
+.w90 {
+    width: 90%
+}
+
+.w100 {
+    width: 100%
+}
+
+.bot_first {
+    width: 20%;
+    background-color: #ffffff;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.bot_second {
+    width: 30%;
+    background-color: #ffffff;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.bot_third {
+    width: 10%;
+    background-color: #ffffff;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.bot_fourth {
+    width: 20%;
+    background-color: #ffffff;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.bot_inside {
+    background-color: #ffffff;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 1em;
+    padding-right: 1em
+}
+
+.link_image {
+    border: 0;
+    padding-left: 1em;
+    vertical-align: top;
+}
+
+a:hover .bot_inside {
+    text-decoration: underline;
+}
+
+.bot_header {
+    background-color: #EEEEEE;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 1em;
+}
+
+.bot_header_left_small {
+    background-color: #EEEEEE;
+    vertical-align: bottom;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.bot_header_left_low {
+    background-color: #EEEEEE;
+    vertical-align: bottom;
+    font-family: Verdana, Arial, sans-serif;
+    height: 0.5px;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.midcol .process li {
+    display: inline;
+    padding-left: 2em;
+    padding-right: 2em;
+    background: transparent url( ../../WEB-INF/images/arrow.jpg ) left no-repeat;
+}
+
+.table_label_dec {
+    width: 25%;
+    text-align: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal; /*    background-color:transparent; */
+    background-color: #EEEEEE;
+    padding-left: 1em;
+}
+
+.table_value_dec {
+    width: 25%;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal; /*width:30%;*/
+    text-align: right;
+    padding-right: 1em;
+}
+
+.table_value_dec .mandatory {
+    border: 1px solid #F74A37;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+}
+
+.table_message_dec {
+    width: 50%;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: right;
+    color: red;
+    padding-right: 1em;
+}
+
+.midcol .button {
+    margin-top: 1em;
+    border: 1px solid #FFFFFF;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+}
+
+.midcol .mandatory {
+    border: 1px solid #F74A37;
+}
+
+.midcol .tabpages {
+    display: inline;
+}
+
+.midcol .tabpages a {
+    text-decoration: none;
+    color: #000000;
+}
+
+#midcol .tabpages a:hover {
+    text-decoration: underline;
+}
+
+.midcol .tabpages li {
+    display: inline;
+    padding-top: 2px;
+    padding-right: 1em;
+    padding-left: 1em;
+    padding-bottom: 1em;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    background-color: #DDDDDD;
+}
+
+.midcol .tabpages li.first {
+    border-left: 1px solid #000000;
+}
+
+.midcol .tabpages li.selected {
+    display: inline;
+    border-top: 1px solid #000000;
+    border-right: 1px solid #000000;
+    border-left: 1px solid #000000;
+    background-color: #FFFFFF;
+}
+
+.midcol .tabpages li.middle {
+    border-left: 0 !important;
+}
+
+.nextprocesstep {
+    float: right;
+    width: 45%;
+    margin-top: 1em;
+    border-top: 10px solid #FF0000;
+}
+
+.messages {
+    border-top: 12px solid #FF0000;
+    margin-top: 2em;
+}
+
+.messages a {
+    color: #000000;
+    font-weight: bold;
+}
+
+.messages ul {
+    padding-left: 2em;
+    list-style: url( ../../WEB-INF/images/message.jpg );
+}
+
+/*.rightcol a, h1, table, ul, il, form, img {
+    padding: 0;
+    margin: 0;
+}*/
+
+.rightcol {
+    position: absolute;
+    top: 127px;
+    right: 0em;
+    width: 18em;
+    min-width: 18em;
+    padding: 0;
+    margin: 0;
+    font-size: 90%;
+}
+
+.rightcol a {
+    color: #000000;
+}
+
+/*TODO  .rightcol .ul*/
+.rightcol .ul {
+    padding-left: 1em;
+    list-style-type: none;
+}
+
+.rightcol .modulewide {
+    margin: -14px 0 0 0;
+    padding: 1em;
+    background: transparent url( ../../WEB-INF/images/module_middle_wide.jpg ) left repeat-y;
+}
+
+.rightcol .modulewidetop {
+    background: transparent url( ../../WEB-INF/images/module_top_wide.jpg ) top left no-repeat;
+}
+
+.rightcol .modulewidebot {
+    margin: -14px 0 0 0;
+    background: transparent url( ../../WEB-INF/images/module_bottom_wide.jpg ) bottom left no-repeat;
+}
+
+.helpcol h1 {
+    font-size: large;
+}
+
+table .bordered {
+    border-top: 12px solid #FF0000; /*border-bottom: 1px inset #999999;*/
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+/*tableS .bordered {
+    border-top: none;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}*/
+
+table tr {
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+/*tableS tr {
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}*/
+.select {
+    padding: 2em;
+}
+
+/*TODO .select .h1 */
+.select .h1 {
+    font-size: 100%;
+    color: #B70000;
+    border-bottom: 1px solid #999999; /* DARK GREY */
+}
+
+.select input, select {
+    font-size: 100%;
+}
+
+.select input {
+/*border: 1px solid #999999;*/
+    padding-left: 1em;
+}
+
+.select .cell {
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.select .label {
+    background-color: #EEEEEE;
+    vertical-align: top;
+}
+
+.select .value {
+    text-align: right;
+}
+
+.select .button {
+    margin-top: 1em; /*border: 1px outset #FFFFFF;*/
+    background-color: #FF0000;
+    color: #FFFFFF;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-size: 11px;
+    font-weight: normal;
+}
+
+.centalPart {
+    vertical-align: top;
+    text-align: left;
+    width: 100%;
+}
+
+/*TODO synthesis*/
+.midcol_h1 {
+    color: #B70000;
+    border-bottom: 1px solid #999999; /* DARK GREY */
+    text-align: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.errorMessage {
+    color: #ff0033;
+    border-bottom: 1px solid #999999; /* DARK GREY */
+    text-align: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+/*.infoMessage {
+    color: #009999; /!*border-bottom: 1px solid #999999; *!//!* DARK GREY *!/
+    text-align: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 11px;
+    font-weight: bold;
+}*/
+
+.midcol_process {
+    padding-top: 1em;
+    padding-bottom: 1em;
+    font-size: 100%;
+    font-weight: bold;
+    color: #777777;
+}
+
+.midcol_process .li {
+    padding-left: 2em;
+    padding-right: 2em;
+    background: transparent url( ../../WEB-INF/images/arrow.jpg ) left no-repeat;
+    text-align: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.midcol_cell {
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+.midcol_button {
+    margin-top: 1em;
+    border: 1px outset #fff;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+    font-size: 11px;
+}
+
+a .midcol_label {
+    background-color: #EEEEEE;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+}
+
+a .midcol_value {
+    background-color: #ffffff;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+}
+
+.midcol_value {
+    background-color: #ffffff;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+}
+
+.bottom_table_columns {
+    border-bottom-color: darkgray;
+    border-bottom-style: solid;
+    background-color: #ffffff;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+}
+
+.bottom_table_header {
+    border-bottom-color: darkgray;
+    border-bottom-style: solid;
+    background-color: #eae3f1;
+    vertical-align: top;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    width: 100%;
+}
+
+.navigation_bottom {
+    vertical-align: top;
+    text-align: right;
+}
+
+.tab_selected {
+    background-color: transparent;
+    color: #0000cc;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 11px;
+}
+
+.tab {
+    background-color: transparent;
+    color: #0000cc;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 11px;
+}
+
+.tab_content {
+    background-color: transparent;
+    color: #0000cc;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 11px;
+}
+
+.tab_disabled {
+    background-color: transparent;
+    color: #0000cc;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 11px;
+}
+
+.tab_border {
+    border-top: 12px solid #FF0000;
+}
+
+.even {
+    background-color: #edf3fe;
+}
+
+.odd {
+    background-color: transparent;
+}
+
+.help_caption {
+    font-size: large;
+}
+
+.help_text {
+    font-size: medium;
+}
+
+table .btmtable {
+    clear: both;
+    border-left: 1px solid #8cacbb;
+    border-bottom: 1px solid #8cacbb;
+}
+
+table .btmtable th {
+    font-size: 85%;
+    padding: 0.3em 0.6em 0.3em 0.6em;
+    color: Black;
+    background: #dee7ec;
+    border-top: 1px solid #8cacbb;
+    border-right: 1px solid #8cacbb;
+    border-bottom: 1px solid #8cacbb;
+}
+
+table .btmtable td {
+    margin: 0.2em 0.3em 0.2em 0.3em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
+    border-right: 1px solid #8cacbb;
+    text-align: left;
+    font-size: 85%;
+}
+/*tableS .btmtable td {
+    margin: 0.2em 0.3em 0.2em 0.3em;
+    padding: 0.2em 0.3em 0.2em 0.3em;
+    border-right: 1px solid #8cacbb;
+    border-top: 1px inset #999999;
+    text-align: left;
+    font-size: 85%;
+}*/
+.table_value_padding0 {
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal; /*width:30%;*/
+    text-align: left;
+    padding-left: 0em;
+    padding-right: 0em;
+}
+
+.table_value_padding3 {
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal; /*width:30%;*/
+    text-align: left;
+    padding: 0.2em;
+    vertical-align: text-top;
+}
+
+.help_heading {
+    width: 25%;
+    text-align: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    background-color: #FFFFE0;
+    padding-left: 1em;
+}
+
+.register_table_label_yellow {
+    text-align: left;
+    font-family: italic Verdana, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #FFD700; /*    background-color:gold*/
+    padding-left: 1em;
+}
+
+/*.midcol */
+.link_blue {
+    color: #0000FF;
+    text-align: left;
+    font-weight: normal;
+}
+
+.bot_header_left {
+    background-color: #EEEEEE;
+    vertical-align: bottom;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    height: 1.0em;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    border-left: 1px solid #FFFFFF;
+    border-right: 1px solid #FFFFFF;
+    padding-left: 1em;
+    padding-right: 1em;
+}
+
+.bot_justify {
+    background-color: #ffffff;
+    vertical-align: middle;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+
+.midcol_h2 {
+    color: #B70000;
+    border-bottom: 0.2px solid #999999;
+    vertical-align: middle;
+    text-align: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+    padding-left: 0.2em;
+    padding-right: 0.2em;
+}
+
+.midcol_h3 {
+    color: #B70000;
+    vertical-align: middle;
+    text-align: left;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+.table_value_padding1 {
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal; /*width:30%;*/
+    text-align: left;
+    padding-left: 0.5em;
+    padding-right: 0em;
+}
+
+.col_style {
+    background-color: #ffffff;
+    vertical-align: bottom;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    height: 1.0em;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 1em;
+    padding-right: 1em;
+
+}
+
+.col_style_small {
+    background-color: #ffffff;
+    vertical-align: middle;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 1em;
+    padding-right: 1em;
+
+}
+
+.standardTable {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: bottom;
+    text-align: left;
+    color: #000000;
+    padding-left: 1em;
+    padding-right: 1em; /*padding: 0;*/
+    border-right: 1px solid #8cacbb;
+    border-top: 1px solid #8cacbb;
+    border-left: 1px solid #8cacbb;
+    border-bottom: 1px solid #8cacbb; /*border-style: solid;*/
+/*border-width: 1px;*/
+}
+
+.tabbedPane {
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    vertical-align: bottom;
+    text-align: left;
+    color: #000000;
+    padding-left: 1em;
+    padding-right: 1em;
+    border-top: 12px solid #FF0000; /*border-bottom: 1px inset #999999;*/
+  /*  border-top-width: 400%;*/
+    border-bottom: none;
+    border-right: none;
+    border-left: none;
+}
+
+.myFaces_panelTabbedPane_pane {
+    border-top: 12px solid #FF0000;
+    border-right: none;
+    border-bottom: none;
+    border-left: none;
+    padding: 0px;
+
+}
+
+.myFaces_panelTabbedPane_activeHeaderCell {
+    width: 12%;
+    border-top: 2px outset silver;
+    border-right: 2px outset silver;
+    border-bottom: 0px none;
+    border-left: 2px outset silver;
+    text-align: center;
+
+}
+
+.myFaces_panelTabbedPane_inactiveHeaderCell,
+    .myFaces_panelTabbedPane_disabledHeaderCell {
+    width: 12%;
+    border-top: 1px outset silver;
+    border-right: 1px outset silver;
+    border-bottom: 0px none;
+    border-left: 1px outset silver;
+    text-align: center;
+    background-color: silver;
+}
+
+.myFaces_panelTabbedPane_activeHeaderCell input,
+    .myFaces_panelTabbedPane_inactiveHeaderCell input,
+    .myFaces_panelTabbedPane_disabledHeaderCell label {
+    border-style: none;
+    width: 100%;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+
+}
+
+.myFaces_panelTabbedPane_disabledHeaderCell label {
+    cursor: default;
+    background-color: silver;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+}
+
+table .bordered_bottom {
+    border-bottom: 1px solid #999999; /*border-bottom: 1px inset #999999;*/
+}
+
+table .font_column {
+    background-color: #ffffff;
+    vertical-align: middle;
+    color: #0000FF;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+/*
+tableS .bordered_bottom {
+    border-bottom: 1px solid #999999;
+}
+
+tableS .font_column {
+    background-color: #ffffff;
+    vertical-align: middle;
+    color: #0000FF;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+}
+*/
+
+.register_table_label_grey_forTab {
+    text-align: left;
+    font-family: Verdana, sans-serif;
+    font-size: 12px;
+    font-weight: normal;
+    height: 1px;
+    background-color: #EEEEEE; /*    background-color:transparent; */
+    padding-left: 1em;
+    width: 30%;
+}
+
+.txt_forTab {
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 0.2em;
+    border: 1px solid #999;
+}
+
+.register_table_value .mandatory_forTab {
+    border: 1px solid #F74A37;
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 0.2em;
+}
+
+.style_for_selectOneMenu {
+    font-family: Verdana, sans-serif;
+    font-size: 11px;
+    font-weight: normal;
+    padding-left: 3em;
+}
+
+.style_forTab {
+    font-family: Verdana, sans-serif;
+    font-size: 24px;
+}

@@ -2,15 +2,16 @@
      xmlns:h="http://java.sun.com/jsf/html"
      xmlns:f="http://java.sun.com/jsf/core"
 
-     xmlns:t="http://myfaces.apache.org/tomahawk"
+
      >
+    <!--xmlns:t="http://myfaces.apache.org/tomahawk"-->
 
 <div id="lookPersonWithIdF">
     <h:form id="lookPersonWithIdFForma" rendered="#{!empty(registerPersonBean.listIdenticallyPerson)}">
         <h2>
             <h:outputText value="#{bundle.psn_id_f}"/>
         </h2>
-        <t:dataTable id="psn"
+        <h:dataTable id="psn"
                      var="psn"
                      value="#{registerPersonBean.listIdenticallyPerson}"
                      sortable="true"
@@ -21,68 +22,68 @@
                      preserveSort="true"
                      columnClasses="cell,cell,cell,cell,cell,cell"
                      headerClass="cell label">
-            <t:column>
+            <h:column>
                 <f:facet name="header">
-                  <t:commandSortHeader columnName="number" arrow="false"
+                  <!--<h:commandSortHeader columnName="number" arrow="false"-->
                                        defaultSorted="false">
                       <h:outputText value="#{bundle.regreq_person_name}" style="color: black;"/>
-                  </t:commandSortHeader>
+<!--                  </h:commandSortHeader>-->
                 </f:facet>
                    <h:outputText value="#{psn.fullName}"/>
-            </t:column>
+            </h:column>
 
-            <t:column>
+            <h:column>
                 <f:facet name="header">
-                  <t:commandSortHeader columnName="number" arrow="false" defaultSorted="false">
+                  <!--<h:commandSortHeader columnName="number" arrow="false" defaultSorted="false">-->
                     <h:outputText value="#{bundle.phone_nmb}" style="color: black;"/>
-                  </t:commandSortHeader>
+                  <!--</h:commandSortHeader>-->
                 </f:facet>
                     <h:outputText value="#{psn.phoneNumber}"/>
-            </t:column>
-            <t:column>
+            </h:column>
+            <h:column>
                 <f:facet name="header">
-                  <t:commandSortHeader columnName="number" arrow="false" defaultSorted="false">
+                  <!--<h:commandSortHeader columnName="number" arrow="false" defaultSorted="false">-->
                     <h:outputText value="#{bundle.mobilenumber}" style="color: black;"/>
-                  </t:commandSortHeader>
+          <!--        </h:commandSortHeader>-->
                 </f:facet>
                 <h:outputText value="#{psn.mobileNumber}"/>
-            </t:column>
+            </h:column>
 
-            <t:column>
+            <h:column>
                 <f:facet name="header">
-                  <t:commandSortHeader columnName="number" arrow="false" defaultSorted="false">
+          <!--        <h:commandSortHeader columnName="number" arrow="false" defaultSorted="false">-->
                     <h:outputText value="#{bundle.birthday}" style="color: black;"/>
-                  </t:commandSortHeader>
+<!--                  </h:commandSortHeader>-->
                 </f:facet>
                 <h:outputText value="#{psn.birthdate}"/>
-            </t:column>
-            <t:column>
+            </h:column>
+            <h:column>
                 <f:facet name="header">
-                  <t:commandSortHeader columnName="number" arrow="false" defaultSorted="false">
+<!--                  <h:commandSortHeader columnName="number" arrow="false" defaultSorted="false">-->
                     <h:outputText value="#{bundle.person_socsecur_lab}" style="color: black;"/>
-                  </t:commandSortHeader>
+<!--                  </h:commandSortHeader>-->
                 </f:facet>
                 <h:outputText value="#{psn.socialSecurityNumber}"/>
-            </t:column>
+            </h:column>
 
-            <t:column>
+            <h:column>
                 <f:facet name="header">
-                  <t:commandSortHeader columnName="number" arrow="false" defaultSorted="false">
+                  <!--<h:commandSortHeader columnName="number" arrow="false" defaultSorted="false">-->
                     <h:outputText value="#{bundle.passportnumber}" style="color: black;"/>
-                  </t:commandSortHeader>
+                  <!--</h:commandSortHeader>-->
                 </f:facet>
                 <h:outputText value="#{psn.passportNumber}"/>
-            </t:column>
-            <t:column>
+            </h:column>
+            <h:column>
                 <f:facet name="header">
-                  <t:commandSortHeader columnName="number" arrow="false" defaultSorted="false">
+                  <!--<h:commandSortHeader columnName="number" arrow="false" defaultSorted="false">-->
                     <h:outputText value="#{bundle.email}" style="color: black;"/>
-                  </t:commandSortHeader>
+                  <!--</h:commandSortHeader>-->
                 </f:facet>
                 <h:outputText value="#{psn.emailAddress}"/>
-            </t:column>
+            </h:column>
 
-        </t:dataTable>
+        </h:dataTable>
     </h:form>
 </div>
 </div>

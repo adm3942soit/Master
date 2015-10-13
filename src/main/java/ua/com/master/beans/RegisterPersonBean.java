@@ -20,7 +20,7 @@ import ua.com.master.model.Person;
 
 import ua.com.master.model.PersonStatus;
 import ua.com.master.validators.*;
-import org.richfaces.event.ItemChangeEvent;
+//import org.richfaces.event.ItemChangeEvent;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;

@@ -36,7 +36,8 @@
                 <td class="cell">
                     <p:inputText id = "buyingRate" value="#{courseUSDBean.buyingRate}"
                                  required="true" >
-                        <f:convertNumber  groupingUsed="true"
+                        <f:convertNumber  groupingUsed="false"
+                                          pattern="#00.00"
                                          maxFractionDigits="2" type="number"
                                          minFractionDigits="2"/>
 
@@ -57,7 +58,8 @@
 
                               >
                        <!-- <f:validateLength minimum="2" />-->
-                        <f:convertNumber  groupingUsed="true"
+                        <f:convertNumber  groupingUsed="false"
+                                          pattern="#00.00"
                                          maxFractionDigits="2" type="number"
                                          minFractionDigits="2"/>
                         <p:ajax update="msSr" event="keyup" />

@@ -5,7 +5,7 @@
       xmlns:f="http://java.sun.com/jsf/core"
 
       xmlns:h="http://java.sun.com/jsf/html">
-<head >
+<h:head >
 
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <meta charset="utf-8"/>
@@ -13,21 +13,29 @@
         Master Floor &#174; - &#160;
         <ui:insert name="title" styleClass="font">Default Title</ui:insert>
     </title>
-    <link rel="stylesheet" type="text/css" href="css/masterpol.css"/>
-    <link rel="stylesheet" type="text/css" href="css/cm84.css"/>
-    <link rel="stylesheet" type="text/css" href="css/cm84demo.css"/>
-    <link rel="stylesheet" type="text/css" href="css/cm84jsf.css"/>
+    <h:outputStylesheet name="css/masterpol.css"></h:outputStylesheet>
+    <h:outputStylesheet name="css/cm84.css"></h:outputStylesheet>
+    <h:outputStylesheet name="css/cm84demo.css"></h:outputStylesheet>
+    <h:outputStylesheet name="css/cm84jsf.css"></h:outputStylesheet>
+    <h:outputScript name="js/common.js"></h:outputScript>
+    <h:outputScript name="js/slideshow.js"></h:outputScript>
+    <h:outputScript name="js/video.js"></h:outputScript>
+
+    <!--<h:link rel="stylesheet" type="text/css" href="css/masterpol.css"></h:link>
+    <h:link rel="stylesheet" type="text/css" href="css/cm84.css"></h:link>
+    <h:link rel="stylesheet" type="text/css" href="css/cm84demo.css"></h:link>
+    <h:link rel="stylesheet" type="text/css" href="css/cm84jsf.css"></h:link>
     <script type="text/javascript" src="js/common.js"></script>
     <script type="text/javascript" src="js/video.js"></script>
-    <script type="text/javascript" src="js/slideshow.js"></script>
+    <script type="text/javascript" src="js/slideshow.js"></script>-->
    <style>
         body {
 
-            background-image: url("images/phon.jpg");
+            background-image: url("images/phon2.jpg");
             background-size: 100%;
         }
     </style>
-</head>
+</h:head>
 
 <body onkeypress="trapEnter(event);"  >
 <!--  f:view locale="#{facesContext.externalContext.request.locale}" -->

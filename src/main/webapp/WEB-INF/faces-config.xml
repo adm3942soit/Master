@@ -9,7 +9,7 @@
             <default-locale>ru_RU</default-locale>
         </locale-config>
         <message-bundle>ResourceBundle</message-bundle>
-       <!-- <view-handler>com.sun.facelets.FaceletViewHandler</view-handler>-->
+        <!--<view-handler>com.sun.facelets.FaceletViewHandler</view-handler>-->
        <!-- <view-handler>org.ajax4jsf.application.AjaxViewHandler</view-handler>-->
     </application>
 
@@ -24,9 +24,9 @@
 
 </managed-bean>
     <managed-bean>
-        <managed-bean-name>treeEvent</managed-bean-name>
-        <managed-bean-class>ua.com.master.beans.TreeEvent</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
+        <managed-bean-name>treeView</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.TreeView</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
         <managed-property>
             <property-name>service</property-name>
             <value>#{catalogService}</value>
@@ -162,7 +162,7 @@
     <managed-bean>
         <managed-bean-name>catalogService</managed-bean-name>
         <managed-bean-class>ua.com.master.beans.CatalogService</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
+        <managed-bean-scope>session</managed-bean-scope>
 
     </managed-bean>
    <!-- <navigation-rule>

@@ -3,10 +3,11 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:h="http://java.sun.com/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:t="http://myfaces.apache.org/tomahawk"
+
       xmlns:a="http://it84.nl/jsf"
       xmlns:p="http://primefaces.org/ui"
       xmlns:c="http://java.sun.com/jstl/core">
+<!--xmlns:t="http://myfaces.apache.org/tomahawk"-->
 <ui:composition template="templates/layoutPage.xhtml">
 
     <ui:define name="title">Catalog/Departments/Products creation</ui:define>
@@ -453,6 +454,32 @@
 
                                 </h:commandLink>
                             </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Image for product"/>
+                                </f:facet>
+                                <h:graphicImage id="viewImage"
+                                                width="50"
+                                                height="20"
+                                                url="#{prod.nameImage}"
+                                                rendered="#{prod.nameImage!=null}">
+                                </h:graphicImage>
+
+                            </h:column>
+                            <h:column>
+                                <f:facet name="header">
+                                    <h:outputText value="Price"  />
+                                </f:facet>
+                                <h:outputText id="prUah1"
+                                              value="#{prod.priceUAH}">
+                                    <f:convertNumber
+                                            pattern="#00.00"
+                                            groupingUsed="false"
+                                            maxFractionDigits="2" type="number"
+                                            minFractionDigits="2"/>
+
+                                </h:outputText>
+                            </h:column>
 
                             <h:column>
                                 <f:facet name="header">
@@ -468,7 +495,7 @@
             </div>
         </a:tabPanel>
     </ui:define>
-    <t:saveState value="#{registerCatalogBean}"/>
+<!--    <t:saveState value="#{registerCatalogBean}"/>-->
 </ui:composition>
 
 </html>

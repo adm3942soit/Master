@@ -11,10 +11,14 @@
       <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="CITY" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="COUNTRY" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="CREATION_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CREATION_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="END_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="FULL_ADDRESS" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="HOUSE_NUMBER" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <column name="HOUSE_NUMER_ADDITION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="START_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="STATE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="STREET" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -52,11 +56,24 @@
     <table name="coursesusd" schema="" catalog="master" type="TABLE">
       <column name="COURSEUSD_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="BUYING_RATE" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
+      <column name="CREATION_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CREATION_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LAST_UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="SELLING_RATE" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
       <primary-key name="PRIMARY" columns="COURSEUSD_ID"/>
-      <exported-key name="FKC42BD164B6E4F154" table="products" schema="" catalog="master" columns="PRODUCT_ID"/>
+      <exported-key name="FK34DE3BD5277DBF09" table="coursesusd_products" schema="" catalog="master" columns="coursesUSD_COURSEUSD_ID"/>
       <exported-key name="FKC42BD164DA75BD38" table="products" schema="" catalog="master" columns="COURSEUSD_ID"/>
       <index name="COURSEUSD_ID" unique="true" columns="COURSEUSD_ID"/>
+    </table>
+    <table name="coursesusd_products" schema="" catalog="master" type="TABLE">
+      <column name="coursesUSD_COURSEUSD_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <column name="products_PRODUCT_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
+      <primary-key name="PRIMARY" columns="coursesUSD_COURSEUSD_ID,products_PRODUCT_ID"/>
+      <foreign-key name="FK34DE3BD5277DBF09" columns="coursesUSD_COURSEUSD_ID" ref-table="coursesusd" ref-schema="" ref-catalog="master" ref-columns="COURSEUSD_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <foreign-key name="FK34DE3BD5FCA25413" columns="products_PRODUCT_ID" ref-table="products" ref-schema="" ref-catalog="master" ref-columns="PRODUCT_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <index name="FK34DE3BD5277DBF09" unique="false" columns="coursesUSD_COURSEUSD_ID"/>
+      <index name="FK34DE3BD5FCA25413" unique="false" columns="products_PRODUCT_ID"/>
     </table>
     <table name="departments" schema="" catalog="master" type="TABLE">
       <column name="DEPARTMENT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4" autoIncrement="true"/>
@@ -89,6 +106,8 @@
       <column name="NUMBER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="BANK_ACCOUNT" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="BIRTHDATE" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="CREATION_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CREATION_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="DRIVER_LICENSE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="EDUCATION_DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="EDUCATION_LEVEL" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -97,6 +116,8 @@
       <column name="GENDER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="INITIALS" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="LAST_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="MIDDLE_NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="MOBILE_NUMBER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="PASSPORT_NUMBER" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
@@ -137,7 +158,11 @@
     </table>
     <table name="personstatuses" schema="" catalog="master" type="TABLE">
       <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="CREATION_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CREATION_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="END_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
+      <column name="LAST_UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="MOTIVATION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="START_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="STATUS" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
@@ -151,8 +176,13 @@
     <table name="products" schema="" catalog="master" type="TABLE">
       <column name="PRODUCT_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
       <column name="ALL_COUNT" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
+      <column name="CREATION_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CREATION_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="FILE_IMAGE" sqlType="MEDIUMBLOB" precision="16777215" scale="0" nullable="true" jdbcType="-4"/>
       <column name="FOR_COUNT" sqlType="INT" precision="10" scale="0" nullable="true" jdbcType="4"/>
+      <column name="LAST_UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="NAME_IMAGE" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
       <column name="PRICE_UAH" sqlType="DOUBLE" precision="22" scale="0" nullable="true" jdbcType="8"/>
@@ -161,19 +191,23 @@
       <column name="COURSEUSD_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <column name="DEPARTMENT_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="PRODUCT_ID"/>
-      <foreign-key name="FKC42BD164B6E4F154" columns="PRODUCT_ID" ref-table="coursesusd" ref-schema="" ref-catalog="master" ref-columns="COURSEUSD_ID" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FKC42BD164560150BC" columns="DEPARTMENT_ID" ref-table="departments" ref-schema="" ref-catalog="master" ref-columns="DEPARTMENT_ID" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FKC42BD164DA75BD38" columns="COURSEUSD_ID" ref-table="coursesusd" ref-schema="" ref-catalog="master" ref-columns="COURSEUSD_ID" update-rule="3" delete-rule="3" deferrability="2"/>
+      <exported-key name="FK34DE3BD5FCA25413" table="coursesusd_products" schema="" catalog="master" columns="products_PRODUCT_ID"/>
       <exported-key name="FKEBA69882FCA25413" table="departments_products" schema="" catalog="master" columns="products_PRODUCT_ID"/>
       <index name="NAME" unique="true" columns="NAME"/>
       <index name="NAME_2" unique="true" columns="NAME"/>
+      <index name="PRODUCT_ID" unique="true" columns="PRODUCT_ID"/>
       <index name="FKC42BD164560150BC" unique="false" columns="DEPARTMENT_ID"/>
-      <index name="FKC42BD164B6E4F154" unique="false" columns="PRODUCT_ID"/>
       <index name="FKC42BD164DA75BD38" unique="false" columns="COURSEUSD_ID"/>
     </table>
     <table name="sysparameters" schema="" catalog="master" type="TABLE">
       <column name="ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="CREATION_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CREATION_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="DESCRIPTION" sqlType="VARCHAR" precision="255" scale="0" nullable="true" jdbcType="12"/>
+      <column name="LAST_UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="VALUE" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="ID"/>
@@ -181,6 +215,10 @@
     </table>
     <table name="userlogs" schema="" catalog="master" type="TABLE">
       <column name="USERLOG_ID" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5" autoIncrement="true"/>
+      <column name="CREATION_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="CREATION_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
+      <column name="LAST_UPDATE_DATE" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
+      <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="LOGIN_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="false" jdbcType="93"/>
       <column name="LOGOUT_TIME" sqlType="DATETIME" precision="19" scale="0" nullable="true" jdbcType="93"/>
       <column name="NUMBER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>

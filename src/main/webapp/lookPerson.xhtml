@@ -359,12 +359,12 @@
 <div id="panel6" class="panel">
     <h:form id="reqForm">
         <h:panelGroup rendered="#{!empty(lookPersonBean.listRequests)}">
-            <t:dataTable var="req" value="#{lookPersonBean.listRequests}"
+            <h:dataTable var="req" value="#{lookPersonBean.listRequests}"
                          columnClasses="cell,cell,cell,cell,cell"
                          rowClasses="#{req.style}"
                          headerClass="cell label">
 
-                <t:column styleClass="#{req.style}">
+                <h:column styleClass="#{req.style}">
                     <f:facet name="header">
                         <h:outputText value="#{bundle.left_company}" style="#{req.style}"/>
                     </f:facet>
@@ -373,33 +373,33 @@
                         <f:param value="#{lookPersonBean.namePage}" name="sourcePageForLookRequest"/>
                         <h:outputText value="#{req.nameCompany}" style="#{req.style}"/>
                     </h:commandLink>
-                </t:column>
-                <t:column styleClass="#{req.style}">
+                </h:column>
+                <h:column styleClass="#{req.style}">
                     <f:facet name="header">
                         <h:outputText value="#{bundle.cat}"/>
                     </f:facet>
                     <h:outputText value="#{req.nameCategory}" style="#{req.style}"/>
-                </t:column>
-                <t:column styleClass="#{req.style}">
+                </h:column>
+                <h:column styleClass="#{req.style}">
                     <f:facet name="header">
                         <h:outputText value="#{bundle.position}"/>
                     </f:facet>
                     <h:outputText value="#{req.position}"/>
-                </t:column>
-                <t:column styleClass="#{req.style}">
+                </h:column>
+                <h:column styleClass="#{req.style}">
                     <f:facet name="header">
                         <h:outputText value="#{bundle.st}"/>
                     </f:facet>
                     <h:outputText value="#{req.statusMessage}" style="#{req.style}"/>
-                </t:column>
+                </h:column>
 
-                <t:column styleClass="#{req.style}">
+                <h:column styleClass="#{req.style}">
                     <f:facet name="header">
                         <h:outputText value="#{bundle.st_dt}"/>
                     </f:facet>
                     <h:outputText value="#{req.statusDateFormatted}" style="#{req.style}"/>
-                </t:column>
-            </t:dataTable>
+                </h:column>
+            </h:dataTable>
         </h:panelGroup>
         <h:panelGroup rendered="#{empty(lookPersonBean.listRequests)}">
             <table>
@@ -423,95 +423,95 @@
 
     <h:panelGroup rendered="#{!empty(lookPersonBean.listAssignmentAgreements)}">
 
-    <t:dataTable var="aaDec" value="#{lookPersonBean.listAssignmentAgreements}"
+    <h:dataTable var="aaDec" value="#{lookPersonBean.listAssignmentAgreements}"
                  columnClasses="cell , cell, cell, cell , cell w15, cell w15 "
                  headerClass="cell label">
-        <t:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.tr_cmp_name}"/>
             </f:facet>
             <h:outputText value="#{aaDec.tripticomCompanyName}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.cust_cmp_n}"/>
             </f:facet>
             <h:outputText value="#{aaDec.nameCustomer}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.end_cust_n}"/>
             </f:facet>
             <h:outputText value="#{aaDec.endNameCustomer}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.position}"/>
             </f:facet>
             <h:outputText value="#{aaDec.position}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.st_dt}"/>
             </f:facet>
             <h:outputText value="#{aaDec.startDateString}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.end_date}"/>
             </f:facet>
             <h:outputText value="#{aaDec.endDateString}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.st}"/>
             </f:facet>
             <h:outputText value="#{aaDec.status}"/>
-        </t:column>
-    </t:dataTable>
+        </h:column>
+    </h:dataTable>
 </h:panelGroup>
 
     <h:panelGroup rendered="#{empty(lookPersonBean.listAssignmentAgreements)}">
 
-    <t:dataTable var="aaDec" value="#{lookPersonBean.listAssignmentAgreements}"
+    <h:dataTable var="aaDec" value="#{lookPersonBean.listAssignmentAgreements}"
                  columnClasses="cell , cell, cell, cell , cell w15, cell w15 "
                  headerClass="cell label">
-        <t:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.tr_cmp_name}"/>
             </f:facet>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.cust_cmp_nm}"/>
             </f:facet>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.end_cust_nm}"/>
             </f:facet>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.position}"/>
             </f:facet>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.st_dt}"/>
             </f:facet>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.end_date}"/>
             </f:facet>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.st}"/>
             </f:facet>
-        </t:column>
-</t:dataTable>
+        </h:column>
+</h:dataTable>
 </h:panelGroup>
 
 </h:form>
@@ -519,89 +519,89 @@
 <div id="panel8">
 <h:form id="cntrForm">
 <h:panelGroup rendered="#{!empty(lookPersonBean.listContracts)}">
-    <t:dataTable var="ecDec" value="#{lookPersonBean.listContracts}"
+    <h:dataTable var="ecDec" value="#{lookPersonBean.listContracts}"
                  columnClasses="cell , cell w15, cell w15, cell , cell , cell "
                  headerClass="cell label">
-        <t:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.left_company}"/>
             </f:facet>
             <h:outputText value="#{ecDec.tripticomCompanyName}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.st_dt}"/>
             </f:facet>
             <h:outputText value="#{ecDec.startDateString}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.end_date}"/>
             </f:facet>
             <h:outputText value="#{ecDec.endDateString}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.h_address_type}"/>
                 <h:outputText value="#{bundle.end_date}"/>
             </f:facet>
             <h:outputText value="#{ecDec.contractType}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.position}"/>
             </f:facet>
             <h:outputText value="#{ecDec.positionName}"/>
-        </t:column>
-        <t:column>
+        </h:column>
+        <h:column>
             <f:facet name="header">
                 <h:outputText value="#{bundle.st}"/>
             </f:facet>
             <h:outputText value="#{ecDec.status}"/>
-        </t:column>
-    </t:dataTable>
+        </h:column>
+    </h:dataTable>
 </h:panelGroup>
     <h:panelGroup rendered="#{empty(lookPersonBean.listContracts)}">
-        <t:dataTable var="ecDec" value="#{lookPersonBean.listContracts}"
+        <h:dataTable var="ecDec" value="#{lookPersonBean.listContracts}"
                      columnClasses="cell , cell w15, cell w15, cell , cell , cell "
                      headerClass="cell label">
-            <t:column>
+            <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.left_company}"/>
                 </f:facet>
 
-            </t:column>
-            <t:column>
+            </h:column>
+            <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.st_dt}"/>
                 </f:facet>
 
-            </t:column>
-            <t:column>
+            </h:column>
+            <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.end_date}"/>
                 </f:facet>
 
-            </t:column>
-            <t:column>
+            </h:column>
+            <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.h_address_type}"/>
                 </f:facet>
 
-            </t:column>
-            <t:column>
+            </h:column>
+            <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.position}"/>
                 </f:facet>
 
-            </t:column>
-            <t:column>
+            </h:column>
+            <h:column>
                 <f:facet name="header">
                     <h:outputText value="#{bundle.st}"/>
                 </f:facet>
 
-            </t:column>
-        </t:dataTable>
+            </h:column>
+        </h:dataTable>
     </h:panelGroup>
 
 </h:form>
@@ -628,17 +628,19 @@
 </h:panelGroup>
 
 
-<t:saveState value="#{lookPersonBean}"/>
-<t:saveState value="#{registerPersonProcessOwnerBean}"/>
-<t:saveState value="#{registerRequestBean}"/>
-<t:saveState value="#{interviewBean}"/>
-<t:saveState value="#{appointmentInterviewersBean}"/>
-<t:saveState value="#{findPersonActionBean}"/>
-<t:saveState value="#{finderPersonBean}"/>
-<t:saveState value="#{finderContactPersonsBean}"/>
-<t:saveState value="#{registerEmploymentContractBean}"/>
-<t:saveState value="#{personContactManagementBean}"/>
+<!--
+<h:saveState value="#{lookPersonBean}"/>
+<h:saveState value="#{registerPersonProcessOwnerBean}"/>
+<h:saveState value="#{registerRequestBean}"/>
+<h:saveState value="#{interviewBean}"/>
+<h:saveState value="#{appointmentInterviewersBean}"/>
+<h:saveState value="#{findPersonActionBean}"/>
+<h:saveState value="#{finderPersonBean}"/>
+<h:saveState value="#{finderContactPersonsBean}"/>
+<h:saveState value="#{registerEmploymentContractBean}"/>
+<h:saveState value="#{personContactManagementBean}"/>
 <t:saveState value="#{creationInnerPersonBean}"/>
+-->
 
 </ui:define>
 </ui:composition>

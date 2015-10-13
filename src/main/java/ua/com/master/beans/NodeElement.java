@@ -6,6 +6,7 @@ package ua.com.master.beans;
 import com.utils.digits.Rounder;
 import ua.com.master.dao.factory.FactoryDao;
 import ua.com.master.model.CourseUSD;
+import ua.com.master.model.Product;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
@@ -28,10 +29,11 @@ public class NodeElement extends FactoryDao implements Serializable, Comparable<
     private Boolean selected;
     private Boolean isProduct;
     private  CourseUSD course;
+    private Product product;
     public NodeElement() {
     }
 
-    public NodeElement(String name, int size, String type, Double priceUsd,CourseUSD course,String nameImage) {
+    public NodeElement(String name, int size, String type, Double priceUsd,CourseUSD course,String nameImage, Product product) {
         this.name = name;
         this.size = size;
         this.type = type;
@@ -40,6 +42,7 @@ public class NodeElement extends FactoryDao implements Serializable, Comparable<
         if(course!=null)
            this.priceUah= Rounder.roundToMoney(course.getSellingRate()*this.priceUsd);
         this.nameImage=nameImage;
+        this.product=product;
     }
 
     public String getName() {
@@ -153,4 +156,11 @@ public class NodeElement extends FactoryDao implements Serializable, Comparable<
         this.isProduct = isProduct;
     }
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 }

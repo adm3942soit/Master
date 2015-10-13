@@ -1,0 +1,317 @@
+img 
+{
+    margin-top: 0.2em;
+    border-style: none;
+    padding-left: 0.3em;
+    vertical-align: top;
+}
+
+
+
+textarea 
+{
+    font-size: 100%;
+    border: 1px solid #999999;
+    padding-left: 0.5em;
+}
+
+#midcol .buttons input 
+{
+    margin-top: 1em;
+    margin-right: 0.5em;
+    border: 1px outset #FFFFFF;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+}
+#footer .buttons input
+{
+    margin-top: 1em;
+    margin-right: 0.5em;
+    border: 1px outset #FFFFFF;
+    background-color: #FF0000;
+    color: #FFFFFF;
+    text-align: center;
+    padding-left: 1em;
+    padding-right: 1em;
+    font-weight: bold;
+    font-family: "MV Boli";
+    font-size: 24px;
+}
+
+#midcol table 
+{
+    width: 100%;
+}
+
+#midcol th 
+{
+    font-weight: normal;
+}
+
+#midcol .cellr
+{
+	border-bottom: 1px inset #999999;
+	padding-left: 0.5em;
+	padding-right: 0.5em;
+	text-align: right;
+}
+
+#midcol .cellm
+{
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    padding-right: 0.5em;
+    vertical-align: middle;
+}
+
+#errors
+{
+    padding-left: 220px;
+    padding-right: 215px;
+}
+
+.errorColumn
+{
+    color:#ffffff;
+    text-align:center;
+    /*margin-left:100px;*/
+}
+.errorTable
+{
+    background-color:#ffffff;
+    text-align:center;
+    /*border-color:#cc0000;*/
+
+}
+.errorMessage
+{
+    color: #ff3366;              
+    text-align: left;
+    padding-left: 1em;
+    /*text-decoration:underline;*/
+    font-weight: bold;
+}
+
+.infoMessage 
+{
+   /* color: #009999;*/
+    color:green;
+    text-align: left;
+    font-family: "MV Boli";
+    font-size: 24px;
+    font-weight: bold;
+   /* margin-top: 2em;*/
+    display: block;
+    height: 26px;
+    padding-bottom: 1em;
+}
+
+.messages 
+{
+    border-top: 12px solid #FF0000;
+    margin-top: 2em;
+}
+
+.buttons 
+{
+    margin-bottom: 1em;
+}
+
+.tabb 
+{
+	border-top: 0;
+}
+.tab 
+{
+	border-top: 0;
+}
+.w5
+{
+    width: 5%;
+}
+.w10
+{
+    width: 10%;
+}
+
+.w25
+{
+    width: 25%;
+}
+
+.w15
+{
+    width: 15%;
+}
+
+.w20
+{
+    width: 20%;
+}
+.w60
+{
+    width: 60%;
+}
+
+.w70
+{
+    width: 70%;
+}
+.w10
+{
+    width: 10%;
+}
+.w30
+{
+    width: 30%;
+}
+.w45
+{
+    width: 45%;
+}
+
+table tr td table
+{
+    border:0;
+}
+
+table tr td table tr td table
+{
+    border:0;
+}
+/*.register_table_value .txtRed {*/
+.login_table_value .txtRed {    
+
+    font-family: Verdana, sans-serif;
+    color: red;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: left;
+    padding-left: 1em;
+
+}
+.txtBlack {
+    font-family: Verdana, sans-serif;
+    color: black;
+    font-size: 12px;
+    font-weight: normal;
+    text-align: center;
+    padding-left: 1em;
+}
+
+.panel 
+{
+	display: none; 
+}
+/*added ONastasyuk for dataTable 17.10.07*/
+.whitecolor
+{
+    background-color: #F5F5DC;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+}
+.peachcolor
+{
+    background-color: #FFDAB9;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+}
+.peachcolorbold
+{
+    background-color: #FFDAB9;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    font-weight: bold;
+}
+
+.whitecolor0
+{
+    background-color: white;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+}
+.redcolor
+{
+    background-color: red;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    text-decoration: underline;
+    font-weight: bold;
+}
+.redheader
+{
+    background-color: white;
+    color: red;
+    font-family: Verdana, Arial, sans-serif;
+    font-size: 12px;
+    /*font-weight: normal;*/
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+    text-decoration: underline;
+    font-weight: bold;
+}
+
+.lightgraycolor
+{
+    background-color: #DCDCDC;
+    border-bottom: 1px inset #999999;
+    padding-left: 0.5em;
+}
+.longString
+{
+    font-family: Verdana, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    border:0;
+    padding-left: 0em;
+}
+#midcol h2
+{
+	font-size: 100%;
+	color: #B70000;
+    margin: 0; padding: 0; border: none;
+}
+.multinextprocess {
+    position: relative;
+    float: right;
+    margin-top: 2em;
+    border-top: 10px solid #FF0000;
+    width: 30%;
+}
+
+/* rich faces only*/
+.rich-datascr-button{
+    width:12px;
+    background-color:#EEEEEE;
+  }
+
+.rich-datascr-act{
+    width:12px;
+    background-color:#EEEEEE;
+  }
+
+.rich-datascr-inact{
+    width:12px;
+    background-color:#EEEEEE;
+  }
+
+.error_message
+{
+   font-weight: bold;
+    padding-left: 0.5em;
+    border-bottom: 1px inset #999999;
+    text-align:left;
+    list-style-type: none;
+    background-color: #FFDAB9;
+}
+
+
+#language
+{
+    position: absolute;
+    right: 20px;
+    top: 90px;
+}

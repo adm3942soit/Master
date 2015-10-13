@@ -1,9 +1,12 @@
 package ua.com.master.model;
 
+
+import org.hibernate.type.BlobType;
 import ua.com.master.dao.CourseUSDDaoImpl;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.sql.Blob;
 import java.util.Date;
 
 import static javax.persistence.GenerationType.IDENTITY;
@@ -36,7 +39,9 @@ public class Product  implements Serializable {
 
     @Column(name = "NAME_IMAGE", unique = false, nullable = true)
     public String nameImage;
-
+    @Lob
+    @Column(name = "FILE_IMAGE", unique = false, nullable = true, columnDefinition="mediumblob")
+    public byte[] fileImage;
 
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "DEPARTMENT_ID", nullable = false)
@@ -266,4 +271,11 @@ public class Product  implements Serializable {
         this.lastUpdatePerson = lastUpdatePerson;
     }
 
+    public byte[] getFileImage() {
+        return fileImage;
+    }
+
+    public void setFileImage(byte[] fileImage) {
+        this.fileImage = fileImage;
+    }
 }

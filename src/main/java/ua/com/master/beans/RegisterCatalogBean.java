@@ -8,6 +8,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.log4j.Logger;
 
+import org.hibernate.type.BlobType;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultUploadedFile;
 import org.primefaces.model.StreamedContent;
@@ -33,10 +34,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.http.Part;
 
 import java.io.*;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.nio.file.StandardCopyOption;
+import java.nio.file.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -83,7 +81,7 @@ public class RegisterCatalogBean extends BaseBean  implements Serializable
     private Integer forCount;
     private String shortName;
     private String nameImage;
-
+    private byte[] fileImage;
 
     private String nameProductFile="temp"+File.separator+"product.txt";
     private List<Product> listProducts=new ArrayList<>();
@@ -122,7 +120,7 @@ public void setTabbedPane(Integer tabbedPane)
     public void clearFieldsProduct(){
         // setTabbedPane(Constants.CatalogDetails.CATALOG_TAB_NUMBER);
         System.out.println("clearFieldsCatalog");
-        buttonCreatePressed=false;
+
         this.newProductName=null;
         this.productId=null;
         this.priceUah=0.0;
@@ -131,7 +129,8 @@ public void setTabbedPane(Integer tabbedPane)
         this.forCount=1;
         this.shortName="m2";
         this.newProductDescription="";
-        this.nameImage="Java_Duke.gif";
+        this.nameImage="";
+        this.fileImage=null;
         this.file=getFile();
         this.newProduct=null;
         Filer.createFile(MyFiler.getCurrentDirectory() + File.separator +
@@ -538,6 +537,18 @@ public void clearCatalog(ActionEvent actionEvent){
         this.setProductCount(product.getAllCount());
         this.setShortName(product.getShortName());
         this.setNameImage(product.getNameImage());
+        this.setFileImage(product.getFileImage());
+        //WRITE FILE
+
+        Path path1=getRealPath(this.nameImage);
+        if(!path1.toFile().exists()) {
+            //FileSystems.getDefault().getPath(this.nameImage);
+            try {
+                Files.write(path1, fileImage);
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }
+        }
         this.setNewProduct(product);
         this.productId=product.productId;
         System.out.println("product.getProductId() = " + product.getProductId());
@@ -624,11 +635,11 @@ public void clearCatalog(ActionEvent actionEvent){
 
         tabPaneChange(1,false, true, false);
     }
-    public boolean buttonCreatePressed=false;
+
 
     public void  createNewProduct(ActionEvent actionEvent){
     System.out.println("RegisterCatalogBean.createNewProduct");
-    buttonCreatePressed=true;
+
 
     createNewProduct();
     tabPaneChange(2,false, true, false);
@@ -663,6 +674,7 @@ public void clearCatalog(ActionEvent actionEvent){
         newProduct.setLastUpdateDate(new Date());
         newProduct.setLastUpdatePerson(getFactoryDao().incomerPerson.getLastName());
         newProduct.setNameImage(this.getNameImage());
+        newProduct.setFileImage(this.getFileImage());
         newProduct.setShortName(this.getShortName());
         newProduct.setAllCount(this.getProductCount());
         newProduct.setDescription(this.newProductDescription);
@@ -681,13 +693,6 @@ public void clearCatalog(ActionEvent actionEvent){
         System.out.println("RegisterCatalogBean.initProductFromFields!");
 
         return true;
-    }
-    public boolean isButtonCreatePressed() {
-        return buttonCreatePressed;
-    }
-
-    public void setButtonCreatePressed(boolean buttonCreatePressed) {
-        this.buttonCreatePressed = buttonCreatePressed;
     }
 
     public void clearDepartment(ActionEvent actionEvent){
@@ -1026,25 +1031,24 @@ public void clearCatalog(ActionEvent actionEvent){
         long size = file.getSize();
         System.out.println("File size: " + size);
 
-        FacesContext context = FacesContext.getCurrentInstance();
-        ServletContext servletContext = (ServletContext) context
-                .getExternalContext().getContext();
-        String path = servletContext.getRealPath("");
-
+        Path folder=getRealPath(name);
         InputStream stream = file.getInputstream();
-        Path folder=Paths.get(path //+ File.separator //+ "WEB-INF"
-                + File.separator + name);
         try {
 
             Files.copy(stream, folder,StandardCopyOption.REPLACE_EXISTING);
             System.out.println("Uploaded file successfully saved in " + folder);
         }catch(Exception ex){ex.printStackTrace();}
 
-
-
-        byte[] buffer = new byte[(int) size];
-        stream.read(buffer, 0, (int) size);
+        fileImage = new byte[(int) size];
+        stream.read(fileImage, 0, (int) size);
         stream.close();
+/*
+        //WRITE FILE
+        this.nameImage=file.getFileName();
+        Path path1= FileSystems.getDefault().getPath(this.nameImage);
+        Files.write(path1, fileImage);
+*/
+
         String s=folder.toString();
 
         path="";//http://localhost/
@@ -1071,12 +1075,17 @@ public void clearCatalog(ActionEvent actionEvent){
             try {
 
                 save();
+/*
                 this.nameImage=file.getFileName();
+                Path path= FileSystems.getDefault().getPath(this.nameImage);
+                Files.write(path, fileImage);
+*/
                 Filer.appendFile(new File(MyFiler.getCurrentDirectory()+File.separator+
                         nameProductFile),"\n\r"+":NameImage:"+this.nameImage);
 
 
             }catch(Exception ex){ex.printStackTrace();}
+
             System.out.println("Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize());
             productMessage="Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize();
             FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
@@ -1193,6 +1202,54 @@ public void clearCatalog(ActionEvent actionEvent){
     public void setPartFile(Part partFile) {
         this.partFile = partFile;
     }
+
+    public byte[] getFileImage() {
+        return fileImage;
+    }
+
+    public void setFileImage(byte[] fileImage) {
+        this.fileImage = fileImage;
+    }
+    public static Path getRealPath(String nameImage){
+        FacesContext context = FacesContext.getCurrentInstance();
+        ServletContext servletContext = (ServletContext) context
+                .getExternalContext().getContext();
+        String path = servletContext.getRealPath("");
+
+        Path folder=Paths.get(path //+ File.separator //+ "WEB-INF"
+                + File.separator + nameImage);
+
+    return folder;
+    }
+    public static void createFileFromDatabase(String nameImage, byte[] fileImage){
+        Path path1=getRealPath(nameImage);
+        FileOutputStream fos=null;
+        InputStream is=null;
+        if(!path1.toFile().exists()) {
+            try {
+                Files.write(path1, fileImage);
+                fos=new FileOutputStream(path1.toFile());
+                is=new ByteArrayInputStream(fileImage);
+                int c = 0;
+                while ((c = is.read()) > -1) {
+                    fos.write(c);
+                }
+                fos.flush();
+            } catch (IOException ex) {
+                ex.printStackTrace();
+            }finally {
+                if(fos!=null){
+                    try{
+                        fos.close();
+                       if(is!=null) is.close();
+                    }catch(IOException ex){ex.printStackTrace();}
+                }
+            }
+        }
+
+    }
+
+
 }
 
 

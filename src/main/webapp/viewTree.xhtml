@@ -2,7 +2,6 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
-      xmlns:a="http://it84.nl/jsf"
       xmlns:p="http://primefaces.org/ui"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
 <ui:composition template="templates/layoutPage.xhtml">
@@ -13,31 +12,33 @@
     <h:outputText value="View our products" styleClass="infoMessage"/>
 </h1>
 
-      <h:form id="form">
+      <h:form id="formTree">
 
           <p:growl id="messages" showDetail="true" />
-          <p:treeTable id="tt" value="#{treeEvent.root}"
+          <p:treeTable id="tt" value="#{treeView.root}"
                        var="nodeElement"
-                       selectionMode="single"
-                       selection="#{treeEvent.selectedNode}">
-                <p:ajax event="expand" listener="#{treeEvent.onNodeExpand}" update=":form:messages" />
-                <p:ajax event="collapse" listener="#{treeEvent.onNodeCollapse}" update=":form:messages" />
-                <p:ajax event="select" listener="#{treeEvent.onNodeSelect}" update=":form:messages" />
-                <p:ajax event="unselect" listener="#{treeEvent.onNodeUnselect}" update=":form:messages" />
-             <!-- <p:ajax event="select"
-                      update=":form:detailCatalog,:form:detailDepartment,:form:detailProduct"
-                      listener="#{treeEvent.handleSelection}"/>-->
+                       selectionMode="checkbox"
+                       selection="#{treeView.selectedNodes}">
+                <p:ajax event="expand" listener="#{treeView.onNodeExpand}" update=":formTree:messages" />
+                <p:ajax event="collapse" listener="#{treeView.onNodeCollapse}" update=":formTree:messages" />
+                <!--<p:ajax event="select" listener="#{treeView.onNodeSelect}" update=":formTree:messages" />-->
+                <p:ajax event="unselect" listener="#{treeView.onNodeUnselect}" update=":formTree:messages" />
+              <p:ajax event="select"
+                      update=":formTree:detailProduct,:formTree:messages"
+                      listener="#{treeView.handleSelection}"/>
                 <f:facet name="header">
                         Catalog Viewer
                   </f:facet>
                   <p:column  headerText="Name">
 
-                      <p:selectBooleanCheckbox value="#{nodeElement.selected}" rendered="#{nodeElement.isProduct}"/>
+                      <!--<p:selectBooleanCheckbox value="#{nodeElement.selected}" rendered="#{nodeElement.isProduct}"
+                              onchange="updateVisible()"/>-->
                       <h:outputText value="#{nodeElement.name}" />
                   </p:column>
                   <p:column headerText="Type">
                         <h:outputText value="#{nodeElement.type}" />
                   </p:column>
+<!--
                   <p:column style="width:24px" >
                         <p:commandLink update=":form:nodePanel"
                                        oncomplete="PF('nodeDialog').show()"
@@ -45,12 +46,15 @@
                                        styleClass="ui-icon ui-icon-search">
                               <f:setPropertyActionListener
                                       value="#{nodeElement}"
-                                      target="#{treeEvent.selectedNodeElement}" />
+                                      target="#{treeView.selectedNodeElement}" />
                         </p:commandLink>
                   </p:column>
+-->
 
                   <p:column style="width:24px">
                         <h:graphicImage id="viewH"
+                                        width="50"
+                                        height="20"
                                         url="#{nodeElement.nameImage}"
                                         rendered="#{nodeElement.nameImage!=null}">
 
@@ -59,7 +63,7 @@
                   <p:column style="width:24px">
                         <h:outputText id="prUah"
                                       value="#{nodeElement.priceUah}"
-rendered="#{nodeElement.priceUsd!=null}"
+                                 rendered="#{nodeElement.priceUsd!=null}"
                                 >
                               <f:convertNumber currencyCode="UAH" groupingUsed="true"
                                                maxFractionDigits="2" type="currency"
@@ -71,37 +75,60 @@ rendered="#{nodeElement.priceUsd!=null}"
             </p:treeTable>
 
 
-            <p:dialog id="dialog" header="Detail" showEffect="fade" widgetVar="nodeDialog" modal="true" resizable="false">
+            <!--<p:dialog id="dialog" header="Detail" showEffect="fade" widgetVar="nodeDialog" modal="true" resizable="false">
                   <p:outputPanel id="nodePanel">
-                        <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty treeEvent.selectedNode}">
+                        <p:panelGrid  columns="2" columnClasses="label,value" >
                               <h:outputLabel for="name" value="Name: " />
-                              <h:outputText id="name" value="#{treeEvent.selectedNode.name}" style="font-weight:bold" />
+                              <h:outputText id="name" value="#{treeView.selectedNode.name}" style="font-weight:bold" />
 
                               <h:outputLabel for="size" value="Size: " />
-                              <h:outputText id="size" value="#{treeEvent.selectedNode.size}" style="font-weight:bold" />
+                              <h:outputText id="size" value="#{treeView.selectedNode.size}" style="font-weight:bold" />
 
                               <h:outputLabel for="type" value="Type " />
-                              <h:outputText id="type" value="#{treeEvent.selectedNode.type}" style="font-weight:bold" />
-                              <h:outputLabel for="priceUsd" value="PriceUsd " rendered="#{treeEvent.selectedNode.priceUsd}!=null"/>
-                              <h:outputText id="priceUsd" value="#{treeEvent.selectedNode.priceUsd}" style="font-weight:bold" rendered="#{treeEvent.selectedNode.priceUsd}!=null">
+                              <h:outputText id="type" value="#{treeView.selectedNode.type}" style="font-weight:bold" />
+                              <h:outputLabel for="priceUsd" value="PriceUsd " rendered="#{treeView.selectedNode.priceUsd}!=null"/>
+                              <h:outputText id="priceUsd" value="#{treeView.selectedNode.priceUsd}" style="font-weight:bold" rendered="#{treeView.selectedNode.priceUsd}!=null">
                                     <f:convertNumber currencyCode="UAH" groupingUsed="true"
                                                      maxFractionDigits="2" type="currency"
                                                      minFractionDigits="2"/>
                               </h:outputText>
                         </p:panelGrid>
                   </p:outputPanel>
-            </p:dialog>
-          <p:panel id="detailCatalog" header="Detail View Country" visible="#{treeTableTutorialBean.showCountryDetail}">
-              This is the Detail view of country
+            </p:dialog>-->
+
+          <p:commandButton value="Display" update="messages" icon="ui-icon-newwin"
+                           actionListener="#{treeView.displaySelectedMultiple(treeView.selectedNodes)}"/>
+
+          <p:panel id="detailCatalog" header="Detail View Catalog" visible="#{treeView.showCatalogDetail}">
+              This is the Detail view of catalog
           </p:panel>
 
-          <p:panel id="detailDepartment" header="Detail View State" visible="#{treeTableTutorialBean.showStateDetail}">
-              This is the Detail view of state
+          <p:panel id="detailDepartment" header="Detail View State" visible="#{treeView.showDepartmentDetail}">
+              This is the Detail view of department
           </p:panel>
 
-          <p:panel id="detailProduct" header="Detail View City" visible="#{treeTableTutorialBean.showCityDetail}">
-              This is the Detail view of city
+          <p:panel id="detailProduct" header="Detail View City" visible="#{treeView.showProductDetail}">
+              This is the Detail view of product
           </p:panel>
+          <p:panel id="Cart" header="Detail View Cart" visible="#{treeView.selectedList!=null}">
+              <h:commandLink id="viewCart" title="View cart"
+                             actionListener="#{treeView.viewCartDetails}">
+
+                  <h:outputText
+                          value="Your cart" ></h:outputText>
+
+              </h:commandLink>
+              <img src="images/cartActive.png"></img>
+              <p:dataTable var="prod" value="#{treeView.selectedList}">
+                  <p:columns  var="column" columnIndexVar="colIndex" sortBy="#{prod.priceUSD}" >
+                      <f:facet name="header">
+                          <h:outputText value="Name" />
+                      </f:facet>
+                      <h:outputText value="#{prod.name}" />
+                  </p:columns>
+              </p:dataTable>
+          </p:panel>
+
       </h:form>
 
 </ui:define>
