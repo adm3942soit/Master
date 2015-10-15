@@ -8,6 +8,7 @@ import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.log4j.Logger;
 
+import org.hibernate.Hibernate;
 import org.hibernate.type.BlobType;
 import org.primefaces.event.FileUploadEvent;
 import org.primefaces.model.DefaultUploadedFile;
@@ -35,6 +36,8 @@ import javax.servlet.http.Part;
 
 import java.io.*;
 import java.nio.file.*;
+import java.sql.Blob;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -81,10 +84,12 @@ public class RegisterCatalogBean extends BaseBean  implements Serializable
     private Integer forCount;
     private String shortName;
     private String nameImage;
-    private byte[] fileImage;
+    private Blob fileImage;
 
     private String nameProductFile="temp"+File.separator+"product.txt";
     private List<Product> listProducts=new ArrayList<>();
+
+    private static UploadedFile file;
 
  public static RegisterCatalogBean registerCatalogBean=new RegisterCatalogBean();
 
@@ -414,6 +419,8 @@ public void clearCatalog(ActionEvent actionEvent){
         if(nameImage==null || nameImage.isEmpty()){
             getNameImageFromFile();
         }
+
+        createFileFromDatabase(nameImage, fileImage);
         return nameImage;
     }
 
@@ -538,17 +545,10 @@ public void clearCatalog(ActionEvent actionEvent){
         this.setShortName(product.getShortName());
         this.setNameImage(product.getNameImage());
         this.setFileImage(product.getFileImage());
-        //WRITE FILE
 
-        Path path1=getRealPath(this.nameImage);
-        if(!path1.toFile().exists()) {
-            //FileSystems.getDefault().getPath(this.nameImage);
-            try {
-                Files.write(path1, fileImage);
-            } catch (IOException ex) {
-                ex.printStackTrace();
-            }
-        }
+        //WRITE FILE
+        createFileFromDatabase(this.nameImage,this.fileImage);
+
         this.setNewProduct(product);
         this.productId=product.productId;
         System.out.println("product.getProductId() = " + product.getProductId());
@@ -956,7 +956,7 @@ public void clearCatalog(ActionEvent actionEvent){
         tabPaneChange(2,false,false, false);
         return ;
     }
-    private UploadedFile file;
+
 
 
     public UploadedFile getFile() {
@@ -1030,7 +1030,7 @@ public void clearCatalog(ActionEvent actionEvent){
 
         long size = file.getSize();
         System.out.println("File size: " + size);
-
+        this.nameImage=name;
         Path folder=getRealPath(name);
         InputStream stream = file.getInputstream();
         try {
@@ -1039,15 +1039,25 @@ public void clearCatalog(ActionEvent actionEvent){
             System.out.println("Uploaded file successfully saved in " + folder);
         }catch(Exception ex){ex.printStackTrace();}
 
-        fileImage = new byte[(int) size];
-        stream.read(fileImage, 0, (int) size);
+
+        byte[] bytes = new byte[(int) size];
+        stream.read(bytes, 0, (int) size);
+        System.out.println(" uploadFile bytes = " + bytes);
+        try {
+            fileImage =  Hibernate.createBlob(bytes);//new javax.sql.rowset.serial.SerialBlob(bytes);
+        }catch(Exception ex){ex.printStackTrace();}
         stream.close();
-/*
+        System.out.println("fileImage = " + fileImage);
+        createNewProduct();
+        System.out.println("product.fileImage = " + newProduct.fileImage);
         //WRITE FILE
         this.nameImage=file.getFileName();
         Path path1= FileSystems.getDefault().getPath(this.nameImage);
-        Files.write(path1, fileImage);
-*/
+        try {
+            Files.write(folder, fileImage.getBytes(1,(int) fileImage.length()));
+        }catch(Exception ex){ex.printStackTrace();}
+
+
 
         String s=folder.toString();
 
@@ -1075,11 +1085,8 @@ public void clearCatalog(ActionEvent actionEvent){
             try {
 
                 save();
-/*
+
                 this.nameImage=file.getFileName();
-                Path path= FileSystems.getDefault().getPath(this.nameImage);
-                Files.write(path, fileImage);
-*/
                 Filer.appendFile(new File(MyFiler.getCurrentDirectory()+File.separator+
                         nameProductFile),"\n\r"+":NameImage:"+this.nameImage);
 
@@ -1090,7 +1097,7 @@ public void clearCatalog(ActionEvent actionEvent){
             productMessage="Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize();
             FacesMessage message = new FacesMessage("Succesful", file.getFileName() + " is uploaded.");
             FacesContext.getCurrentInstance().addMessage(null, message);
-            createNewProduct();
+
             tabPaneChange(2, false, true, false);
         }else {
             this.nameImage=getNameImageFromFile();
@@ -1203,11 +1210,11 @@ public void clearCatalog(ActionEvent actionEvent){
         this.partFile = partFile;
     }
 
-    public byte[] getFileImage() {
+    public Blob getFileImage() {
         return fileImage;
     }
 
-    public void setFileImage(byte[] fileImage) {
+    public void setFileImage(Blob fileImage) {
         this.fileImage = fileImage;
     }
     public static Path getRealPath(String nameImage){
@@ -1221,29 +1228,69 @@ public void clearCatalog(ActionEvent actionEvent){
 
     return folder;
     }
-    public static void createFileFromDatabase(String nameImage, byte[] fileImage){
+    private static byte[] toByteArray(Blob fromImageBlob) {
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        try {
+            return toByteArrayImpl(fromImageBlob, baos);
+        } catch (Exception e) {
+        }
+        return null;
+    }
+    private static byte[] toByteArrayImpl(Blob fromImageBlob,
+                                   ByteArrayOutputStream baos) throws SQLException, IOException {
+        byte buf[] = new byte[8000];
+        int dataSize;
+        InputStream is=null;
+        try{
+         is = fromImageBlob.getBinaryStream();
+         while((dataSize = is.read(buf)) != -1) {
+                baos.write(buf, 0, dataSize);
+            }
+        }catch(SQLException ex){ex.printStackTrace();}
+        finally {
+            if(is != null) {
+                is.close();
+            }
+        }
+        return baos.toByteArray();
+    }
+    public synchronized static void createFileFromDatabase(String nameImage, Blob fileImage){
         Path path1=getRealPath(nameImage);
+        System.out.println("path1 = " + path1);
         FileOutputStream fos=null;
         InputStream is=null;
-        if(!path1.toFile().exists()) {
+        if(!path1.toFile().exists() && fileImage!=null) {
             try {
-                Files.write(path1, fileImage);
-                fos=new FileOutputStream(path1.toFile());
-                is=new ByteArrayInputStream(fileImage);
+
+/*
+                fos = new FileOutputStream(path1.toFile().getPath());
+                fos.write(fileImage);
+                fos.close();
+*/
+                byte[] bytes=fileImage.getBytes(1, (int)fileImage.length());
+                is=new ByteArrayInputStream(bytes);
+                Files.copy(is, path1,StandardCopyOption.REPLACE_EXISTING);
+/*
                 int c = 0;
                 while ((c = is.read()) > -1) {
                     fos.write(c);
                 }
                 fos.flush();
-            } catch (IOException ex) {
+*/
+            } catch (Exception ex) {
                 ex.printStackTrace();
             }finally {
                 if(fos!=null){
                     try{
                         fos.close();
-                       if(is!=null) is.close();
                     }catch(IOException ex){ex.printStackTrace();}
                 }
+                if(is!=null){
+                    try{
+                      is.close();
+                    }catch(IOException ex){ex.printStackTrace();}
+                }
+
             }
         }
 

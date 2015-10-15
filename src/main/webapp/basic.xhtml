@@ -14,22 +14,22 @@
     <h:outputText value="View our products" styleClass="infoMessage"/>
 </h1>
 <h:form id="form">
-    <p:treeTable value="#{treeView.root}" var="nodeElement">
+    <p:treeTable value="#{ttBasicView.root}" var="document">
         <f:facet name="header">
             Document Viewer
         </f:facet>
         <p:column headerText="Name">
-            <h:outputText value="#{nodeElement.name}" />
+            <h:outputText value="#{document.name}" />
         </p:column>
         <p:column headerText="Size">
-            <h:outputText value="#{nodeElement.size}" />
+            <h:outputText value="#{document.size}" />
         </p:column>
         <p:column headerText="Type">
-            <h:outputText value="#{nodeElement.type}" />
+            <h:outputText value="#{document.type}" />
         </p:column>
         <p:column style="width:24px">
             <p:commandLink update=":form:documentPanel" oncomplete="PF('documentDialog').show()" title="View Detail" styleClass="ui-icon ui-icon-search">
-                <f:setPropertyActionListener value="#{nodeElement}" target="#{treeView.selectedNode}" />
+                <f:setPropertyActionListener value="#{document}" target="#{ttBasicView.selectedDocument}" />
             </p:commandLink>
         </p:column>
     </p:treeTable>
@@ -38,13 +38,13 @@
         <p:outputPanel id="documentPanel">
             <p:panelGrid  columns="2" columnClasses="label,value" rendered="#{not empty ttBasicView.selectedDocument}">
                 <h:outputLabel for="name" value="Name: " />
-                <h:outputText id="name" value="#{treeView.selectedNode.name}" style="font-weight:bold" />
+                <h:outputText id="name" value="#{ttBasicView.selectedDocument.name}" style="font-weight:bold" />
 
                 <h:outputLabel for="size" value="Size: " />
-                <h:outputText id="size" value="#{treeView.selectedNode.size}" style="font-weight:bold" />
+                <h:outputText id="size" value="#{ttBasicView.selectedDocument.size}" style="font-weight:bold" />
 
                 <h:outputLabel for="type" value="Type " />
-                <h:outputText id="type" value="#{treeView.selectedNode.type}" style="font-weight:bold" />
+                <h:outputText id="type" value="#{ttBasicView.selectedDocument.type}" style="font-weight:bold" />
             </p:panelGrid>
         </p:outputPanel>
     </p:dialog>

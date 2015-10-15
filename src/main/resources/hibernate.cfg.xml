@@ -23,7 +23,6 @@
 		<mapping class="ua.com.master.model.CourseUSD" />
 		<mapping class="ua.com.master.model.Person" />
 		<mapping class="ua.com.master.model.PersonStatus" />
-		<!--<mapping class="ua.com.master.model.PersonAddress" />-->
 		<mapping class="ua.com.master.model.Address" />
 		<mapping class="ua.com.master.model.SysParameter" />
 		<mapping class="ua.com.master.model.UserLog" />

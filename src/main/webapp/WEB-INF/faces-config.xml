@@ -25,7 +25,7 @@
 </managed-bean>
     <managed-bean>
         <managed-bean-name>treeView</managed-bean-name>
-        <managed-bean-class>ua.com.master.beans.TreeView</managed-bean-class>
+        <managed-bean-class>ua.com.master.beans.tree.TreeView</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
         <managed-property>
             <property-name>service</property-name>
@@ -60,12 +60,7 @@
         <managed-bean-scope>request</managed-bean-scope>
 
     </managed-bean>
-    <!--<managed-bean>
-        <managed-bean-name>nodeElement</managed-bean-name>
-        <managed-bean-class>ua.com.master.beans.NodeElement</managed-bean-class>
-        <managed-bean-scope>request</managed-bean-scope>
 
-    </managed-bean>-->
     <managed-bean>
         <managed-bean-name>loginBean</managed-bean-name>
         <managed-bean-class>ua.com.master.beans.LoginBean</managed-bean-class>
@@ -150,31 +145,21 @@
             <value>#{personDao}</value>
         </managed-property>
     </managed-bean>
-    <!--<managed-bean>
-        <managed-bean-name>ttBasicView</managed-bean-name>
-        <managed-bean-class>ua.com.master.beans.BasicView</managed-bean-class>
-        <managed-bean-scope>view</managed-bean-scope>
-        <managed-property>
+    <managed-bean>
+        <managed-bean-name>treeTableManagedBean</managed-bean-name>
+        <managed-bean-class>ua.com.master.beans.tree.TreeTableManagedBean</managed-bean-class>
+        <managed-bean-scope>session</managed-bean-scope>
+        <!--<managed-property>
             <property-name>catalogService</property-name>
             <value>#{catalogService}</value>
-        </managed-property>
-    </managed-bean>-->
+        </managed-property>-->
+    </managed-bean>
     <managed-bean>
         <managed-bean-name>catalogService</managed-bean-name>
-        <managed-bean-class>ua.com.master.beans.CatalogService</managed-bean-class>
+        <managed-bean-class>ua.com.master.beans.tree.CatalogService</managed-bean-class>
         <managed-bean-scope>session</managed-bean-scope>
 
     </managed-bean>
-   <!-- <navigation-rule>
-        <from-view-id>/index.xhtml</from-view-id>
-        <navigation-case>
-            <from-action>#{navigator.gotoListProducts}</from-action>
-            <from-outcome>default</from-outcome>
-            <to-view-id>/default.xhtml</to-view-id>
-
-        </navigation-case>
-
-    </navigation-rule>-->
 
     <navigation-rule>
         <from-view-id>/index.xhtml</from-view-id>
@@ -236,16 +221,7 @@
 
         </navigation-case>
     </navigation-rule>
-
-    <!--<navigation-rule>
-        <from-view-id>/home.xhtml</from-view-id>
-        <navigation-case>
-            <from-action>#{navigator.gotoListProducts}</from-action>
-            <from-outcome>default</from-outcome>
-            <to-view-id>/default.xhtml</to-view-id>
-        </navigation-case>
-    </navigation-rule>-->
-    <navigation-rule>
+  <navigation-rule>
         <from-view-id>/login.xhtml</from-view-id>
         <navigation-case>
             <from-action>#{loginBean.signIn}</from-action>
