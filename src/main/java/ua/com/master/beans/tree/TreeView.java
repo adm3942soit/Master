@@ -1,10 +1,12 @@
-package ua.com.master.beans;
+package ua.com.master.beans.tree;
 
 import org.primefaces.event.NodeCollapseEvent;
 import org.primefaces.event.NodeExpandEvent;
 import org.primefaces.event.NodeSelectEvent;
 import org.primefaces.event.NodeUnselectEvent;
 import org.primefaces.model.TreeNode;
+import ua.com.master.beans.tree.CatalogService;
+import ua.com.master.beans.tree.NodeElement;
 import ua.com.master.model.Product;
 
 import javax.annotation.PostConstruct;
@@ -14,7 +16,6 @@ import javax.faces.bean.ManagedProperty;
 import javax.faces.bean.*;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -39,7 +40,8 @@ public class TreeView {
     boolean showCartDetails=false;
     @PostConstruct
     public void init() {
-        root = service.createNodes();
+        service.createNodes();
+        root = service.getRootFirst();
     }
 
     public TreeNode getRoot() {
@@ -60,11 +62,21 @@ public class TreeView {
 
     public void onNodeExpand(NodeExpandEvent event) {
         System.out.println("TreeView.onNodeExpand");
+        TreeNode node=event.getTreeNode();
+        node.setExpanded(true);
+        if(node.getParent()!=null)
+                node.getParent().setExpanded(true);
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Expanded", event.getTreeNode().toString());
         FacesContext.getCurrentInstance().addMessage(null, message);
     }
 
     public void onNodeCollapse(NodeCollapseEvent event) {
+        TreeNode node=event.getTreeNode();
+        node.setExpanded(false);
+/*
+        if(node.getParent()!=null)
+            node.getParent().setExpanded(true);
+*/
         System.out.println("TreeEvent.onNodeCollapse");
         FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Collapsed", event.getTreeNode().toString());
         FacesContext.getCurrentInstance().addMessage(null, message);

@@ -1,4 +1,4 @@
-package ua.com.master.beans;
+package ua.com.master.beans.tree;
 
 /**
  * Created by Oxana on 26.09.2015.
@@ -8,12 +8,8 @@ import ua.com.master.dao.factory.FactoryDao;
 import ua.com.master.model.CourseUSD;
 import ua.com.master.model.Product;
 
-import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
 import java.io.Serializable;
-import java.util.Date;
-/*@ManagedBean(name = "nodeElement")
-@RequestScoped*/
+
 public class NodeElement extends FactoryDao implements Serializable, Comparable<NodeElement> {
 
     private String name;
