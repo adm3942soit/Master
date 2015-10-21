@@ -6,6 +6,7 @@ import com.utils.file.Filer;
 import myFiler.MyFiler;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
+import org.apache.commons.io.IOUtils;
 import org.apache.log4j.Logger;
 
 import org.hibernate.Hibernate;
@@ -20,33 +21,27 @@ import ua.com.master.model.*;
 import ua.com.master.utils.DepartmentValidator;
 import ua.com.master.validators.*;
 
-import javax.el.ELContext;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 
-import javax.faces.bean.ViewScoped;
 import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 import javax.faces.event.ValueChangeEvent;
 import javax.faces.validator.ValidatorException;
 import javax.servlet.ServletContext;
-import javax.servlet.http.Part;
 
 import java.io.*;
 import java.nio.file.*;
 import java.sql.Blob;
-import java.sql.SQLException;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.net.*;
-import java.util.Scanner;
 
 @ManagedBean(name = "registerCatalogBean")
 @RequestScoped
-@ViewScoped
 public class RegisterCatalogBean extends BaseBean  implements Serializable
 {
 
@@ -85,6 +80,8 @@ public class RegisterCatalogBean extends BaseBean  implements Serializable
     private String shortName;
     private String nameImage;
     private Blob fileImage;
+    private CourseUSD courseUSD;
+    private String fullNameProductImageFile;
 
     private String nameProductFile="temp"+File.separator+"product.txt";
     private List<Product> listProducts=new ArrayList<>();
@@ -907,7 +904,7 @@ public void clearCatalog(ActionEvent actionEvent){
     public void setNameProductFile(String nameProductFile) {
         this.nameProductFile = nameProductFile;
     }
-    CourseUSD courseUSD;
+
     public void convert() {
         System.out.println("RegisterCatalogBean.convert");
         courseUSD=getFactoryDao().getCourseUSDDao().findCourseUSDByDate(new Date());
@@ -984,8 +981,6 @@ public void clearCatalog(ActionEvent actionEvent){
         try {
             save();
         }catch(Exception ex){ex.printStackTrace();}
-        // Print out the information of the file
-      //  System.out.println("Uploaded File Name Is :: "+file.getFileName()+" :: Uploaded File Size :: "+file.getSize());
     }
     public StreamedContent image = null;
 
@@ -1043,21 +1038,19 @@ public void clearCatalog(ActionEvent actionEvent){
         byte[] bytes = new byte[(int) size];
         stream.read(bytes, 0, (int) size);
         System.out.println(" uploadFile bytes = " + bytes);
-        try {
-            fileImage =  Hibernate.createBlob(bytes);//new javax.sql.rowset.serial.SerialBlob(bytes);
-        }catch(Exception ex){ex.printStackTrace();}
         stream.close();
         System.out.println("fileImage = " + fileImage);
-        createNewProduct();
-        System.out.println("product.fileImage = " + newProduct.fileImage);
+
         //WRITE FILE
         this.nameImage=file.getFileName();
-        Path path1= FileSystems.getDefault().getPath(this.nameImage);
+        File createdFile=folder.toFile();
+        setFullNameProductImageFile(folder.toFile().getAbsolutePath());
+        FileInputStream fileInputStream=new FileInputStream(createdFile);
         try {
-            Files.write(folder, fileImage.getBytes(1,(int) fileImage.length()));
+            fileImage =  Hibernate.createBlob(fileInputStream);//new javax.sql.rowset.serial.SerialBlob(bytes);
+            createNewProduct();
+            System.out.println("product.fileImage = " + newProduct.fileImage);
         }catch(Exception ex){ex.printStackTrace();}
-
-
 
         String s=folder.toString();
 
@@ -1113,6 +1106,7 @@ public void clearCatalog(ActionEvent actionEvent){
 
 
 
+/*
     private UploadedFile getUploadedPicture()
     {
         FacesContext context = FacesContext.getCurrentInstance();
@@ -1120,9 +1114,10 @@ public void clearCatalog(ActionEvent actionEvent){
         UploadedBean uploadBean = (UploadedBean) elContext.getELResolver().getValue(elContext, null, "uploadBean");
         return uploadBean.getUploadedFile();
     }
-    public  void update(){
-        UploadedFile uploadedPicture = getUploadedPicture();
-    }
+*/
+//    public  void update(){
+  //      UploadedFile uploadedPicture = getUploadedPicture();
+    //}
     public void validateFile(FacesContext ctx,
                              UIComponent comp,
                              Object value) {
@@ -1139,6 +1134,7 @@ public void clearCatalog(ActionEvent actionEvent){
             throw new ValidatorException(msgs);
         }
     }
+/*
     public void validateFile2(FacesContext ctx,
                              UIComponent comp,
                              Object value) {
@@ -1147,9 +1143,11 @@ public void clearCatalog(ActionEvent actionEvent){
         if (file.getSize() > 1024) {
             msgs.add(new FacesMessage("file too big"));
         }
-        /*if (!"text/plain".equals(file.getContentType())) {
+        */
+/*if (!"text/plain".equals(file.getContentType())) {
             msgs.add(new FacesMessage("not a text file"));
-        }*/
+        }*//*
+
         if (!(file.getContentType().startsWith("image"))) {
             msgs.add(new FacesMessage("not an Image file"));
         }
@@ -1157,6 +1155,8 @@ public void clearCatalog(ActionEvent actionEvent){
             throw new ValidatorException(msgs);
         }
     }
+*/
+/*
     private Part partFile;
     private String fileContent;
 
@@ -1179,6 +1179,8 @@ public void clearCatalog(ActionEvent actionEvent){
         }
         return null;
     }
+*/
+/*
     public void saveP() {
         try (InputStream input = partFile.getInputStream()) {
             Path folder=Paths.get(MyFiler.getCurrentDirectory()+File.separator+"temp" + File.separator +
@@ -1193,6 +1195,7 @@ public void clearCatalog(ActionEvent actionEvent){
             // Show faces message?
         }
     }
+*/
 
     public CourseUSD getCourseUSD() {
         return courseUSD;
@@ -1202,19 +1205,13 @@ public void clearCatalog(ActionEvent actionEvent){
         this.courseUSD = courseUSD;
     }
 
-    public Part getPartFile() {
-        return partFile;
-    }
-
-    public void setPartFile(Part partFile) {
-        this.partFile = partFile;
-    }
 
     public Blob getFileImage() {
         return fileImage;
     }
 
     public void setFileImage(Blob fileImage) {
+
         this.fileImage = fileImage;
     }
     public static Path getRealPath(String nameImage){
@@ -1228,6 +1225,7 @@ public void clearCatalog(ActionEvent actionEvent){
 
     return folder;
     }
+/*
     private static byte[] toByteArray(Blob fromImageBlob) {
         ByteArrayOutputStream baos = new ByteArrayOutputStream();
         try {
@@ -1254,37 +1252,23 @@ public void clearCatalog(ActionEvent actionEvent){
         }
         return baos.toByteArray();
     }
+*/
     public synchronized static void createFileFromDatabase(String nameImage, Blob fileImage){
         Path path1=getRealPath(nameImage);
         System.out.println("path1 = " + path1);
-        FileOutputStream fos=null;
         InputStream is=null;
         if(!path1.toFile().exists() && fileImage!=null) {
             try {
+                is = fileImage.getBinaryStream();
+                // IOUtils is from Apache Commons IO
+                byte[] theBytes = IOUtils.toByteArray(is);
+                try {
+                    Files.write(path1, theBytes);
 
-/*
-                fos = new FileOutputStream(path1.toFile().getPath());
-                fos.write(fileImage);
-                fos.close();
-*/
-                byte[] bytes=fileImage.getBytes(1, (int)fileImage.length());
-                is=new ByteArrayInputStream(bytes);
-                Files.copy(is, path1,StandardCopyOption.REPLACE_EXISTING);
-/*
-                int c = 0;
-                while ((c = is.read()) > -1) {
-                    fos.write(c);
-                }
-                fos.flush();
-*/
+                }catch(Exception ex){ex.printStackTrace();}
             } catch (Exception ex) {
                 ex.printStackTrace();
             }finally {
-                if(fos!=null){
-                    try{
-                        fos.close();
-                    }catch(IOException ex){ex.printStackTrace();}
-                }
                 if(is!=null){
                     try{
                       is.close();
@@ -1296,7 +1280,14 @@ public void clearCatalog(ActionEvent actionEvent){
 
     }
 
+    public  String getFullNameProductImageFile() {
+        fullNameProductImageFile=getRealPath(nameImage).toFile().getAbsolutePath();
+        return fullNameProductImageFile;
+    }
 
+    public void setFullNameProductImageFile(String fullNameProductImageFile) {
+        fullNameProductImageFile = fullNameProductImageFile;
+    }
 }
 
 

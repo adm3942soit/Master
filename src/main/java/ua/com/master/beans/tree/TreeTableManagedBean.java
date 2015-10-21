@@ -15,6 +15,7 @@ import javax.faces.bean.ManagedBean;
 
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
+import javax.faces.event.ActionEvent;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -32,10 +33,18 @@ public class TreeTableManagedBean extends FactoryDao implements Serializable{
 	boolean showDepartmentDetail = false;
 	boolean showProductDetail = false;
 	boolean showCartDetails=false;
-	public List<Product> selectedList=null;
+	int countNode=0;
+	public static List<Product> selectedList=null;
 
 	public TreeTableManagedBean(){
 				createNodes();
+//		checkboxSelectedNodes=new TreeNode[countNode];
+		showCatalogDetail = false;
+		showDepartmentDetail = false;
+		showProductDetail = false;
+		showCartDetails=false;
+		selectedList=null;
+
 	}
 	public TreeNode createNodes() {
 		List<Catalog> listCatalog = getCatalogDao().list();
@@ -44,7 +53,7 @@ public class TreeTableManagedBean extends FactoryDao implements Serializable{
 		int i = 0;
 		for (Catalog catalog : listCatalog) {
 			treeNodes[i] = new CheckboxTreeNode(new NodeElement(catalog.getName(), 0, "catalog", null, null, null, null), root);
-
+            countNode++;
 			List<Department> departmentList = getDepartmentDao().listByCatalog(catalog);
 			if (departmentList == null) {
 				i++;
@@ -54,6 +63,7 @@ public class TreeTableManagedBean extends FactoryDao implements Serializable{
 			int j = 0;
 			for (Department department : departmentList) {
 				treeNodes1[j] = new CheckboxTreeNode(new NodeElement(department.getName(), 0, "department", null, null, null, null), treeNodes[i]);
+				countNode++;
 				List<Product> productList = getProductDao().findProductsByDepartment(department);
 				if (productList == null) {
 					j++;
@@ -64,6 +74,7 @@ public class TreeTableManagedBean extends FactoryDao implements Serializable{
 				int k = 0;
 				for (Product product : productList) {
 					treeNodes2[k] = new CheckboxTreeNode(new NodeElement(product.getName(), 0, "product", product.priceUSD, product.getCourseUSD(), product.nameImage, product), treeNodes1[j]);
+					countNode++;
 					RegisterCatalogBean.createFileFromDatabase(product.nameImage, product.fileImage);
 					k++;
 				}
@@ -172,10 +183,22 @@ public class TreeTableManagedBean extends FactoryDao implements Serializable{
 	public void handleSelection(NodeSelectEvent event){
 		System.out.println("TreeEvent.handleSelection");
 		((NodeElement)(event.getTreeNode().getData())).setSelected(true);
-		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", event.getTreeNode().toString());
+		singleSelectedNode=((NodeElement) (event.getTreeNode().getData()));
+		if(singleSelectedNode.getIsProduct()) {
+			if (selectedList == null) selectedList = new ArrayList<Product>();
+			if (singleSelectedNode.getProduct() != null) {
+				showCartDetails = true;
+				selectedList.add(singleSelectedNode.getProduct());
+				System.out.println("added element.getName() = " + singleSelectedNode.getName());
+				System.out.println("selectedList.size() = " + selectedList.size());
+			}
+		}else{
+			showCartDetails = false;
+		}
+		FacesMessage message = new FacesMessage(FacesMessage.SEVERITY_INFO, "Selected", singleSelectedNode.getName());
 		FacesContext.getCurrentInstance().addMessage(null, message);
 
-		if(checkboxSelectedNodes!=null)
+/*
 		for(TreeNode node : checkboxSelectedNodes) {
 			NodeElement vo=(NodeElement)node.getData();
     	switch (vo.getType()) {
@@ -215,6 +238,7 @@ public class TreeTableManagedBean extends FactoryDao implements Serializable{
 					break;
 			}
 		}
+*/
 	}
 
 	public boolean isShowCatalogDetail() {
@@ -256,4 +280,8 @@ public class TreeTableManagedBean extends FactoryDao implements Serializable{
 	public void setSelectedList(List<Product> selectedList) {
 		this.selectedList = selectedList;
 	}
+	public void viewCartDetails(ActionEvent actionEvent){
+
+	}
+
 }

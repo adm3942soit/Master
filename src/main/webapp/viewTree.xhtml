@@ -18,16 +18,15 @@
 
             <p:treeTable id="tt" value="#{treeTableManagedBean.root}"
                          var="nodeElement"
-                         selectionMode="checkbox" resizableColumns="true"
+                         selectionMode="checkbox"
+                         resizableColumns="true"
                          selection="#{treeTableManagedBean.checkboxSelectedNodes}">
                 <p:ajax event="expand" listener="#{treeTableManagedBean.onNodeExpand}" update=":formTree:messages"/>
                 <p:ajax event="collapse" listener="#{treeTableManagedBean.onNodeCollapse}" update=":formTree:messages"/>
                 <p:ajax event="unselect" listener="#{treeTableManagedBean.onNodeUnselect}" update=":formTree:messages"/>
                 <p:ajax event="select"
-                        update=":formTree:detailProduct,:formTree:Cart,:formTree:messages"
-                        process=":formTree:tt"
+                        update=":formTree:Cart,:formTree:cartChoosen,:formTree:messages"
                         listener="#{treeTableManagedBean.handleSelection}"
-                        oncomplete="colorCode();"
                         />
 
                 <f:facet name="header">
@@ -52,7 +51,7 @@
 
                     </h:graphicImage>
                 </p:column>
-                <p:column style="width:24px">
+                <p:column style="width:30px">
                     <h:outputText id="prUah"
                                   value="#{nodeElement.priceUah}"
                                   rendered="#{nodeElement.priceUsd!=null}"
@@ -95,8 +94,9 @@
                   </p:outputPanel>
             </p:dialog>
 
-            <p:commandButton value="Display" update="messages" icon="ui-icon-newwin"
+            <p:commandButton value="Display" update=":formTree:messages" icon="ui-icon-newwin"
                              actionListener="#{treeTableManagedBean.viewSelectedNodes}"/>
+<!--
                         <p:panel id="detailCatalog" header="Detail View Catalog" visible="#{treeTableManagedBean.showCatalogDetail}">
                             This is the Detail view of catalog
                         </p:panel>
@@ -108,23 +108,26 @@
                         <p:panel id="detailProduct" header="Detail View City" visible="#{treeTableManagedBean.showProductDetail}">
                             This is the Detail view of product
                         </p:panel>
-                        <p:panel id="Cart" header="Detail View Cart" visible="#{treeTableManagedBean.selectedList!=null and treeTableManagedBean.showCartDetails}">
-                            <h:commandLink id="viewCart" title="View cart"
+-->
+                        <p:panel id="Cart" header="Detail View Cart"
+                                 visible="#{treeTableManagedBean.selectedList!=null and treeTableManagedBean.showCartDetails}">
+                            <p:commandLink id="viewCart" title="View cart"
+                                           update=":formTree:cartChoosen"
                                            actionListener="#{treeTableManagedBean.viewCartDetails}">
 
                                 <h:outputText
                                         value="Your cart"></h:outputText>
 
-                            </h:commandLink>
+                            </p:commandLink>
                             <img src="images/cartActive.png"></img>
-                            <p:dataTable var="prod" value="#{treeTableManagedBean.selectedList}">
-                                <p:columns var="column" columnIndexVar="colIndex" sortBy="#{prod.priceUSD}">
+                            <h:dataTable id="cartChoosen" var="prod" value="#{treeTableManagedBean.selectedList}" >
+                                <p:columns var="column" columnIndexVar="colIndex" sortBy="#{prod.name}">
                                     <f:facet name="header">
                                         <h:outputText value="Name"/>
                                     </f:facet>
                                     <h:outputText value="#{prod.name}"/>
                                 </p:columns>
-                            </p:dataTable>
+                            </h:dataTable>
                         </p:panel>
 
         </h:form>

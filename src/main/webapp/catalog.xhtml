@@ -340,12 +340,12 @@
                             <!--rendered="#{!registerCatalogBean.createdNewProduct}"-->
 
                             <td class="cell">
-
+                                <img id="im" src="#{registerCatalogBean.nameImage}" ></img>
                                 <h:graphicImage id="viewH"
                                                 width="150"
                                                 height="120"
-                                                url="#{registerCatalogBean.nameImage}"
-                                                rendered="#{registerCatalogBean.nameImage!=null
+                                                url="#{registerCatalogBean.fullNameProductImageFile}"
+                                                rendered="#{registerCatalogBean.fullNameProductImageFile!=null
                                                 }">
 
                                 </h:graphicImage>
@@ -368,7 +368,7 @@
                         <p:commandButton value="#{bundle.button_create}"
                                          ajax="false"
                                          actionListener="#{registerCatalogBean.upload}"
-                                         update="viewH,messages, name, growl"
+                                         update=":rate:im,:rate:viewH,messages, name, growl"
                                          disabled="false" rendered="#{!registerCatalogBean.createdNewProduct}">
                             <!--<f:ajax update ="name" execute="@all" render="@form"  />-->
                         </p:commandButton>
@@ -384,13 +384,13 @@
                                          ajax="false"
                                          actionListener="#{registerCatalogBean.updateProduct}"
                                          rendered="#{registerCatalogBean.createdNewProduct}"
-                                         update="growl">
+                                         update="growl,im,viewH">
                         </p:commandButton>
                         <p:commandButton id="but52" value="#{bundle.button_new}"
                                          ajax="false"
                                          actionListener="#{registerCatalogBean.clearProduct}"
                                          rendered="#{registerCatalogBean.createdNewProduct}"
-                                         update="growl">
+                                         update="growl,im,viewH">
                         </p:commandButton>
                     </div>
                     <p:messages id="msgs" />
@@ -414,7 +414,7 @@
                                 <f:facet name="header">
                                     <h:outputText value="#{bundle.catalog_nmb}"/>
                                 </f:facet>
-                                <h:commandLink id="delProd"
+                                <p:commandLink id="delProd"
                                                actionListener="#{registerCatalogBean.deleteChosenProduct}">
 
                                     <f:param value="#{prod.productId}" name="productId"/>
@@ -426,38 +426,39 @@
                                     <h:outputText value="#{prod.productId}"/>
 
 
-                                </h:commandLink>
+                                </p:commandLink>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Product's name"/>
                                 </f:facet>
-                                <h:commandLink id="viewProdLnk" title="View product"
+                                <p:commandLink id="viewProdLnk" title="View product"
                                                actionListener="#{registerCatalogBean.viewChosenProduct}">
 
                                     <f:param value="#{prod.productId}" name="productId"/>
                                     <h:outputText
                                                   value="#{prod.name}"></h:outputText>
 
-                                </h:commandLink>
+                                </p:commandLink>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Product's description"/>
                                 </f:facet>
-                                <h:commandLink id="viewProdLnk1" title="View product"
+                                <p:commandLink id="viewProdLnk1" title="View product"
                                                actionListener="#{registerCatalogBean.viewChosenProduct}">
 
                                     <f:param value="#{prod.productId}" name="productId"/>
                                     <h:outputText
                                             value="#{prod.description}"></h:outputText>
 
-                                </h:commandLink>
+                                </p:commandLink>
                             </h:column>
                             <h:column>
                                 <f:facet name="header">
                                     <h:outputText value="Image for product"/>
                                 </f:facet>
+                                <img id="im1" src="#{prod.nameImage}" ></img>
                                 <h:graphicImage id="viewImage"
                                                 width="50"
                                                 height="20"
