@@ -14,7 +14,7 @@ import java.util.Locale;
 
 /**
  * Created by IntelliJ IDEA.
- * User: Олесь
+ * User: Oxana Dudnik
  * Date: 24.02.2007
  * Time: 22:31:35
  * To change this template use File | Settings | File Templates.
