@@ -402,6 +402,7 @@
                             <!--<goal>copy-dependencies</goal>-->
                         </goals>
                         <configuration>
+<!--
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>com.utils</groupId>
@@ -412,6 +413,7 @@
                                     <outputDirectory>${project.build.directory}/classes</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
+-->
                             <outputDirectory>${project.build.directory}/classes</outputDirectory>
                         </configuration>
                         <!-- <configuration>
