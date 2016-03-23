@@ -21,11 +21,15 @@
             <groupId>com.utils</groupId>
             <artifactId>java-utils-library</artifactId>
             <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/java-utils-library-1.0.0.jar</systemPath>
         </dependency>
         <dependency>
             <groupId>ua.edu</groupId>
             <artifactId>myFiler</artifactId>
             <version>1.0.0</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/myFiler-1.0.0.jar</systemPath>
         </dependency>
 
         <!-- MySQL database driver -->
