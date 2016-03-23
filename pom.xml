@@ -388,6 +388,7 @@
                     <warName>master</warName>
                 </configuration>
             </plugin>
+<!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-dependency-plugin</artifactId>
@@ -399,10 +400,10 @@
                         <goals>
                             <goal>unpack</goal>
                             <goal>unpack-dependencies</goal>
-                            <!--<goal>copy-dependencies</goal>-->
+                            &lt;!&ndash;<goal>copy-dependencies</goal>&ndash;&gt;
                         </goals>
                         <configuration>
-<!--
+
                             <artifactItems>
                                 <artifactItem>
                                     <groupId>com.utils</groupId>
@@ -413,29 +414,13 @@
                                     <outputDirectory>${project.build.directory}/classes</outputDirectory>
                                 </artifactItem>
                             </artifactItems>
--->
+
                             <outputDirectory>${project.build.directory}/classes</outputDirectory>
                         </configuration>
-                        <!-- <configuration>
-                             &lt;!&ndash;<includeScope>compile</includeScope>&ndash;&gt;
-                             <outputDirectory>${project.build.directory}</outputDirectory>
-                         </configuration>-->
                     </execution>
                 </executions>
             </plugin>
-            <!-- <plugin>
-                 <artifactId>maven-assembly-plugin</artifactId>
-                 <configuration>
-                    &lt;!&ndash; <archive>
-                         <manifest>
-                             <mainClass>fully.qualified.MainClass</mainClass>
-                         </manifest>
-                     </archive>&ndash;&gt;
-                     <descriptorRefs>
-                         <descriptorRef>jar-with-dependencies</descriptorRef>
-                     </descriptorRefs>
-                 </configuration>
-             </plugin>-->
+-->
 
         </plugins>
     </build>
