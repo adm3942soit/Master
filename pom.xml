@@ -301,6 +301,7 @@
         </dependency>
     </dependencies>
     <repositories>
+<!--
         <repository>
             <id>java-utils-library</id>
             <name>java-utils-library</name>
@@ -310,11 +311,14 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
+-->
+<!--
         <repository>
             <id>myFiler</id>
             <name>myFiler</name>
             <url>https://github.com/adm3942soit/myFiler/tree/mvn-repo</url>
         </repository>
+-->
 
 <!--
         <repository>
