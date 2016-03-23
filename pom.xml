@@ -300,7 +300,7 @@
         <repository>
             <id>java-utils-library</id>
             <name>java-utils-library</name>
-            <url>https://github.com/adm3942soit/java-utils-library/mvn-repo</url>
+            <url>https://github.com/adm3942soit/java-utils-library/tree/mvn-repo</url>
             <snapshots>
                 <enabled>true</enabled>
                 <updatePolicy>always</updatePolicy>
