@@ -3,7 +3,7 @@ package ua.com.master.beans;
 
 
 import com.utils.file.Filer;
-import myFiler.MyFiler;
+import ua.edu.file.MyFiler;
 import org.apache.log4j.Logger;
 
 

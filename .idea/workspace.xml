@@ -2,8 +2,166 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dda7aab7-9d07-4f15-bd1e-6ed4c6948fc4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/artifacts/main_war.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/model.uml" afterPath="$PROJECT_DIR$/doc/model.uml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/pom.xml" afterPath="$PROJECT_DIR$/pom.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/BaseBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/BaseBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/CourseUSDBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/CourseUSDBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/Finder.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/Finder.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/FinderPersonBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/FinderPersonBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/LoginBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/LoginBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/LookPersonBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/LookPersonBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/Messager.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/Messager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/ProductBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/ProductBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/ProductController.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/ProductController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/RegisterCatalogBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/RegisterCatalogBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/RegisterPersonBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/RegisterPersonBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/TestPersonBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/TestPersonBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/UploadedBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/UploadedBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/components/ApplicationContextHolderjava" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/components/ApplicationContextHolderjava" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/decorators/PersonAddressDecorator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/decorators/PersonAddressDecorator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/decorators/PersonDecorator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/decorators/PersonDecorator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/test/TestCreateFileFromDataBase.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/test/TestCreateFileFromDataBase.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/tree/CatalogService.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/tree/CatalogService.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/tree/NodeElement.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/tree/NodeElement.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/tree/TreeTableManagedBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/tree/TreeTableManagedBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/tree/TreeView.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/tree/TreeView.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/CountryCodValueChangeListener.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/CountryCodValueChangeListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/EducationLevelValueChangeListener.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/EducationLevelValueChangeListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/GenderValueChangeListener.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/GenderValueChangeListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/PassportTypeValueChangeListener.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/PassportTypeValueChangeListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/PersonTypeValueChangeListener.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/beans/valueChangeListeteners/PersonTypeValueChangeListener.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/CourseUSDBOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/CourseUSDBOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/PersonBOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/PersonBOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/ProductBOImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/ProductBOImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/interfaces/CourseUSDBO.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/interfaces/CourseUSDBO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/interfaces/PersonBO.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/interfaces/PersonBO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/interfaces/ProductBO.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/bo/interfaces/ProductBO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/controllers/UploadFilesBeanjava" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/controllers/UploadFilesBeanjava" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/controllers/VideoControllerjava" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/controllers/VideoControllerjava" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/CatalogConverter.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/CatalogConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/DoubleConverter.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/DoubleConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/DoubleFromString.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/DoubleFromString.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/PriceConverter.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/PriceConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/UsdToUahConverter.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/converters/UsdToUahConverter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/AddressDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/AddressDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/CatalogDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/CatalogDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/CommonDAO.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/CommonDAO.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/CourseUSDDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/CourseUSDDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/DepartmentDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/DepartmentDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/PersonAddressDaoImpljava" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/PersonAddressDaoImpljava" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/PersonDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/PersonDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/PersonStatusDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/PersonStatusDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/ProductDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/ProductDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/SysParameterDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/SysParameterDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/UserLogDaoImpl.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/UserLogDaoImpl.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/factory/FactoryDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/factory/FactoryDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/factory/FactoryDaojava" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/factory/FactoryDaojava" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/AddressDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/AddressDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/CatalogDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/CatalogDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/CourseUSDDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/CourseUSDDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/DepartmentDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/DepartmentDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/PersonAddressDaojava" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/PersonAddressDaojava" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/PersonDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/PersonDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/PersonStatusDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/PersonStatusDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/ProductDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/ProductDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/SysParameterDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/SysParameterDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/UserLogDao.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/dao/interfases/UserLogDao.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/help/AddressHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/help/AddressHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/help/FacesHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/help/FacesHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/help/Helper.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/help/Helper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/help/LocaleHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/help/LocaleHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/help/PersonAddressHelperjava" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/help/PersonAddressHelperjava" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/help/PersonHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/help/PersonHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/help/PersonStatusHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/help/PersonStatusHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/help/SetHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/help/SetHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/help/UploadHelper.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/help/UploadHelper.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/helpers/Constants.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/helpers/Constants.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Address.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Address.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Auditable.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Auditable.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Catalog.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Catalog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/CourseUSD.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/CourseUSD.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Department.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Department.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Person.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Person.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/PersonStatus.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/PersonStatus.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Product.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/Product.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/SysParameter.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/SysParameter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/UserLog.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/UserLog.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/update/UpdateManager.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/update/UpdateManager.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/model/update/UpdateTask.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/model/update/UpdateTask.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/navigation/NavigationBean.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/navigation/NavigationBean.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/servlets/InitServlet.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/servlets/InitServlet.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/CheckerFilter.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/CheckerFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/DepartmentValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/DepartmentValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/EncodingFilter.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/EncodingFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/HibernateAuditInterceptor.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/HibernateAuditInterceptor.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/HibernateSessionConversationFilter.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/HibernateSessionConversationFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/HibernateSessionRequestFilter.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/HibernateSessionRequestFilter.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/HibernateUtil.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/utils/HibernateUtil.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/AddressUniqueValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/AddressUniqueValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/BirthDateValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/BirthDateValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/CatalogValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/CatalogValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/DateCurrentValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/DateCurrentValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/DateValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/DateValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/EmailValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/EmailValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/FieldValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/FieldValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/HouseNumberValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/HouseNumberValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/IdentityDocumentValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/IdentityDocumentValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/InnerPersonValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/InnerPersonValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/LengthValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/LengthValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/PersonIdenticallyValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/PersonIdenticallyValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/PersonValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/PersonValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/ProductValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/ProductValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/RequiredFieldValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/RequiredFieldValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/RequiredItemValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/RequiredItemValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/SocialSecurityNumberValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/SocialSecurityNumberValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/TwoPhonesValidator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/TwoPhonesValidator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/Validator.java" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/validators/Validator.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/ua/com/master/web/PersonControllerjava" afterPath="$PROJECT_DIR$/src/main/java/ua/com/master/web/PersonControllerjava" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/ResourceBundle.properties" afterPath="$PROJECT_DIR$/src/main/resources/ResourceBundle.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/ResourceBundle_en_US.properties" afterPath="$PROJECT_DIR$/src/main/resources/ResourceBundle_en_US.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/ResourceBundle_nl.properties" afterPath="$PROJECT_DIR$/src/main/resources/ResourceBundle_nl.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/ResourceBundle_ru_RU.properties" afterPath="$PROJECT_DIR$/src/main/resources/ResourceBundle_ru_RU.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/resources/db.properties" afterPath="$PROJECT_DIR$/src/main/resources/db.properties" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/field.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/field.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/master.taglib.xml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/master.taglib.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/outputField.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/outputField.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/tabPanel.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/tags/tabPanel.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/test/testError.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/test/testError.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/basic.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/basic.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/catalog.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/catalog.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/course.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/course.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/cm84.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/cm84.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/cm84demo.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/cm84demo.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/cm84jsf.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/cm84jsf.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/css/masterpol.css" afterPath="$PROJECT_DIR$/src/main/webapp/css/masterpol.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/department.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/department.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/errors.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/errors.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/home.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/home.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/index10.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/index10.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/common.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/slideshow.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/slideshow.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/js/video.js" afterPath="$PROJECT_DIR$/src/main/webapp/js/video.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/layout.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/layout.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/login.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/login.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/lookPerson.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/lookPerson.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/lookPersonWithIdenticalFields.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/lookPersonWithIdenticalFields.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/registerPersonDetails.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/registerPersonDetails.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/registerPersonDetailsMyTagLib.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/registerPersonDetailsMyTagLib.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/registerPersonDetailsRich.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/registerPersonDetailsRich.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/cm84.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/cm84.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/cm84demo.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/cm84demo.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/cm84jsf.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/cm84jsf.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/css/masterpol.css" afterPath="$PROJECT_DIR$/src/main/webapp/resources/css/masterpol.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/common.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/common.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/slideshow.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/slideshow.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/resources/js/video.js" afterPath="$PROJECT_DIR$/src/main/webapp/resources/js/video.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/templates/errors.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/templates/errors.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/templates/layout.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/templates/layout.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/templates/layoutPage.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/templates/layoutPage.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/templates/layoutPageResult.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/templates/layoutPageResult.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/test.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/test.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/viewProducts.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/viewProducts.xhtml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/webapp/viewTree.xhtml" afterPath="$PROJECT_DIR$/src/main/webapp/viewTree.xhtml" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -23,11 +181,11 @@
     <favorites_list name="Master" />
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="450">
       <file leaf-file-name="viewTree.xhtml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/webapp/viewTree.xhtml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="19.5">
+            <state relative-caret-position="837">
               <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
@@ -37,7 +195,7 @@
       <file leaf-file-name="pom.xml" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/pom.xml">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.88723403">
+            <state relative-caret-position="574">
               <caret line="422" column="12" selection-start-line="422" selection-start-column="12" selection-end-line="422" selection-end-column="12" />
               <folding />
             </state>
@@ -55,6 +213,7 @@
     </option>
   </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" />
+  <component name="JsBuildToolPackageJson" detection-done="true" />
   <component name="JsGulpfileManager">
     <detection-done>true</detection-done>
   </component>
@@ -77,49 +236,12 @@
           <option name="myItemId" value="" />
           <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
         </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Master Floor Webapp" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Master Floor Webapp" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Plugins" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$PluginsNode" />
-        </PATH_ELEMENT>
-      </PATH>
-      <PATH>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$RootNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Master Floor Webapp" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$ProjectNode" />
-        </PATH_ELEMENT>
-        <PATH_ELEMENT>
-          <option name="myItemId" value="Lifecycle" />
-          <option name="myItemType" value="org.jetbrains.idea.maven.navigator.MavenProjectsStructure$LifecycleNode" />
-        </PATH_ELEMENT>
       </PATH>
     </treeState>
   </component>
-  <component name="NamedScopeManager">
-    <order />
-  </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
-    <option name="y" value="-8" />
-    <option name="width" value="1616" />
-    <option name="height" value="876" />
+    <option name="width" value="1600" />
+    <option name="height" value="844" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -142,11 +264,13 @@
       <autoscrollToSource />
       <autoscrollFromSource />
       <sortByType />
+      <manualOrder />
+      <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="Scope" />
+      <pane id="Scratches" />
+      <pane id="PackagesPane" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -162,20 +286,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="Master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="Master" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="target" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -240,22 +350,21 @@
     </configuration>
     <configuration default="true" type="AndroidRunConfigurationType" factoryName="Android Application">
       <module name="" />
-      <option name="ACTIVITY_CLASS" value="" />
-      <option name="MODE" value="default_activity" />
       <option name="DEPLOY" value="true" />
       <option name="ARTIFACT_NAME" value="" />
+      <option name="PM_INSTALL_OPTIONS" value="" />
+      <option name="ACTIVITY_EXTRA_FLAGS" value="" />
+      <option name="MODE" value="default_activity" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
+      <option name="DEEP_LINK" value="" />
+      <option name="ACTIVITY_CLASS" value="" />
       <method />
     </configuration>
     <configuration default="true" type="AndroidTestRunConfigurationType" factoryName="Android Tests">
@@ -265,18 +374,15 @@
       <option name="METHOD_NAME" value="" />
       <option name="CLASS_NAME" value="" />
       <option name="PACKAGE_NAME" value="" />
+      <option name="EXTRA_OPTIONS" value="" />
       <option name="TARGET_SELECTION_MODE" value="EMULATOR" />
-      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
       <option name="PREFERRED_AVD" value="" />
-      <option name="USE_COMMAND_LINE" value="true" />
-      <option name="COMMAND_LINE" value="" />
-      <option name="WIPE_USER_DATA" value="false" />
-      <option name="DISABLE_BOOT_ANIMATION" value="false" />
-      <option name="NETWORK_SPEED" value="full" />
-      <option name="NETWORK_LATENCY" value="none" />
       <option name="CLEAR_LOGCAT" value="false" />
       <option name="SHOW_LOGCAT_AUTOMATICALLY" value="true" />
-      <option name="FILTER_LOGCAT_AUTOMATICALLY" value="true" />
+      <option name="SKIP_NOOP_APK_INSTALLATIONS" value="true" />
+      <option name="FORCE_STOP_RUNNING_APP" value="true" />
+      <option name="USE_LAST_SELECTED_DEVICE" value="false" />
+      <option name="PREFERRED_AVD" value="" />
       <method />
     </configuration>
     <configuration default="true" type="Applet" factoryName="Applet">
@@ -397,13 +503,12 @@
       <method />
     </configuration>
     <configuration default="true" type="GrailsRunConfigurationType" factoryName="Grails">
-      <module name="" />
       <setting name="vmparams" value="" />
       <setting name="cmdLine" value="run-app" />
-      <setting name="depsClasspath" value="false" />
       <setting name="passParentEnv" value="true" />
-      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <setting name="launchBrowser" value="false" />
+      <setting name="depsClasspath" value="false" />
+      <extension name="coverage" enabled="false" merge="false" sample_coverage="true" runner="idea" />
       <method />
     </configuration>
     <configuration default="true" type="JBossConfiguration" factoryName="Local" ALTERNATIVE_JRE_ENABLED="false">
@@ -514,6 +619,12 @@
       <method />
     </configuration>
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
+      <node-interpreter>project</node-interpreter>
+      <node-options />
+      <gulpfile />
+      <tasks />
+      <arguments />
+      <envs />
       <method />
     </configuration>
     <configuration default="true" type="openshift-deploy" factoryName="OpenShift Deployment">
@@ -543,7 +654,9 @@
       <item index="0" class="java.lang.String" itemvalue="OpenShift Deployment.OpenShift" />
     </list>
   </component>
-  <component name="ShelveChangesManager" show_recycled="false" />
+  <component name="ShelveChangesManager" show_recycled="false">
+    <option name="remove_strategy" value="false" />
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -552,47 +665,51 @@
       <changelist id="dda7aab7-9d07-4f15-bd1e-6ed4c6948fc4" name="Default" comment="" />
       <created>1445411766398</created>
       <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
       <updated>1445411766398</updated>
       <workItem from="1445411767184" duration="1756000" />
+      <workItem from="1458736205326" duration="23000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="1756000" />
+    <option name="totallyTimeSpent" value="1779000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1616" height="876" extended-state="0" />
+    <frame x="0" y="0" width="1600" height="844" extended-state="0" />
     <editor active="false" />
     <layout>
-      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32884097" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Application Servers" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.32884097" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32884097" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.25" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
-      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="-1" side_tool="true" content_ui="tabs" />
-      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
-      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
-      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
-      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Palette&#9;" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Java Enterprise" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884097" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.32953104" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
+      <window_info id="Persistence" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Designer" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24968314" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Web" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="JSF" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Ant Build" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
+      <window_info id="UI Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
+      <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
+      <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="2" side_tool="false" content_ui="combo" />
+      <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884097" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32884097" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Spring" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
   <component name="VcsContentAnnotationSettings">
@@ -609,7 +726,7 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/main/webapp/viewTree.xhtml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="19.5">
+        <state relative-caret-position="837">
           <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
           <folding />
         </state>
@@ -617,7 +734,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/pom.xml">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.88723403">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/webapp/viewTree.xhtml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="837">
+          <caret line="31" column="0" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pom.xml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="574">
           <caret line="422" column="12" selection-start-line="422" selection-start-column="12" selection-end-line="422" selection-end-column="12" />
           <folding />
         </state>

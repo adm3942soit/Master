@@ -3,7 +3,7 @@ package ua.com.master.beans;
 
 import com.utils.digits.Rounder;
 import com.utils.file.Filer;
-import myFiler.MyFiler;
+import ua.edu.file.MyFiler;
 import org.apache.commons.fileupload.FileItem;
 import org.apache.commons.fileupload.disk.DiskFileItem;
 import org.apache.commons.io.IOUtils;

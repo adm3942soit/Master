@@ -1,7 +1,7 @@
 package ua.com.master.beans;
 
 import com.utils.file.Filer;
-import myFiler.MyFiler;
+import ua.edu.file.MyFiler;
 import ua.com.master.bo.interfaces.CourseUSDBO;
 import ua.com.master.help.FacesHelper;
 import ua.com.master.helpers.Constants;
