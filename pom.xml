@@ -309,7 +309,7 @@
         <repository>
             <id>myFiler</id>
             <name>myFiler</name>
-            <url>https://github.com/adm3942soit/myFiler/tree/my-repo</url>
+            <url>https://github.com/adm3942soit/myFiler/tree/mvn-repo</url>
         </repository>
 
 <!--
