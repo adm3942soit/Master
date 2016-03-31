@@ -16,6 +16,14 @@
         <org.springframework-security-version>3.2.4.RELEASE</org.springframework-security-version>
         <org.springframework.roo-version>1.0.2.RELEASE</org.springframework.roo-version>
     </properties>
+    <distributionManagement>
+        <repository>
+            <id>repo</id>
+            <name>Master</name>
+            <url>https://github.com/adm3942soit/Master.git</url>
+        </repository>
+    </distributionManagement>
+
     <dependencies>
         <dependency>
             <groupId>com.utils</groupId>
@@ -421,7 +429,21 @@
                 </executions>
             </plugin>
 -->
-
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-deploy-plugin</artifactId>
+                <version>2.5</version>
+                <configuration>
+                    <file>${project.build.directory}\${project.artifactId}-src.zip</file>
+                    <url>${project.distributionManagement.repository.url}</url>
+                    <repositoryId>${project.distributionManagement.repository.id}</repositoryId>
+                    <groupId>${project.groupId}</groupId>
+                    <artifactId>${project.artifactId}</artifactId>
+                    <version>${project.version}</version>
+                    <packaging>zip</packaging>
+                    <pomFile>pom.xml</pomFile>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>
