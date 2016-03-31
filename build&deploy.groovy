@@ -1,9 +1,9 @@
 node {
     stage 'Checkout'
     git url: 'https://github.com/adm3942soit/Master.git'
-    def matcher = readFile('pom.xml') =~ '<version>(.+)</version>'
-    if (matcher) {
-        echo "Building version ${matcher[0][1]}"
+    def v = version(readFile('pom.xml'))
+    if (v) {
+        echo "Building version ${v}"
     }
     stage 'Package'
     def mvnHome = tool 'ADOP Maven'
@@ -12,3 +12,8 @@ node {
     stage 'Deploy'
     sh "${mvnHome}/bin/mvn deploy"
 }//node
+@NonCPS
+def version(text) {
+    def matcher = text =~ '<version>(.+)</version>'
+    matcher ? matcher[0][1] : null
+}
