@@ -20,7 +20,7 @@
         <repository>
             <id>repo</id>
             <name>Master</name>
-            <url>https://github.com/adm3942soit/Master.git</url>
+            <url>file://C:\Users\oksana.dudnik\.m2\repository\ua\com\master</url>
         </repository>
     </distributionManagement>
 
