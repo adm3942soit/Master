@@ -7,7 +7,7 @@ node{
     //sh "ls"
 
     sh "dir Master"
-    sh "chmod aXp Master"
+    sh "chmod a+x Master"
     sh "cd Master/"
     sh "ls -l"
     //sh "git add All-Projects"
