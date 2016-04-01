@@ -1,4 +1,4 @@
-//node{
+node{
     //sh "git clone ssh://jenkins@gerrit:29418/All-Projects"
     //sh "git clone https://github.com/adm3942soit/Master.git"
 
@@ -16,7 +16,7 @@
     sh  "cd Master/"
     sh  "ls -l"
    // sh  "set -x"
-//}
+}
 
     /*pipelineView.with{
         title('Reference Application Pipeline')
