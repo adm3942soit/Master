@@ -5,7 +5,7 @@ node{
     //sh "ls"
     //sh "mv All-Projects/ Master/All-Projects"
     //sh "ls"
-    sh "cd /var/jenkins_home/jobs/CopyRepo/workspace/Master/"
+    sh "cd Master/"
     sh "ls"
     sh "git add All-Projects"
     sh "git commit -a -m"
