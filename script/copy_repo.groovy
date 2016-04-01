@@ -7,6 +7,8 @@ node{
     //sh "ls"
     sh "cd Master/"
     sh "ls"
+    sh "cd Master/"
+    sh "ls"
     sh "git add All-Projects"
     sh "git commit -a -m"
     sh "git push"
