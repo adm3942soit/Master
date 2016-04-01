@@ -5,7 +5,7 @@ node{
     //sh "ls"
     //sh "mv All-Projects/ Master/All-Projects"
     //sh "ls"
-    sh "cd Master/"
+    sh "cd /Master"
     sh "ls -l"
     sh "git add All-Projects"
     sh "git commit -a -m"
