@@ -12,6 +12,7 @@
     sh "dir Master"
     sh "chmod -R a+x+X Master"
     sh "pwd"
+       sh  "ls -l"
     sh  "cd Master/"
     sh  "ls -l"
    // sh  "set -x"
