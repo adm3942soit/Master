@@ -5,8 +5,10 @@ node{
     //sh "ls"
     //sh "mv All-Projects/ Master/All-Projects"
     //sh "ls"
-    sh "cd Master/"
+
     sh "dir Master"
+    sh "chmod aXp Master"
+    sh "cd Master/"
     sh "ls -l"
     //sh "git add All-Projects"
     //sh "git commit -a -m"
