@@ -5,8 +5,8 @@
     //sh "ls"
     //sh "mv All-Projects/ Master/All-Projects"
     //sh "ls"
-    def projectFolderName = "CopyRepo"
-    def pipelineView = buildPipelineView(projectFolderName + "/Java_Reference_Application")
+  //  def projectFolderName = "CopyRepo"
+   // def pipelineView = buildPipelineView(projectFolderName + "/Java_Reference_Application")
    steps {
    // sh "set +x"
     sh "dir Master"
@@ -18,7 +18,7 @@
    // sh  "set -x"
 }
 
-    pipelineView.with{
+    /*pipelineView.with{
         title('Reference Application Pipeline')
 
         displayedBuilds(5)
@@ -26,7 +26,7 @@
         showPipelineParameters()
         showPipelineDefinitionHeader()
         refreshFrequency(5)
-    }
+    }*/
 
     //sh "git add All-Projects"
     //sh "git commit -a -m"
