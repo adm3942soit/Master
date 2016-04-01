@@ -3,7 +3,8 @@ node{
     //sh "git clone https://github.com/adm3942soit/Master.git"
 
     sh "ls"
-    sh "cp All-Projects Master"
+    sh "mv All-Projects Master"
+    sh "ls"
     sh "cd /var/jenkins_home/jobs/CopyRepo/workspace/Master/"
     sh "ls"
     //sh "git add All-Projects"
