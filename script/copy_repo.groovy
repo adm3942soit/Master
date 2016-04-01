@@ -9,7 +9,7 @@ node{
    // def pipelineView = buildPipelineView(projectFolderName + "/Java_Reference_Application")
   // steps {
    // sh "set +x"
-    sh "dir Master"
+    sh "dir Master/All-Projects"
     sh "chmod -R a+x+X Master"
     sh "pwd"
        sh  "ls -l"
