@@ -14,6 +14,7 @@ node{
     sh "pwd"
        sh  "ls -l"
     sh  "cd Master/"
+    sh "pwd"
     sh  "ls -l"
    // sh  "set -x"
 }
