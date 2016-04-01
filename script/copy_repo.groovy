@@ -5,15 +5,16 @@
     //sh "ls"
     //sh "mv All-Projects/ Master/All-Projects"
     //sh "ls"
-    def projectFolderName = "${PROJECT_NAME}"
+    def projectFolderName = "CopyRepo"
     def pipelineView = buildPipelineView(projectFolderName + "/Java_Reference_Application")
    steps {
-    sh "set +x"
+   // sh "set +x"
     sh "dir Master"
     sh "chmod -R a+x+X Master"
+    sh "pwd"
     sh  "cd Master/"
     sh  "ls -l"
-    sh  "set -x"
+   // sh  "set -x"
 }
 
     pipelineView.with{
