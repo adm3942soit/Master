@@ -118,8 +118,8 @@ deployJob.with {
     steps {
         shell("echo "+ "$buildNumber")
         copyArtifacts("Master_Build") {
-            buildSelector {
-                buildNumber('${buidNumber}')
+            buildChooser(class: 'hudson.plugins.copyartifact.SpecificBuildSelector') {
+                buildNumber('${B}')
             }
         }
         shell('''set +x
