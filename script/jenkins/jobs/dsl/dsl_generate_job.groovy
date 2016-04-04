@@ -113,7 +113,7 @@ deployJob.with {
     }
     label("docker")
     steps {
-        copyArtifacts("Master_Build") {
+        copyArtifacts("$PARENT_BUILD") {
             buildSelector {
                 buildNumber('${PARENT_BUILD_NUMBER}')
             }
