@@ -1,4 +1,4 @@
-job("Demo build job") {
+job("Demo job") {
 //node{
     def urlRepo='https://github.com/adm3942soit/test1.git'
     scm {
