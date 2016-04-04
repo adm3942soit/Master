@@ -16,11 +16,12 @@ job('Test1 create Job'){
     }
 }
 */
-// Folders
-def workspaceFolderName = "MasterTest"
-def projectFolderName = "MasterTest"
 def PROJECT_NAME="Master"
 def WORKSPACE_NAME="Master"
+// Folders
+def workspaceFolderName = $(WORKSPACE_NAME)
+def projectFolderName = $(PROJECT_NAME)
+
 // Variables
 def referenceAppGitRepo = "master"
 def referenceAppGitUrl = "ssh://jenkins@gerrit:29418/${PROJECT_NAME}/" + referenceAppGitRepo
