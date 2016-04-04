@@ -1,5 +1,5 @@
 // Folders
-def workspaceFolderName = "${WORKSPACE_NAME}"
+def workspaceFolderName = 'Master'
 def projectFolderName = "${PROJECT_NAME}"
 
 // Variables
