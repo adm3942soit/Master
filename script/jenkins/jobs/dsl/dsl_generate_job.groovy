@@ -7,7 +7,7 @@ def projectFolderName = "${PROJECT_NAME}"
 def buildAppJob = freeStyleJob(projectFolderName + "/Master_Build")
 def deployJob = freeStyleJob(projectFolderName + "/Master_Deploy")
 
-job(buildAppJob){
+job("$buildAppJob"){
     scm{
         git('https://github.com/adm3942soit/Master.git')
     }
