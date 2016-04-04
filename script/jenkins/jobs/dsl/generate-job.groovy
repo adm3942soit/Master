@@ -1,14 +1,36 @@
+
+def urlRepo='https://github.com/adm3942soit/test1.git'
+
 job("Demo build job") {
     scm {
         git {
             remote {
-                url 'https://github.com/lexandro/restapi-demo.git'
+                url urlRepo
             }
             branch 'master'
             shallowClone true
         }
     }
     steps {
-        maven('compile')
+        node(urlRepo)
     }
+}
+node(url) {
+    stage 'Checkout'
+    git url: url
+    def v = version(readFile('pom.xml'))
+    if (v) {
+        echo "Building version ${v}"
+    }
+    stage 'Package'
+    def mvnHome = tool 'ADOP Maven'
+    sh "${mvnHome}/bin/mvn -B verify"
+    sh "${mvnHome}/bin/mvn clean package"
+    stage 'Deploy'
+    sh "${mvnHome}/bin/mvn deploy"
+}//node
+@NonCPS
+def version(text) {
+    def matcher = text =~ '<version>(.+)</version>'
+    matcher ? matcher[0][1] : null
 }
