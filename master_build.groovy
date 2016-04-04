@@ -1,10 +1,10 @@
 // Folders
-def workspaceFolderName = 'Master'
-def projectFolderName = 'Master'
+def workspaceFolderName = 'MasterTest'
+def projectFolderName = 'MasterTest'
 
 // Variables
 def referenceAppGitRepo = "master"
-def referenceAppGitUrl = "ssh://jenkins@gerrit:29418/${PROJECT_NAME}/" + referenceAppGitRepo
+def referenceAppGitUrl = "ssh://jenkins@gerrit:29418/MasterTest/" + referenceAppGitRepo
 // Jobs
 def buildAppJob = freeStyleJob(projectFolderName + "/Master_Build")
 def deployJob = freeStyleJob(projectFolderName + "/Master_Deploy")
