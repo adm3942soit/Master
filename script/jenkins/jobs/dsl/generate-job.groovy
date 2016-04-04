@@ -10,23 +10,20 @@ job("Demo build job") {
         }
     }
     steps {
-        node(urlRepo)
+        stage 'Checkout'
+        git url: urlRepo
+        def v = version(readFile('pom.xml'))
+        if (v) {
+            echo "Building version ${v}"
+        }
+        stage 'Package'
+        def mvnHome = tool 'ADOP Maven'
+        sh "${mvnHome}/bin/mvn -B verify"
+        sh "${mvnHome}/bin/mvn clean package"
+        stage 'Deploy'
+        sh "${mvnHome}/bin/mvn deploy"
     }
 }
-node(url) {
-    stage 'Checkout'
-    git url: url
-    def v = version(readFile('pom.xml'))
-    if (v) {
-        echo "Building version ${v}"
-    }
-    stage 'Package'
-    def mvnHome = tool 'ADOP Maven'
-    sh "${mvnHome}/bin/mvn -B verify"
-    sh "${mvnHome}/bin/mvn clean package"
-    stage 'Deploy'
-    sh "${mvnHome}/bin/mvn deploy"
-}//node
 @NonCPS
 def version(text) {
     def matcher = text =~ '<version>(.+)</version>'
