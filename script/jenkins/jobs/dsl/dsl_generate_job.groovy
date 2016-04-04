@@ -88,8 +88,10 @@ buildAppJob.with {
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
                 }
             }
+
         }
     }
+    def Parent_Dir="$JENKINS_HOME"+"/job"+"/Master_Build/"+"${PARENT_BUILD_NUMBER}"
 }
 queue("Master_Build")
 deployJob.with {
@@ -99,7 +101,7 @@ deployJob.with {
         stringParam("PARENT_BUILD", '$JENKINS_HOME'+"/job"+"/Master_Build/", "Parent build name")
         stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
     }
-    def Parent_Dir="$JENKINS_HOME"+"/job"+"/Master_Build/"
+
     wrappers {
         preBuildCleanup()
         injectPasswords()
@@ -113,7 +115,7 @@ deployJob.with {
     }
     label("docker")
     steps {
-        copyArtifacts(${PARENT_BUILD}) {
+        copyArtifacts("Master_Build") {
             buildSelector {
                 buildNumber('${PARENT_BUILD_NUMBER}')
             }
