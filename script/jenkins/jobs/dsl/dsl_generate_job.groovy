@@ -100,7 +100,7 @@ buildAppJob.with {
 deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
-        stringParam("B", buildNumber, "Parent build number")
+        stringParam("B", "$buildNumber", "Parent build number")
         stringParam("PARENT_BUILD", "Master_Build", "Parent build name")
         stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
     }
