@@ -4,8 +4,8 @@ def WORKSPACE_NAME="Master"
 def workspaceFolderName = "${WORKSPACE_NAME}"
 def projectFolderName = "${PROJECT_NAME}"
 // Jobs
-def buildAppJob = freeStyleJob(projectFolderName + "/Master_Build")
-def deployJob = freeStyleJob(projectFolderName + "/Master_Deploy")
+def buildAppJob = freeStyleJob("Master_Build")
+def deployJob = freeStyleJob("Master_Deploy")
 
 //job(projectFolderName + "/Master_Build"){
 buildAppJob.with{
@@ -30,16 +30,7 @@ buildAppJob.with{
 // Variables
 def referenceAppGitRepo = "master"
 def referenceAppGitUrl = "ssh://jenkins@gerrit:29418/${PROJECT_NAME}/" + referenceAppGitRepo
-// Views
-def pipelineView = buildPipelineView(projectFolderName + "/Master_Application")
-pipelineView.with{
-  title('Master_Application Pipeline')
-  displayedBuilds(5)
-  selectedJob(projectFolderName + "/Master_Build")
-  showPipelineParameters()
-  showPipelineDefinitionHeader()
-  refreshFrequency(5)
-}
+
 
 buildAppJob.with {
     description("This job builds Master application")
@@ -150,4 +141,14 @@ deployJob.with {
             |echo "=.=.=.=.=.=.=.=.=.=.=.=."
             |set -x'''.stripMargin())
     }
+}
+// Views
+def pipelineView = buildPipelineView("Master_Application")
+pipelineView.with{
+    title('Master_Application Pipeline')
+    displayedBuilds(5)
+    selectedJob("Master_Build")
+    showPipelineParameters()
+    showPipelineDefinitionHeader()
+    refreshFrequency(5)
 }
