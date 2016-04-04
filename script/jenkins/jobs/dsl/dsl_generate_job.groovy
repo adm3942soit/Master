@@ -6,7 +6,7 @@ def projectFolderName = "${PROJECT_NAME}"
 // Jobs
 def buildAppJob = freeStyleJob("Master_Build")
 def deployJob = freeStyleJob("Master_Deploy")
-def buildNumber = ""
+//def buildNumber = ""
 //job(projectFolderName + "/Master_Build"){
 buildAppJob.with{
     scm{
@@ -88,7 +88,7 @@ buildAppJob.with {
         downstreamParameterized {
             trigger(projectFolderName + "/Master_Deploy") {
                 condition("UNSTABLE_OR_BETTER")
-                buildNumber='${B}'
+//                buildNumber='${B}'
                 parameters {
                     predefinedProp("B", '${B}')
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
