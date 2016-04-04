@@ -1,5 +1,13 @@
-/*
-job('Test1 create Job'){
+def PROJECT_NAME="Master"
+def WORKSPACE_NAME="Master"
+// Folders
+def workspaceFolderName = "${WORKSPACE_NAME}"
+def projectFolderName = "${PROJECT_NAME}"
+// Jobs
+def buildAppJob = freeStyleJob(projectFolderName + "/Master_Build")
+def deployJob = freeStyleJob(projectFolderName + "/Master_Deploy")
+
+job(buildAppJob){
     scm{
         git('https://github.com/adm3942soit/Master.git')
     }
@@ -8,26 +16,19 @@ job('Test1 create Job'){
             mavenInstallation("maven")
             goals("clean package")
         }
+/*
         maven{
             mavenInstallation("maven")
             goals("deploy")
         }
+*/
 
     }
 }
-*/
-def PROJECT_NAME="Master"
-def WORKSPACE_NAME="Master"
-// Folders
-def workspaceFolderName = "${WORKSPACE_NAME}"
-def projectFolderName = "${PROJECT_NAME}"
 
 // Variables
 def referenceAppGitRepo = "master"
 def referenceAppGitUrl = "ssh://jenkins@gerrit:29418/${PROJECT_NAME}/" + referenceAppGitRepo
-// Jobs
-def buildAppJob = freeStyleJob(projectFolderName + "/Master_Build")
-def deployJob = freeStyleJob(projectFolderName + "/Master_Deploy")
 // Views
 def pipelineView = buildPipelineView(projectFolderName + "/Master_Application")
 pipelineView.with{
@@ -38,6 +39,7 @@ pipelineView.with{
   showPipelineDefinitionHeader()
   refreshFrequency(5)
 }
+
 buildAppJob.with {
     description("This job builds Master application")
     wrappers {
