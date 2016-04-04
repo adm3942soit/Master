@@ -144,7 +144,7 @@ def pipelineView = buildPipelineView("Master_Application")
 pipelineView.with{
     title('Master_Application Pipeline')
     displayedBuilds(5)
-    selectedJob("Master_Build")
+    selectedJob("Master_Build", "Master_Deploy")
     showPipelineParameters()
     showPipelineDefinitionHeader()
     refreshFrequency(5)
