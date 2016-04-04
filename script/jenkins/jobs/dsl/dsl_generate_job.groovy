@@ -3,9 +3,11 @@ def WORKSPACE_NAME="Master"
 // Folders
 def workspaceFolderName = "${WORKSPACE_NAME}"
 def projectFolderName = "${PROJECT_NAME}"
+
+folder(projectFolderName)
 // Jobs
-def buildAppJob = freeStyleJob("Master_Build")
-def deployJob = freeStyleJob("Master_Deploy")
+def buildAppJob = freeStyleJob(projectFolderName+"/Master_Build")
+def deployJob = freeStyleJob(projectFolderName+"/Master_Deploy")
 
 buildAppJob.with{
     scm{
@@ -56,8 +58,8 @@ buildAppJob.with {
                 gerritxml / 'gerritProjects' {
                     'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.GerritProject' {
                         compareType("PLAIN")
-                        //projectFolderName + "/" +
-                        pattern(referenceAppGitRepo)
+                        //projectFolderName+"/Master_Build"
+                        pattern(projectFolderName + "/" +referenceAppGitRepo)
                         'branches' {
                             'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.Branch' {
                                 compareType("PLAIN")
@@ -79,8 +81,8 @@ buildAppJob.with {
     publishers{
         archiveArtifacts("**/*")
         downstreamParameterized {
-            //projectFolderName +
-            trigger("Master_Deploy") {
+            //
+            trigger(projectFolderName +"/Master_Deploy") {
                 condition("UNSTABLE_OR_BETTER")
                 parameters {
                     predefinedProp("B", '${BUILD_NUMBER}')
@@ -90,7 +92,7 @@ buildAppJob.with {
         }
     }
 }
-queue("Master_Build")
+queue(projectFolderName+"/Master_Build")
 deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
@@ -144,7 +146,7 @@ def pipelineView = buildPipelineView("Master_Application")
 pipelineView.with{
     title('Master_Application Pipeline')
     displayedBuilds(5)
-    selectedJob("Master_Build", "Master_Deploy")
+    selectedJob("Master_Build")
     showPipelineParameters()
     showPipelineDefinitionHeader()
     refreshFrequency(5)
