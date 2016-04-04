@@ -118,9 +118,9 @@ deployJob.with {
     steps {
 //        shell("echo "+ "$buildNumber")
         copyArtifacts("Master_Build") {
-         //   buildSelector {
+            buildSelector {
                 buildNumber('${B}')
-           // }
+            }
         }
         shell('''set +x
             |export SERVICE_NAME="$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
