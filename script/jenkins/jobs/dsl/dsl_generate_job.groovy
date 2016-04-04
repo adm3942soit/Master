@@ -4,7 +4,6 @@ def WORKSPACE_NAME="Master"
 def workspaceFolderName = "${WORKSPACE_NAME}"
 def projectFolderName = "${PROJECT_NAME}"
 
-//folder(projectFolderName)
 // Jobs
 def buildAppJob = freeStyleJob("Master_Build")
 def deployJob = freeStyleJob("Master_Deploy")
@@ -85,7 +84,7 @@ buildAppJob.with {
             trigger("Master_Deploy") {
                 condition("UNSTABLE_OR_BETTER")
                 parameters {
-                    predefinedProp("B", '${BUILD_NUMBER}')
+                    predefinedProp("B", '${PARENT_BUILD_NUMBER}')
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
                 }
             }
@@ -96,7 +95,7 @@ queue("Master_Build")
 deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
-        stringParam("B", '${BUID_NUMBER}', "Parent build number")
+        stringParam("B", '${PARENT_BUID_NUMBER}', "Parent build number")
         stringParam("PARENT_BUILD", "Master_Build", "Parent build name")
         stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
     }
@@ -114,7 +113,7 @@ deployJob.with {
     steps {
         copyArtifacts("Master_Build") {
             buildSelector {
-                buildNumber('${BUILD_NUMBER}')
+                buildNumber('${PARENT_BUILD_NUMBER}')
             }
         }
         shell('''set +x
