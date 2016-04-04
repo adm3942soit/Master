@@ -116,7 +116,7 @@ deployJob.with {
     }
     label("docker")
     steps {
-        shell("echo "+ "$buildNumber")
+//        shell("echo "+ "$buildNumber")
         copyArtifacts("Master_Build") {
          //   buildSelector {
                 buildNumber('${B}')
