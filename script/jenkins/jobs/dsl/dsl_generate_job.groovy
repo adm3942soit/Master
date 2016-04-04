@@ -19,8 +19,8 @@ job('Test1 create Job'){
 def PROJECT_NAME="Master"
 def WORKSPACE_NAME="Master"
 // Folders
-def workspaceFolderName = $(WORKSPACE_NAME)
-def projectFolderName = $(PROJECT_NAME)
+def workspaceFolderName = "${WORKSPACE_NAME}"
+def projectFolderName = "${PROJECT_NAME}"
 
 // Variables
 def referenceAppGitRepo = "master"
