@@ -1,6 +1,6 @@
 // Folders
 def workspaceFolderName = 'Master'
-def projectFolderName = "${PROJECT_NAME}"
+def projectFolderName = 'Master'
 
 // Variables
 def referenceAppGitRepo = "master"
