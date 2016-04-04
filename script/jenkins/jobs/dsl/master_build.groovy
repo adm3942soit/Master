@@ -80,11 +80,15 @@ buildAppJob.with {
                 }
             }
         }
+        environmentVariables {
+            env('BUILD_NUMBER', '${B}')
+        }
+
     }
     deployJob.with {
         description("This job deploys the java reference application to the CI environment")
         parameters {
-            stringParam("B", '', "Parent build number")
+            stringParam("B", '$BUILD_NUMBER', "Parent build number")
             stringParam("PARENT_BUILD", "Master_Build", "Parent build name")
             stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
         }
@@ -97,6 +101,7 @@ buildAppJob.with {
         environmentVariables {
             env('WORKSPACE_NAME', workspaceFolderName)
             env('PROJECT_NAME', projectFolderName)
+            env('BUILD_NUMBER', '${B}')
         }
         label("docker")
         steps {
