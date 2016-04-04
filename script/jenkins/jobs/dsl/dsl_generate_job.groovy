@@ -98,7 +98,7 @@ deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
         stringParam("B", '${PARENT_BUID_NUMBER}', "Parent build number")
-        stringParam("PARENT_BUILD", '$JENKINS_HOME'+"/job"+"/Master_Build/", "Parent build name")
+        stringParam("PARENT_BUILD", "Master_Build", "Parent build name")
         stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
     }
 
@@ -111,7 +111,7 @@ deployJob.with {
     environmentVariables {
         env('WORKSPACE_NAME', workspaceFolderName)
         env('PROJECT_NAME', projectFolderName)
-        env('PARENT_BUILD', Parent_Dir+"${PARENT_BUILD_NUMBER}")
+        env('PARENT_BUILD', Parent_Dir+"${B}")
     }
     label("docker")
     steps {
