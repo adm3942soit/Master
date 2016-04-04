@@ -29,7 +29,8 @@ buildAppJob.with{
 
 // Variables
 def referenceAppGitRepo = "master"
-def referenceAppGitUrl = "ssh://jenkins@gerrit:29418/${PROJECT_NAME}/" + referenceAppGitRepo
+//ssh://jenkins@gerrit:29418/${PROJECT_NAME}/ + referenceAppGitRepo
+def referenceAppGitUrl = "https://github.com/adm3942soit/Master.git"
 
 
 buildAppJob.with {
