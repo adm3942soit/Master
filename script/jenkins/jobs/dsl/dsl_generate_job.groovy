@@ -95,6 +95,7 @@ buildAppJob.with {
         }
     }
 }
+queue(buildAppJob)
 deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
@@ -143,6 +144,7 @@ deployJob.with {
             |set -x'''.stripMargin())
     }
 }
+queue(deployJob)
 // Views
 def pipelineView = buildPipelineView("Master_Application")
 pipelineView.with{
@@ -153,3 +155,4 @@ pipelineView.with{
     showPipelineDefinitionHeader()
     refreshFrequency(5)
 }
+queue(pipelineView)
