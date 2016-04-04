@@ -3,7 +3,7 @@ def WORKSPACE_NAME="Master"
 // Folders
 def workspaceFolderName = "${WORKSPACE_NAME}"
 def projectFolderName = "${PROJECT_NAME}"
-
+def Parent_Dir="$JENKINS_HOME"+"/job"+"/Master_Build/"
 // Jobs
 def buildAppJob = freeStyleJob("Master_Build")
 def deployJob = freeStyleJob("Master_Deploy")
@@ -91,7 +91,7 @@ buildAppJob.with {
 
         }
     }
-    def Parent_Dir="$JENKINS_HOME"+"/job"+"/Master_Build/"
+
 }
 queue("Master_Build")
 deployJob.with {
