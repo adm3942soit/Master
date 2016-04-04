@@ -6,7 +6,7 @@ def projectFolderName = "${PROJECT_NAME}"
 // Jobs
 def buildAppJob = freeStyleJob("Master_Build")
 def deployJob = freeStyleJob("Master_Deploy")
-
+def buildNumber = ""
 //job(projectFolderName + "/Master_Build"){
 buildAppJob.with{
     scm{
@@ -88,6 +88,7 @@ buildAppJob.with {
         downstreamParameterized {
             trigger(projectFolderName + "/Master_Deploy") {
                 condition("UNSTABLE_OR_BETTER")
+                buildNumber='${B}'
                 parameters {
                     predefinedProp("B", '${B}')
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
@@ -99,7 +100,7 @@ buildAppJob.with {
 deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
-        stringParam("B", '', "Parent build number")
+        stringParam("B", buildNumber, "Parent build number")
         stringParam("PARENT_BUILD", "Master_Build", "Parent build name")
         stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
     }
