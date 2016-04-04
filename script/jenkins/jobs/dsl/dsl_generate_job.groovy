@@ -16,13 +16,6 @@ buildAppJob.with{
             mavenInstallation("maven")
             goals("clean package")
         }
-/*
-        maven{
-            mavenInstallation("maven")
-            goals("deploy")
-        }
-*/
-
     }
 }
 
@@ -63,7 +56,8 @@ buildAppJob.with {
                 gerritxml / 'gerritProjects' {
                     'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.GerritProject' {
                         compareType("PLAIN")
-                        pattern(projectFolderName + "/" + referenceAppGitRepo)
+                        //projectFolderName + "/" +
+                        pattern(referenceAppGitRepo)
                         'branches' {
                             'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.Branch' {
                                 compareType("PLAIN")
@@ -85,10 +79,11 @@ buildAppJob.with {
     publishers{
         archiveArtifacts("**/*")
         downstreamParameterized {
-            trigger(projectFolderName + "/Master_Deploy") {
+            //projectFolderName +
+            trigger("Master_Deploy") {
                 condition("UNSTABLE_OR_BETTER")
                 parameters {
-                    predefinedProp("B", '${B}')
+                    predefinedProp("B", '${BUILD_NUMBER}')
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
                 }
             }
@@ -115,10 +110,9 @@ deployJob.with {
     }
     label("docker")
     steps {
-//        shell("echo "+ "$buildNumber")
         copyArtifacts("Master_Build") {
             buildSelector {
-                buildNumber('${B}')
+                buildNumber('${BUILD_NUMBER}')
             }
         }
         shell('''set +x
