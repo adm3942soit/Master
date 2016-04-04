@@ -103,31 +103,32 @@ buildAppJob.with {
             }
         }
     }
-    deployJob.with {
-        description("This job deploys the java reference application to the CI environment")
-        parameters {
-            stringParam("B", '', "Parent build number")
-            stringParam("PARENT_BUILD", "Master_Build", "Parent build name")
-            stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
-        }
-        wrappers {
-            preBuildCleanup()
-            injectPasswords()
-            maskPasswords()
-            sshAgent("adop-jenkins-master")
-        }
-        environmentVariables {
-            env('WORKSPACE_NAME', workspaceFolderName)
-            env('PROJECT_NAME', projectFolderName)
-        }
-        label("docker")
-        steps {
-            copyArtifacts("Master_Build") {
-                buildSelector {
-                    buildNumber('${B}')
-                }
+}
+deployJob.with {
+    description("This job deploys the java reference application to the CI environment")
+    parameters {
+        stringParam("B", '', "Parent build number")
+        stringParam("PARENT_BUILD", "Master_Build", "Parent build name")
+        stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
+    }
+    wrappers {
+        preBuildCleanup()
+        injectPasswords()
+        maskPasswords()
+        sshAgent("adop-jenkins-master")
+    }
+    environmentVariables {
+        env('WORKSPACE_NAME', workspaceFolderName)
+        env('PROJECT_NAME', projectFolderName)
+    }
+    label("docker")
+    steps {
+        copyArtifacts("Master_Build") {
+            buildSelector {
+                buildNumber('${B}')
             }
-            shell('''set +x
+        }
+        shell('''set +x
             |export SERVICE_NAME="$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
             |docker cp ${WORKSPACE}/target/master.war  ${SERVICE_NAME}:/usr/local/tomcat/webapps/
             |docker restart ${SERVICE_NAME}
@@ -148,6 +149,5 @@ buildAppJob.with {
             |echo "=.=.=.=.=.=.=.=.=.=.=.=."
             |echo "=.=.=.=.=.=.=.=.=.=.=.=."
             |set -x'''.stripMargin())
-        }
     }
 }
