@@ -6,8 +6,7 @@ def projectFolderName = "${PROJECT_NAME}"
 // Jobs
 def buildAppJob = freeStyleJob("Master_Build")
 def deployJob = freeStyleJob("Master_Deploy")
-//def buildNumber = ""
-//job(projectFolderName + "/Master_Build"){
+
 buildAppJob.with{
     scm{
         git('https://github.com/adm3942soit/Master.git')
@@ -64,7 +63,7 @@ buildAppJob.with {
                 gerritxml / 'gerritProjects' {
                     'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.GerritProject' {
                         compareType("PLAIN")
-                        pattern(projectFolderName + "/" + referenceAppgitRepo)
+                        pattern(projectFolderName + "/" + referenceAppGitRepo)
                         'branches' {
                             'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.Branch' {
                                 compareType("PLAIN")
@@ -88,7 +87,6 @@ buildAppJob.with {
         downstreamParameterized {
             trigger(projectFolderName + "/Master_Deploy") {
                 condition("UNSTABLE_OR_BETTER")
-//                buildNumber='${B}'
                 parameters {
                     predefinedProp("B", '${B}')
                     predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
