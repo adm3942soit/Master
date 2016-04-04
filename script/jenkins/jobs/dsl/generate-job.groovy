@@ -1,7 +1,5 @@
-
-def urlRepo='https://github.com/adm3942soit/test1.git'
-
 job("Demo build job") {
+    def urlRepo='https://github.com/adm3942soit/test1.git'
     scm {
         git {
             remote {
