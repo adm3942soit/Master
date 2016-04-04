@@ -91,7 +91,7 @@ buildAppJob.with {
 
         }
     }
-    def Parent_Dir="$JENKINS_HOME"+"/job"+"/Master_Build/"+"${PARENT_BUILD_NUMBER}"
+    def Parent_Dir="$JENKINS_HOME"+"/job"+"/Master_Build/"
 }
 queue("Master_Build")
 deployJob.with {
@@ -111,7 +111,7 @@ deployJob.with {
     environmentVariables {
         env('WORKSPACE_NAME', workspaceFolderName)
         env('PROJECT_NAME', projectFolderName)
-        env('PARENT_BUILD', Parent_Dir)
+        env('PARENT_BUILD', Parent_Dir+"${PARENT_BUILD_NUMBER}")
     }
     label("docker")
     steps {
