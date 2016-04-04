@@ -119,7 +119,7 @@ deployJob.with {
         shell("echo "+ "$buildNumber")
         copyArtifacts("Master_Build") {
             buildSelector {
-                buildNumber('${B}')
+                buildNumber('${buidNumber}')
             }
         }
         shell('''set +x
