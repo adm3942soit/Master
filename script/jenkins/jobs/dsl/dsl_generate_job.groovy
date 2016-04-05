@@ -3,13 +3,16 @@ def WORKSPACE_NAME="Master_Build"
 // Folders
 def workspaceFolderName = "${WORKSPACE_NAME}"
 def projectFolderName = "${PROJECT_NAME}"
-def Parent_Dir="$JENKINS_HOME"+"/job"+"/Master_Build/"
+
+// Variables
+def referenceAppGitRepo = "master"
+//ssh://jenkins@gerrit:29418/${PROJECT_NAME}/ + referenceAppGitRepo
+def referenceAppGitUrl = "https://github.com/adm3942soit/Master.git"
+
 // Jobs
 def buildAppJob = freeStyleJob("Master_Build")
 def deployJob = freeStyleJob("Master_Deploy")
-//Number_Parent_Build_URL
-def Parent_Build_URL="$JENKINS_HOME"+"/Master_Build/"
-def PARENT_BUILD_NUMBER=""
+
 buildAppJob.with{
     scm{
         git('https://github.com/adm3942soit/Master.git')
@@ -22,10 +25,6 @@ buildAppJob.with{
     }
 }
 
-// Variables
-def referenceAppGitRepo = "master"
-//ssh://jenkins@gerrit:29418/${PROJECT_NAME}/ + referenceAppGitRepo
-def referenceAppGitUrl = "https://github.com/adm3942soit/Master.git"
 
 
 buildAppJob.with {
@@ -78,13 +77,10 @@ buildAppJob.with {
             goals('clean install -DskipTests')
             mavenInstallation("maven")
         }
-        Parent_Build_URL="$BUILD_URL"
-        PARENT_BUILD_NUMBER="$BUILD_NUMBER"
     }
     publishers{
         archiveArtifacts("**/*")
         downstreamParameterized {
-            //
             trigger("Master_Deploy") {
                 condition("UNSTABLE_OR_BETTER")
                 parameters {
@@ -102,7 +98,7 @@ deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
         stringParam("B", '${PARENT_BUILD_NUMBER}', "Parent build number")
-        stringParam("PARENT_BUILD", "$BUILD_URL", "Parent build name")
+        stringParam("PARENT_BUILD", '${BUILD_URL}', "Parent build name")
         stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
     }
 
@@ -115,8 +111,6 @@ deployJob.with {
     environmentVariables {
         env('WORKSPACE_NAME', workspaceFolderName)
         env('PROJECT_NAME', projectFolderName)
-        //env('PARENT_BUILD', "$Parent_Build_URL")
-        //env('PARENT_BUILD_NUMBER',"$PARENT_BUILD_NUMBER")
     }
     label("docker")
     steps {
@@ -125,23 +119,18 @@ deployJob.with {
                 buildNumber('${B}')
             }
         }
-
-
-       /* shell('''set +x
-            |jobsdir=/var/lib/jenkins/jobs
-
-            |if [ -e "$jobsdir/$jobname/lastSuccessful/archive/" ]; then
-            mkdir -p $target
-
-            (
-                    cd $jobsdir/$jobname/lastSuccessful/archive/
-                    rsync -a $artefacts_pattern $target/ > /dev/null 2>&1 || true
-            )
-            fi
-        |set -x'''.stripMargin())*/
-//"$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
+//"e7e863dacc83"
         shell('''set +x
-            |export SERVICE_NAME="e7e863dacc83"
+                |export SERVICE_NAME="$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
+                |docker-compose -p ${SERVICE_NAME} up -d
+                |## Add nginx configuration
+                |sed -i "s/tomcat/${SERVICE_NAME}/" tomcat.conf
+                |docker cp tomcat.conf proxy:/etc/nginx/sites-enabled/${SERVICE_NAME}.conf
+                |## Reload nginx
+                |docker exec proxy /usr/sbin/nginx -s reload
+                |set -x'''.stripMargin())
+        shell('''set +x
+            |#export SERVICE_NAME=
             |docker cp ${WORKSPACE}/target/master.war  ${SERVICE_NAME}:/usr/local/tomcat/webapps/
             |docker restart ${SERVICE_NAME}
             |COUNT=1

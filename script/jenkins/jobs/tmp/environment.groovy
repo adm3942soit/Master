@@ -34,7 +34,7 @@ The reference application deploy job is expecting the default environment to be 
                 |docker-compose -p ${SERVICE_NAME} up -d
                 |## Add nginx configuration
                 |sed -i "s/###TOMCAT_SERVICE_NAME###/${SERVICE_NAME}/" tomcat.conf
-                |docker cp tomcat.cfg proxy:/etc/nginx/sites-enabled/${SERVICE_NAME}.conf
+                |docker cp tomcat.conf proxy:/etc/nginx/sites-enabled/${SERVICE_NAME}.conf
                 |## Reload nginx
                 |docker exec proxy /usr/sbin/nginx -s reload
                 |set -x'''.stripMargin())
