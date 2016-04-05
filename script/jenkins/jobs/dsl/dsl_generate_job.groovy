@@ -115,8 +115,8 @@ deployJob.with {
     environmentVariables {
         env('WORKSPACE_NAME', workspaceFolderName)
         env('PROJECT_NAME', projectFolderName)
-        env('PARENT_BUID', "$Parent_Build_URL")
-        env('PARENT_BUILD_NUMBER',"$PARENT_BUID_NUMBER")
+        env('PARENT_BUILD', "$Parent_Build_URL")
+        env('PARENT_BUILD_NUMBER',"$PARENT_BUILD_NUMBER")
     }
     label("docker")
     steps {
