@@ -127,7 +127,7 @@ deployJob.with {
         }
 
 
-        shell('''set +x
+       /* shell('''set +x
             |jobsdir=/var/lib/jenkins/jobs
 
             |if [ -e "$jobsdir/$jobname/lastSuccessful/archive/" ]; then
@@ -138,7 +138,7 @@ deployJob.with {
                     rsync -a $artefacts_pattern $target/ > /dev/null 2>&1 || true
             )
             fi
-        |set -x'''.stripMargin())
+        |set -x'''.stripMargin())*/
 
         shell('''set +x
             |export SERVICE_NAME="$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
