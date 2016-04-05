@@ -7,7 +7,9 @@ def Parent_Dir="$JENKINS_HOME"+"/job"+"/Master_Build/"
 // Jobs
 def buildAppJob = freeStyleJob("Master_Build")
 def deployJob = freeStyleJob("Master_Deploy")
-
+//Number_Parent_Build_URL
+def Parent_Build_URL="$JENKINS_HOME"+"/Master_Build/"
+def PARENT_BUID_NUMBER=""
 buildAppJob.with{
     scm{
         git('https://github.com/adm3942soit/Master.git')
@@ -76,6 +78,8 @@ buildAppJob.with {
             goals('clean install -DskipTests')
             mavenInstallation("maven")
         }
+        Parent_Build_URL="$BUILD_URL"
+        PARENT_BUID_NUMBER="$BUILD_NUMBER"
     }
     publishers{
         archiveArtifacts("**/*")
@@ -84,8 +88,8 @@ buildAppJob.with {
             trigger("Master_Deploy") {
                 condition("UNSTABLE_OR_BETTER")
                 parameters {
-                    predefinedProp("B", '${PARENT_BUILD_NUMBER}')
-                    predefinedProp("PARENT_BUILD", '${PARENT_BUILD}')
+                    predefinedProp("B", '${BUILD_NUMBER}')
+                    predefinedProp("PARENT_BUILD", '${BUILD_URL}')
                 }
             }
 
@@ -111,7 +115,8 @@ deployJob.with {
     environmentVariables {
         env('WORKSPACE_NAME', workspaceFolderName)
         env('PROJECT_NAME', projectFolderName)
-        env('PARENT_BUILD', Parent_Dir)
+        env('PARENT_BUID', "$Parent_Build_URL")
+        env('PARENT_BUILD_NUMBER',"$PARENT_BUID_NUMBER")
     }
     label("docker")
     steps {
