@@ -101,8 +101,8 @@ queue("Master_Build")
 deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
-        stringParam("B", '${PARENT_BUID_NUMBER}', "Parent build number")
-        stringParam("PARENT_BUILD", "$PARENT_BUILD", "Parent build name")
+        stringParam("B", '${PARENT_BUILD_NUMBER}', "Parent build number")
+        stringParam("PARENT_BUILD", "$Parent_Build_URL", "Parent build name")
         stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
     }
 
