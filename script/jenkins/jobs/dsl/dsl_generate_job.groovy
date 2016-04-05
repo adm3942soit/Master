@@ -84,8 +84,9 @@ buildAppJob.with {
             goals('clean install -DskipTests')
             mavenInstallation("maven")
         }
+        //"$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
         shell('''set +x
-                |export SERVICE_NAME="$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
+                |export SERVICE_NAME="Master_Build_CI"
                 |docker-compose -p ${SERVICE_NAME} up -d
                 |## Add nginx configuration
                 |sed -i "s/192.168.99.101/${SERVICE_NAME}/" tomcat.conf
@@ -136,9 +137,9 @@ deployJob.with {
                 buildNumber('${B}')
             }
         }
-//"e7e863dacc83"
+//"e7e863dacc83"$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"""$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
         shell('''set +x
-            |export SERVICE_NAME="$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
+            |export SERVICE_NAME="Master_Build_CI"
             |docker cp ${WORKSPACE}/target/master.war  ${SERVICE_NAME}:/usr/local/tomcat/webapps/
             |docker restart ${SERVICE_NAME}
             |COUNT=1
