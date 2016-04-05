@@ -1,5 +1,5 @@
-def PROJECT_NAME="Generate-job"
-def WORKSPACE_NAME="Generate-job"
+def PROJECT_NAME="Master_Build"
+def WORKSPACE_NAME="Master_Build"
 // Folders
 def workspaceFolderName = "${WORKSPACE_NAME}"
 def projectFolderName = "${PROJECT_NAME}"
