@@ -139,9 +139,9 @@ deployJob.with {
             )
             fi
         |set -x'''.stripMargin())*/
-
+//"$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
         shell('''set +x
-            |export SERVICE_NAME="$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
+            |export SERVICE_NAME="e7e863dacc83"
             |docker cp ${WORKSPACE}/target/master.war  ${SERVICE_NAME}:/usr/local/tomcat/webapps/
             |docker restart ${SERVICE_NAME}
             |COUNT=1
