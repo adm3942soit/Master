@@ -1,5 +1,5 @@
-def PROJECT_NAME="Master"
-def WORKSPACE_NAME="Master"
+def PROJECT_NAME="Generate-job"
+def WORKSPACE_NAME="Generate-job"
 // Folders
 def workspaceFolderName = "${WORKSPACE_NAME}"
 def projectFolderName = "${PROJECT_NAME}"
@@ -102,7 +102,7 @@ deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
         stringParam("B", '${PARENT_BUILD_NUMBER}', "Parent build number")
-        stringParam("PARENT_BUILD", "$Parent_Build_URL", "Parent build name")
+        stringParam("PARENT_BUILD", "$BUILD_URL", "Parent build name")
         stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
     }
 
@@ -115,14 +115,14 @@ deployJob.with {
     environmentVariables {
         env('WORKSPACE_NAME', workspaceFolderName)
         env('PROJECT_NAME', projectFolderName)
-        env('PARENT_BUILD', "$Parent_Build_URL")
-        env('PARENT_BUILD_NUMBER',"$PARENT_BUILD_NUMBER")
+        //env('PARENT_BUILD', "$Parent_Build_URL")
+        //env('PARENT_BUILD_NUMBER',"$PARENT_BUILD_NUMBER")
     }
     label("docker")
     steps {
         copyArtifacts("Master_Build") {
             buildSelector {
-                buildNumber('${PARENT_BUILD_NUMBER}')
+                buildNumber('${B}')
             }
         }
 
