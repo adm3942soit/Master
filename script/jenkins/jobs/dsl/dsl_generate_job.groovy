@@ -124,7 +124,7 @@ deployJob.with {
                 |export SERVICE_NAME="$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
                 |docker-compose -p ${SERVICE_NAME} up -d
                 |## Add nginx configuration
-                |sed -i "s/tomcat/${SERVICE_NAME}/" tomcat.conf
+                |sed -i "s/192.168.99.101/${SERVICE_NAME}/" tomcat.conf
                 |docker cp tomcat.conf proxy:/etc/nginx/sites-enabled/${SERVICE_NAME}.conf
                 |## Reload nginx
                 |docker exec proxy /usr/sbin/nginx -s reload
