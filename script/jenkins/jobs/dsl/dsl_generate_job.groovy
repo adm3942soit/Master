@@ -9,7 +9,7 @@ def buildAppJob = freeStyleJob("Master_Build")
 def deployJob = freeStyleJob("Master_Deploy")
 //Number_Parent_Build_URL
 def Parent_Build_URL="$JENKINS_HOME"+"/Master_Build/"
-def PARENT_BUID_NUMBER=""
+def PARENT_BUILD_NUMBER=""
 buildAppJob.with{
     scm{
         git('https://github.com/adm3942soit/Master.git')
@@ -79,7 +79,7 @@ buildAppJob.with {
             mavenInstallation("maven")
         }
         Parent_Build_URL="$BUILD_URL"
-        PARENT_BUID_NUMBER="$BUILD_NUMBER"
+        PARENT_BUILD_NUMBER="$BUILD_NUMBER"
     }
     publishers{
         archiveArtifacts("**/*")
@@ -102,7 +102,7 @@ deployJob.with {
     description("This job deploys the java reference application to the CI environment")
     parameters {
         stringParam("B", '${PARENT_BUID_NUMBER}', "Parent build number")
-        stringParam("PARENT_BUILD", "Master_Build", "Parent build name")
+        stringParam("PARENT_BUILD", "$PARENT_BUILD", "Parent build name")
         stringParam("ENVIRONMENT_NAME", "CI", "Name of the environment.")
     }
 
