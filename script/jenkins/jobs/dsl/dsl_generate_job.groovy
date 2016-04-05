@@ -10,9 +10,15 @@ def referenceAppGitRepo = "master"
 def referenceAppGitUrl = "https://github.com/adm3942soit/Master.git"
 
 // Jobs
+//def tomcatUp=freeStyleJob("Tomcat_Up")
 def buildAppJob = freeStyleJob("Master_Build")
 def deployJob = freeStyleJob("Master_Deploy")
+/*tomcatUp.with{
+    scm{
+        git('https://github.com/adm3942soit/Master.git')
+    }
 
+}*/
 buildAppJob.with{
     scm{
         git('https://github.com/adm3942soit/Master.git')
@@ -47,6 +53,7 @@ buildAppJob.with {
     environmentVariables {
         env('WORKSPACE_NAME',workspaceFolderName)
         env('PROJECT_NAME',projectFolderName)
+        env("ENVIRONMENT_NAME",'CI')
     }
     label("java8")
     triggers{
