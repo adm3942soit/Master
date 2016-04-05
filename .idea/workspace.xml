@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dda7aab7-9d07-4f15-bd1e-6ed4c6948fc4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/docker-compose.yml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/tomcat.conf" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/generate-job.groovy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/master_build.groovy" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_job.groovy" afterPath="$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_job.groovy" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -37,21 +33,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="dsl_generate_job.groovy" pinned="false" current-in-tab="false">
+      <file leaf-file-name="dsl_generate_job.groovy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_job.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="340">
-              <caret line="134" column="43" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
+            <state relative-caret-position="286">
+              <caret line="133" column="10" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="true">
+      <file leaf-file-name="docker-compose.yml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/docker-compose.yml">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="351">
+              <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
               <folding />
             </state>
           </provider>
@@ -132,8 +128,8 @@
         <option value="$PROJECT_DIR$/generate-job.groovy" />
         <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/master_build.groovy" />
         <option value="$PROJECT_DIR$/tomcat-config/tomcat.conf" />
-        <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_job.groovy" />
         <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/tomcat.conf" />
+        <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_job.groovy" />
       </list>
     </option>
   </component>
@@ -857,14 +853,7 @@
       <workItem from="1459349270961" duration="33172000" />
       <workItem from="1459749504698" duration="31000" />
       <workItem from="1459749775467" duration="1103000" />
-      <workItem from="1459752884126" duration="26767000" />
-    </task>
-    <task id="LOCAL-00079" summary="script added">
-      <created>1459763871024</created>
-      <option name="number" value="00079" />
-      <option name="presentableId" value="LOCAL-00079" />
-      <option name="project" value="LOCAL" />
-      <updated>1459763871025</updated>
+      <workItem from="1459752884126" duration="26922000" />
     </task>
     <task id="LOCAL-00080" summary="script added">
       <created>1459763952639</created>
@@ -1202,11 +1191,18 @@
       <option name="project" value="LOCAL" />
       <updated>1459842004323</updated>
     </task>
-    <option name="localTasksCounter" value="128" />
+    <task id="LOCAL-00128" summary="script added">
+      <created>1459842766567</created>
+      <option name="number" value="00128" />
+      <option name="presentableId" value="LOCAL-00128" />
+      <option name="project" value="LOCAL" />
+      <updated>1459842766568</updated>
+    </task>
+    <option name="localTasksCounter" value="129" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="78295000" />
+    <option name="totallyTimeSpent" value="78450000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1600" height="844" extended-state="0" />
@@ -1666,18 +1662,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_job.groovy">
+    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="134" column="43" selection-start-line="134" selection-start-column="43" selection-end-line="134" selection-end-column="43" />
+        <state relative-caret-position="351">
+          <caret line="13" column="25" selection-start-line="13" selection-start-column="25" selection-end-line="13" selection-end-column="25" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/docker-compose.yml">
+    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_job.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="286">
+          <caret line="133" column="10" selection-start-line="133" selection-start-column="10" selection-end-line="133" selection-end-column="10" />
           <folding />
         </state>
       </provider>
