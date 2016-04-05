@@ -111,7 +111,7 @@ deployJob.with {
     environmentVariables {
         env('WORKSPACE_NAME', workspaceFolderName)
         env('PROJECT_NAME', projectFolderName)
-        env('PARENT_BUILD', Parent_Dir+"${B}")
+        env('PARENT_BUILD', Parent_Dir)
     }
     label("docker")
     steps {
@@ -120,6 +120,21 @@ deployJob.with {
                 buildNumber('${PARENT_BUILD_NUMBER}')
             }
         }
+
+
+        shell('''set +x
+            |jobsdir=/var/lib/jenkins/jobs
+
+            |if [ -e "$jobsdir/$jobname/lastSuccessful/archive/" ]; then
+            mkdir -p $target
+
+            (
+                    cd $jobsdir/$jobname/lastSuccessful/archive/
+                    rsync -a $artefacts_pattern $target/ > /dev/null 2>&1 || true
+            )
+            fi
+        |set -x'''.stripMargin())
+
         shell('''set +x
             |export SERVICE_NAME="$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
             |docker cp ${WORKSPACE}/target/master.war  ${SERVICE_NAME}:/usr/local/tomcat/webapps/
