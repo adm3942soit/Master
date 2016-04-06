@@ -1,32 +1,17 @@
-
-//job("Gradle-jobs"){
-//def theInfoName = "${JENKINS_HOME}"+"jobs/"+"$JOB_NAME"+"workspace/repositories.txt"
     def theInfoName = "repositories.txt"
     File theInfoFile = new File(theInfoName)
-/*
-    scm{
-        git('https://github.com/adm3942soit/Master.git')
-    }
-*/
-
-
-      //shell readFileFromWorkspace(theInfoName)
-
     if (!theInfoFile.exists()) {
         println "File does not exist!!!!!"
 
     } else {
-
+        println "File exist!!!!!"
         theInfoFile.eachLine { line ->
-
             if (line.trim().size() == 0) {
+                println "Null!!!!!"
                 return null
-
             } else {
                 println "${line}"
             }
 
         }
     }
-
-//}
