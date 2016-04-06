@@ -1,4 +1,5 @@
-def theInfoName = "${JENKINS_HOME}"+"jobs/"+"$JOB_NAME"+"workspace/repositories.txt"
+//def theInfoName = "${JENKINS_HOME}"+"jobs/"+"$JOB_NAME"+"workspace/repositories.txt"
+def theInfoName = "/repositories.txt"
 File theInfoFile = new File(theInfoName)
 
 //def lines = theInfoFile.readLines()
