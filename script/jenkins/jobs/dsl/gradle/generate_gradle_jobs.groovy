@@ -1,9 +1,9 @@
 job("First"){
 //def theInfoName = "${JENKINS_HOME}"+"jobs/"+"$JOB_NAME"+"workspace/repositories.txt"
-    def theInfoName = "Master/repositories.txt"
+    def theInfoName = "repositories.txt"
     File theInfoFile = new File(theInfoName)
 steps {
-    shell("ls")
+    shell(readFileFromWorkspace(theInfoName))
 //def lines = theInfoFile.readLines()
 
     if (!theInfoFile.exists()) {
