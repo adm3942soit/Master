@@ -2,7 +2,7 @@ def theInfoName = "repositories.txt"
 File theInfoFile = new File(theInfoName)
 
 if (!theInfoFile.exists()) {
-    println "File does not exist"
+    println "File does not exist!!!!!"
 
 } else {
 
