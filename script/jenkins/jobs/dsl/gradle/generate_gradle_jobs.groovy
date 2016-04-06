@@ -8,7 +8,7 @@
 
     } else {
         println "File exist!!!!!"
-        lines=theInfoFile.
+
         theInfoFile.eachLine { line ->
             if (line.trim().size() == 0) {
                 println "Null!!!!!"
