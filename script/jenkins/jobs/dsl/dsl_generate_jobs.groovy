@@ -18,7 +18,7 @@ buildAppJob.with{
     }
     steps{
         maven{
-            mavenInstallation("maven")
+            mavenInstallation("ADOP Maven")
             goals("clean package")
         }
     }
