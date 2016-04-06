@@ -33,8 +33,11 @@
                sshAgent("adop-jenkins-master")
            }
            scm{
-               git(lines[i])
-               credentials("adop-jenkins-master")
+               remote {
+                   url(lines[i])
+                   credentials("adop-jenkins-master")
+               }
+               branch("*/master")
            }
            label("java8")
            triggers{
