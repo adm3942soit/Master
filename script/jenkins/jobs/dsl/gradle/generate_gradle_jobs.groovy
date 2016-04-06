@@ -37,7 +37,7 @@
                    git(lines[i])
   //                 credentials("adop-jenkins-master")
     //           }
-               branch("*/master")
+             //  branch("*/master")
            }
            label("java8")
            triggers{
