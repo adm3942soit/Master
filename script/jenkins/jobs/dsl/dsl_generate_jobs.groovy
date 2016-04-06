@@ -74,7 +74,7 @@ buildAppJob.with {
     steps {
         maven{
             goals('clean install -DskipTests')
-            mavenInstallation("maven")
+            mavenInstallation("ADOP Maven")
         }
 
     }

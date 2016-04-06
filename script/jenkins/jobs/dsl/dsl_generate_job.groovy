@@ -25,7 +25,7 @@ buildAppJob.with{
     }
     steps{
         maven{
-            mavenInstallation("maven")
+            mavenInstallation("ADOP Maven")
             goals("clean package")
         }
     }
@@ -82,7 +82,7 @@ buildAppJob.with {
     steps {
         maven{
             goals('clean install -DskipTests')
-            mavenInstallation("maven")
+            mavenInstallation("ADOP Maven")
         }
         //"$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
         shell('''set +x
