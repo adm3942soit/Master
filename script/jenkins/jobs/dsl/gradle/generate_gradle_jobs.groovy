@@ -1,4 +1,4 @@
-def theInfoName = "C:/repositories.txt"
+def theInfoName = "${JOB_URL}"+"workspace/repositories.txt"
 File theInfoFile = new File(theInfoName)
 
 //def lines = theInfoFile.readLines()
