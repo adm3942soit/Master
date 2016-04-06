@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dda7aab7-9d07-4f15-bd1e-6ed4c6948fc4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/repositories.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repositories.txt" afterPath="$PROJECT_DIR$/repositories.txt" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -65,21 +64,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generate_gradle_jobs.groovy" pinned="false" current-in-tab="true">
+      <file leaf-file-name="generate_gradle_jobs.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="405">
-              <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+            <state relative-caret-position="0">
+              <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="repositories.txt" pinned="false" current-in-tab="false">
+      <file leaf-file-name="repositories.txt" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/repositories.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="27">
-              <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
+              <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
               <folding />
             </state>
           </provider>
@@ -998,14 +997,7 @@
       <workItem from="1459749504698" duration="31000" />
       <workItem from="1459749775467" duration="1103000" />
       <workItem from="1459752884126" duration="31030000" />
-      <workItem from="1459924962501" duration="4452000" />
-    </task>
-    <task id="LOCAL-00086" summary="script added">
-      <created>1459766227787</created>
-      <option name="number" value="00086" />
-      <option name="presentableId" value="LOCAL-00086" />
-      <option name="project" value="LOCAL" />
-      <updated>1459766227787</updated>
+      <workItem from="1459924962501" duration="4813000" />
     </task>
     <task id="LOCAL-00087" summary="script added">
       <created>1459766399310</created>
@@ -1343,11 +1335,18 @@
       <option name="project" value="LOCAL" />
       <updated>1459937079075</updated>
     </task>
-    <option name="localTasksCounter" value="135" />
+    <task id="LOCAL-00135" summary="script added">
+      <created>1459940226272</created>
+      <option name="number" value="00135" />
+      <option name="presentableId" value="LOCAL-00135" />
+      <option name="project" value="LOCAL" />
+      <updated>1459940226272</updated>
+    </task>
+    <option name="localTasksCounter" value="136" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="87010000" />
+    <option name="totallyTimeSpent" value="87371000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1600" height="844" extended-state="0" />
@@ -1772,18 +1771,18 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repositories.txt">
+    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="1" column="53" selection-start-line="1" selection-start-column="53" selection-end-line="1" selection-end-column="53" />
+        <state relative-caret-position="0">
+          <caret line="0" column="36" selection-start-line="0" selection-start-column="36" selection-end-line="0" selection-end-column="36" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy">
+    <entry file="file://$PROJECT_DIR$/repositories.txt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="405">
-          <caret line="15" column="9" selection-start-line="15" selection-start-column="9" selection-end-line="15" selection-end-column="9" />
+        <state relative-caret-position="27">
+          <caret line="1" column="55" selection-start-line="1" selection-start-column="55" selection-end-line="1" selection-end-column="55" />
           <folding />
         </state>
       </provider>
