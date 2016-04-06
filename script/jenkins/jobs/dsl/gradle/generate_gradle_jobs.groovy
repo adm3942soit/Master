@@ -25,7 +25,7 @@
         def i=0
     while(i<=lines.size()){
        def jobName="$baseName"+"/"+"$i"
-       job{"$jobName"}{
+       job("$jobName"){
            wrappers {
                preBuildCleanup()
                injectPasswords()
