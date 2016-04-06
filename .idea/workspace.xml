@@ -2,9 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dda7aab7-9d07-4f15-bd1e-6ed4c6948fc4" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/repositories.txt" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repositories.txt" afterPath="$PROJECT_DIR$/repositories.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy" afterPath="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -45,21 +44,31 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generate_gradle_jobs.groovy" pinned="false" current-in-tab="false">
+      <file leaf-file-name="generate_gradle_jobs.groovy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="27">
-              <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="repositories.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="repositories.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/repositories.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="27">
               <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="dsl_generate_jobs.groovy" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_jobs.groovy">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-92">
+              <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
               <folding />
             </state>
           </provider>
@@ -125,8 +134,8 @@
         <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_jobs.groovy" />
         <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/repositories.txt" />
         <option value="$PROJECT_DIR$/script/jenkins/jobs/tmp/create_job_with_dsl.groovy" />
-        <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy" />
         <option value="$PROJECT_DIR$/repositories.txt" />
+        <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy" />
       </list>
     </option>
   </component>
@@ -907,14 +916,7 @@
       <workItem from="1459749775467" duration="1103000" />
       <workItem from="1459752884126" duration="31030000" />
       <workItem from="1459924962501" duration="10419000" />
-      <workItem from="1459946255396" duration="4154000" />
-    </task>
-    <task id="LOCAL-00117" summary="script added">
-      <created>1459835919799</created>
-      <option name="number" value="00117" />
-      <option name="presentableId" value="LOCAL-00117" />
-      <option name="project" value="LOCAL" />
-      <updated>1459835919804</updated>
+      <workItem from="1459946255396" duration="4358000" />
     </task>
     <task id="LOCAL-00118" summary="script added">
       <created>1459837009456</created>
@@ -1252,11 +1254,18 @@
       <option name="project" value="LOCAL" />
       <updated>1459951372309</updated>
     </task>
-    <option name="localTasksCounter" value="166" />
+    <task id="LOCAL-00166" summary="script added">
+      <created>1459951601487</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1459951601487</updated>
+    </task>
+    <option name="localTasksCounter" value="167" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="97131000" />
+    <option name="totallyTimeSpent" value="97335000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1600" height="844" extended-state="0" />
@@ -1614,13 +1623,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_jobs.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="232">
-          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/tmp/environment.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="421">
@@ -1674,18 +1676,26 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="27">
-          <caret line="25" column="12" selection-start-line="25" selection-start-column="12" selection-end-line="25" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/repositories.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
           <caret line="1" column="0" selection-start-line="1" selection-start-column="0" selection-end-line="1" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_jobs.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-92">
+          <caret line="20" column="41" selection-start-line="20" selection-start-column="41" selection-end-line="20" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>

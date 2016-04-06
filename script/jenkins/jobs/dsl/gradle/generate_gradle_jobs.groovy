@@ -33,11 +33,7 @@
                sshAgent("adop-jenkins-master")
            }
            scm{
-//               remote {
                    git(lines[i])
-  //                 credentials("adop-jenkins-master")
-    //           }
-             //  branch("*/master")
            }
            label("java8")
            triggers{
@@ -49,7 +45,6 @@
                        gerritxml / 'gerritProjects' {
                            'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.GerritProject' {
                                compareType("PLAIN")
-                               //projectFolderName + "/" +
                                pattern(lines[i])
                                'branches' {
                                    'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.Branch' {
