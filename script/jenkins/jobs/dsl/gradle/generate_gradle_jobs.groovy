@@ -3,7 +3,7 @@ job("First"){
     def theInfoName = "Master/repositories.txt"
     File theInfoFile = new File(theInfoName)
 steps {
-    sh "ls"
+    shell("ls")
 //def lines = theInfoFile.readLines()
 
     if (!theInfoFile.exists()) {
