@@ -1,4 +1,4 @@
-import org.konsuke.github.GitHub
+    def baseName="Gradle-jobs"
     def theInfoName = "${WORKSPACE}/repositories.txt"
     File theInfoFile = new File(theInfoName)
     def lines
@@ -24,7 +24,7 @@ import org.konsuke.github.GitHub
     if(linesNmbr!=0){
         def i=1
     lines.each{
-       job{"$i"}{
+       job{"$baseName"+"/"+"$i"}{
            scm{
               gitHub(lines[$i])
               i++
