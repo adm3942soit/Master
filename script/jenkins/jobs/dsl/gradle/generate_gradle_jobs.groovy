@@ -24,7 +24,7 @@
     if(linesNmbr!=0){
         def i=0
     while(i<=lines.size()){
-       def jobName="$baseName"+"/"+"$i"
+       def jobName="$baseName"+"$i"
        job("$jobName"){
            wrappers {
                preBuildCleanup()
