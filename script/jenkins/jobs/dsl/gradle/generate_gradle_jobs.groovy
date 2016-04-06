@@ -1,4 +1,4 @@
-    def theInfoName = "repositories.txt"
+    def theInfoName = "${WORKSPACE}/repositories.txt"
     File theInfoFile = new File(theInfoName)
     if (!theInfoFile.exists()) {
         println "File does not exist!!!!!"
