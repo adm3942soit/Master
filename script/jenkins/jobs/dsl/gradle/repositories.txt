@@ -1,2 +1,2 @@
 https://github.com/adm3942soit/Master.git
-https://github.com/adm3942soit/java-utils-library.gitMM
+https://github.com/adm3942soit/java-utils-library.git
