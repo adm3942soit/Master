@@ -131,11 +131,10 @@
         refreshFrequency(5)
     }
     queue("Process_Application")
-    def list=listView('ListView')
-    list.with {
+    //def list=listView('ListView')
+    listView('ListView') {
         jobs {
-           // + '.*?'
-            regex('$baseName')
+           name(regex('$baseName'+ '.*?'))
         }
         columns {
             status()
