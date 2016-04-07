@@ -109,7 +109,7 @@
         refreshFrequency(5)
     }
     queue("Process_Application")
-    listView('Listview') {
+    listView('ListView') {
         jobs {
             regex('$baseName' + '(.*?)')
         }
@@ -122,3 +122,4 @@
             buildButton()
         }
     }
+    queue("ListView")
