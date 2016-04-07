@@ -69,6 +69,18 @@
                    it / fromRootBuildScriptDir(false)
                }
            }
+           def j=i
+           j++
+           newJobName="$baseName"+"$j"
+           publishers{
+               archiveArtifacts("**/*")
+               downstreamParameterized {
+                   trigger("$newJobName") {
+                       condition("UNSTABLE_OR_BETTER")
+                   }
+
+               }
+           }
        }
         queue(jobName)
         i++
