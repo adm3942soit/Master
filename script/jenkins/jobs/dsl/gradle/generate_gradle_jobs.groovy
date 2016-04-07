@@ -1,5 +1,5 @@
     def baseName="Gradle-jobs"
-    def buildMainJob = freeStyleJob("$baseName")
+    //def buildMainJob = freeStyleJob("$baseName")
     def theInfoName = "${WORKSPACE}/repositoriesGradle.txt"
     File theInfoFile = new File(theInfoName)
     def lines = []
@@ -22,9 +22,16 @@
 
         }
     }
+/*
     buildMainJob.with{
+        scm{
+            git('https://github.com/adm3942soit/Master.git')
+        }
+        dsl{
+
+        }
         publishers{
-            archiveArtifacts("**/*")
+
             downstreamParameterized {
                 if(linesNmbr!=0) {
                     downstream "$baseName"+"0" , 'SUCCESS'                }
@@ -32,6 +39,7 @@
         }
 
     }
+*/
 
     if(linesNmbr!=0){
         def i=0
@@ -98,6 +106,20 @@
         i++
     }
     }
+ /*   job(sonarJobName) {
+        description 'Quality check'
+        deliveryPipelineConfiguration("Code Quality", "sonar")
+        scm {
+            cloneWorkspace checkoutJobName, 'Any'
+        }
+        steps {
+            maven('sonar:sonar')
+        }
+        publishers {
+            publishCloneWorkspace '**', '', 'Any', 'TAR', true, null
+            downstream deployJobName, 'SUCCESS'
+        }
+    }*/
 // Views
     def pipelineView = buildPipelineView("Process_Application")
     pipelineView.with{
