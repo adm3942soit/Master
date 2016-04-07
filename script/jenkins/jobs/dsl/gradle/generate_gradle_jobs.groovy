@@ -66,7 +66,6 @@
                gradle('clean build',
                        '-xtest',
                        true) {
-                   it / wrapperScript('gradlew')
                    it / rootBuildScriptDir('\$workspace/build.gradle')
                    it / fromRootBuildScriptDir(false)
                    it / makeExecutable(true) // important otherwise it will be without exec permission
