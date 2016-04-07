@@ -109,9 +109,10 @@
         refreshFrequency(5)
     }
     queue("Process_Application")
-    listView('ListView') {
+    def list=listView('ListView')
+    list.with {
         jobs {
-            regex('$baseName' + '(.*?)')
+            regex('$baseName' + '[0-9]')
         }
         columns {
             status()
