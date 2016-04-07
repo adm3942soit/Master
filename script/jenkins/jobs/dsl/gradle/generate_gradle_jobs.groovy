@@ -112,7 +112,8 @@
     def list=listView('ListView')
     list.with {
         jobs {
-            regex('$baseName' + '.*?')
+           // + '.*?'
+            regex('$baseName')
         }
         columns {
             status()
