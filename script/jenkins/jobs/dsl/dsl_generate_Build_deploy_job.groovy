@@ -137,6 +137,12 @@ deployJob.with {
                 buildNumber('${B}')
             }
         }
+      //  copyArtifacts('build_pos_cash_tar') {
+        //    includePatterns('**/*.zip',)
+          //  buildSelector {
+            //    latestSuccessful(true)
+           // }
+      //  }
 //"e7e863dacc83"$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"""$(echo ${PROJECT_NAME} | tr '/' '_')_${ENVIRONMENT_NAME}"
         shell('''set +x
             |export SERVICE_NAME="Master_Build_CI"

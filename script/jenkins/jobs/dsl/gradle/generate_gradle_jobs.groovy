@@ -35,6 +35,9 @@
            scm{
                    git(lines[i])
            }
+           triggers {
+               cron('@hourly')
+           }
            label("java8")
            triggers{
                gerrit{
@@ -60,12 +63,14 @@
            }
 
            steps{
-               maven{
-                   mavenInstallation("ADOP Maven")
-                   goals("clean package")
-
+               gradle('clean build',
+                       '-xtest',
+                       true) {
+                   it / wrapperScript('gradlew')
+                   it / rootBuildScriptDir('\$workspace/build.gradle')
+                   it / fromRootBuildScriptDir(false)
+                   it / makeExecutable(true) // important otherwise it will be without exec permission
                }
-
            }
        }
         queue(jobName)
