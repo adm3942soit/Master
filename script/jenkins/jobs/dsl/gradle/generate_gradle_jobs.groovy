@@ -1,5 +1,5 @@
     def baseName="Gradle-jobs"
-    def theInfoName = "${WORKSPACE}/repositories.txt"
+    def theInfoName = "${WORKSPACE}/repositoriesGradle.txt"
     File theInfoFile = new File(theInfoName)
     def lines = []
     def linesNmbr=0

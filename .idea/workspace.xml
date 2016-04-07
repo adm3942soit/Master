@@ -2,10 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dda7aab7-9d07-4f15-bd1e-6ed4c6948fc4" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/repositoriesGradle.txt" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/repositoriesMVN.txt" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/repositories.txt" afterPath="$PROJECT_DIR$/repositories.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy" afterPath="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/script/jenkins/jobs/dsl/mvn/generate_mvn_jobs.groovy" afterPath="$PROJECT_DIR$/script/jenkins/jobs/dsl/mvn/generate_mvn_jobs.groovy" />
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -46,11 +45,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="repositories.txt" pinned="false" current-in-tab="true">
+      <file leaf-file-name="repositories.txt" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/repositories.txt">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="27">
-              <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
+              <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -69,8 +68,8 @@
       <file leaf-file-name="generate_gradle_jobs.groovy" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-378">
-              <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
+            <state relative-caret-position="27">
+              <caret line="1" column="54" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
               <folding />
             </state>
           </provider>
@@ -106,11 +105,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="generate_mvn_jobs.groovy" pinned="false" current-in-tab="false">
+      <file leaf-file-name="generate_mvn_jobs.groovy" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/mvn/generate_mvn_jobs.groovy">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="27">
+              <caret line="1" column="51" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
               <folding />
             </state>
           </provider>
@@ -178,12 +177,13 @@
         <option value="$PROJECT_DIR$/script/jenkins/jobs/tmp/create_job_with_dsl.groovy" />
         <option value="$PROJECT_DIR$/script/jenkins/jobs/tmp/db/access_db.groovy" />
         <option value="$PROJECT_DIR$/script/jenkins/jobs/tmp/db/access_mysql_db.groovy" />
-        <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy" />
         <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/dsl_generate_build_deploy_job.groovy" />
         <option value="$PROJECT_DIR$/script/jenkins/jobs/tmp/classes/runClasses.groovy" />
         <option value="$PROJECT_DIR$/repositoriesGradle.txt" />
         <option value="$PROJECT_DIR$/repositoriesMVN.txt" />
         <option value="$PROJECT_DIR$/repositories.txt" />
+        <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy" />
+        <option value="$PROJECT_DIR$/script/jenkins/jobs/dsl/mvn/generate_mvn_jobs.groovy" />
       </list>
     </option>
   </component>
@@ -1054,14 +1054,7 @@
       <workItem from="1459749775467" duration="1103000" />
       <workItem from="1459752884126" duration="31030000" />
       <workItem from="1459924962501" duration="10419000" />
-      <workItem from="1459946255396" duration="11081000" />
-    </task>
-    <task id="LOCAL-00121" summary="script added">
-      <created>1459838131916</created>
-      <option name="number" value="00121" />
-      <option name="presentableId" value="LOCAL-00121" />
-      <option name="project" value="LOCAL" />
-      <updated>1459838131916</updated>
+      <workItem from="1459946255396" duration="11390000" />
     </task>
     <task id="LOCAL-00122" summary="script added">
       <created>1459838813553</created>
@@ -1399,11 +1392,18 @@
       <option name="project" value="LOCAL" />
       <updated>1460013020055</updated>
     </task>
-    <option name="localTasksCounter" value="170" />
+    <task id="LOCAL-00170" summary="script added">
+      <created>1460016593942</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1460016593942</updated>
+    </task>
+    <option name="localTasksCounter" value="171" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="104058000" />
+    <option name="totallyTimeSpent" value="104367000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1600" height="844" extended-state="0" />
@@ -1757,14 +1757,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/mvn/generate_mvn_jobs.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/tmp/create_job_with_dsl.groovy">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -1785,14 +1777,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="162">
           <caret line="6" column="26" selection-start-line="6" selection-start-column="26" selection-end-line="6" selection-end-column="26" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-378">
-          <caret line="39" column="12" selection-start-line="39" selection-start-column="12" selection-end-line="39" selection-end-column="12" />
           <folding />
         </state>
       </provider>
@@ -1840,7 +1824,23 @@
     <entry file="file://$PROJECT_DIR$/repositories.txt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="27">
-          <caret line="1" column="52" selection-start-line="1" selection-start-column="52" selection-end-line="1" selection-end-column="52" />
+          <caret line="1" column="27" selection-start-line="1" selection-start-column="27" selection-end-line="1" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/gradle/generate_gradle_jobs.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="54" selection-start-line="1" selection-start-column="54" selection-end-line="1" selection-end-column="54" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/script/jenkins/jobs/dsl/mvn/generate_mvn_jobs.groovy">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="27">
+          <caret line="1" column="51" selection-start-line="1" selection-start-column="51" selection-end-line="1" selection-end-column="51" />
           <folding />
         </state>
       </provider>
