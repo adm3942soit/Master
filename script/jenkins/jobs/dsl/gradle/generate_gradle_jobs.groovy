@@ -74,3 +74,14 @@
         i++
     }
     }
+// Views
+    def pipelineView = buildPipelineView("Process_Application")
+    pipelineView.with{
+        title('Process_Application Pipeline')
+        displayedBuilds(5)
+        selectedJob("Gradle-jobs")
+        showPipelineParameters()
+        showPipelineDefinitionHeader()
+        refreshFrequency(5)
+    }
+    queue("Process_Application")
