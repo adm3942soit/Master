@@ -109,3 +109,16 @@
         refreshFrequency(5)
     }
     queue("Process_Application")
+    listView('Listview') {
+        jobs {
+            regex('$baseName' + '(.*?)')
+        }
+        columns {
+            status()
+            name()
+            lastSuccess()
+            lastFailure()
+            lastDuration()
+            buildButton()
+        }
+    }
