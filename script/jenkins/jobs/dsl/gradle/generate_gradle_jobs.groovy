@@ -23,24 +23,6 @@
         }
     }
 
-    buildMainJob.with{
-        scm{
-            git('https://github.com/adm3942soit/Master.git')
-        }
-        dsl{
-
-        }
-        publishers{
-
-            downstreamParameterized {
-                if(linesNmbr!=0) {
-                    downstream "$baseName"+"0" , 'SUCCESS'                }
-            }
-        }
-
-    }
-
-
     if(linesNmbr!=0){
         def i=0
     while(i<lines.size()) {
