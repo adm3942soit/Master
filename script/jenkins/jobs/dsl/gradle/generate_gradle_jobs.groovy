@@ -1,5 +1,5 @@
     def baseName="Gradle-jobs"
-    //def buildMainJob = freeStyleJob("$baseName")
+    def buildMainJob = job("$baseName")
     def theInfoName = "${WORKSPACE}/repositoriesGradle.txt"
     File theInfoFile = new File(theInfoName)
     def lines = []
@@ -22,7 +22,7 @@
 
         }
     }
-/*
+
     buildMainJob.with{
         scm{
             git('https://github.com/adm3942soit/Master.git')
@@ -39,7 +39,7 @@
         }
 
     }
-*/
+
 
     if(linesNmbr!=0){
         def i=0
