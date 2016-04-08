@@ -136,10 +136,10 @@
         refreshFrequency(5)
     }
     queue("Process_Application")
-def sonarJob="sonarJob"
+    def sonarJob="sonarJob"
     listView('ListView') {
         jobs {
-           regex(/$baseName[0-9]{0,3}[$sonarJob]{0,1}/)
+           regex(/$baseName[0-9]{0,3}[a-z]{0,5}[A-Z]{0,1}[a-z]{0,2}/)
         }
         columns {
             status()
