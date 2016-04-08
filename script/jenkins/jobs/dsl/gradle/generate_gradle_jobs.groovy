@@ -139,7 +139,7 @@
 
     listView('ListView') {
         jobs {
-           regex(/$baseName\w\sonarJob/)
+           regex(/$baseName(\d{1,3})(\sonarJob)/)
         }
         columns {
             status()
