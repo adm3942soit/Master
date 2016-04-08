@@ -1,5 +1,4 @@
     def baseName="Gradle-jobs"
-    //def buildMainJob = job("$baseName")
     def theInfoName = "${WORKSPACE}/repositoriesGradle.txt"
     File theInfoFile = new File(theInfoName)
     def lines = []
@@ -102,7 +101,7 @@
             steps {
                 maven{
                     mavenInstallation("ADOP Maven")
-                    goals("org.codehaus.mojo:sonar-maven-plugin:2.6:sonar -Dsonar.host.url=192.168.99.101:9000")
+                    goals("org.codehaus.mojo:sonar-maven-plugin:2.6:sonar -Dsonar.host.url=192.168.99.101:9002")
                 }
 
             }
@@ -136,7 +135,7 @@
         refreshFrequency(5)
     }
     queue("Process_Application")
-    def sonarJob="sonarJob"
+
     listView('ListView') {
         jobs {
            regex(/$baseName[0-9]{0,3}[a-z]{0,5}[A-Z]{0,1}[a-z]{0,2}/)
