@@ -89,6 +89,7 @@
 
             }
         }
+
         job("$jobName" + "sonarJob") {
             description 'Quality check'
             deliveryPipelineConfiguration("Code Quality", "sonar")
@@ -102,7 +103,6 @@
                 maven{
                     mavenInstallation("ADOP Maven")
                     goals("sonar:sonar")
-
                 }
 
             }
@@ -136,11 +136,10 @@
         refreshFrequency(5)
     }
     queue("Process_Application")
-    //def list=listView('ListView')
+
     listView('ListView') {
         jobs {
-           regex(/$baseName+/)
-            //regex(/project-A-.+/)
+           regex(/$baseName\w+\sonarJob/)
         }
         columns {
             status()
