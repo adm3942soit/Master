@@ -139,7 +139,7 @@
 
     listView('ListView') {
         jobs {
-           regex(/$baseName[0-9]/)
+           regex(/$baseName\[0-9]/)
         }
         columns {
             status()
