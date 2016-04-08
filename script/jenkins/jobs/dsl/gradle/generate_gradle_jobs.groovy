@@ -102,7 +102,7 @@
             steps {
                 maven{
                     mavenInstallation("ADOP Maven")
-                    goals("org.codehaus.mojo:sonar-maven-plugin:2.6:sonar")
+                    goals("org.codehaus.mojo:sonar-maven-plugin:2.6:sonar -Dsonar.host.url=192.168.99.101:9000")
                 }
 
             }
