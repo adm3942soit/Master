@@ -99,8 +99,12 @@
 
             }
             steps {
-              //  mavenInstallation("ADOP Maven")
-                maven('sonar:sonar')
+                maven{
+                    mavenInstallation("ADOP Maven")
+                    goals("sonar:sonar")
+
+                }
+
             }
             publishers {
 
