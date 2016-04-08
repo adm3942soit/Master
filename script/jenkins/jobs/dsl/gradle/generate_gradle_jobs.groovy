@@ -102,7 +102,7 @@
             steps {
                 maven{
                     mavenInstallation("ADOP Maven")
-                    goals("sonar:sonar")
+                    goals("sonar:sonar http://192.168.99.101:9000")
                 }
 
             }
