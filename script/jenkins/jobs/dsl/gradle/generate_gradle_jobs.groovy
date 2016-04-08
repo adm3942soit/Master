@@ -116,6 +116,7 @@
 
        }
         queue(jobName)
+        queue($jobName + "sonarJob")
         i++
     }
     }
