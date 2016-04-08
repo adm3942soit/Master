@@ -95,31 +95,42 @@
            publishers{
                archiveArtifacts("**/*")
                downstreamParameterized {
-                   trigger("$newJobName") {
+                   trigger("$jobName"+"sonarJob") {
                        condition("UNSTABLE_OR_BETTER")
                    }
 
                }
            }
+           job("$jobName"+"sonarJob") {
+               description 'Quality check'
+               deliveryPipelineConfiguration("Code Quality", "sonar")
+               scm {
+                   scm{
+                       git(lines[i])
+                   }
+
+               }
+               steps {
+                   mavenInstallation("ADOP Maven")
+                   maven('sonar:sonar')
+               }
+               publishers {
+
+                       archiveArtifacts("**/*")
+                       downstreamParameterized {
+                           trigger("$newJobName") {
+                               condition("UNSTABLE_OR_BETTER")
+                           }
+
+                       }
+               }
+           }
+
        }
         queue(jobName)
         i++
     }
     }
- /*   job(sonarJobName) {
-        description 'Quality check'
-        deliveryPipelineConfiguration("Code Quality", "sonar")
-        scm {
-            cloneWorkspace checkoutJobName, 'Any'
-        }
-        steps {
-            maven('sonar:sonar')
-        }
-        publishers {
-            publishCloneWorkspace '**', '', 'Any', 'TAR', true, null
-            downstream deployJobName, 'SUCCESS'
-        }
-    }*/
 // Views
     def pipelineView = buildPipelineView("Process_Application")
     pipelineView.with{
@@ -134,7 +145,7 @@
     //def list=listView('ListView')
     listView('ListView') {
         jobs {
-           name('$baseName')
+           name("$baseName\\w")
         }
         columns {
             status()
