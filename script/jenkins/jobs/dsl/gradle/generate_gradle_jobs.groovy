@@ -116,7 +116,8 @@
 
        }
         queue(jobName)
-        queue($jobName + "sonarJob")
+        def sonar="$jobName" + "sonarJob"
+        queue(sonar)
         i++
     }
     }
