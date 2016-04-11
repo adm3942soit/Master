@@ -2,7 +2,7 @@ def nameJob="GerritRepoCopy"
 def PROJECT_NAME="Master"
 def PROJECT_GERRIT_NAME="MasterCopy"
 def gerritUrl="ssh://jenkins@gerrit:29418/${PROJECT_GERRIT_NAME}"
-def gitUrl="https://github.com/adm3942soit/Master"
+def gitUrl="https://github.com/adm3942soit/Master.git"
 job("$nameJob"){
 /*
     scm{
