@@ -11,10 +11,12 @@ job("$nameJob"){
         shell('''set +x
         |git clone
         |git remote set-url origin $gerritUrl
-        |ssh -p 29418 jenkins@gerrit
+        |git push $gerritUrl
         |git clone $gerritUrl
-        |cd $WORKSPACE
-        |ls
+        |ssh -p 29418 jenkins@gerrit
+        |ssh -p 29418 jenkins@gerrit gerrit create-project MasterCopy
+        |docker cd $JENKINS_HOME/$WORKSPACE
+        |docker ls
        |set -x'''.stripMargin())
     }
     //|git push ssh://jenkins@gerrit:29418/Master HEAD:refs/master
