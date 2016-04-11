@@ -9,6 +9,11 @@ job("$nameJob"){
     }
     steps{
         shell('''set +x
+        |cd $WORKSPACE/Master/
+        |git push –mirror $gerritUrl
+       |set -x'''.stripMargin())
+    }
+/*
         |git remote set-url origin $gerritUrl
         |git remote -v
         |## echo "remote set-url origin $gerritUrl"
@@ -20,8 +25,7 @@ job("$nameJob"){
         |ssh -p 29418 jenkins@gerrit gerrit create-project MasterCopy
         |cd $WORKSPACE
         |ls
-       |set -x'''.stripMargin())
-    }
+*/
 
 }
 
