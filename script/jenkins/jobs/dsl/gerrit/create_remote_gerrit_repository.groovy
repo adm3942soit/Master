@@ -1,5 +1,6 @@
 def nameJob="GerritRepoCopy"
-def changeBranch = "change-${GERRIT_CHANGE_NUMBER}-${GERRIT_PATCHSET_NUMBER}"
+def PROJECT_NAME="Master"
+def gerritUrl="ssh://jenkins@gerrit:29418/${PROJECT_NAME}"
 
 job("$nameJob"){
     scm{
@@ -7,12 +8,11 @@ job("$nameJob"){
     }
     steps{
         shell('''set +x
-        |git fetch origin ${GERRIT_REFSPEC}:${changeBranch}
-        |git checkout ${changeBranch}
+        |git remote set-url origin $gerritUrl
         |ssh -p 29418 jenkins@gerrit
-        |git push ssh://jenkins@gerrit:29418/Master HEAD:refs/master
        |set -x'''.stripMargin())
     }
+    //|git push ssh://jenkins@gerrit:29418/Master HEAD:refs/master
 }
 
 
