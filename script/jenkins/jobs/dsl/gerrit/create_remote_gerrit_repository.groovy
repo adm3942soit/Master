@@ -2,20 +2,29 @@ def nameJob="GerritRepoCopy"
 def PROJECT_NAME="Master"
 def PROJECT_GERRIT_NAME="MasterCopy"
 def gerritUrl="ssh://jenkins@gerrit:29418/${PROJECT_GERRIT_NAME}"
-
+def gitUrl="https://github.com/adm3942soit/Master.git"
 job("$nameJob"){
-    scm{
-        git("$gerritUrl")
-    }
 /*
-    steps{
-        shell('''set +x
-        |cd $WORKSPACE/Master/
-        |git push –mirror $gerritUrl
-       |set -x'''.stripMargin())
+    scm{
+        git("$gitUrl")
     }
 */
+
+    steps{
+        shell('''set +x
+           |git clone –mirror $gitUrl
+           |cd $WORKSPACE/Master.git
+           |git remote set-url –push origin $gerritUrl HEAD:refs/for/master
+           |git fetch -p origin
+           |git push –mirror
+           |git remote add Master $gerritUrl
+           |git push -f –tags Master refs/heads/*:refs/for/*
+           |set -x'''.stripMargin())
+    }
+
 /*
+        |cd $WORKSPACE/Master/
+        |git push –mirror $gerritUrl
         |git remote set-url origin $gerritUrl
         |git remote -v
         |## echo "remote set-url origin $gerritUrl"
