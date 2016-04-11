@@ -17,8 +17,8 @@ job("$nameJob"){
         |## echo "push $gerritUrl"
         |ssh -p 29418 jenkins@gerrit
         |ssh -p 29418 jenkins@gerrit gerrit create-project MasterCopy
-        |docker cd $JENKINS_HOME/$WORKSPACE
-        |docker ls
+        |cd $WORKSPACE
+        |ls
        |set -x'''.stripMargin())
     }
     //|git push ssh://jenkins@gerrit:29418/Master HEAD:refs/master
