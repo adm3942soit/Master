@@ -12,7 +12,7 @@ job("$nameJob"){
 
     steps{
         shell('''set +x
-           |git clone --mirror $gitUrl
+
            |cd $WORKSPACE/Master
            |git remote set-url –push origin $gerritUrl HEAD:refs/for/master
            |git fetch -p origin
@@ -21,6 +21,9 @@ job("$nameJob"){
            |git push -f –tags Master refs/heads/*:refs/for/*
            |set -x'''.stripMargin())
     }
+/*
+    |git clone --mirror $gitUrl
+*/
 
 /*
         |cd $WORKSPACE/Master/
