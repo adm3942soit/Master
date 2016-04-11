@@ -5,14 +5,16 @@ def gerritUrl="ssh://jenkins@gerrit:29418/${PROJECT_GERRIT_NAME}"
 
 job("$nameJob"){
     scm{
-        git('https://github.com/adm3942soit/Master.git')
+        git("$gerritUrl")
     }
+/*
     steps{
         shell('''set +x
         |cd $WORKSPACE/Master/
         |git push –mirror $gerritUrl
        |set -x'''.stripMargin())
     }
+*/
 /*
         |git remote set-url origin $gerritUrl
         |git remote -v
