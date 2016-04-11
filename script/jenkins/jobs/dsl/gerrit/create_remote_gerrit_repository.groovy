@@ -9,7 +9,6 @@ job("$nameJob"){
     }
     steps{
         shell('''set +x
-        |git clone
         |git remote set-url origin $gerritUrl
         |## echo "remote set-url origin $gerritUrl"
         |git clone $gerritUrl
