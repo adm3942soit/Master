@@ -22,7 +22,7 @@ job("$nameJob"){
         |ls
        |set -x'''.stripMargin())
     }
-    //
+
 }
 
 
