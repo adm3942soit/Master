@@ -61,28 +61,6 @@ job("$nameJob"){
 |git branch -r
 |set -x'''.stripMargin())
     }
-/*
-
-*/
-
-/*
-        |cd $WORKSPACE/Master/
-        |git push –mirror $gerritUrl
-        |git remote set-url origin $gerritUrl
-        |git remote -v
-        |## echo "remote set-url origin $gerritUrl"
-        |git clone $gerritUrl
-        |## echo "clone $gerritUrl"
-        |git push $gerritUrl HEAD:refs/for/master
-        |## echo "push $gerritUrl"
-        |ssh -p 29418 jenkins@gerrit
-        |ssh -p 29418 jenkins@gerrit gerrit create-project MasterCopy
-        |cd $WORKSPACE
-        |ls
-        $ git remote set-url --push origin ssh://raphink@git.fedorahosted.org/git/augeas.git
-$ git remote show origin
-*/
-
 }
 queue(nameJob)
 
