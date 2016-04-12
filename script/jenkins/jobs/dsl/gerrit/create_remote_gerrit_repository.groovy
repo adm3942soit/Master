@@ -24,7 +24,7 @@ job("$nameJob"){
     steps{
         shell('''set +x
            |[[ -s '/usr/local/lib/rvm' ]] && source '/usr/local/lib/rvm\'
-           |cd $WORKSPACE/Master
+           |cd $JENKINS_HOME/$WORKSPACE/Master
            |git remote set-url –push origin $gerritUrl HEAD:refs/for/master
            |git fetch -p origin
            |git push –-mirror
