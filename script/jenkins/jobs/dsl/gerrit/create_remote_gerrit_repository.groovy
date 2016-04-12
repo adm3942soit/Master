@@ -23,8 +23,9 @@ job("$nameJob"){
 
     steps{
         shell('''set +x
+           |git clone --mirror $gitUrl
            |[[ -s '/usr/local/lib/rvm' ]] && source '/usr/local/lib/rvm\'
-           |cd $JENKINS_HOME/$WORKSPACE/Master
+           |cd $WORKSPACE/Master
            |git remote set-url –push origin $gerritUrl HEAD:refs/for/master
            |git fetch -p origin
            |git push –-mirror
@@ -33,7 +34,7 @@ job("$nameJob"){
            |set -x'''.stripMargin())
     }
 /*
-    |git clone --mirror $gitUrl
+
 */
 
 /*
@@ -53,5 +54,5 @@ job("$nameJob"){
 */
 
 }
-
+queue(nameJob)
 
