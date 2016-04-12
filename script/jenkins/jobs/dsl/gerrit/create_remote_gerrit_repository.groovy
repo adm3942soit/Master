@@ -13,7 +13,7 @@ job("$nameJob"){
     scm{
         git {
             remote {
-                url(gitUrl)
+                url($gitUrl)
                 credentials("adop-jenkins-master")
             }
             branch("*/master")
@@ -23,7 +23,7 @@ job("$nameJob"){
 
     steps{
         shell('''set +x
-           |git clone --mirror gitUrl "Master"
+           |git clone --mirror $gitUrl "Master"
            |[[ -s '/usr/local/lib/rvm' ]] && source '/usr/local/lib/rvm\'
            |cd $WORKSPACE/Master
            |git remote set-url –push origin $gerritUrl HEAD:refs/for/master
