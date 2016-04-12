@@ -44,22 +44,21 @@ job("$nameJob"){
     }
     steps{
         shell('''set +x
-|#git clone --bare  https://github.com/adm3942soit/Master.git
+|git clone --bare  https://github.com/adm3942soit/Master.git
 |[[ -s '/usr/local/lib/rvm' ]] && source '/usr/local/lib/rvm\'
 |cd $WORKSPACE
-|#ls
-|#cd $WORKSPACE/Master.git
+|ls
+|cd $WORKSPACE/Master.git
 |ls
 |git remote set-url --add origin ssh://jenkins@gerrit:29418/Master.git
-|#git fetch -p origin
-|#git commit -m 'initial commit\'
 |#ssh -p 29418 jenkins@gerrit gerrit create-project -n Master
 |git config credential.helper store
 |git config --global push.default simple
 |git remote add --mirror=push github ssh://jenkins@gerrit:29418/Master.git
 |git remote -v
-|#git push ssh://jenkins@gerrit:29418/Master.git
-|git clone ssh://jenkins@gerrit:29418/Master.git
+|git push ssh://jenkins@gerrit:29418/Master.git
+|git clone ssh://jenkins@gerrit:29418/Master.git HEAD:refs/for/master
+|git branch -r
 |set -x'''.stripMargin())
     }
 /*
