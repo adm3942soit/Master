@@ -4,15 +4,26 @@ def PROJECT_GERRIT_NAME="MasterCopy"
 def gerritUrl="ssh://jenkins@gerrit:29418/${PROJECT_GERRIT_NAME}"
 def gitUrl="https://github.com/adm3942soit/Master.git"
 job("$nameJob"){
-
+    wrappers {
+        preBuildCleanup()
+        injectPasswords()
+        maskPasswords()
+        sshAgent("adop-jenkins-master")
+    }
     scm{
-        git("$gitUrl")
+        git {
+            remote {
+                url(gitUrl)
+                credentials("adop-jenkins-master")
+            }
+            branch("*/master")
+        }
     }
 
 
     steps{
         shell('''set +x
-           |WORKDIR $WORKSPACE/Master
+           |docker WORKDIR $WORKSPACE/Master
            |git remote set-url –push origin $gerritUrl HEAD:refs/for/master
            |git fetch -p origin
            |git push –-mirror
