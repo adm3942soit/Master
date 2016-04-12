@@ -12,8 +12,7 @@ job("$nameJob"){
 
     steps{
         shell('''set +x
-
-           |cd $WORKSPACE/Master.git
+           |docker run cd $WORKSPACE/Master
            |git remote set-url –push origin $gerritUrl HEAD:refs/for/master
            |git fetch -p origin
            |git push –-mirror
