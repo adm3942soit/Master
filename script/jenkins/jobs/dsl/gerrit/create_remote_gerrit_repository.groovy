@@ -20,7 +20,28 @@ job("$nameJob"){
         }
     }
 
-
+    triggers{
+        gerrit{
+            events{
+                refUpdated()
+            }
+            configure { gerritxml ->
+                gerritxml / 'gerritProjects' {
+                    'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.GerritProject' {
+                        compareType("PLAIN")
+                        pattern("Master")
+                        'branches' {
+                            'com.sonyericsson.hudson.plugins.gerrit.trigger.hudsontrigger.data.Branch' {
+                                compareType("PLAIN")
+                                pattern("master")
+                            }
+                        }
+                    }
+                }
+                gerritxml / serverName("ADOP Gerrit")
+            }
+        }
+    }
     steps{
         shell('''set +x
 |#git clone --bare  https://github.com/adm3942soit/Master.git
