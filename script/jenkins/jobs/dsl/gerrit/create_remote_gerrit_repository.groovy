@@ -13,7 +13,7 @@ job("$nameJob"){
     scm{
         git {
             remote {
-                url($gitUrl)
+                url(gitUrl)
                 credentials("adop-jenkins-master")
             }
             branch("*/master")
