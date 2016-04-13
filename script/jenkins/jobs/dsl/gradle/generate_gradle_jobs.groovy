@@ -71,6 +71,7 @@
         steps {
             shell('''set +x
                     |cd "$WORKSPACE/$jobName"
+                    |ls
                     |git ls-tree HEAD
                     |git update-index --chmod=+x build.gradle
                     |git update-index --chmod=+x gradlew
