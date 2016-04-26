@@ -15,6 +15,7 @@
         <org.springframework-version>4.0.6.RELEASE</org.springframework-version>
         <org.springframework-security-version>3.2.4.RELEASE</org.springframework-security-version>
         <org.springframework.roo-version>1.0.2.RELEASE</org.springframework.roo-version>
+        <JBOSS_HOME>file://C:\wildfly-10.0.0.Beta1</JBOSS_HOME>
     </properties>
     <distributionManagement>
         <repository>
@@ -44,8 +45,9 @@
         <dependency>
             <groupId>mysql</groupId>
             <artifactId>mysql-connector-java</artifactId>
-            <version>5.1.9</version>
-
+            <version>6.0.2</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/mysql-connector-java-6.0.2-bin.jar</systemPath>
         </dependency>
 
         <!-- Hibernate core -->
@@ -307,8 +309,22 @@
             <artifactId>portlet-api</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>org.jboss.modules</groupId>
+            <artifactId>jboss-modules</artifactId>
+            <version>1.0.2.GA</version>
+            <scope>system</scope>
+            <systemPath>${project.basedir}/lib/jboss-modules-1.0.2.GA.jar</systemPath>
+        </dependency>
+
     </dependencies>
     <repositories>
+<repository>
+    <id>mysql</id>
+    <name>mysql</name>
+    <url>file://${user.home}/.m2/repository/</url>
+
+</repository>
 <!--
         <repository>
             <id>java-utils-library</id>
@@ -429,6 +445,7 @@
                 </executions>
             </plugin>
 -->
+<!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-deploy-plugin</artifactId>
@@ -442,6 +459,30 @@
                     <version>${project.version}</version>
                     <packaging>zip</packaging>
                     <pomFile>pom.xml</pomFile>
+                </configuration>
+            </plugin>
+-->
+            <plugin>
+                <groupId>org.wildfly.plugins</groupId>
+                <artifactId>wildfly-maven-plugin</artifactId>
+                <version>1.0.2.Final</version>
+                <configuration>
+                    <!--<serverConfig>standalone.xml</serverConfig>-->
+                    <groupId>mysql</groupId>
+                    <artifactId>mysql-connector-java</artifactId>
+                    <version>6.0.2</version>
+                    <fileName>${project.basedir}/lib/mysql-connector-java-6.0.2-bin.jar</fileName>
+                    <executions>
+                        <execution>
+                            <id>deploy-driver-MySQL</id>
+                            <phase>package</phase>
+                            <goals>
+                                <goal>deploy-artifact</goal>
+                            </goals>
+                            <configuration />
+                        </execution>
+                    </executions>
+                    <filename>${project.build.finalName}.war</filename>
                 </configuration>
             </plugin>
         </plugins>

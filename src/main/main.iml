@@ -14,7 +14,7 @@
     <facet type="hibernate" name="Hibernate">
       <configuration>
         <datasource-map>
-          <unit-entry name="hibernate.cfg.xml" value="8343940c-fe7b-4d0c-a258-c89993aee681" />
+          <unit-entry name="hibernate.cfg.xml" value="290b95f9-9c0a-49ba-946e-2f95c04e41e6" />
           <unit-entry name="sessionFactory" value="8343940c-fe7b-4d0c-a258-c89993aee681" />
         </datasource-map>
         <naming-strategy-map />
@@ -49,13 +49,8 @@
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="library" name="helpers" level="project" />
     <orderEntry type="library" name="commons-digester-1.8" level="project" />
-    <orderEntry type="library" name="jsf-facelets-1.1.14" level="project" />
-    <orderEntry type="library" name="richfaces-ui-3.1.0" level="project" />
-    <orderEntry type="library" name="richfaces-impl-3.1.0" level="project" />
-    <orderEntry type="library" name="richfaces-api-3.1.0" level="project" />
-    <orderEntry type="library" name="richfaces-api-3.2.1.ga" level="project" />
     <orderEntry type="library" name="commons-io-2.4" level="project" />
-    <orderEntry type="library" name="javax.faces-2.2.1" level="project" />
+    <orderEntry type="library" exported="" name="lib" level="application" />
     <orderEntry type="module-library">
       <library name="Maven: com.utils:java-utils-library:1.0.0">
         <CLASSES>
@@ -74,7 +69,15 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.9" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: mysql:mysql-connector-java:6.0.2">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../lib/mysql-connector-java-6.0.2-bin.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
     <orderEntry type="library" name="Maven: javax.persistence:persistence-api:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:3.3.2.GA" level="project" />
     <orderEntry type="library" name="Maven: antlr:antlr:2.7.6" level="project" />
@@ -143,5 +146,14 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: portlet-api:portlet-api:1.0" level="project" />
+    <orderEntry type="module-library">
+      <library name="Maven: org.jboss.modules:jboss-modules:1.0.2.GA">
+        <CLASSES>
+          <root url="jar://$MODULE_DIR$/../../lib/jboss-modules-1.0.2.GA.jar!/" />
+        </CLASSES>
+        <JAVADOC />
+        <SOURCES />
+      </library>
+    </orderEntry>
   </component>
 </module>

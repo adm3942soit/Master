@@ -26,7 +26,6 @@
       <column name="person_NUMBER" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="ID"/>
       <foreign-key name="FK34207BA2FCF8480A" columns="person_NUMBER" ref-table="persons" ref-schema="" ref-catalog="master" ref-columns="NUMBER" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FKD78FCFBEE4E3BC38" table="persons" schema="" catalog="master" columns="address_ID"/>
       <index name="ID" unique="true" columns="ID"/>
       <index name="FK34207BA2FCF8480A" unique="false" columns="person_NUMBER"/>
     </table>
@@ -38,8 +37,6 @@
       <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="NAME" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <primary-key name="PRIMARY" columns="CATALOG_ID"/>
-      <exported-key name="FK4287C21CA34AFFD" table="catalogs_departments" schema="" catalog="master" columns="catalogs_CATALOG_ID"/>
-      <exported-key name="FK1F3A27617CAE0E18" table="departments" schema="" catalog="master" columns="CATALOG_ID"/>
       <index name="CATALOG_ID" unique="true" columns="CATALOG_ID"/>
       <index name="NAME" unique="true" columns="NAME"/>
       <index name="NAME_2" unique="true" columns="NAME"/>
@@ -62,8 +59,6 @@
       <column name="LAST_UPDATE_PERSON" sqlType="VARCHAR" precision="255" scale="0" nullable="false" jdbcType="12"/>
       <column name="SELLING_RATE" sqlType="DOUBLE" precision="22" scale="0" nullable="false" jdbcType="8"/>
       <primary-key name="PRIMARY" columns="COURSEUSD_ID"/>
-      <exported-key name="FK34DE3BD5277DBF09" table="coursesusd_products" schema="" catalog="master" columns="coursesUSD_COURSEUSD_ID"/>
-      <exported-key name="FKC42BD164DA75BD38" table="products" schema="" catalog="master" columns="COURSEUSD_ID"/>
       <index name="COURSEUSD_ID" unique="true" columns="COURSEUSD_ID"/>
     </table>
     <table name="coursesusd_products" schema="" catalog="master" type="TABLE">
@@ -85,9 +80,6 @@
       <column name="CATALOG_ID" sqlType="INT" precision="10" scale="0" nullable="false" jdbcType="4"/>
       <primary-key name="PRIMARY" columns="DEPARTMENT_ID"/>
       <foreign-key name="FK1F3A27617CAE0E18" columns="CATALOG_ID" ref-table="catalogs" ref-schema="" ref-catalog="master" ref-columns="CATALOG_ID" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FK4287C21C925C4C5E" table="catalogs_departments" schema="" catalog="master" columns="departments_DEPARTMENT_ID"/>
-      <exported-key name="FKEBA69882925C4C5E" table="departments_products" schema="" catalog="master" columns="departments_DEPARTMENT_ID"/>
-      <exported-key name="FKC42BD164560150BC" table="products" schema="" catalog="master" columns="DEPARTMENT_ID"/>
       <index name="DEPARTMENT_ID" unique="true" columns="DEPARTMENT_ID"/>
       <index name="NAME" unique="true" columns="NAME"/>
       <index name="NAME_2" unique="true" columns="NAME"/>
@@ -130,11 +122,6 @@
       <column name="address_ID" sqlType="BIGINT" precision="19" scale="0" nullable="true" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="NUMBER"/>
       <foreign-key name="FKD78FCFBEE4E3BC38" columns="address_ID" ref-table="addresses" ref-schema="" ref-catalog="master" ref-columns="ID" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FK34207BA2FCF8480A" table="addresses" schema="" catalog="master" columns="person_NUMBER"/>
-      <exported-key name="FK181289162944FB81" table="persons_personstatuses" schema="" catalog="master" columns="persons_NUMBER"/>
-      <exported-key name="FKDFD90B5B2944FB81" table="persons_userlogs" schema="" catalog="master" columns="persons_NUMBER"/>
-      <exported-key name="FK2A6B1E751DC5FE0" table="personstatuses" schema="" catalog="master" columns="NUMBER"/>
-      <exported-key name="FKF028D3FA1DC5FE0" table="userlogs" schema="" catalog="master" columns="NUMBER"/>
       <index name="NUMBER" unique="true" columns="NUMBER"/>
       <index name="FKD78FCFBEE4E3BC38" unique="false" columns="address_ID"/>
     </table>
@@ -169,7 +156,6 @@
       <column name="NUMBER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="ID"/>
       <foreign-key name="FK2A6B1E751DC5FE0" columns="NUMBER" ref-table="persons" ref-schema="" ref-catalog="master" ref-columns="NUMBER" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FK18128916175EF68E" table="persons_personstatuses" schema="" catalog="master" columns="personStatuses_ID"/>
       <index name="ID" unique="true" columns="ID"/>
       <index name="FK2A6B1E751DC5FE0" unique="false" columns="NUMBER"/>
     </table>
@@ -193,8 +179,6 @@
       <primary-key name="PRIMARY" columns="PRODUCT_ID"/>
       <foreign-key name="FKC42BD164560150BC" columns="DEPARTMENT_ID" ref-table="departments" ref-schema="" ref-catalog="master" ref-columns="DEPARTMENT_ID" update-rule="3" delete-rule="3" deferrability="2"/>
       <foreign-key name="FKC42BD164DA75BD38" columns="COURSEUSD_ID" ref-table="coursesusd" ref-schema="" ref-catalog="master" ref-columns="COURSEUSD_ID" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FK34DE3BD5FCA25413" table="coursesusd_products" schema="" catalog="master" columns="products_PRODUCT_ID"/>
-      <exported-key name="FKEBA69882FCA25413" table="departments_products" schema="" catalog="master" columns="products_PRODUCT_ID"/>
       <index name="NAME" unique="true" columns="NAME"/>
       <index name="NAME_2" unique="true" columns="NAME"/>
       <index name="PRODUCT_ID" unique="true" columns="PRODUCT_ID"/>
@@ -224,10 +208,874 @@
       <column name="NUMBER" sqlType="BIGINT" precision="19" scale="0" nullable="false" jdbcType="-5"/>
       <primary-key name="PRIMARY" columns="USERLOG_ID"/>
       <foreign-key name="FKF028D3FA1DC5FE0" columns="NUMBER" ref-table="persons" ref-schema="" ref-catalog="master" ref-columns="NUMBER" update-rule="3" delete-rule="3" deferrability="2"/>
-      <exported-key name="FKDFD90B5B705A875D" table="persons_userlogs" schema="" catalog="master" columns="userLogs_USERLOG_ID"/>
       <index name="LOGIN_TIME" unique="true" columns="LOGIN_TIME"/>
       <index name="USERLOG_ID" unique="true" columns="USERLOG_ID"/>
       <index name="FKF028D3FA1DC5FE0" unique="false" columns="NUMBER"/>
     </table>
+  </data-source>
+  <data-source name="db" uuid="672305d6-2486-4536-9b5e-01c200bff2e6">
+    <database-info product="MySQL" version="5.5.45" jdbc-version="4.0" driver-name="MySQL Connector Java" driver-version="mysql-connector-java-5.1.35 ( Revision: 5fb9c5849535c13917c2cf9baaece6ef9693ef27 )">
+      <extra-name-characters>#@</extra-name-characters>
+      <identifier-quote-string>`</identifier-quote-string>
+    </database-info>
+    <case-sensitivity plain-identifiers="lower" quoted-identifiers="lower"/>
+    <database-model serializer="dbm" rdbms="MYSQL" format-version="2.5">
+      <schema id="1" name="master"/>
+      <table id="2" parent="1" name="addresses"/>
+      <table id="3" parent="1" name="catalogs"/>
+      <table id="4" parent="1" name="catalogs_departments"/>
+      <table id="5" parent="1" name="coursesusd"/>
+      <table id="6" parent="1" name="coursesusd_products"/>
+      <table id="7" parent="1" name="departments"/>
+      <table id="8" parent="1" name="departments_products"/>
+      <table id="9" parent="1" name="persons"/>
+      <table id="10" parent="1" name="persons_personstatuses"/>
+      <table id="11" parent="1" name="persons_userlogs"/>
+      <table id="12" parent="1" name="personstatuses"/>
+      <table id="13" parent="1" name="products"/>
+      <table id="14" parent="1" name="sysparameters"/>
+      <table id="15" parent="1" name="userlogs"/>
+      <column id="16" parent="2" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="17" parent="2" name="CITY">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="18" parent="2" name="COUNTRY">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="19" parent="2" name="CREATION_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="20" parent="2" name="CREATION_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="21" parent="2" name="END_DATE">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="22" parent="2" name="FULL_ADDRESS">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="23" parent="2" name="HOUSE_NUMBER">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="24" parent="2" name="HOUSE_NUMER_ADDITION">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="25" parent="2" name="LAST_UPDATE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="26" parent="2" name="LAST_UPDATE_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="27" parent="2" name="START_DATE">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="28" parent="2" name="STATE">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="29" parent="2" name="STREET">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="30" parent="2" name="ZIPCODE">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="31" parent="2" name="person_NUMBER">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="32" parent="2" name="FK34207BA2FCF8480A">
+        <columns>person_NUMBER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="33" parent="2" name="ID">
+        <columns>ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="34" parent="2" name="ID">
+        <columns>ID</columns>
+        <underlying-index>ID</underlying-index>
+      </key>
+      <key id="35" parent="2" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="36" parent="2" name="FK34207BA2FCF8480A">
+        <columns>person_NUMBER</columns>
+        <ref-key>~.persons.NUMBER</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="37" parent="3" name="CATALOG_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="38" parent="3" name="CREATION_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="39" parent="3" name="CREATION_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="40" parent="3" name="LAST_UPDATE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="41" parent="3" name="LAST_UPDATE_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="42" parent="3" name="NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="43" parent="3" name="CATALOG_ID">
+        <columns>CATALOG_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="44" parent="3" name="NAME">
+        <columns>NAME</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="45" parent="3" name="NAME_2">
+        <columns>NAME</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="46" parent="3" name="CATALOG_ID">
+        <columns>CATALOG_ID</columns>
+        <underlying-index>CATALOG_ID</underlying-index>
+      </key>
+      <key id="47" parent="3" name="NAME">
+        <columns>NAME</columns>
+        <underlying-index>NAME</underlying-index>
+      </key>
+      <key id="48" parent="3" name="NAME_2">
+        <columns>NAME</columns>
+        <underlying-index>NAME_2</underlying-index>
+      </key>
+      <key id="49" parent="3" name="PRIMARY">
+        <columns>CATALOG_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="50" parent="4" name="catalogs_CATALOG_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="51" parent="4" name="departments_DEPARTMENT_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="52" parent="4" name="departments_DEPARTMENT_ID">
+        <columns>departments_DEPARTMENT_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="53" parent="4" name="FK4287C21C925C4C5E">
+        <columns>departments_DEPARTMENT_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="54" parent="4" name="FK4287C21CA34AFFD">
+        <columns>catalogs_CATALOG_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <key id="55" parent="4" name="departments_DEPARTMENT_ID">
+        <columns>departments_DEPARTMENT_ID</columns>
+        <underlying-index>departments_DEPARTMENT_ID</underlying-index>
+      </key>
+      <key id="56" parent="4" name="PRIMARY">
+        <columns>catalogs_CATALOG_ID
+departments_DEPARTMENT_ID</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="57" parent="4" name="FK4287C21C925C4C5E">
+        <columns>departments_DEPARTMENT_ID</columns>
+        <ref-key>~.departments.DEPARTMENT_ID</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="58" parent="4" name="FK4287C21CA34AFFD">
+        <columns>catalogs_CATALOG_ID</columns>
+        <ref-key>~.catalogs.CATALOG_ID</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="59" parent="5" name="COURSEUSD_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="60" parent="5" name="BUYING_RATE">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <column id="61" parent="5" name="CREATION_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="62" parent="5" name="CREATION_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="63" parent="5" name="LAST_UPDATE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="64" parent="5" name="LAST_UPDATE_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="65" parent="5" name="SELLING_RATE">
+        <mandatory>1</mandatory>
+        <data-type>double</data-type>
+      </column>
+      <index id="66" parent="5" name="COURSEUSD_ID">
+        <columns>COURSEUSD_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="67" parent="5" name="COURSEUSD_ID">
+        <columns>COURSEUSD_ID</columns>
+        <underlying-index>COURSEUSD_ID</underlying-index>
+      </key>
+      <key id="68" parent="5" name="PRIMARY">
+        <columns>COURSEUSD_ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="69" parent="6" name="coursesUSD_COURSEUSD_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="70" parent="6" name="products_PRODUCT_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="71" parent="6" name="FK34DE3BD5277DBF09">
+        <columns>coursesUSD_COURSEUSD_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="72" parent="6" name="FK34DE3BD5FCA25413">
+        <columns>products_PRODUCT_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="73" parent="6" name="products_PRODUCT_ID">
+        <columns>products_PRODUCT_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="74" parent="6" name="PRIMARY">
+        <columns>coursesUSD_COURSEUSD_ID
+products_PRODUCT_ID</columns>
+        <primary>1</primary>
+      </key>
+      <key id="75" parent="6" name="products_PRODUCT_ID">
+        <columns>products_PRODUCT_ID</columns>
+        <underlying-index>products_PRODUCT_ID</underlying-index>
+      </key>
+      <foreign-key id="76" parent="6" name="FK34DE3BD5277DBF09">
+        <columns>coursesUSD_COURSEUSD_ID</columns>
+        <ref-key>~.coursesusd.COURSEUSD_ID</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="77" parent="6" name="FK34DE3BD5FCA25413">
+        <columns>products_PRODUCT_ID</columns>
+        <ref-key>~.products.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="78" parent="7" name="DEPARTMENT_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="79" parent="7" name="CREATION_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="80" parent="7" name="CREATION_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="81" parent="7" name="LAST_UPDATE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="82" parent="7" name="LAST_UPDATE_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="83" parent="7" name="NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="84" parent="7" name="CATALOG_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="85" parent="7" name="DEPARTMENT_ID">
+        <columns>DEPARTMENT_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="86" parent="7" name="FK1F3A27617CAE0E18">
+        <columns>CATALOG_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="87" parent="7" name="NAME">
+        <columns>NAME</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="88" parent="7" name="NAME_2">
+        <columns>NAME</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="89" parent="7" name="DEPARTMENT_ID">
+        <columns>DEPARTMENT_ID</columns>
+        <underlying-index>DEPARTMENT_ID</underlying-index>
+      </key>
+      <key id="90" parent="7" name="NAME">
+        <columns>NAME</columns>
+        <underlying-index>NAME</underlying-index>
+      </key>
+      <key id="91" parent="7" name="NAME_2">
+        <columns>NAME</columns>
+        <underlying-index>NAME_2</underlying-index>
+      </key>
+      <key id="92" parent="7" name="PRIMARY">
+        <columns>DEPARTMENT_ID</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="93" parent="7" name="FK1F3A27617CAE0E18">
+        <columns>CATALOG_ID</columns>
+        <ref-key>~.catalogs.CATALOG_ID</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="94" parent="8" name="departments_DEPARTMENT_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="95" parent="8" name="products_PRODUCT_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="96" parent="8" name="FKEBA69882925C4C5E">
+        <columns>departments_DEPARTMENT_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="97" parent="8" name="FKEBA69882FCA25413">
+        <columns>products_PRODUCT_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="98" parent="8" name="products_PRODUCT_ID">
+        <columns>products_PRODUCT_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="99" parent="8" name="PRIMARY">
+        <columns>departments_DEPARTMENT_ID
+products_PRODUCT_ID</columns>
+        <primary>1</primary>
+      </key>
+      <key id="100" parent="8" name="products_PRODUCT_ID">
+        <columns>products_PRODUCT_ID</columns>
+        <underlying-index>products_PRODUCT_ID</underlying-index>
+      </key>
+      <foreign-key id="101" parent="8" name="FKEBA69882925C4C5E">
+        <columns>departments_DEPARTMENT_ID</columns>
+        <ref-key>~.departments.DEPARTMENT_ID</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="102" parent="8" name="FKEBA69882FCA25413">
+        <columns>products_PRODUCT_ID</columns>
+        <ref-key>~.products.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="103" parent="9" name="NUMBER">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="104" parent="9" name="BANK_ACCOUNT">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="105" parent="9" name="BIRTHDATE">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="106" parent="9" name="CREATION_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="107" parent="9" name="CREATION_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="108" parent="9" name="DRIVER_LICENSE">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="109" parent="9" name="EDUCATION_DESCRIPTION">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="110" parent="9" name="EDUCATION_LEVEL">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="111" parent="9" name="EMAIL_ADDRESS">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="112" parent="9" name="FIRST_NAME">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="113" parent="9" name="GENDER">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="114" parent="9" name="INITIALS">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="115" parent="9" name="LAST_NAME">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="116" parent="9" name="LAST_UPDATE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="117" parent="9" name="LAST_UPDATE_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="118" parent="9" name="MIDDLE_NAME">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="119" parent="9" name="MOBILE_NUMBER">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="120" parent="9" name="PASSPORT_NUMBER">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="121" parent="9" name="PASSPORT_TYPE">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="122" parent="9" name="PASSPORT_VALID_UNTIL">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="123" parent="9" name="PASSWORD">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="124" parent="9" name="PHONENUMBER">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="125" parent="9" name="SOCIAL_SECURITY_NUMBER">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="126" parent="9" name="USER_NAME">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="127" parent="9" name="address_ID">
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="128" parent="9" name="FKD78FCFBEE4E3BC38">
+        <columns>address_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="129" parent="9" name="NUMBER">
+        <columns>NUMBER</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="130" parent="9" name="NUMBER">
+        <columns>NUMBER</columns>
+        <underlying-index>NUMBER</underlying-index>
+      </key>
+      <key id="131" parent="9" name="PRIMARY">
+        <columns>NUMBER</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="132" parent="9" name="FKD78FCFBEE4E3BC38">
+        <columns>address_ID</columns>
+        <ref-key>~.addresses.ID</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="133" parent="10" name="persons_NUMBER">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="134" parent="10" name="personStatuses_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="135" parent="10" name="FK18128916175EF68E">
+        <columns>personStatuses_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="136" parent="10" name="FK181289162944FB81">
+        <columns>persons_NUMBER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="137" parent="10" name="personStatuses_ID">
+        <columns>personStatuses_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="138" parent="10" name="personStatuses_ID">
+        <columns>personStatuses_ID</columns>
+        <underlying-index>personStatuses_ID</underlying-index>
+      </key>
+      <key id="139" parent="10" name="PRIMARY">
+        <columns>persons_NUMBER
+personStatuses_ID</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="140" parent="10" name="FK18128916175EF68E">
+        <columns>personStatuses_ID</columns>
+        <ref-key>~.personstatuses.ID</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="141" parent="10" name="FK181289162944FB81">
+        <columns>persons_NUMBER</columns>
+        <ref-key>~.persons.NUMBER</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="142" parent="11" name="persons_NUMBER">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="143" parent="11" name="userLogs_USERLOG_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="144" parent="11" name="FKDFD90B5B2944FB81">
+        <columns>persons_NUMBER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="145" parent="11" name="FKDFD90B5B705A875D">
+        <columns>userLogs_USERLOG_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="146" parent="11" name="userLogs_USERLOG_ID">
+        <columns>userLogs_USERLOG_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="147" parent="11" name="PRIMARY">
+        <columns>persons_NUMBER
+userLogs_USERLOG_ID</columns>
+        <primary>1</primary>
+      </key>
+      <key id="148" parent="11" name="userLogs_USERLOG_ID">
+        <columns>userLogs_USERLOG_ID</columns>
+        <underlying-index>userLogs_USERLOG_ID</underlying-index>
+      </key>
+      <foreign-key id="149" parent="11" name="FKDFD90B5B2944FB81">
+        <columns>persons_NUMBER</columns>
+        <ref-key>~.persons.NUMBER</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="150" parent="11" name="FKDFD90B5B705A875D">
+        <columns>userLogs_USERLOG_ID</columns>
+        <ref-key>~.userlogs.PRIMARY</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="151" parent="12" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="152" parent="12" name="CREATION_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="153" parent="12" name="CREATION_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="154" parent="12" name="END_DATE">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="155" parent="12" name="LAST_UPDATE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="156" parent="12" name="LAST_UPDATE_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="157" parent="12" name="MOTIVATION">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="158" parent="12" name="START_DATE">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="159" parent="12" name="STATUS">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="160" parent="12" name="NUMBER">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="161" parent="12" name="FK2A6B1E751DC5FE0">
+        <columns>NUMBER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="162" parent="12" name="ID">
+        <columns>ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="163" parent="12" name="ID">
+        <columns>ID</columns>
+        <underlying-index>ID</underlying-index>
+      </key>
+      <key id="164" parent="12" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+      <foreign-key id="165" parent="12" name="FK2A6B1E751DC5FE0">
+        <columns>NUMBER</columns>
+        <ref-key>~.persons.NUMBER</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="166" parent="13" name="PRODUCT_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="167" parent="13" name="ALL_COUNT">
+        <data-type>double</data-type>
+      </column>
+      <column id="168" parent="13" name="CREATION_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="169" parent="13" name="CREATION_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="170" parent="13" name="DESCRIPTION">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="171" parent="13" name="FILE_IMAGE">
+        <data-type>mediumblob</data-type>
+      </column>
+      <column id="172" parent="13" name="FOR_COUNT">
+        <data-type>int(11)</data-type>
+      </column>
+      <column id="173" parent="13" name="LAST_UPDATE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="174" parent="13" name="LAST_UPDATE_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="175" parent="13" name="NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="176" parent="13" name="NAME_IMAGE">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="177" parent="13" name="PRICE_UAH">
+        <data-type>double</data-type>
+      </column>
+      <column id="178" parent="13" name="PRICE_USD">
+        <data-type>double</data-type>
+      </column>
+      <column id="179" parent="13" name="SHORT_NAME">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="180" parent="13" name="COURSEUSD_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <column id="181" parent="13" name="DEPARTMENT_ID">
+        <mandatory>1</mandatory>
+        <data-type>int(11)</data-type>
+      </column>
+      <index id="182" parent="13" name="FKC42BD164560150BC">
+        <columns>DEPARTMENT_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="183" parent="13" name="FKC42BD164DA75BD38">
+        <columns>COURSEUSD_ID</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="184" parent="13" name="NAME">
+        <columns>NAME</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="185" parent="13" name="NAME_2">
+        <columns>NAME</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="186" parent="13" name="PRODUCT_ID">
+        <columns>PRODUCT_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="187" parent="13" name="NAME">
+        <columns>NAME</columns>
+        <underlying-index>NAME</underlying-index>
+      </key>
+      <key id="188" parent="13" name="NAME_2">
+        <columns>NAME</columns>
+        <underlying-index>NAME_2</underlying-index>
+      </key>
+      <key id="189" parent="13" name="PRIMARY">
+        <columns>PRODUCT_ID</columns>
+        <primary>1</primary>
+      </key>
+      <key id="190" parent="13" name="PRODUCT_ID">
+        <columns>PRODUCT_ID</columns>
+        <underlying-index>PRODUCT_ID</underlying-index>
+      </key>
+      <foreign-key id="191" parent="13" name="FKC42BD164560150BC">
+        <columns>DEPARTMENT_ID</columns>
+        <ref-key>~.departments.DEPARTMENT_ID</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <foreign-key id="192" parent="13" name="FKC42BD164DA75BD38">
+        <columns>COURSEUSD_ID</columns>
+        <ref-key>~.coursesusd.COURSEUSD_ID</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+      <column id="193" parent="14" name="ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="194" parent="14" name="CREATION_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="195" parent="14" name="CREATION_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="196" parent="14" name="DESCRIPTION">
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="197" parent="14" name="LAST_UPDATE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="198" parent="14" name="LAST_UPDATE_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="199" parent="14" name="NAME">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="200" parent="14" name="VALUE">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <index id="201" parent="14" name="ID">
+        <columns>ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="202" parent="14" name="ID">
+        <columns>ID</columns>
+        <underlying-index>ID</underlying-index>
+      </key>
+      <key id="203" parent="14" name="PRIMARY">
+        <columns>ID</columns>
+        <primary>1</primary>
+      </key>
+      <column id="204" parent="15" name="USERLOG_ID">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+        <sequence-identity>1</sequence-identity>
+      </column>
+      <column id="205" parent="15" name="CREATION_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="206" parent="15" name="CREATION_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="207" parent="15" name="LAST_UPDATE_DATE">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="208" parent="15" name="LAST_UPDATE_PERSON">
+        <mandatory>1</mandatory>
+        <data-type>varchar(255)</data-type>
+      </column>
+      <column id="209" parent="15" name="LOGIN_TIME">
+        <mandatory>1</mandatory>
+        <data-type>datetime</data-type>
+      </column>
+      <column id="210" parent="15" name="LOGOUT_TIME">
+        <data-type>datetime</data-type>
+      </column>
+      <column id="211" parent="15" name="NUMBER">
+        <mandatory>1</mandatory>
+        <data-type>bigint(20)</data-type>
+      </column>
+      <index id="212" parent="15" name="FKF028D3FA1DC5FE0">
+        <columns>NUMBER</columns>
+        <desc-columns></desc-columns>
+      </index>
+      <index id="213" parent="15" name="LOGIN_TIME">
+        <columns>LOGIN_TIME</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <index id="214" parent="15" name="USERLOG_ID">
+        <columns>USERLOG_ID</columns>
+        <desc-columns></desc-columns>
+        <unique>1</unique>
+      </index>
+      <key id="215" parent="15" name="LOGIN_TIME">
+        <columns>LOGIN_TIME</columns>
+        <underlying-index>LOGIN_TIME</underlying-index>
+      </key>
+      <key id="216" parent="15" name="PRIMARY">
+        <columns>USERLOG_ID</columns>
+        <primary>1</primary>
+      </key>
+      <key id="217" parent="15" name="USERLOG_ID">
+        <columns>USERLOG_ID</columns>
+        <underlying-index>USERLOG_ID</underlying-index>
+      </key>
+      <foreign-key id="218" parent="15" name="FKF028D3FA1DC5FE0">
+        <columns>NUMBER</columns>
+        <ref-key>~.persons.NUMBER</ref-key>
+        <cascade-update-rule>restrict</cascade-update-rule>
+        <cascade-delete-rule>restrict</cascade-delete-rule>
+      </foreign-key>
+    </database-model>
+  </data-source>
+  <data-source name="hibernate.cfg.xml/Hibernate" uuid="290b95f9-9c0a-49ba-946e-2f95c04e41e6">
+    <database-info product="" version="" jdbc-version="" driver-name="" driver-version=""/>
   </data-source>
 </component>
