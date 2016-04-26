@@ -15,7 +15,7 @@
         <org.springframework-version>4.0.6.RELEASE</org.springframework-version>
         <org.springframework-security-version>3.2.4.RELEASE</org.springframework-security-version>
         <org.springframework.roo-version>1.0.2.RELEASE</org.springframework.roo-version>
-        <JBOSS_HOME>file://C:\wildfly-10.0.0.Beta1</JBOSS_HOME>
+        <!--<JBOSS_HOME>file://C:\wildfly-10.0.0.Beta1</JBOSS_HOME>-->
     </properties>
     <distributionManagement>
         <repository>
@@ -467,23 +467,64 @@
                 <artifactId>wildfly-maven-plugin</artifactId>
                 <version>1.0.2.Final</version>
                 <configuration>
-                    <!--<serverConfig>standalone.xml</serverConfig>-->
-                    <groupId>mysql</groupId>
-                    <artifactId>mysql-connector-java</artifactId>
-                    <version>6.0.2</version>
-                    <fileName>${project.basedir}/lib/mysql-connector-java-6.0.2-bin.jar</fileName>
-                    <executions>
-                        <execution>
-                            <id>deploy-driver-MySQL</id>
-                            <phase>package</phase>
-                            <goals>
-                                <goal>deploy-artifact</goal>
-                            </goals>
-                            <configuration />
-                        </execution>
-                    </executions>
+                    <jbossHome>${env.JBOSS_HOME}</jbossHome>
+                     <hostname>144.36.114.145</hostname>
                     <filename>${project.build.finalName}.war</filename>
                 </configuration>
+                <executions>
+                    <!-- Undeploy the application on clean -->
+                <execution>
+                    <id>undeploy</id>
+                    <phase>clean</phase>
+                    <goals>
+                        <goal>undeploy</goal>
+                    </goals>
+                    <configuration>
+                        <ignoreMissingDeployment>true</ignoreMissingDeployment>
+                    </configuration>
+                </execution>
+                    <!-- Deploy the JDBC library -->
+                    <execution>
+                        <id>deploy-driver</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <groupId>mysql</groupId>
+                            <artifactId>mysql-connector-java</artifactId>
+                            <name>mysql-connector-java-6.0.2-bin.jar</name>
+                        </configuration>
+                        <goals>
+                            <goal>deploy-artifact</goal>
+                        </goals>
+                    </execution>
+                    <!-- Add a data source -->
+                    <execution>
+                        <id>add-datasource</id>
+                        <phase>install</phase>
+                        <configuration>
+                            <address>subsystem=datasources,data-source=master</address>
+                            <resources>
+                                <resource>
+                                    <enableResource>true</enableResource>
+                                    <properties>
+                                        <connection-url>jdbc:mysql://localhost:3306/master</connection-url>
+                                        <jndi-name>java:jboss/master</jndi-name>
+                                        <enabled>true</enabled>
+                                        <enable>true</enable>
+                                        <user-name>root</user-name>
+                                        <password>root</password>
+                                        <driver-name>mysql-connector-java-6.0.2-bin.jar</driver-name>
+                                        <use-ccm>false</use-ccm>
+                                    </properties>
+                                </resource>
+                            </resources>
+                        </configuration>
+                        <goals>
+                            <goal>add-resource</goal>
+                        </goals>
+                    </execution>
+                </executions>
+
+
             </plugin>
         </plugins>
     </build>
