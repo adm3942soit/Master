@@ -69,15 +69,7 @@
         <SOURCES />
       </library>
     </orderEntry>
-    <orderEntry type="module-library">
-      <library name="Maven: mysql:mysql-connector-java:6.0.2">
-        <CLASSES>
-          <root url="jar://$MODULE_DIR$/../../lib/mysql-connector-java-6.0.2-bin.jar!/" />
-        </CLASSES>
-        <JAVADOC />
-        <SOURCES />
-      </library>
-    </orderEntry>
+    <orderEntry type="library" name="Maven: mysql:mysql-connector-java:5.1.32" level="project" />
     <orderEntry type="library" name="Maven: javax.persistence:persistence-api:1.0" level="project" />
     <orderEntry type="library" name="Maven: org.hibernate:hibernate-core:3.3.2.GA" level="project" />
     <orderEntry type="library" name="Maven: antlr:antlr:2.7.6" level="project" />

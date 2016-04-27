@@ -7,6 +7,8 @@ import org.hibernate.cfg.AnnotationConfiguration;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.tool.hbm2ddl.SchemaUpdate;
 
+import java.util.TimeZone;
+
 /**
  * Created by IntelliJ IDEA.
  * PersonBean: ""
@@ -25,11 +27,12 @@ public class HibernateUtil
         {
 
 
-
+            TimeZone timeZone = TimeZone.getTimeZone("UTC");
+            TimeZone.setDefault(timeZone);
             sessionFactory = new AnnotationConfiguration().configure()
             	//.setInterceptor(new ua.com.master.utils.HibernateAuditInterceptor())
                 .buildSessionFactory();
-            
+
         }
         catch (Throwable ex)
         {
@@ -55,6 +58,7 @@ public class HibernateUtil
     public static Transaction tx=null;
     public static void trBegin(){
         if( tx==null || !tx.isActive()){
+
         tx = sessionFactory.getCurrentSession()
                 .beginTransaction();}
     }
