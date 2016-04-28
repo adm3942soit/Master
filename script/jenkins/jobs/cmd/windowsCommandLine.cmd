@@ -1,0 +1,1 @@
+call C://wildfly-10.0.0.Beta1/bin/standalone.bat
