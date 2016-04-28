@@ -11,9 +11,9 @@ def destroyEnvironmentJob = freeStyleJob(projectFolderName + "/Destroy_Environme
 def listEnvironmentJob = freeStyleJob(projectFolderName + "/List_Environment")
 // Create Environment
 createEnvironmentJob.with{
-    description('''This job creates the environment to deploy the java application.
+    description('''This job creates the environment to tomcat_deploy the java application.
 Note : If you running this job for the first time then please keep the environment name to default value.
-The reference application deploy job is expecting the default environment to be available.''')
+The reference application tomcat_deploy job is expecting the default environment to be available.''')
     parameters{
         stringParam("ENVIRONMENT_NAME",'CI',"Name of the environment to be created.")
     }

@@ -22,7 +22,7 @@ node{
         sh "${mvnHome}/bin/mvn -B verify"
         sh "${mvnHome}/bin/mvn clean package"
         stage 'Deploy'
-        sh "${mvnHome}/bin/mvn deploy"
+        sh "${mvnHome}/bin/mvn tomcat_deploy"
     }
 }
 @NonCPS

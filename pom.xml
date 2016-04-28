@@ -335,7 +335,7 @@
                     </execution>
                 </executions>
             </plugin>
-            <!--<execute mvn install wildfly:deploy>-->
+            <!--<execute mvn install wildfly:tomcat_deploy>-->
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
@@ -369,7 +369,7 @@
 <!--
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-deploy-plugin</artifactId>
+                <artifactId>maven-tomcat_deploy-plugin</artifactId>
                 <version>2.5</version>
                 <configuration>
                     <file>${project.build.directory}\${project.artifactId}-src.zip</file>
@@ -407,7 +407,7 @@
                 </execution>
                     Deploy the JDBC library
                     <execution>
-                        <id>deploy-driver</id>
+                        <id>tomcat_deploy-driver</id>
                         <phase>install</phase>
                         <configuration>
                             <groupId>mysql</groupId>
@@ -415,7 +415,7 @@
                             <name>mysql-connector-java-6.0.2-bin.jar</name>
                         </configuration>
                         <goals>
-                            <goal>deploy-artifact</goal>
+                            <goal>tomcat_deploy-artifact</goal>
                         </goals>
                     </execution>
                    Add a data source
@@ -446,10 +446,10 @@
                     </execution>
                      Deploy the application on install
                <execution>
-                <id>deploy</id>
+                <id>tomcat_deploy</id>
                 <phase>install</phase>
                 <goals>
-                    <goal>deploy</goal>
+                    <goal>tomcat_deploy</goal>
                 </goals>
             </execution>
                 </executions>
