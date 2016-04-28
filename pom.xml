@@ -343,7 +343,8 @@
                 <configuration>
                     <skip>true</skip>
                     <filename>${artifactId}.${packaging}</filename>
-                    <port>8082</port>
+                   <!-- <port>9990</port>-->
+                    <jbossHome>${env.JBOSS_HOME}</jbossHome>
                 </configuration>
             </plugin>
 
