@@ -242,7 +242,8 @@ public class RegisterPersonBean extends BaseBean  implements Serializable
         );
         newPerson.setUserName(getLogin());
         newPerson.setPassword(getPassword());
-
+        newPerson.setCreationDate(new Date());
+        newPerson.setCreationPerson(getPersonDao().getByLogin("admin").getFullName());
         getPersonDao().save(newPerson);
 
         PersonStatus personStatus = PersonStatusHelper.addPersonStatus(Constants.PersonStatusDetails.DRAFT_LABEL, newPerson, null);
