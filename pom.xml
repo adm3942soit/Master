@@ -345,7 +345,25 @@
                     <filename>${artifactId}.${packaging}</filename>
                    <!-- <port>9990</port>-->
                     <jbossHome>${env.JBOSS_HOME}</jbossHome>
+                    <beforeDeployment>
+                        <commands>
+                            <command>deploy ~/Downloads/mysql-connector-java-6.0.2-bin.jar, data-source add --jndi-name=java:jboss/datasources/master --name=master --connection-url=jdbc:mysql://localhost:3306/master --driver-name=mysql --user-name=root --password=root</command>
+                        </commands>
+                    </beforeDeployment>
                 </configuration>
+                <executions>
+                <!--Undeploy the application on clean-->
+                <execution>
+                    <id>undeploy</id>
+                    <phase>clean</phase>
+                    <goals>
+                        <goal>undeploy</goal>
+                    </goals>
+                    <configuration>
+                        <ignoreMissingDeployment>true</ignoreMissingDeployment>
+                    </configuration>
+                </execution>
+                </executions>
             </plugin>
 
 <!--
