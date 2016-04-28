@@ -1,13 +1,13 @@
-def jbossHome = "C:\\wildfly-10.0.0.Beta1"
+node{
+    def jbossHome = 'C:\\wildfly-10.0.0.Beta1'
+    deployApp('target/master.war', ${jbossHome}, 8082)
+}
+/*
+
 // Jobs
 //def buildAppJob = freeStyleJob("Master_Build")
 //def deployAppJob = freeStyleJob("Master_Deploy")
 
-node{
-deployApp("target/master.war", jbossHome, 8082)
-}
-
-/*
 buildAppJob.with{
     scm{
         git('https://github.com/adm3942soit/Master.git')
