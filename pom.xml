@@ -324,3 +324,48 @@
         </plugins>
     </build>
 </project>
+<!--
+
+<settings> //userhome/.m2/settings.xml
+<servers>
+    <server>
+        <id>github</id>
+        <username>adm3942soit</username>
+        <password>libra280963</password>
+    </server>
+    <server>
+        <id>wildfly</id>
+        <username>user</username>
+        <password>user</password>
+    </server>
+</servers>
+<profiles>
+    <profile>
+        <id>wildfly-remote</id>
+        <properties>
+            <wildfly-hostname>199.181.11.11</wildfly-hostname>
+            <wildfly-port>9990</wildfly-port>
+            <wildfly-username>remoteuser</wildfly-username>
+            <wildfly-password>remotepassword</wildfly-password>
+        </properties>
+    </profile>
+
+    <profile>
+        <id>wildfly-local</id>
+        <properties>
+            <wildfly-home>C:\wildfly-10.0.0.Beta1</wildfly-home>
+            <wildfly-hostname>127.0.0.1</wildfly-hostname>
+            <wildfly-port>9990</wildfly-port>
+            <wildfly-username>user</wildfly-username>
+            <wildfly-password>user</wildfly-password>
+        </properties>
+    </profile>
+
+</profiles>
+
+<activeProfiles>
+    <activeProfile>wildfly-local</activeProfile>
+    <activeProfile>wildfly-remote</activeProfile>
+</activeProfiles>
+
+</settings>-->
