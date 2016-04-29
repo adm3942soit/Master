@@ -10,7 +10,7 @@ node {
     sh "${mvnHome}/bin/mvn -B verify"
     sh "${mvnHome}/bin/mvn clean package"
     stage 'Deploy'
-    sh "${mvnHome}/bin/mvn tomcat_deploy"
+    sh "${mvnHome}/bin/mvn install wildfly:deploy wildfly:start"
 }//node
 @NonCPS
 def version(text) {
