@@ -208,7 +208,7 @@
             <artifactId>portlet-api</artifactId>
             <version>1.0</version>
         </dependency>
-<!--For JBOss-->
+          <!--For JBOss-->
         <dependency>
             <groupId>org.jboss.spec</groupId>
             <artifactId>jboss-javaee-7.0</artifactId>
@@ -216,56 +216,13 @@
             <type>pom</type>
             <scope>import</scope>
         </dependency>
-<!--
-        <dependency>
-            <groupId>org.jboss.spec.javax.ejb</groupId>
-            <artifactId>jboss-ejb-api_3.2_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
--->
 
-<!--
-        <dependency>
-            <groupId>org.hibernate.javax.persistence</groupId>
-            <artifactId>hibernate-jpa-2.1-api</artifactId>
-            <scope>provided</scope>
-        </dependency>
--->
-        <!-- Import the CDI API -->
-        <!--<dependency>
-            <groupId>javax.enterprise</groupId>
-            <artifactId>cdi-api</artifactId>
-            <scope>provided</scope>
-        </dependency>-->
-        <!-- Import the Common Annotations API (JSR-250) -->
-        <!--<dependency>
-            <groupId>org.jboss.spec.javax.annotation</groupId>
-            <artifactId>jboss-annotations-api_1.2_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>-->
-        <!-- Import the Servlet API -->
-<!--
-        <dependency>
-            <groupId>org.jboss.spec.javax.servlet</groupId>
-            <artifactId>jboss-servlet-api_3.1_spec</artifactId>
-            <scope>provided</scope>
-        </dependency>
--->
     </dependencies>
     <repositories>
         <repository>
             <id>JBoss Repository</id>
             <url>https://repository.jboss.org/nexus/content/groups/public/</url>
         </repository>
-<!--
-<repository>
-    <id>mysql</id>
-    <name>mysql</name>
-    <url>file://${user.home}/.m2/repository/</url>
-
-</repository>
--->
-<!--
         <repository>
             <id>java-utils-library</id>
             <name>java-utils-library</name>
@@ -275,26 +232,15 @@
                 <updatePolicy>always</updatePolicy>
             </snapshots>
         </repository>
--->
-<!--
         <repository>
             <id>myFiler</id>
             <name>myFiler</name>
             <url>https://github.com/adm3942soit/myFiler/tree/mvn-repo</url>
         </repository>
--->
 
     </repositories>
     <build>
         <finalName>master</finalName>
-<!-- <resources>
-             <resource>
-                 <directory>src/main/resources</directory>
-                 <includes>
-                     <include>**/**</include>
-                 </includes>
-             </resource>
-         </resources>-->
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -366,96 +312,6 @@
                 </executions>
             </plugin>
 
-<!--
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-tomcat_deploy-plugin</artifactId>
-                <version>2.5</version>
-                <configuration>
-                    <file>${project.build.directory}\${project.artifactId}-src.zip</file>
-                    <url>${project.distributionManagement.repository.url}</url>
-                    <repositoryId>${project.distributionManagement.repository.id}</repositoryId>
-                    <groupId>${project.groupId}</groupId>
-                    <artifactId>${project.artifactId}</artifactId>
-                    <version>${project.version}</version>
-                    <packaging>zip</packaging>
-                    <pomFile>pom.xml</pomFile>
-                </configuration>
-            </plugin>
--->
-
-<!--            <plugin>
-                <groupId>org.wildfly.plugins</groupId>
-                <artifactId>wildfly-maven-plugin</artifactId>
-                <version>1.0.2.Final</version>
-                <configuration>
-                    <jbossHome>${env.JBOSS_HOME}</jbossHome>
-                     <hostname>144.36.114.145</hostname>
-                    <filename>${project.build.finalName}.war</filename>
-                </configuration>
-                <executions>
-                     Undeploy the application on clean
-                <execution>
-                    <id>undeploy</id>
-                    <phase>clean</phase>
-                    <goals>
-                        <goal>undeploy</goal>
-                    </goals>
-                    <configuration>
-                        <ignoreMissingDeployment>true</ignoreMissingDeployment>
-                    </configuration>
-                </execution>
-                    Deploy the JDBC library
-                    <execution>
-                        <id>tomcat_deploy-driver</id>
-                        <phase>install</phase>
-                        <configuration>
-                            <groupId>mysql</groupId>
-                            <artifactId>mysql-connector-java</artifactId>
-                            <name>mysql-connector-java-6.0.2-bin.jar</name>
-                        </configuration>
-                        <goals>
-                            <goal>tomcat_deploy-artifact</goal>
-                        </goals>
-                    </execution>
-                   Add a data source
-                    <execution>
-                        <id>add-datasource</id>
-                        <phase>install</phase>
-                        <configuration>
-                            <address>subsystem=datasources,data-source=master</address>
-                            <resources>
-                                <resource>
-                                    <enableResource>true</enableResource>
-                                    <properties>
-                                        <connection-url>jdbc:mysql://localhost:3306/master</connection-url>
-                                        <jndi-name>java:jboss/master</jndi-name>
-                                        <enabled>true</enabled>
-                                        <enable>true</enable>
-                                        <user-name>root</user-name>
-                                        <password>root</password>
-                                        <driver-name>mysql-connector-java-6.0.2-bin.jar</driver-name>
-                                        <use-ccm>false</use-ccm>
-                                    </properties>
-                                </resource>
-                            </resources>
-                        </configuration>
-                        <goals>
-                            <goal>add-resource</goal>
-                        </goals>
-                    </execution>
-                     Deploy the application on install
-               <execution>
-                <id>tomcat_deploy</id>
-                <phase>install</phase>
-                <goals>
-                    <goal>tomcat_deploy</goal>
-                </goals>
-            </execution>
-                </executions>
-
-
-            </plugin>-->
         </plugins>
     </build>
 </project>
