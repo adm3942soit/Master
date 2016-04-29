@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss:jboss-ejb-client:1.0.0.Beta11">
+    <CLASSES>
+      <root url="jar://$M2_REPO$/org/jboss/jboss-ejb-client/1.0.0.Beta11/jboss-ejb-client-1.0.0.Beta11.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$M2_REPO$/org/jboss/jboss-ejb-client/1.0.0.Beta11/jboss-ejb-client-1.0.0.Beta11-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$M2_REPO$/org/jboss/jboss-ejb-client/1.0.0.Beta11/jboss-ejb-client-1.0.0.Beta11-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss.metadata:jboss-metadata-ejb:7.0.0.Beta31">
+    <CLASSES>
+      <root url="jar://$M2_REPO$/org/jboss/metadata/jboss-metadata-ejb/7.0.0.Beta31/jboss-metadata-ejb-7.0.0.Beta31.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$M2_REPO$/org/jboss/metadata/jboss-metadata-ejb/7.0.0.Beta31/jboss-metadata-ejb-7.0.0.Beta31-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$M2_REPO$/org/jboss/metadata/jboss-metadata-ejb/7.0.0.Beta31/jboss-metadata-ejb-7.0.0.Beta31-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

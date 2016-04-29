@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss.as:jboss-as-security:7.1.0.CR1">
+    <CLASSES>
+      <root url="jar://$M2_REPO$/org/jboss/as/jboss-as-security/7.1.0.CR1/jboss-as-security-7.1.0.CR1.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$M2_REPO$/org/jboss/as/jboss-as-security/7.1.0.CR1/jboss-as-security-7.1.0.CR1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$M2_REPO$/org/jboss/as/jboss-as-security/7.1.0.CR1/jboss-as-security-7.1.0.CR1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

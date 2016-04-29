@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss.logging:jboss-logging-generator:1.0.0.CR4">
+    <CLASSES>
+      <root url="jar://$M2_REPO$/org/jboss/logging/jboss-logging-generator/1.0.0.CR4/jboss-logging-generator-1.0.0.CR4.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$M2_REPO$/org/jboss/logging/jboss-logging-generator/1.0.0.CR4/jboss-logging-generator-1.0.0.CR4-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$M2_REPO$/org/jboss/logging/jboss-logging-generator/1.0.0.CR4/jboss-logging-generator-1.0.0.CR4-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

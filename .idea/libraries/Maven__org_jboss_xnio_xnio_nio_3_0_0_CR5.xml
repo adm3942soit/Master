@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss.xnio:xnio-nio:3.0.0.CR5">
+    <CLASSES>
+      <root url="jar://$M2_REPO$/org/jboss/xnio/xnio-nio/3.0.0.CR5/xnio-nio-3.0.0.CR5.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$M2_REPO$/org/jboss/xnio/xnio-nio/3.0.0.CR5/xnio-nio-3.0.0.CR5-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$M2_REPO$/org/jboss/xnio/xnio-nio/3.0.0.CR5/xnio-nio-3.0.0.CR5-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

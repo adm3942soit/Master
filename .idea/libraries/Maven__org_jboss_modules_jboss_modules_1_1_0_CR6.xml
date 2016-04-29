@@ -1,0 +1,13 @@
+<component name="libraryTable">
+  <library name="Maven: org.jboss.modules:jboss-modules:1.1.0.CR6">
+    <CLASSES>
+      <root url="jar://$M2_REPO$/org/jboss/modules/jboss-modules/1.1.0.CR6/jboss-modules-1.1.0.CR6.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$M2_REPO$/org/jboss/modules/jboss-modules/1.1.0.CR6/jboss-modules-1.1.0.CR6-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$M2_REPO$/org/jboss/modules/jboss-modules/1.1.0.CR6/jboss-modules-1.1.0.CR6-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>
